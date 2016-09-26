@@ -7,8 +7,6 @@ var countFileDownload = 0;
 var countFileDownloadFail = 0;
 var swipeMenuInGallary = false;
 var jsonStringify;
-var applicationAppTest = 0;
-var data = "";
 
 initYoutube();
 
@@ -18,49 +16,15 @@ function init() {
     $(".classDropdownList").addClass("classHide");
 
     document.querySelector("#startScan").addEventListener("touchend", startScan, false);
-  DeleteResorcesAll();
+    deleteResourcesAll();
 }
 
-function startScan() {
-
-    cordova.plugins.barcodeScanner.scan(
-        function (result) {
-            var siteUrl = "http://appconstructornew.newlinetechnologies.net";
-              $(".Scan-spiner").removeClass("hidden");
-              var ProjectId = result.text.split("-")[0];
-              var VersionName = result.text.split("-")[1];
-          $.ajax({
-              type: "POST",
-              url: siteUrl + "/Constructor/GetContentById",
-              data: { projectId: ProjectId, contentId: VersionName },
-              cache: false,
-              success: function(jsonObjectOfServer) {
-                  $(".startScan-wrapper").addClass("hidden");
-                    data = JSON.stringify(jsonObjectOfServer.Content);
-                      onCheckJson();
-                      checkUpdateRestaurantMenu();
-                      $("#clearJsStorage").removeClass("hidden");
-                  }
-              });
-
-
-        },
-        function (error) {
-            alert("Scanning failed: " + error);
-        }
-    );
-
-}
 function onDeviceReady() {
 
     window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem) {
         window.myFileSystem = fileSystem;
         fileSystem.root.getDirectory("Phonegap", { create: true, exclusive: false }, onGetDirectorySuccess, onGetDirectoryFail);
-        if($.jStorage.get('appData') == null){
-          $(".startScan-wrapper").removeClass("hidden");
-        }else{
-          checkConnection();
-        }
+        checkJsStorage();
         store = fileSystem.root.nativeURL + "Phonegap/";
     });
     appStart();
@@ -216,12 +180,12 @@ function doOnOrientationChange()
     {
       case -90:
       case 90:
-      if(applicationData.Restaurants.length > 0 && applicationData != undefined){
+      if(applicationData.Restaurants.length > 0){
         restarauntMenuModelItems();
       }
         break;
       default:
-      if(applicationData.Restaurants.length > 0 && applicationData != undefined){
+      if(applicationData.Restaurants.length > 0){
         restarauntMenuModelItems();
       }
         break;

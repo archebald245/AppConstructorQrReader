@@ -35,7 +35,6 @@
 	<script src="js/restaurantMenuWork.js"></script>
 	<script src="js/cartWork.js"></script>
 
-
     <!-- lightGallery-->
     <link rel="stylesheet" href="js/lightGallery/lightgallery.css">
 
@@ -47,7 +46,7 @@
     <script src="js/encodeDecodeWork.js"></script>
     <script src="js/menuWork.js"></script>
     <script src="js/blockUIWork.js"></script>
-    <script src="js/deleteAllImages.js"></script>
+    <script src="js/debugApp.js"></script>
     <script src="js/initWork.js"></script>
 
 
@@ -58,13 +57,12 @@
 </head>
 
 <body>
-<button id="clearJsStorage" class="hidden"></button>
+  <button id="clearJsStorage" class="hidden"></button>
 	<div class="startScan-wrapper hidden">
           <h1>Please Scan QR for your Application</h1>
           <button id="startScan" >Start Scan</button>
           <div class="Scan-spiner hidden"></div>
         </div>
-
     <div data-role="header" data-position="fixed" class="classMenu ">
         <span class="menu-icon" onclick="onClickButtonMenu()">Menu</span>
         <div class="classDropdownList"></div>
@@ -85,7 +83,7 @@
 
 			</div>
 		<div class="totalPrice">Total $ <b>0</b></div>
-		<a  href="#" class="btn-order">Order</a>
+		<button class="btn-order">Order</button>
 		</div>
 	<div id="orderInfo" class="hidden">
 	<div class="cart-top-line"><button class="back-to-cart"></button>Your Order Info</div>

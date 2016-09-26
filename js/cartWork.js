@@ -48,6 +48,10 @@ function clickPlaceAnOrder() {
                 $("#orderInfo input, #orderInfo textarea").val("");
                 $("#container").removeClass("hidden");
                  $("#orderInfo").addClass("hidden");
+                 
+               if($('.classMenuTop').length>0||$('.classMenuBottom').length>0){
+                   $(".classMenu").removeClass("hidden");
+               }
 
             },
             error: function() {
@@ -64,6 +68,7 @@ function bindListenerToClickBtn() {
         $(".classSwipeDropList").addClass("hidden");
         $(".cart").removeClass("hidden");
         $(".singleItem").addClass("hidden");
+        window.scrollTo(0,0);
     });
 
     $(".back-to-container").on("click", function() {
