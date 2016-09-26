@@ -606,3 +606,63 @@ margin: 0 2.5% 20px;
 .lg-toolbar .lg-close:after {
     content: "X" !important;
 }
+#startScan{
+  width: 200px;
+  height: 40px;
+  border-radius: 40px;
+  background-color: #eeeeee;
+  z-index: 9999;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  margin: auto;
+  border: 1px solid #939393;
+}
+.startScan-wrapper{
+  background-color: #06C1A1;
+width: 100%;
+height: 100%;
+z-index: 999999;
+position: relative;
+}
+.startScan-wrapper h1{
+  font-size: 20px;
+margin: 0;
+text-align: center;
+color: #fff;
+font-weight: bold;
+position: absolute;
+top: 40%;
+left: 0;
+right: 0;
+}
+.Scan-spiner{
+  background-image: url(../baseimages/loading.gif);
+width: 25px;
+height: 25px;
+z: 9999;
+z-index: 99999;
+position: absolute;
+background-size: cover;
+background-position: center;
+top: 60%;
+right: 0;
+left: 0;
+margin: auto;
+}
+#clearJsStorage{
+  border-radius: 50%;
+  background: none;
+  border: none;
+  position: fixed;
+  z-index: 1;
+  bottom: 20px;
+  left: 20px;
+  background-image: url(../baseimages/delete.png);
+  width: 30px;
+  height: 30px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
