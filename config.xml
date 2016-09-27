@@ -47,17 +47,17 @@
   <icon src="icons/android/hdpi.png" qualifier="hdpi" platform="android" />
   <icon src="icons/android/xhdpi.png" qualifier="xhdpi" platform="android" />
     <!--Ios-->
-  <icon src="icons/ios/App-29.png" width="29" height="29" gap:platform="ios" />
-  <icon src="icons/ios/App-40.png" width="40" height="40" gap:platform="ios" />
-  <icon src="icons/ios/App-57.png" width="57" height="57" gap:platform="ios" />
-  <icon src="icons/ios/App-58.png" width="58" height="58" gap:platform="ios" />
-  <icon src="icons/ios/App-72.png" width="72" height="72" gap:platform="ios"  />
-  <icon src="icons/ios/App-90.png" width="90" height="90" gap:platform="ios"  />
-  <icon src="icons/ios/App-100.png" width="100" height="100" gap:platform="ios"  />
-  <icon src="icons/ios/App-114.png" width="114" height="114" gap:platform="ios" />
-  <icon src="icons/ios/App-120.png" width="120" height="120" gap:platform="ios" />
-  <icon src="icons/ios/App-144.png" width="144" height="144" gap:platform="ios" />
-  <icon src="icons/ios/App-152.png" width="152" height="152" gap:platform="ios" />
-  <icon src="icons/ios/App-180.png" width="180" height="180" gap:platform="ios" />
+  <icon src="icons/ios/App-29.png" width="29" height="29" platform="ios" />
+  <icon src="icons/ios/App-40.png" width="40" height="40" platform="ios" />
+  <icon src="icons/ios/App-57.png" width="57" height="57" platform="ios" />
+  <icon src="icons/ios/App-58.png" width="58" height="58" platform="ios" />
+  <icon src="icons/ios/App-72.png" width="72" height="72" platform="ios"  />
+  <icon src="icons/ios/App-90.png" width="90" height="90" platform="ios"  />
+  <icon src="icons/ios/App-100.png" width="100" height="100" platform="ios"  />
+  <icon src="icons/ios/App-114.png" width="114" height="114" platform="ios" />
+  <icon src="icons/ios/App-120.png" width="120" height="120" platform="ios" />
+  <icon src="icons/ios/App-144.png" width="144" height="144" platform="ios" />
+  <icon src="icons/ios/App-152.png" width="152" height="152" platform="ios" />
+  <icon src="icons/ios/App-180.png" width="180" height="180" platform="ios" />
   <!--Icons-->
 </widget>
