@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
-<widget xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:gap="http://phonegap.com/ns/1.0" xmlns="http://www.w3.org/ns/widgets" id="com.sushiios.bar">
-  <name>Sushi bar Ios</name>
-  <description>Lorem ipsum dolor sit amet</description>
+<widget xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:gap="http://phonegap.com/ns/1.0" xmlns="http://www.w3.org/ns/widgets" id="net.newlinetechnologies.appconstructor">
+  <name>AppConstructor Debug</name>
+  <description>This is application for testing your application created on AppConstructor.</description>
   <plugin name="com.fantasyskiracer.inappbrowser" spec="1.0.4" source="pgb" />
   <plugin name="org.apache.cordova.file-transfer" spec="0.5.0" source="pgb" />
   <plugin name="org.apache.cordova.network-information" spec="0.2.7" source="pgb" />
@@ -37,17 +37,20 @@
   </feature>
   <platform name="android">
       <preference name="android-targetSdkVersion" value="22"/>
-      <icon src="res/android/ldpi.png" density="ldpi" />
-      <icon src="res/android/mdpi.png" density="mdpi" />
-      <icon src="res/android/hdpi.png" density="hdpi" />
-      <icon src="res/android/xhdpi.png" density="xhdpi" />
-</platform>
-  <platform name="ios" />
-   <icon src="icons/ios/App-57.png" width="57" height="57" />
-   <icon src="icons/ios/App-72.png" width="72" height="72" />
-   <icon src="icons/ios/App-114.png" width="114" height="114" />
-   <icon src="icons/ios/App-144.png" width="144" height="144" />
-</platform>
+  </platform>
+<gap:platform name="ios" />
   <preference name="orientation" value="default" />
   <preference name="phonegap-version" value="cli-5.4.1" />
+  <!--Icons-->
+    <!--Android-->
+  <icon src="res/android/ldpi.png" density="ldpi" gap:platform="android" />
+  <icon src="res/android/mdpi.png" density="mdpi" gap:platform="android" />
+  <icon src="res/android/hdpi.png" density="hdpi" gap:platform="android" />
+  <icon src="res/android/xhdpi.png" density="xhdpi" gap:platform="android" />
+    <!--Ios-->
+  <icon src="icons/ios/App-57.png" width="57" height="57" gap:platform="ios" />
+  <icon src="icons/ios/App-72.png" width="72" height="72" gap:platform="ios"  />
+  <icon src="icons/ios/App-114.png" width="114" height="114" gap:platform="ios" />
+  <icon src="icons/ios/App-144.png" width="144" height="144" gap:platform="ios" />
+  <!--Icons-->
 </widget>
