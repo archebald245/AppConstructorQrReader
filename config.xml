@@ -41,10 +41,10 @@
   <preference name="phonegap-version" value="cli-5.4.1" />
   <!--Icons-->
     <!--Android-->
-  <icon src="res/android/ldpi.png" gap:density="ldpi" gap:platform="android" />
-  <icon src="res/android/mdpi.png" gap:density="mdpi" gap:platform="android" />
-  <icon src="res/android/hdpi.png" gap:density="hdpi" gap:platform="android" />
-  <icon src="res/android/xhdpi.png" gap:density="xhdpi" gap:platform="android" />
+  <icon src="icons/android/ldpi.png" gap:density="ldpi" gap:platform="android" />
+  <icon src="icons/android/mdpi.png" gap:density="mdpi" gap:platform="android" />
+  <icon src="icons/android/hdpi.png" gap:density="hdpi" gap:platform="android" />
+  <icon src="icons/android/xhdpi.png" gap:density="xhdpi" gap:platform="android" />
     <!--Ios-->
   <icon src="icons/ios/App-29.png" width="29" height="29" gap:platform="ios" />
   <icon src="icons/ios/App-40.png" width="40" height="40" gap:platform="ios" />
