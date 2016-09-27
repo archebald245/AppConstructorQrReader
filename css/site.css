@@ -149,9 +149,8 @@ form{
 	max-width:100%;
 }
 .restaurantMenuNoImages{
-  background-image: url(../baseimages/cartItem.png);
-  background-size: cover;
-  background-position: center;
+  width: 100%;
+  height: auto;
 }
 .difficult-button-img{
    box-shadow:0px 0px 7px 2px #727272;

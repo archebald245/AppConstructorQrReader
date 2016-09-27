@@ -44,7 +44,7 @@ function renderRestaurantMenu(menuCollection, position, responsiveModel, stateNa
 			var RestaurantMenuItemModels = this.state.data.RestaurantMenuItems.map(function (item) {
                  var image;
 								 if (item.RestaurantMenuImages.length == 0) {
-							    image = React.createElement('span', { className: 'restaurantMenuNoImages item-shop-img' });
+							    image = React.createElement('img', { src:'baseimages/cartItem.png',className: 'restaurantMenuNoImages item-shop-img' });
 							} else {
 							    image = React.createElement('img', { src: item.RestaurantMenuImages[0].Path });
 							}
