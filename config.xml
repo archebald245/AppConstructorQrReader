@@ -41,6 +41,7 @@
   <preference name="phonegap-version" value="cli-5.4.1" />
   <!--Icons-->
     <!--Android-->
+  <icon src="icons/android/hdpi.png" gap:role="default" />
   <icon src="icons/android/ldpi.png" gap:density="ldpi" gap:platform="android" />
   <icon src="icons/android/mdpi.png" gap:density="mdpi" gap:platform="android" />
   <icon src="icons/android/hdpi.png" gap:density="hdpi" gap:platform="android" />
