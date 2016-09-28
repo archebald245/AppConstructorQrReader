@@ -71,10 +71,17 @@
   <splash src="screen/android/splash-land-ldpi.png" platform="android" density="land-ldpi"/>
   <splash src="screen/android/splash-land-mdpi.png" platform="android" density="land-mdpi"/>
   <splash src="screen/android/splash-land-xhdpi.png" platform="android" density="land-xhdpi"/>
-
   <splash src="screen/android/splash-port-hdpi.png" platform="android" density="port-hdpi"/>
   <splash src="screen/android/splash-port-ldpi.png" platform="android" density="port-ldpi"/>
   <splash src="screen/android/splash-port-mdpi.png" platform="android" density="port-mdpi"/>
   <splash src="screen/android/splash-port-xhdpi.png" platform="android" density="port-xhdpi"/>
   <!--  Android splash -->
+
+  <!--  Ios splash-->
+  <gap:splash src="screen/ios/screen-iphone-portrait.png"         platform="ios" width="320" height="480" />
+  <gap:splash src="screen/ios/screen-iphone-portrait-2x.png"      platform="ios" width="640" height="960" />
+  <gap:splash src="screen/ios/screen-iphone-portrait-568h-2x.png" platform="ios" width="640" height="1136" />
+  <gap:splash src="screen/ios/screen-ipad-portrait.png"           platform="ios" width="768" height="1024" />
+  <gap:splash src="screen/ios/screen-ipad-landscape.png"          platform="ios" width="1024" height="768" />
+  <!--  Ios splash-->
 </widget>
