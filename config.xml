@@ -71,10 +71,10 @@
   <splash src="screen/android/screen-ldpi-landscape.png" platform="android" density="land-ldpi"/>
   <splash src="screen/android/screen-mdpi-landscape.png" platform="android" density="land-mdpi"/>
   <splash src="screen/android/screen-xhdpi-landscape.png" platform="android" density="land-xhdpi"/>
-  <splash src="screen/android/screen-xhdpi-portrait.png" platform="android" density="port-hdpi"/>
+  <splash src="screen/android/screen-hdpi-portrait.png.png" platform="android" density="port-hdpi"/>
   <splash src="screen/android/screen-ldpi-portrait.png" platform="android" density="port-ldpi"/>
   <splash src="screen/android/screen-mdpi-portrait.png" platform="android" density="port-mdpi"/>
-  <splash src="screen/android/screen-hdpi-portrait.png" platform="android" density="port-xhdpi"/>
+  <splash src="screen/android/screen-xhdpi-portrait" platform="android" density="port-xhdpi"/>
   <!--  Android splash -->
 
   <!--  Ios splash-->
