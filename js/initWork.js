@@ -29,6 +29,7 @@ function onDeviceReady() {
     });
     appStart();
     StatusBar.hide();
+    navigator.splashscreen.show();
 }
 
 function onGetDirectorySuccess(dir) {

@@ -8,6 +8,7 @@
   <plugin name="cordova-plugin-whitelist" spec="" source="npm" />
   <plugin name="cordova-plugin-x-toast" spec="" source="npm" />
   <plugin name="org.apache.cordova.statusbar" spec="0.1.4" source="pgb" />
+  <plugin name="cordova-plugin-splashscreen" />
   <gap:plugin name="com.phonegap.plugins.barcodescanner" />
 
 
@@ -35,6 +36,10 @@
   <feature name="FileTransfer">
     <param name="android-package" value="org.apache.cordova.filetransfer.FileTransfer" />
   </feature>
+  <preference name="show-splash-screen-spinner" value="false" />           <!-- ios: if set to false, the spinner won't appear on the splash screen during app loading -->
+   <preference name="auto-hide-splash-screen"    value="true" />
+  <preference name="SplashScreen" value="screen"/>
+<preference name="SplashScreenDelay" value="1000"/>
   <gap:platform name="android" />
 <gap:platform name="ios" />
   <preference name="orientation" value="default" />
@@ -60,4 +65,23 @@
   <icon src="icons/ios/App-152.png" width="152" height="152" qualifier="" platform="ios" />
   <icon src="icons/ios/App-180.png" width="180" height="180" qualifier="" platform="ios" />
   <!--Icons-->
+
+  <!--  Android splash -->
+  <splash src="screen/android/screen-hdpi-landscape.png" platform="android" density="land-hdpi"/>
+  <splash src="screen/android/screen-ldpi-landscape.png" platform="android" density="land-ldpi"/>
+  <splash src="screen/android/screen-mdpi-landscape.png" platform="android" density="land-mdpi"/>
+  <splash src="screen/android/screen-xhdpi-landscape.png" platform="android" density="land-xhdpi"/>
+  <splash src="screen/android/screen-hdpi-portrait.png.png" platform="android" density="port-hdpi"/>
+  <splash src="screen/android/screen-ldpi-portrait.png" platform="android" density="port-ldpi"/>
+  <splash src="screen/android/screen-mdpi-portrait.png" platform="android" density="port-mdpi"/>
+  <splash src="screen/android/screen-xhdpi-portrait" platform="android" density="port-xhdpi"/>
+  <!--  Android splash -->
+
+  <!--  Ios splash-->
+  <gap:splash src="screen/ios/screen-iphone-portrait.png"         platform="ios" width="320" height="480" />
+  <gap:splash src="screen/ios/screen-iphone-portrait-2x.png"      platform="ios" width="640" height="960" />
+  <gap:splash src="screen/ios/screen-iphone-portrait-568h-2x.png" platform="ios" width="640" height="1136" />
+  <gap:splash src="screen/ios/screen-ipad-portrait.png"           platform="ios" width="768" height="1024" />
+  <gap:splash src="screen/ios/screen-ipad-landscape.png"          platform="ios" width="1024" height="768" />
+  <!--  Ios splash-->
 </widget>
