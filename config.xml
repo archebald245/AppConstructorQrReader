@@ -36,10 +36,10 @@
   <feature name="FileTransfer">
     <param name="android-package" value="org.apache.cordova.filetransfer.FileTransfer" />
   </feature>
-  <preference name="show-splash-screen-spinner" value="true" />           <!-- ios: if set to false, the spinner won't appear on the splash screen during app loading -->
+  <preference name="show-splash-screen-spinner" value="false" />           <!-- ios: if set to false, the spinner won't appear on the splash screen during app loading -->
    <preference name="auto-hide-splash-screen"    value="true" />
    <preference name="SplashScreen" value="splash"/>
-<preference name="SplashScreenDelay" value="10000"/>
+<preference name="SplashScreenDelay" value="2000"/>
   <gap:platform name="android" />
 <gap:platform name="ios" />
   <preference name="orientation" value="default" />
