@@ -39,7 +39,7 @@
   <preference name="show-splash-screen-spinner" value="false" />           <!-- ios: if set to false, the spinner won't appear on the splash screen during app loading -->
    <preference name="auto-hide-splash-screen"    value="true" />
    <preference name="SplashScreen" value="splash"/>
-<preference name="SplashScreenDelay" value="2000"/>
+<preference name="SplashScreenDelay" value="1000"/>
   <gap:platform name="android" />
 <gap:platform name="ios" />
   <preference name="orientation" value="default" />
