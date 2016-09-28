@@ -8,6 +8,7 @@
   <plugin name="cordova-plugin-whitelist" spec="" source="npm" />
   <plugin name="cordova-plugin-x-toast" spec="" source="npm" />
   <plugin name="org.apache.cordova.statusbar" spec="0.1.4" source="pgb" />
+  <plugin name="cordova-plugin-splashscreen" />
   <gap:plugin name="com.phonegap.plugins.barcodescanner" />
 
 
@@ -35,6 +36,8 @@
   <feature name="FileTransfer">
     <param name="android-package" value="org.apache.cordova.filetransfer.FileTransfer" />
   </feature>
+  <preference name="show-splash-screen-spinner" value="true" />           <!-- ios: if set to false, the spinner won't appear on the splash screen during app loading -->
+   <preference name="auto-hide-splash-screen"    value="true" />
   <gap:platform name="android" />
 <gap:platform name="ios" />
   <preference name="orientation" value="default" />
@@ -60,4 +63,16 @@
   <icon src="icons/ios/App-152.png" width="152" height="152" qualifier="" platform="ios" />
   <icon src="icons/ios/App-180.png" width="180" height="180" qualifier="" platform="ios" />
   <!--Icons-->
+
+  <!--  Android splash -->
+  <splash src="screen/android/splash-land-hdpi.png" platform="android" density="land-hdpi"/>
+  <splash src="screen/android/splash-land-ldpi.png" platform="android" density="land-ldpi"/>
+  <splash src="screen/android/splash-land-mdpi.png" platform="android" density="land-mdpi"/>
+  <splash src="screen/android/splash-land-xhdpi.png" platform="android" density="land-xhdpi"/>
+
+  <splash src="screen/android/splash-port-hdpi.png" platform="android" density="port-hdpi"/>
+  <splash src="screen/android/splash-port-ldpi.png" platform="android" density="port-ldpi"/>
+  <splash src="screen/android/splash-port-mdpi.png" platform="android" density="port-mdpi"/>
+  <splash src="screen/android/splash-port-xhdpi.png" platform="android" density="port-xhdpi"/>
+  <!--  Android splash -->
 </widget>
