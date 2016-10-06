@@ -665,3 +665,7 @@ margin: auto;
   background-position: center;
   background-size: cover;
 }
+.splach-ready{
+  width: 100%;
+  height: auto;
+}
