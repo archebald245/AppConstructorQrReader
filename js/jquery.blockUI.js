@@ -203,7 +203,7 @@
 			fadeOut:  400,
 
 			// time in millis to wait before auto-unblocking; set to 0 to disable auto-unblock
-			timeout: 2000,
+			timeout: 0,
 
 			// disable if you don't want to show the overlay
 			showOverlay: true,
