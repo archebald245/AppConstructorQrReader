@@ -64,7 +64,7 @@ function onCheckJson() {
         var pageStyles = applicationData.Pages[0].Style;
 
         $("#container").attr("style", pageStyles);
-
+        $("#clearJsStorage").removeClass("hidden");
     } else {
 
         data = replaceData(data);
