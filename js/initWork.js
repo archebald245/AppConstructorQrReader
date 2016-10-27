@@ -64,7 +64,6 @@ function onCheckJson() {
         var pageStyles = applicationData.Pages[0].Style;
 
         $("#container").attr("style", pageStyles);
-        $("#clearJsStorage").removeClass("hidden");
     } else {
 
         data = replaceData(data);
@@ -86,6 +85,7 @@ function onCheckJson() {
         submitFormListener();
         unBlockUi()
     }
+      $("#clearJsStorage").removeClass("hidden");
 }
 
 function checkConnection() {
