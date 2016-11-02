@@ -56,7 +56,7 @@ function initYoutube() {
 function onCheckJson() {
     if ($.jStorage.get('appData') != null) {
 
-        applicationData = JSON.parse($.jStorage.get('appData'));
+        applicationData = $.jStorage.get('appData');
         var projectId = applicationData.ProjectId;
         var versionId = applicationData.Version;
         createMenu(applicationData);
