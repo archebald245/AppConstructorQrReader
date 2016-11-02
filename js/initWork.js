@@ -92,7 +92,7 @@ function checkConnection() {
     if (networkState != Connection.NONE) {
         var siteUrl = "http://appconstructor.newlinetechnologies.net"
 
-            applicationData = JSON.parse($.jStorage.get('appData'));
+            applicationData = $.jStorage.get('appData');
             var projectId = applicationData.ProjectId;
             var versionId = applicationData.Id;
 
