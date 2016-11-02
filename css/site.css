@@ -6,6 +6,12 @@ html,body, #container{
     height: 100%;
     background-position: center;
 }
+#container{
+  overflow: hidden;
+}
+#container .text-block{
+  word-break: break-word!important;
+}
 form{
     margin:0px;
 }
