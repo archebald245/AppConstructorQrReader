@@ -68,6 +68,7 @@ function onCheckJson() {
 
         applicationData = replaceData(applicationData);
         applicationData = JSON.parse(applicationData);
+
         resources = searchResourcesAndReplacePatch(applicationData);
         downloadResources();
         initMenuYoutunbe();
@@ -92,10 +93,10 @@ function checkConnection() {
     var networkState = navigator.connection.type;
     if (networkState != Connection.NONE) {
         var siteUrl = "http://appconstructor.newlinetechnologies.net"
+
             applicationData = JSON.parse($.jStorage.get('appData'));
             var projectId = applicationData.ProjectId;
             var versionId = applicationData.Id;
-
 
         if (applicationData.UrlForUpdateApp != "" && applicationData.UrlForUpdateApp != null && typeof applicationData.UrlForUpdateApp != 'undefined') {
             siteUrl = applicationData.UrlForUpdateApp;
@@ -113,6 +114,7 @@ function checkConnection() {
                     checkUpdateRestaurantMenu();
             }
         });
+
     } else {
         onCheckJson();
     }
