@@ -94,7 +94,7 @@ function checkConnection() {
 
             applicationData = JSON.parse($.jStorage.get('appData'));
             var projectId = applicationData.ProjectId;
-            var versionId = applicationData.Version;
+            var versionId = applicationData.Id;
 
         if (applicationData.UrlForUpdateApp != "" && applicationData.UrlForUpdateApp != null && typeof applicationData.UrlForUpdateApp != 'undefined') {
             siteUrl = applicationData.UrlForUpdateApp;
