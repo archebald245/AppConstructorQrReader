@@ -22,7 +22,7 @@ function startScan() {//Call in Init function
                   cache: false,
                   success: function(jsonObjectOfServer) {
                       $(".startScan-wrapper").addClass("hidden");
-                        data = JSON.stringify(jsonObjectOfServer.Content);
+                        data = JSON.parse(jsonObjectOfServer.Content);
                         $.jStorage.set('appData', data);
                           onCheckJson();
                           checkUpdateRestaurantMenu();
