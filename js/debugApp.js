@@ -43,6 +43,7 @@ function startScan() {//Call in Init function
 function checkJsStorage(){//Call in onDeviceReady function
   if($.jStorage.get('appData') == null){
     $(".startScan-wrapper").removeClass("hidden");
+    $("#container, #custom-hide-container, .singleItem, #orderInfo, .cart").addClass("hidden");
   }else{
     checkConnection();
   }
