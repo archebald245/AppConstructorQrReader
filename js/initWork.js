@@ -66,8 +66,9 @@ function onCheckJson() {
         $("#container").attr("style", pageStyles);
     } else {
 
-        data = replaceData(data);
-        applicationData = JSON.parse(data);
+        applicationData = replaceData(applicationData);
+        applicationData = JSON.parse(applicationData);
+
         resources = searchResourcesAndReplacePatch(applicationData);
         downloadResources();
         initMenuYoutunbe();
@@ -93,16 +94,9 @@ function checkConnection() {
     if (networkState != Connection.NONE) {
         var siteUrl = "http://appconstructor.newlinetechnologies.net"
 
-        if ($.jStorage.get('appData') != null) {
             applicationData = JSON.parse($.jStorage.get('appData'));
             var projectId = applicationData.ProjectId;
-            var versionId = applicationData.Version;
-        } else {
-            data = replaceData(data);
-            applicationData = JSON.parse(data);
-            var projectId = applicationData.ProjectId;
-            var versionId = applicationData.Version;
-        }
+            var versionId = applicationData.Id;
 
         if (applicationData.UrlForUpdateApp != "" && applicationData.UrlForUpdateApp != null && typeof applicationData.UrlForUpdateApp != 'undefined') {
             siteUrl = applicationData.UrlForUpdateApp;
@@ -110,25 +104,17 @@ function checkConnection() {
 
         $.ajax({
             type: "POST",
-            url: siteUrl + "/Constructor/CheckNewVersion",
-            data: { projectId: projectId, versionName: versionId },
+            url: siteUrl + "/Constructor/GetContentById",
+            data: { projectId: projectId, contentId: versionId },
             cache: false,
             success: function(jsonObjectOfServer) {
-
-                if (jsonObjectOfServer.IsUpdated == true) {
-
-                    data = JSON.stringify(jsonObjectOfServer.Content);
-                    applicationData = JSON.parse(data);
                     $.jStorage.deleteKey('appData');
-                    checkUpdateRestaurantMenu();
-                    onCheckJson();
-                } else {
+                    applicationData = JSON.stringify(jsonObjectOfServer.Content);
                     onCheckJson();
                     checkUpdateRestaurantMenu();
-
-                }
             }
         });
+
     } else {
         onCheckJson();
     }

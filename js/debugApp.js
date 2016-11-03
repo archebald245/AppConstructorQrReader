@@ -10,7 +10,7 @@ function startScan() {//Call in Init function
 
     cordova.plugins.barcodeScanner.scan(
         function (result) {
-            var siteUrl = "http://appconstructor.newline.tech";
+            var siteUrl =  "http://appconstructornew.newlinetechnologies.net/"; //"http://appconstructor.newline.tech";
             if (!result.cancelled) {
               $(".Scan-spiner").removeClass("hidden");
               var ProjectId = result.text.split("-")[0];
@@ -22,7 +22,7 @@ function startScan() {//Call in Init function
                   cache: false,
                   success: function(jsonObjectOfServer) {
                       $(".startScan-wrapper").addClass("hidden");
-                        data = JSON.stringify(jsonObjectOfServer.Content);
+                        applicationData = JSON.stringify(jsonObjectOfServer.Content);
                           onCheckJson();
                           checkUpdateRestaurantMenu();
                       },

@@ -181,7 +181,7 @@ function renderRestaurantMenu(menuCollection, position, responsiveModel, stateNa
 				{ className: "custom-restaurant-menu-item" },
 				React.createElement(
 					"label",
-					null,
+					{className: "restarant-menu-name"},
 					" ",
 					this.state.data.Name,
 					" "
