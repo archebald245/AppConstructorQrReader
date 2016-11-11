@@ -44,7 +44,7 @@
   <gap:platform name="android" />
 <gap:platform name="ios" />
   <preference name="orientation" value="default" />
-  <preference name="phonegap-version" value="cli-5.4.1" />
+  <preference name="phonegap-version" value="cli-6.3.0" />
   <!--Icons-->
   <icon src="icons/icon.png" gap:role="default" />
     <!--Android-->
