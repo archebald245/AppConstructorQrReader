@@ -9,8 +9,7 @@
   <plugin name="cordova-plugin-whitelist" spec="" source="npm" />
   <plugin name="cordova-plugin-x-toast" spec="" source="npm" />
   <plugin name="cordova-plugin-statusbar" spec="2.2.0" source="npm" />
-  <plugin name="cordova-plugin-splashscreen" />
-  <plugin name="phonegap-plugin-barcodescanner" />
+  
 
 
   <allow-navigation href="http://*/*" />
