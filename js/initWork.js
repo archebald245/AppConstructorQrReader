@@ -109,6 +109,7 @@ function checkConnection() {
             cache: false,
             success: function(jsonObjectOfServer) {
                     $.jStorage.deleteKey('appData');
+                    $("#container").removeClass("hidden");
                     applicationData = JSON.stringify(jsonObjectOfServer.Content);
                     onCheckJson();
                     checkUpdateRestaurantMenu();
