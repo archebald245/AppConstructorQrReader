@@ -81,7 +81,7 @@ function onCheckJson() {
     }
     var networkState = navigator.connection.type;
     if (networkState == Connection.NONE) {
-        reactRender();
+        setTimeout(reactRender, 5000);
         initGallaryClick();
         submitFormListener();
         unBlockUi()
