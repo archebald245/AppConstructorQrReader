@@ -195,7 +195,7 @@ function download(fileName) {
         ft.download(remoteFile,
             localPath, function(entry) {
                 countFileDownload = countFileDownload + 1;
-                if ((countFileDownload + countFileDownloadFail) === resourcesArr.length) {
+                if (countFileDownload === resourcesArr.length) {
                     callback();
                 }
             }, failDownload);
