@@ -81,7 +81,7 @@ function onCheckJson() {
     }
     var networkState = navigator.connection.type;
     if (networkState == Connection.NONE) {
-        setTimeout(reactRender, 5000);
+        reactRender();
         initGallaryClick();
         submitFormListener();
         unBlockUi()
@@ -136,7 +136,7 @@ function callback() {
     var jsonString = JSON.stringify(applicationData);
     $.jStorage.set('appData', jsonString);
     deleteResources();
-    setTimeout(reactRender, 5000);
+    reactRender();
     initGallaryClick();
     submitFormListener();
     unBlockUi()
