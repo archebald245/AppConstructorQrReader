@@ -136,7 +136,7 @@ function callback() {
     var jsonString = JSON.stringify(applicationData);
     $.jStorage.set('appData', jsonString);
     deleteResources();
-    setTimeout(reactRender, 2000);
+    setTimeout(reactRender, 5000);
     initGallaryClick();
     submitFormListener();
     unBlockUi()
