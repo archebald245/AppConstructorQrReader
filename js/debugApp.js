@@ -50,6 +50,7 @@ function checkJsStorage(){//Call in onDeviceReady function
   }
 }
 function deleteResourcesImg(){
+  deleteResources();
   $(resources).each(function(i, img){
     deleteImage(img);
 
