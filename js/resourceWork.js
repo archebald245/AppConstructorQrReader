@@ -208,7 +208,7 @@ function failDownload(error) {
 }
 
 function fail(error) {
-  console.log("/----ERROR-------/")
+  console.log("/----ERROR-------/");
     console.log(error.code);
     console.log(error.http_status);
     console.log(error.body);
