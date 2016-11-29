@@ -1,4 +1,5 @@
 function createMenu() {
+    indexPage = 0;
     for (var i = 0; i < applicationData.Pages.length; i++) {
         if (!!applicationData.Pages[i].IsStartPage) {
             indexPage = applicationData.Pages[i].Id;
