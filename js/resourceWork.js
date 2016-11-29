@@ -38,6 +38,9 @@ function resourcesOfCellContainer(cellContainer, storePath) {
         if ((cellContainer[i].ContentTypeId == 11)) {
             cellContainer[i] = resourcesOfBoxConteiner(cellContainer[i], storePath);
         }
+        if(cellContainer[i].ContentTypeId == 8){
+            cellContainer[i] = resourcesOfGallary(cellContainer[i], storePath);
+        }
     }
     return cellContainer;
 }
@@ -79,6 +82,17 @@ function resourcesOfRestaurantMenus(restaurants, storePath) {
     });
 
     return restaurants;
+}
+
+function resourcesOfGallary(gallary, storePath) {
+    $(gallary).each(function() {
+        $(this.Resourceses).each(function() {
+            this.Link = replacementPathImagesRestaurantMenu(this.Link, storePath);
+
+        });
+    });
+
+    return gallary;
 }
 
 function resourcesPushInArray(element) {

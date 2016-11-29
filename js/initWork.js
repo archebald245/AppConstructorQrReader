@@ -108,11 +108,11 @@ function checkConnection() {
             data: { projectId: projectId, contentId: versionId },
             cache: false,
             success: function(jsonObjectOfServer) {
-                    $.jStorage.deleteKey('appData');
-                    $("#container").removeClass("hidden");
-                    applicationData = JSON.stringify(jsonObjectOfServer.Content);
-                    onCheckJson();
-                    checkUpdateRestaurantMenu();
+                $.jStorage.deleteKey('appData');
+                $("#container").removeClass("hidden");
+                applicationData = JSON.stringify(jsonObjectOfServer.Content);
+                checkUpdateRestaurantMenu(true);
+                onCheckJson();
             }
         });
 

@@ -1,4 +1,12 @@
 function createMenu() {
+    for (var i = 0; i < applicationData.Pages.length; i++) {
+        if (!!applicationData.Pages[i].IsStartPage) {
+            indexPage = applicationData.Pages[i].Id;
+        }
+    }
+    if(indexPage == 0){
+        indexPage = applicationData.Pages[0].Id;
+    }
     if (applicationData.Menu != null) {
         var menu = getPositionMenu(applicationData.Menu.Position);
         var menuItems = applicationData.Menu.MenuItems;
@@ -16,9 +24,9 @@ function createMenu() {
         }
         addListener();
         slideUp();
-        showActivePageInMenu(applicationData.Pages[0].Id);
+        showActivePageInMenu(indexPage);
     }
-    indexPage = applicationData.Pages[0].Id;
+
 }
 
 function clickPageOnDropdownMenu(link) {
