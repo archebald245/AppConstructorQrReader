@@ -139,7 +139,8 @@ function callback() {
     reactRender();
     initGallaryClick();
     submitFormListener();
-    unBlockUi()
+    unBlockUi();
+    $("#container").removeClass("hidden");
 }
 
 function replaceData(element) {
