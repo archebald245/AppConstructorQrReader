@@ -23,10 +23,10 @@ function startScan() {//Call in Init function
                   cache: false,
                   success: function(jsonObjectOfServer) {
                       $(".startScan-wrapper").addClass("hidden");
-                      $("#container").removeClass("hidden");
                         applicationData = JSON.stringify(jsonObjectOfServer.Content);
                           onCheckJson();
                           checkUpdateRestaurantMenu(true);
+                          $("#container").removeClass("hidden");
                       },
                       error: function(){
                         $(".startScan-wrapper").removeClass("hidden");
