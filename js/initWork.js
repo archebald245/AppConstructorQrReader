@@ -140,7 +140,6 @@ function callback() {
     initGallaryClick();
     submitFormListener();
     unBlockUi();
-    $("#container").removeClass("hidden");
 }
 
 function replaceData(element) {
