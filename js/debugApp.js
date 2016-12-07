@@ -54,6 +54,11 @@ function deleteResourcesImg(){
   deleteResources();
   $(resources).each(function(i, img){
     deleteImage(img);
-
   });
+  $.jStorage.deleteKey('resources');
+  $.jStorage.deleteKey('oldResources');
+  resources = [];
+  countFileDownload = 0;
+  countFileDownloadFail = 0;
+
 }
