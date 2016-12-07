@@ -762,4 +762,5 @@ function reactRender() {
     });
     //ContentTypeId - 10 end
     ReactDOM.render(React.createElement(Rows, null), document.getElementById('container'));
+    $("#container").removeClass("hidden");
 }
