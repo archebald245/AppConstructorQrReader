@@ -11,7 +11,7 @@ function startScan() {//Call in Init function
 
     cordova.plugins.barcodeScanner.scan(
         function (result) {
-            var siteUrl =  "http://appconstructor.newline.tech"; //http://appconstructornew.newlinetechnologies.net/;
+            var siteUrl =  "http://appconstructor.newline.tech";
             if (!result.cancelled) {
               $(".Scan-spiner").removeClass("hidden");
               var ProjectId = result.text.split("-")[0];
@@ -23,10 +23,9 @@ function startScan() {//Call in Init function
                   cache: false,
                   success: function(jsonObjectOfServer) {
                       $(".startScan-wrapper").addClass("hidden");
-                      $("#container").removeClass("hidden");
                         applicationData = JSON.stringify(jsonObjectOfServer.Content);
-                          onCheckJson();
-                          checkUpdateRestaurantMenu(true);
+                        onCheckJson();
+                        checkUpdateRestaurantMenu(true);
                       },
                       error: function(){
                         $(".startScan-wrapper").removeClass("hidden");
@@ -51,8 +50,14 @@ function checkJsStorage(){//Call in onDeviceReady function
   }
 }
 function deleteResourcesImg(){
+  deleteResources();
   $(resources).each(function(i, img){
     deleteImage(img);
-
   });
+  $.jStorage.deleteKey('resources');
+  $.jStorage.deleteKey('oldResources');
+  resources = [];
+  countFileDownload = 0;
+  countFileDownloadFail = 0;
+
 }
