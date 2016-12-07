@@ -26,7 +26,7 @@ function startScan() {//Call in Init function
                         applicationData = JSON.stringify(jsonObjectOfServer.Content);
                         onCheckJson();
                         checkUpdateRestaurantMenu(true);
-                        $("#container").removeClass("hidden");
+                        // $("#container").removeClass("hidden");
                       },
                       error: function(){
                         $(".startScan-wrapper").removeClass("hidden");
