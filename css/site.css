@@ -410,7 +410,7 @@ z-index: 10;
   border: none;
   margin-left: 10px;
 }
-.btn-order {
+.btn-order, .btn-send-order-booking {
 position: fixed;
 bottom: 0;
 left: 0;
@@ -507,7 +507,7 @@ width: 30px;
 padding-top: 7px;
 padding-left: 10px;
 }
-#orderInfo input, #orderInfo textarea{
+#orderInfo input, #orderInfo textarea, .order-booking input, .order-booking textarea, .order-booking select, .container-selectFreeBookTime select{
   width: 80%;
   margin: auto;
   display: block;
@@ -516,13 +516,13 @@ padding-left: 10px;
   height: 40px;
   margin-bottom: 20px;
 }
-#orderInfo label{
+#orderInfo label, .order-booking label{
   display: block;
   margin-left: 10%;
   color: #000;
   font-size: 16px;
 }
-#orderInfo textarea{
+#orderInfo textarea, .order-booking textarea{
   padding-bottom: 80px;
 }
 label[for='nameOrder']{
@@ -684,6 +684,112 @@ font-weight: bold;
 clear: both;
 overflow: hidden;
 }
+.row-elementInstitution time {
+    display: block;
+    margin-bottom: 10px;
+}
+.row-elementInstitution {
+    color: #000;
+    border-bottom: 1px solid #000;
+    padding-bottom: 20px;
+}
+.noimage-elementInstitution {
+    width: 200px;
+    height: auto;
+}
+.bookingServices{
+  margin-top: 60px;
+}
+#bookingServices{
+    margin-top: 60px;
+    padding-bottom: 40px;
+}
+.btn-bookThisService{
+width: 100px;
+padding: 4px 0;
+background: transparent;
+border: 1px solid #939393;
+color: #939393;
+}
+#dateTimePicker-date, #dateTimePicker-time{
+  border: 1px solid #939393;
+  padding: 10px 0;
+  text-align: center;
+  width: 90%;
+  margin: auto;
+  display: block;
+  margin-top: 20px;
+}
+.dateTimePicker-container{
+  margin-top: 60px;
+}
+.dateTimePicker-container label{
+  margin-left: 5%;
+margin-top: 30px;
+display: block;
+}
+.btn-confirmDateForBook, .btn-order-booking, .btn-order-booking-ForFreeTime{
+  width: 100%;
+position: fixed;
+bottom: 0;
+height: 47px;
+background-color: #939393;
+color: #fff;
+border: none;
+font-size: 18px;
+}
+.kc_fab_wrapper {
+z-index: 9999;
+}
+.fab {
+background: red;
+width: 50px;
+height: 50px;
+border-radius: 50%;
+text-align: center;
+color: #FFF;
+box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5), 3px 3px 3px rgba(0, 0, 0, 0.25);
+position: fixed;
+bottom: 30px;
+right: 30px;
+font-size: 2.6667em;
+display: inline-block;
+cursor: default;
+z-index: 999;
+}
+.fab span {
+
+}
+.fab.child {
+  right: 40px;
+width: 30px;
+height: 30px;
+display: none;
+opacity: 0;
+font-size: 1em;
+line-height: 35px;
+}
+.backdrop {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: #000;
+opacity: 0.4;
+display: none;
+z-index: 999;
+}
+.status-list{
+  padding-top: 60px;
+}
+.container-selectFreeBookTime p{
+  padding-top: 100px;
+  padding-left: 10%;
+}
+.row-elementInstitution img{
+  width: 100%;
+}
 @media (min-width: 960px) {
     .classMenu{
         height: 90px;
@@ -708,4 +814,83 @@ overflow: hidden;
         position: absolute;
         left: 15px;
     }
+}
+/*Switcher, Simple CheckBox Block*/
+.checkBoxFormBlock, .switcherFormBlock {
+    padding-left: 5px;
+}
+.CheckBoxFormElement.checkbox-inline > .input-form {
+    width:13px;
+}
+.switcher-inline {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: normal;
+    vertical-align: middle;
+    cursor: pointer;
+}.switcher-label-inline {
+    position: relative;
+    display: inline-block;
+    padding-left: 20px;
+    margin-bottom: 0;
+    font-weight: normal;
+    vertical-align: middle;
+    cursor: pointer;
+    left: 30px;
+    top: -19px;
+}
+input[type="checkbox"].SwitcherFormElement { 
+	opacity: 0;
+    left: -9999px;
+}
+input[type="checkbox"].SwitcherFormElement + div {
+	vertical-align: middle;
+	width: 40px;	height: 20px;
+	border: 1px solid rgba(0,0,0,.4);
+	border-radius: 999px;
+	background-color: rgba(0, 0, 0, 0.1);
+	-webkit-transition-duration: .4s;
+	-webkit-transition-property: background-color, box-shadow;
+	box-shadow: inset 0 0 0 0px rgba(0,0,0,0.4);
+}
+input[type="checkbox"].SwitcherFormElement:checked + div {
+	width: 40px;
+	background-position: 0 0;
+	background-color: #75ffe5;
+	border: 1px solid #008b8b;
+	box-shadow: inset 0 0 0 10px rgba(29, 177, 144, 1);
+}
+input[type="checkbox"].SwitcherFormElement + div > div {
+	float: left;
+	width: 18px; height: 18px;
+	border-radius: inherit;
+	background: #ffffff;
+	-webkit-transition-timing-function: cubic-bezier(.54,1.85,.5,1);
+	-webkit-transition-duration: 0.4s;
+	-webkit-transition-property: transform, background-color, box-shadow;
+	-moz-transition-timing-function: cubic-bezier(.54,1.85,.5,1);
+	-moz-transition-duration: 0.4s;
+	-moz-transition-property: transform, background-color;
+	box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3), 0px 0px 0 1px rgba(0, 0, 0, 0.4);
+	pointer-events: none;
+	 margin-left: 1px;
+}
+input[type="checkbox"].SwitcherFormElement:checked + div > div {
+	-webkit-transform: translate3d(20px, 0, 0);
+	-moz-transform: translate3d(20px, 0, 0);
+	background-color: #ffffff;
+	box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3), 0px 0px 0 1px  rgba(29, 177, 144, 1);
+}
+/*Flex Block*/
+.row {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display:         flex;
+  /*flex-wrap: wrap;*/
+}
+.row > [class*='col-'] {
+  display: flex;
+  flex-direction: column;
 }

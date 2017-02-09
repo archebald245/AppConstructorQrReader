@@ -28,6 +28,7 @@ function goToPage(index) {
     bindChangeValForms();
     addListenerToClickBuy();
     addListenerToClickOpenSingleItem();
+    addListenerToClickTimeLine();
       $(".cart-btn").on("click", function(){
         $("#container").addClass("hidden");
         $(".classMenu").addClass("hidden");

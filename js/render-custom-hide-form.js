@@ -79,7 +79,7 @@ function renderHideCustomForm(form, id) {
 								field.Label
 							)
 						),
-						React.createElement(DropDownModels, { data: field })
+						React.createElement(DropDownModels, { data: field,name:field.Name })
 					);
 				}
 				if (field.FieldTypeId == 4) {
@@ -258,6 +258,57 @@ function renderHideCustomForm(form, id) {
 						);
 					}
 				}
+				if (field.FieldTypeId == 9) {
+				    return React.createElement(
+                        "div",
+                        { className: "switcherFormBlock formBlock form-group" },
+                        React.createElement(
+                            "label",
+                            { className: "switcher-inline" },
+                            React.createElement("input", { id: field.Id + "_" + field.Name, className: "SwitcherFormElement switcher-inline", name: field.Name, type: "checkbox", value: true }),
+                            React.createElement(
+                                "div",
+                                null,
+                                React.createElement("div", null)
+                            ),
+                            React.createElement(
+                                "label",
+                                { htmlFor: field.Id + "_" + field.Name, className: "switcher-label-inline" },
+                                field.Name
+                            )
+                        ),
+                        " "
+                    );
+				}
+				if (field.FieldTypeId == 10) {
+				    if (field.Required) {
+				        return React.createElement(
+                            "div",
+                            { className: "checkBoxFormBlock formBlock form-group required-check" },
+                            " ",
+                            React.createElement(
+                                "label",
+                                { className: "CheckBoxFormElement checkbox-inline" },
+                                React.createElement("input", { name: field.Label, type: "checkbox", value: true }),
+                                " ",
+                                field.Label
+                            )
+                            );
+				    } else {
+				        return React.createElement(
+                            "div",
+                            { className: "checkBoxFormBlock formBlock form-group" },
+                            " ",
+                            React.createElement(
+                                "label",
+                                { className: "CheckBoxFormElement checkbox-inline" },
+                                React.createElement("input", { name: field.Label, type: "checkbox", value: true }),
+                                " ",
+                                field.Label
+                            )
+                        );
+				    }
+				}
 			});
 
 			return React.createElement(
@@ -288,7 +339,7 @@ function renderHideCustomForm(form, id) {
 			});
 			return React.createElement(
 				"select",
-				{ name: isDropdownName, className: "DropDownElement form-control" },
+				{ name: this.props.name, className: "DropDownElement form-control" },
 				DropDownOptionModels
 			);
 		}

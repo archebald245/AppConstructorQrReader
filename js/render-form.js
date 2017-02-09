@@ -260,8 +260,58 @@ function renderForm(form, id) {
                         );
                     }
                 }
+                if(field.FieldTypeId == 9){
+                    return React.createElement(
+                        "div",
+                        { className: "switcherFormBlock formBlock form-group" },
+                        React.createElement(
+                            "label",
+                            { className: "switcher-inline" },
+                            React.createElement("input", { id: field.Id, className: "SwitcherFormElement switcher-inline", name: field.Name, type: "checkbox", value: true }),
+                            React.createElement(
+                                          "div",
+                                          null,
+                                          React.createElement("div", null)
+                            ),
+                            React.createElement(
+                                          "label",
+                                          { htmlFor: field.Id, className: "switcher-label-inline" },
+                                          field.Name
+                            )
+                        ),
+                        " "
+                    );
+                }
+                if (field.FieldTypeId == 10) {
+                    if (field.Required) {
+                        return React.createElement(
+                            "div",
+                            { className: "checkBoxFormBlock formBlock form-group required-check" },
+                            " ",
+                            React.createElement(
+                                "label",
+                                { className: "CheckBoxFormElement checkbox-inline" },
+                                React.createElement("input", { name: field.Label, type: "checkbox", value: true }),
+                                " ",
+                                field.Label
+                            )
+                            );
+                    } else {
+                        return React.createElement(
+                            "div",
+                            { className: "checkBoxFormBlock formBlock form-group" },
+                            " ",
+                            React.createElement(
+                                "label",
+                                { className: "CheckBoxFormElement checkbox-inline" },
+                                React.createElement("input", { name: field.Label, type: "checkbox", value: true }),
+                                " ",
+                                field.Label
+                            )
+                        );
+                    }
+                }
             });
-
             return React.createElement(
                 "div",
                 { className: "form-item form-vertical" },

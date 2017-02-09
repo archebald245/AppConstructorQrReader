@@ -28,6 +28,17 @@ function onDeviceReady() {
         store = fileSystem.root.nativeURL + "Phonegap/";
     });
     appStart();
+    $("#dateTimePicker-date").dateDropper({
+      dropBorder: "1px solid #939393",
+      dropPrimaryColor: "#939393",
+      dropWidth: "250"
+    });
+    $("#dateTimePicker-time").timeDropper({
+      primaryColor: "#939393",
+      borderColor: "#939393",
+      format: "HH:mm",
+      setCurrentTime: "false"
+    });
     StatusBar.hide();
     navigator.splashscreen.show();
 }
@@ -108,6 +119,7 @@ function checkConnection() {
             data: { projectId: projectId, contentId: versionId },
             cache: false,
             success: function(jsonObjectOfServer) {
+                jsonObjectOfServer = JSON.parse(jsonObjectOfServer);
                 $.jStorage.deleteKey('appData');
                 $("#container").removeClass("hidden");
                 applicationData = JSON.stringify(jsonObjectOfServer.Content);
