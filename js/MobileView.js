@@ -77,16 +77,158 @@ function reactRender() {
                     this.setState({ data: applicationData.Pages[i].Rows });
                 }
             }
+                        $(".fab,.backdrop").click(function(){
+        if($(".backdrop").is(":visible")){
+            $(".backdrop").fadeOut(125);
+            $(".fab.child")
+                .stop()
+                .animate({
+                    bottom  : $("#masterfab").css("bottom"),
+                    opacity : 0
+                },125,function(){
+                    $(this).hide();
+                });
+        }else{
+            $(".backdrop").fadeIn(125);
+            $(".fab.child").each(function(){
+                $(this)
+                    .stop()
+                    .show()
+                    .animate({
+                        bottom  : (parseInt($("#masterfab").css("bottom")) + parseInt($("#masterfab").outerHeight()) + 50 * $(this).data("subitem") - $(".fab.child").outerHeight()) + "px",
+                        opacity : 1
+                    },125);
+            });
+        }
+    });
+    $(".first").click(function(){
+      if($.jStorage.get('bookOrderWithStatusPending') == null){
+        alert("You haven't any orders!");
+        return false;
+      }else{
+        $(".container-statusBooking").removeClass("hidden");
+        $("#container").addClass("hidden");
+        var orderedArray = JSON.parse($.jStorage.get('bookOrderWithStatusPending'));
+        var arrayOfOrdersId = [];
+        orderedArray.forEach(function(e){
+          arrayOfOrdersId.push(e.id);
+        });
+        $.ajax({
+            type: "POST",
+            url: applicationData.UrlForUpdateApp + "/Booking/GetConfirmBookOrder",
+            data: {
+                collectionOrderId: arrayOfOrdersId,
+                appId: $.jStorage.get('ApplicationId')
+            }, cache: false,
+            success: function(object) {
+                object = JSON.parse(object);
+                var collectionOrders = object.collectionOrders;
+
+                  $(".status-list").html("");
+                  for(var i = 0;  i < orderedArray.length; i++ ){
+                    $(".status-list").append("<p>"+ (collectionOrders[i].IsConfirmated ? 'Confirmated' : 'Pending') +"</p> <p>"+orderedArray[i].nemesService+"</p>");
+                }
+            }
+        });
+
+      }
+    });
         },
         render: function render() {
             var rowModels = this.state.data.map(function (row) {
                 return React.createElement(CellContainer, { data: row, key: row.Id });
             });
-            if (applicationData.Restaurants.length > 0 ) {
+            if (applicationData.Restaurants.length > 0 && applicationData.Institutions.length > 0) {
                 return React.createElement(
                     'div',
                     null,
-                    React.createElement('button', { className: 'cart-btn' }),
+                    React.createElement('div', { className: 'backdrop' }),
+                    React.createElement(
+                        'div',
+                        { className: 'fab child', 'data-subitem': '1' },
+                        React.createElement(
+                            'span',
+                            null,
+                            'C'
+                        )
+                    ),
+                    React.createElement(
+                        'div',
+                        { className: 'fab child', 'data-subitem': '2' },
+                        React.createElement(
+                            'span',
+                            null,
+                            'B'
+                        )
+                    ),
+                    React.createElement(
+                        'div',
+                        { className: 'fab child first', 'data-subitem': '3' },
+                        React.createElement(
+                            'span',
+                            null,
+                            'O'
+                        )
+                    ),
+                    React.createElement(
+                        'div',
+                        { className: 'fab', id: 'masterfab' },
+                        React.createElement(
+                            'span',
+                            null,
+                            '+'
+                        )
+                    ),
+                    React.createElement(
+                        'div',
+                        { className: 'container-fluid' },
+                        rowModels
+                    )
+                );
+            } else if (applicationData.Institutions.length > 0) {
+                return React.createElement(
+                    'div',
+                    null,
+                    React.createElement('div', { className: 'backdrop' }),
+                    React.createElement(
+                        'div',
+                        { className: 'fab child', 'data-subitem': '2' },
+                        React.createElement(
+                            'span',
+                            null,
+                            'B'
+                        )
+                    ),
+                    React.createElement(
+                        'div',
+                        { className: 'fab child first', 'data-subitem': '3' },
+                        React.createElement(
+                            'span',
+                            null,
+                            'O'
+                        )
+                    ),
+                    React.createElement(
+                        'div',
+                        { className: 'fab', id: 'masterfab' },
+                        React.createElement(
+                            'span',
+                            null,
+                            '+'
+                        )
+                    ),
+                    React.createElement(
+                        'div',
+                        { className: 'container-fluid' },
+                        rowModels
+                    )
+                );
+            } else if (applicationData.Restaurants.length > 0) {
+
+                return React.createElement(
+                    'div',
+                    null,
+                    React.createElement('div', { className: 'cart-btn' }),
                     React.createElement(
                         'div',
                         { className: 'container-fluid' },
@@ -547,7 +689,15 @@ function reactRender() {
                     }
                 });
             }
-
+            if (data.ContentTypeId == 16) {
+                $(ReactDOM.findDOMNode(this)).append("<div class='custom-container-booking' id='custom-container-booking'></div>");
+                $(applicationData.Institutions).each(function () {
+                    if (this.Id == data.BookingCurrentInstitution) {
+                        renderBooking(this, data.BookingSortingByService);
+                    }
+                });
+                $("#custom-container-booking").attr("id", "");
+            }
             //$(React.findDOMNode(this)).attr("style", styleCell);
             $(ReactDOM.findDOMNode(this)).attr("style", styleCell);
         },
@@ -756,6 +906,9 @@ function reactRender() {
                 return React.createElement('div', { className: "cell-container col-xs-" + data.Colspan + " col-sm-" + data.Colspan + " col-md-" + data.Colspan + " col-lg-" + data.Colspan, onClick: this.onClickCell, dangerouslySetInnerHTML: { __html: data.Value } });
             }
             if (data.ContentTypeId == 15) {
+                return React.createElement('div', { className: "cell-container col-xs-" + data.Colspan + " col-sm-" + data.Colspan + " col-md-" + data.Colspan + " col-lg-" + data.Colspan, onClick: this.onClickCell });
+            }
+            if (data.ContentTypeId == 16) {
                 return React.createElement('div', { className: "cell-container col-xs-" + data.Colspan + " col-sm-" + data.Colspan + " col-md-" + data.Colspan + " col-lg-" + data.Colspan, onClick: this.onClickCell });
             }
         }

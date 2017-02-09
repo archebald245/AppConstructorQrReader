@@ -19,6 +19,10 @@
     <script src="js/jquery-touchswipe/jquery.touchSwipe.js"></script>
     <script src="js/underscore-min.js"></script>
 	<script src="js/toAst.js"></script>
+  <script src="js/dateTimePicker-forDate/datedropper.min.js"></script>
+    <script src="js/dateTimePicker-forTime/timedropper.min.js"></script>
+    <script src="js/buttonMaterialUI/buttonMaterialUI.min.js"></script>
+    <script src="js/lightGallery/lightgallery.min.js"></script>
 
 	<script src="js/render-form.js"></script>
 	<script src="js/render-custom-form.js"></script>
@@ -26,22 +30,24 @@
 	<script src="js/render-restaurant-menu.js"></script>
 	<script src="js/render-cart-item.js"></script>
   <script src="js/render-single-shopItem.js"></script>
-    <script src="applicationData.js"></script>
+  <script src="js/render-booking.js"></script>
+  <script src="js/render-services.js"></script>
     <script src="js/jstorage.js"></script>
     <script src="js/jquery.blockUI.js"></script>
     <script src="js/jquery-ui.js"></script>
     <script src="js/eventsWork.js"></script>
     <script src="js/resourceWork.js"></script>
 	<script src="js/formsWork.js"></script>
+  <script src="js/bookingWork.js"></script>
 	<script src="js/restaurantMenuWork.js"></script>
 	<script src="js/cartWork.js"></script>
 
     <!-- lightGallery-->
     <link rel="stylesheet" href="js/lightGallery/lightgallery.css">
-
-    <script src="js/lightGallery/lightgallery.min.js"></script>
-
-
+    <link rel="stylesheet" href="js/dateTimePicker-forDate/datedropper.min.css">
+    <link rel="stylesheet" href="js/dateTimePicker-forTime/timedropper.min.css"></link>
+    <link rel="stylesheet" href="css/buttonMaterialUI/buttonmaterialui.css"></link>
+    <link rel="stylesheet" href="js/buttonMaterialUI/buttonMaterialUI.css"></link>
     <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src * 'unsafe-inline'">
 
     <script src="js/encodeDecodeWork.js"></script>
@@ -70,9 +76,59 @@
     </div>
     <div class="classSwipeDropList"></div>
 
-    <div id="container" class="mainContainerApp hidden">
+    <div id="container" class="mainContainerApp hidden"></div>
+
+    <div class="container-statusBooking hidden">
+    <div class="cart-top-line"><button class="back-to-container-from-book"></button>Your book status list</div>
+    <div class="status-list"></div>
+  </div>
+     <div class="bookingServices-container hidden">
+      <div class="cart-top-line"><button class="back-to-timelines"></button>Services</div>
+      <div  id='bookingServices'></div>
+      <button type="button" class="btn-order-booking">Order Booking</button>
+    </div>
+    <div class="container-selectFreeBookTime hidden">
+        <div class="cart-top-line"><button class="back-to-container-from-book"></button>Select free time</div>
+      <p>We can offer you these times:</p>
+      <select  id="select-freeTimeBook">
+      </select>
+      <button type="button" class="btn-order-booking-ForFreeTime" id="bookAfterConfirmFreeTime" >Book</button>
+    </div>
+    <div class="dateTimePicker-container hidden">
+      <div class="cart-top-line"><button class="back-to-services"></button>Select Date</div>
+      <label for="dateTimePicker-date">Select date</label>
+      <input type="text" id="dateTimePicker-date" value="Date" />
+      <label for="dateTimePicker-time">Select time</label>
+      <input type="text" id="dateTimePicker-time" value="Time" />
+      <button class="btn-confirmDateForBook">Book</button>
+      <input type="hidden" class="thisServiceId" />
+      <input type="hidden" class="thisDuration" />
+      <input type="hidden" class="thisIdForTimeLine" />
+      <input type="hidden" class="thisIsConfirm" />
+    </div>
+
+    <div class="order-booking hidden">
+      <div class="cart-top-line"><button class="btn-back-toservices"></button>Your Order Info</div>
+      <label for="nameOrder">Name</label>
+  		<input type="text" id="booking-nameOrder" class="nameOrder required"/>
+      <label for="phoneOrder">Phone Number</label>
+  		<input type="text" id="booking-phoneOrder" class="phoneOrder required"/>
+      <label for="emailOrder">Email</label>
+  		<input type="text"  id="booking-emailOrder" class="emailOrder required"/>
+
+      <span class="hidden">
+        <label for="confirmMethod">Confirm Method</label>
+            <select id="confirmMethod" class="required">
+            <option value="SMS">SMS</option>
+            <option value="InApplication">In Application</option>
+            <option value="Email">Email</option>
+            </select>
+      </span>
 
 
+      <label for="commentOrder">Your Order Comments</label>
+  		<textarea id="booking-commentOrder" class="commentOrder"></textarea>
+  		<button class="btn-send-order-booking">Book</button>
 
     </div>
 	  <div class="cart hidden">

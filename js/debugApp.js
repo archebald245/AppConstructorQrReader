@@ -22,6 +22,7 @@ function startScan() {//Call in Init function
                   data: { projectId: ProjectId, contentId: VersionName },
                   cache: false,
                   success: function(jsonObjectOfServer) {
+                    jsonObjectOfServer = JSON.parse(jsonObjectOfServer);
                       $(".startScan-wrapper").addClass("hidden");
                         applicationData = JSON.stringify(jsonObjectOfServer.Content);
                         onCheckJson();
