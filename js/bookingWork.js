@@ -2,7 +2,7 @@ var listServiceForBooking = [];
 function addListenerToClickTimeLine(){
   $(".row-elementTimeLine").on("click", function(){
   $(".bookingServices-container").removeClass("hidden");
-  $("#container").addClass("hidden");
+  $("#container, .classMenu").addClass("hidden");
   var thisInstitutionId =  $(this).find(".timeLineId").val();
     $(applicationData.Institutions).each(function(i, institution){
       $(institution.BookResources).each(function(ind, resources){
@@ -15,10 +15,10 @@ function addListenerToClickTimeLine(){
   });
   $(".back-to-timelines").on("click", function(){
     $(".bookingServices-container").addClass("hidden");
-    $("#container").removeClass("hidden");
+    $("#container, .classMenu").removeClass("hidden");
   });
   $(".back-to-container-from-book").unbind().click(function(){
-  $("#container").removeClass("hidden");
+  $("#container, .classMenu").removeClass("hidden");
   $(".container-selectFreeBookTime, .container-statusBooking").addClass("hidden");
 });
 }
@@ -40,7 +40,7 @@ function addListenerToClickBookService(){
   $(".btn-back-toservices").click(function(){
     $(".order-booking").addClass("hidden");
     if($("#container").find(".row-elementInstitution").length > 0){
-      $("#container").removeClass("hidden");
+      $("#container, .classMenu").removeClass("hidden");
     }else{
         $(".bookingServices-container").removeClass("hidden");
     }
@@ -52,7 +52,7 @@ function addListenerToClickBookService(){
     }else{
         $(".dateTimePicker-container").removeClass("hidden");
         if($("#container").find(".row-elementInstitution").length > 0){
-          $("#container").addClass("hidden");
+          $("#container, .classMenu").addClass("hidden");
           $(".bookingServices-container").addClass("hidden");
         }else{
             $(".bookingServices-container").addClass("hidden");
@@ -115,7 +115,7 @@ function addListenerToClickBookService(){
   $(".back-to-services").on("click", function(){
     $(".dateTimePicker-container").addClass("hidden");
     if($("#container").find(".row-elementInstitution").length > 0){
-      $("#container").removeClass("hidden");
+      $("#container, .classMenu").removeClass("hidden");
     }else{
         $(".bookingServices-container").removeClass("hidden");
     }
@@ -228,7 +228,7 @@ function BookingAjax(){
             addOrderBookingInJStorage(listServiceForBooking, object.resourceModel);
             }
           $(".order-booking").addClass("hidden");
-          $("#container").removeClass("hidden");
+          $("#container, .classMenu").removeClass("hidden");
           } else if(object.IsCreated == false && typeof object.Times == "object") {
             var selectFreeTimeBook =  $("#select-freeTimeBook");
             $(".container-selectFreeBookTime").removeClass("hidden");
@@ -276,7 +276,7 @@ function BookingAjax(){
                       addOrderBookingInJStorage(listServiceForBooking, object.resourceModel);
                       }
                       $(".container-selectFreeBookTime").addClass("hidden");
-                      $("#container").removeClass("hidden");
+                      $("#container, .classMenu").removeClass("hidden");
                     }else {
                       alert("Sorry, error!");
                     }

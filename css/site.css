@@ -26,9 +26,9 @@ form{
     background:#E5E5E5;
     position:fixed;
     /*height:80px;*/
-    height: 65px;
+    height: 55px;
     /*padding:25px 0 5px 0;*/
-    padding:15px 0 5px 0;
+    padding:10px 0 5px 0;
     z-index:1000;
     width:100%;
     margin-top:-1px;
@@ -43,7 +43,7 @@ form{
 .menu-icon{
     width:96px;
     height:40px;
-    background:url(../baseimages/menuIcon.gif) no-repeat 0 50%;
+    /*background:url(../baseimages/menuIcon.gif) no-repeat 0 50%;*/
     background-size:contain;
     text-indent:-9999px;
     margin-left:10px;
@@ -65,26 +65,20 @@ form{
     position:absolute;
     z-index: 10000;
     width:100%;
-    background: #E5E5E5;
-
 }
  .classDropdownList-topMenu{
 
-     top:64px;
+     top:54px;
 }
  .classDropdownList-downMenu{
 
-     bottom:64px;
+     bottom:54px;
 }
 .classDropdownList > div{
     padding:7px 10px 7px 10px;
     text-align:center;
-    border-bottom:1px solid #CCCCCC;
-    box-shadow:0 1px 2px 0px #CCCCCC;
 }
-.classDropdownList > div.activePage{
-    background:#C5C5C5;
-}
+
 .containerTop{
     padding-top:64px;
 }
@@ -195,12 +189,8 @@ form{
 .classSwipeDropList > div{
     padding:7px 10px 7px 10px;
     text-align:center;
-    border-bottom:1px solid #CCCCCC;
-    box-shadow:0 1px 2px 0px #CCCCCC;
 }
-.classSwipeDropList > div.activePage{
-    background:#C5C5C5;
-}
+
 
 #container {
     background-attachment:fixed;
@@ -893,4 +883,12 @@ input[type="checkbox"].SwitcherFormElement:checked + div > div {
 .row > [class*='col-'] {
   display: flex;
   flex-direction: column;
+}
+/*~~~~~~~~~~~~STYLING MENU~~~~~~~~~~~~~~*/
+
+.classMenu .menu-icon>div {
+    width: 30px;
+    height: 5px;
+    background-color: #555353;
+    margin: 5px 0;
 }

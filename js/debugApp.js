@@ -2,9 +2,10 @@ function deleteResourcesAll(){//Call in Init function
   $("#clearJsStorage").click(function(){
     deleteResourcesImg();
       $.jStorage.deleteKey("appData");
+       $.jStorage.deleteKey('ApplicationId');
       checkJsStorage();
       $(".Scan-spiner").addClass("hidden");
-      $("#container, #custom-hide-container, .singleItem, #orderInfo, .cart").addClass("hidden");
+      $("#container, #custom-hide-container, .singleItem, #orderInfo, .cart, .container-statusBooking, .bookingServices-container, .container-selectFreeBookTime, .dateTimePicker-container, .order-booking").addClass("hidden");
   });
 }
 function startScan() {//Call in Init function
@@ -24,10 +25,11 @@ function startScan() {//Call in Init function
                   success: function(jsonObjectOfServer) {
                     jsonObjectOfServer = JSON.parse(jsonObjectOfServer);
                       $(".startScan-wrapper").addClass("hidden");
+                      $("#container").removeClass("hidden");
                         applicationData = JSON.stringify(jsonObjectOfServer.Content);
+                        $.jStorage.set('ApplicationId', jsonObjectOfServer.ApplicationId);
                         onCheckJson();
                         checkUpdateRestaurantMenu(true);
-                        // $("#container").removeClass("hidden");
                       },
                       error: function(){
                         $(".startScan-wrapper").removeClass("hidden");
@@ -46,7 +48,7 @@ function startScan() {//Call in Init function
 function checkJsStorage(){//Call in onDeviceReady function
   if($.jStorage.get('appData') == null){
     $(".startScan-wrapper").removeClass("hidden");
-        $("#container, #custom-hide-container, .singleItem, #orderInfo, .cart").addClass("hidden");
+        $("#container, #custom-hide-container, .singleItem, #orderInfo, .cart, .container-statusBooking, .bookingServices-container, .container-selectFreeBookTime, .dateTimePicker-container, .order-booking").addClass("hidden");
   }else{
     checkConnection();
   }

@@ -28,14 +28,14 @@ function filterMenu(restaurantsArr, arrIdMenu) {
 
 function setUseRestaurantMenus(ids, use, restaurants) {
 
-    $(ids).each(function (i, id) {
+    $(ids).each(function(i, id) {
         setUseRestaurantMenu(id, use, restaurants);
     });
 }
 
 function setUseRestaurantMenu(id, use, restaurants) {
-    $(restaurants).each(function () {
-        $(this.RestaurantMenus).each(function () {
+    $(restaurants).each(function() {
+        $(this.RestaurantMenus).each(function() {
             if (this.Id == id) {
                 this.UseOnPage = use;
             }
@@ -64,12 +64,29 @@ function reactRender() {
     }
 
     function onPlayerStateChange(event) {}
-
+    var isBooking = false;
+    var isRestaurant = false;
     var Rows = React.createClass({
         displayName: 'Rows',
 
         getInitialState: function getInitialState() {
             return { data: [] };
+        },
+        componentWillMount: function componentWillMount() {
+            for (var i = 0; i < applicationData.Pages.length; i++) {
+                if (indexPage == applicationData.Pages[i].Id) {
+                    applicationData.Pages[i].Rows.forEach(function(item) {
+                        item.CellContents.forEach(function(element) {
+                            if (element.ContentTypeId == 15) {
+                                isRestaurant = true;
+                            }
+                            if (element.ContentTypeId == 16) {
+                                isBooking = true;
+                            }
+                        });
+                    });
+                }
+            }
         },
         componentDidMount: function componentDidMount() {
             for (var i = 0; i < applicationData.Pages.length; i++) {
@@ -77,175 +94,274 @@ function reactRender() {
                     this.setState({ data: applicationData.Pages[i].Rows });
                 }
             }
-                        $(".fab,.backdrop").click(function(){
-        if($(".backdrop").is(":visible")){
-            $(".backdrop").fadeOut(125);
-            $(".fab.child")
-                .stop()
-                .animate({
-                    bottom  : $("#masterfab").css("bottom"),
-                    opacity : 0
-                },125,function(){
-                    $(this).hide();
-                });
-        }else{
-            $(".backdrop").fadeIn(125);
-            $(".fab.child").each(function(){
-                $(this)
-                    .stop()
-                    .show()
-                    .animate({
-                        bottom  : (parseInt($("#masterfab").css("bottom")) + parseInt($("#masterfab").outerHeight()) + 50 * $(this).data("subitem") - $(".fab.child").outerHeight()) + "px",
-                        opacity : 1
-                    },125);
-            });
-        }
-    });
-    $(".first").click(function(){
-      if($.jStorage.get('bookOrderWithStatusPending') == null){
-        alert("You haven't any orders!");
-        return false;
-      }else{
-        $(".container-statusBooking").removeClass("hidden");
-        $("#container").addClass("hidden");
-        var orderedArray = JSON.parse($.jStorage.get('bookOrderWithStatusPending'));
-        var arrayOfOrdersId = [];
-        orderedArray.forEach(function(e){
-          arrayOfOrdersId.push(e.id);
-        });
-        $.ajax({
-            type: "POST",
-            url: applicationData.UrlForUpdateApp + "/Booking/GetConfirmBookOrder",
-            data: {
-                collectionOrderId: arrayOfOrdersId,
-                appId: $.jStorage.get('ApplicationId')
-            }, cache: false,
-            success: function(object) {
-                object = JSON.parse(object);
-                var collectionOrders = object.collectionOrders;
 
-                  $(".status-list").html("");
-                  for(var i = 0;  i < orderedArray.length; i++ ){
-                    $(".status-list").append("<p>"+ (collectionOrders[i].IsConfirmated ? 'Confirmated' : 'Pending') +"</p> <p>"+orderedArray[i].nemesService+"</p>");
+            $(".fab, .backdrop").click(function() {
+                if ($(".backdrop").is(":visible")) {
+                    $(".backdrop").fadeOut(125);
+                    $(".fab.child")
+                        .stop()
+                        .animate({
+                            bottom: $("#masterfab").css("bottom"),
+                            opacity: 0
+                        }, 125, function() {
+                            $(this).hide();
+                        });
+                } else {
+                    $(".backdrop").fadeIn(125);
+                    $(".fab.child").each(function() {
+                        $(this)
+                            .stop()
+                            .show()
+                            .animate({
+                                bottom: (parseInt($("#masterfab").css("bottom")) + parseInt($("#masterfab").outerHeight()) + 50 * $(this).data("subitem") - $(".fab.child").outerHeight()) + "px",
+                                opacity: 1
+                            }, 125);
+                    });
+                }
+            });
+            $(".first").click(function() {
+                if ($.jStorage.get('bookOrderWithStatusPending') == null) {
+                    alert("You haven't any orders!");
+                    return false;
+                } else {
+                    $(".container-statusBooking").removeClass("hidden");
+                    $("#container, .classMenu").addClass("hidden");
+                    var orderedArray = JSON.parse($.jStorage.get('bookOrderWithStatusPending'));
+                    var arrayOfOrdersId = [];
+                    orderedArray.forEach(function(e) {
+                        arrayOfOrdersId.push(e.id);
+                    });
+                    $.ajax({
+                        type: "POST",
+                        url: applicationData.UrlForUpdateApp + "/Booking/GetConfirmBookOrder",
+                        data: {
+                            collectionOrderId: arrayOfOrdersId,
+                            appId: $.jStorage.get('ApplicationId')
+                        },
+                        cache: false,
+                        success: function(object) {
+                            object = JSON.parse(object);
+                            var collectionOrders = object.collectionOrders;
+
+                            $(".status-list").html("");
+                            for (var i = 0; i < orderedArray.length; i++) {
+                                $(".status-list").append("<p>" + (collectionOrders[i].IsConfirmated ? 'Confirmated' : 'Pending') + "</p> <p>" + orderedArray[i].nemesService + "</p>");
+                            }
+                        }
+                    });
+                }
+            });
+
+            for (var i = 0; i < applicationData.Pages.length; i++) {
+                if (indexPage == applicationData.Pages[i].Id) {
+                    this.setState({ data: applicationData.Pages[i].Rows });
+                    applicationData.Pages[i].Rows.forEach(function(item) {
+                        item.CellContents.forEach(function(element) {
+                            if (element.ContentTypeId == 15) {
+                                isRestaurant = true;
+                            }
+                            if (element.ContentTypeId == 16) {
+                                isBooking = true;
+                            }
+                        });
+                    });
                 }
             }
-        });
-
-      }
-    });
         },
         render: function render() {
-            var rowModels = this.state.data.map(function (row) {
+            var rowModels = this.state.data.map(function(row) {
                 return React.createElement(CellContainer, { data: row, key: row.Id });
             });
-            if (applicationData.Restaurants.length > 0 && applicationData.Institutions.length > 0) {
-                return React.createElement(
-                    'div',
-                    null,
-                    React.createElement('div', { className: 'backdrop' }),
-                    React.createElement(
+            if (applicationData.Menu.Position == "bottom-left" || applicationData.Menu.Position == "bottom-right") {
+                if (isBooking == true && isRestaurant == true) {
+                    return React.createElement(
                         'div',
-                        { className: 'fab child', 'data-subitem': '1' },
+                        null,
+                        React.createElement('div', { className: 'backdrop' }),
                         React.createElement(
-                            'span',
-                            null,
-                            'C'
-                        )
-                    ),
-                    React.createElement(
-                        'div',
-                        { className: 'fab child', 'data-subitem': '2' },
+                            'div', { className: 'fab child cart-btn', 'data-subitem': '2' },
+                            React.createElement(
+                                'span',
+                                null,
+                                'R'
+                            )
+                        ),
                         React.createElement(
-                            'span',
-                            null,
-                            'B'
-                        )
-                    ),
-                    React.createElement(
-                        'div',
-                        { className: 'fab child first', 'data-subitem': '3' },
+                            'div', { className: 'fab child first', 'data-subitem': '1' },
+                            React.createElement(
+                                'span',
+                                null,
+                                'O'
+                            )
+                        ),
                         React.createElement(
-                            'span',
-                            null,
-                            'O'
-                        )
-                    ),
-                    React.createElement(
-                        'div',
-                        { className: 'fab', id: 'masterfab' },
+                            'div', { className: 'fab bottom-menu', id: 'masterfab' },
+                            React.createElement(
+                                'span',
+                                null,
+                                '+'
+                            )
+                        ),
                         React.createElement(
-                            'span',
-                            null,
-                            '+'
+                            'div', { className: 'container-fluid' },
+                            rowModels
                         )
-                    ),
-                    React.createElement(
+                    );
+                } else if (isBooking == true) {
+                    return React.createElement(
                         'div',
-                        { className: 'container-fluid' },
-                        rowModels
-                    )
-                );
-            } else if (applicationData.Institutions.length > 0) {
-                return React.createElement(
-                    'div',
-                    null,
-                    React.createElement('div', { className: 'backdrop' }),
-                    React.createElement(
-                        'div',
-                        { className: 'fab child', 'data-subitem': '2' },
+                        null,
+                        React.createElement('div', { className: 'backdrop' }),
                         React.createElement(
-                            'span',
-                            null,
-                            'B'
-                        )
-                    ),
-                    React.createElement(
-                        'div',
-                        { className: 'fab child first', 'data-subitem': '3' },
+                            'div', { className: 'fab child first', 'data-subitem': '1' },
+                            React.createElement(
+                                'span',
+                                null,
+                                'O'
+                            )
+                        ),
                         React.createElement(
-                            'span',
-                            null,
-                            'O'
-                        )
-                    ),
-                    React.createElement(
-                        'div',
-                        { className: 'fab', id: 'masterfab' },
+                            'div', { className: 'fab bottom-menu', id: 'masterfab' },
+                            React.createElement(
+                                'span',
+                                null,
+                                '+'
+                            )
+                        ),
                         React.createElement(
-                            'span',
-                            null,
-                            '+'
+                            'div', { className: 'container-fluid' },
+                            rowModels
                         )
-                    ),
-                    React.createElement(
+                    );
+                } else if (isRestaurant == true) {
+                    return React.createElement(
                         'div',
-                        { className: 'container-fluid' },
-                        rowModels
-                    )
-                );
-            } else if (applicationData.Restaurants.length > 0) {
-
-                return React.createElement(
-                    'div',
-                    null,
-                    React.createElement('div', { className: 'cart-btn' }),
-                    React.createElement(
+                        null,
+                        React.createElement('div', { className: 'cart-btn bottom-menu' }),
+                        React.createElement(
+                            'div', { className: 'container-fluid' },
+                            rowModels
+                        )
+                    );
+                } else {
+                    return React.createElement(
                         'div',
-                        { className: 'container-fluid' },
-                        rowModels
-                    )
-                );
+                        null,
+                        React.createElement(
+                            'div', { className: 'container-fluid' },
+                            rowModels
+                        )
+                    );
+                }
             } else {
-                return React.createElement(
-                    'div',
-                    null,
-                    React.createElement(
+                if (isBooking == true && isRestaurant == true) {
+                    return React.createElement(
                         'div',
-                        { className: 'container-fluid' },
-                        rowModels
-                    )
-                );
+                        null,
+                        React.createElement('div', { className: 'backdrop' }),
+                        // React.createElement(
+                        //     'div', { className: 'fab child', 'data-subitem': '1' },
+                        //     React.createElement(
+                        //         'span',
+                        //         null,
+                        //         'C'
+                        //     )
+                        // ),
+                        React.createElement(
+                            'div', { className: 'fab child cart-btn', 'data-subitem': '2' },
+                            React.createElement(
+                                'span',
+                                null,
+                                'R'
+                            )
+                        ),
+                        React.createElement(
+                            'div', { className: 'fab child first', 'data-subitem': '1' },
+                            React.createElement(
+                                'span',
+                                null,
+                                'O'
+                            )
+                        ),
+                        React.createElement(
+                            'div', { className: 'fab', id: 'masterfab' },
+                            React.createElement(
+                                'span',
+                                null,
+                                '+'
+                            )
+                        ),
+                        React.createElement(
+                            'div', { className: 'container-fluid' },
+                            rowModels
+                        )
+                    );
+                } else if (isBooking == true) {
+                    return React.createElement(
+                        'div',
+                        null,
+                        React.createElement('div', { className: 'backdrop' }),
+                        // React.createElement(
+                        //     'div', { className: 'fab child cart-btn', 'data-subitem': '2' },
+                        //     React.createElement(
+                        //         'span',
+                        //         null,
+                        //         'R'
+                        //     )
+                        // ),
+                        React.createElement(
+                            'div', { className: 'fab child first', 'data-subitem': '1' },
+                            React.createElement(
+                                'span',
+                                null,
+                                'O'
+                            )
+                        ),
+                        React.createElement(
+                            'div', { className: 'fab', id: 'masterfab' },
+                            React.createElement(
+                                'span',
+                                null,
+                                '+'
+                            )
+                        ),
+                        React.createElement(
+                            'div', { className: 'container-fluid' },
+                            rowModels
+                        )
+                    );
+                } else if (isRestaurant == true) {
+
+                    return React.createElement(
+                        'div',
+                        null,
+                        React.createElement('div', { className: 'cart-btn' }),
+                        React.createElement(
+                            'div', { className: 'container-fluid' },
+                            rowModels
+                        )
+                    );
+                } else {
+                    return React.createElement(
+                        'div',
+                        null,
+                        React.createElement(
+                            'div', { className: 'container-fluid' },
+                            rowModels
+                        )
+                    );
+                }
             }
+
+
+
+
+
+
+
+
+
+
         }
     });
 
@@ -261,12 +377,11 @@ function reactRender() {
             $(React.findDOMNode(this)).attr("style", styleRow);
         },
         render: function render() {
-            var cellModels = this.props.data.CellContents.map(function (cell) {
+            var cellModels = this.props.data.CellContents.map(function(cell) {
                 return React.createElement(CellContent, { data: cell, key: cell.Id });
             });
             return React.createElement(
-                'div',
-                { className: 'row' },
+                'div', { className: 'row' },
                 cellModels
             );
         }
@@ -280,31 +395,25 @@ function reactRender() {
             var items = _.without(this.props.data, icon);
             if (icon.length > 0) {
                 return React.createElement(
-                    'div',
-                    { className: 'gallery-images-container' },
+                    'div', { className: 'gallery-images-container' },
                     React.createElement(
-                        'div',
-                        { className: 'icon-container' },
+                        'div', { className: 'icon-container' },
                         this.createIcon(this.props.data)
                     ),
                     React.createElement(
-                        'div',
-                        { id: 'lightgallery' },
+                        'div', { id: 'lightgallery' },
                         this.createItems(this.props.data)
                     )
                 );
             } else {
                 return React.createElement(
-                    'div',
-                    { className: 'gallery-images-container' },
+                    'div', { className: 'gallery-images-container' },
                     React.createElement(
-                        'div',
-                        { className: 'shadow-container' },
+                        'div', { className: 'shadow-container' },
                         this.createIcon(this.props.data)
                     ),
                     React.createElement(
-                        'div',
-                        { id: 'lightgallery' },
+                        'div', { id: 'lightgallery' },
                         this.createItems(this.props.data)
                     )
                 );
@@ -332,14 +441,12 @@ function reactRender() {
             for (var i = 0; i < items.length; i++) {
                 if (i == 0 && icon.length == 0) {
                     output.push(React.createElement(
-                        'a',
-                        { href: items[i].Link, className: 'galleryHref', itemProp: 'contentUrl', 'data-size': '964x1024' },
+                        'a', { href: items[i].Link, className: 'galleryHref', itemProp: 'contentUrl', 'data-size': '964x1024' },
                         React.createElement('img', { src: items[i].Link, className: 'gallery-image' })
                     ));
                 } else {
                     output.push(React.createElement(
-                        'a',
-                        { href: items[i].Link, className: 'galleryHref hidden', itemProp: 'contentUrl', 'data-size': '964x1024' },
+                        'a', { href: items[i].Link, className: 'galleryHref hidden', itemProp: 'contentUrl', 'data-size': '964x1024' },
                         React.createElement('img', { src: items[i].Link, className: 'gallery-image' })
                     ));
                 }
@@ -388,72 +495,62 @@ function reactRender() {
         render: function render() {
             var data = this.props.data;
             var json = data;
-            var elementModels = json.elements.map(function (element) {
+            var elementModels = json.elements.map(function(element) {
                 element.Value = replaceData(element.Value);
                 if (element.ContentTypeId == 2) {
                     return React.createElement(
-                        'div',
-                        { className: 'swiper-slide' },
+                        'div', { className: 'swiper-slide' },
                         React.createElement('div', { className: 'link-item', dangerouslySetInnerHTML: { __html: element.Value } })
                     );
                 }
                 if (element.ContentTypeId == 3) {
                     return React.createElement(
-                        'div',
-                        { className: 'swiper-slide' },
+                        'div', { className: 'swiper-slide' },
                         React.createElement('div', { className: 'image-item', dangerouslySetInnerHTML: { __html: element.Value } })
                     );
                 }
                 if (element.ContentTypeId == 4) {
                     return React.createElement(
-                        'div',
-                        { className: 'swiper-slide' },
+                        'div', { className: 'swiper-slide' },
                         React.createElement('div', { className: 'image-link-item', dangerouslySetInnerHTML: { __html: element.Value } })
                     );
                 }
                 if (element.ContentTypeId == 5) {
                     return React.createElement(
-                        'div',
-                        { className: 'swiper-slide' },
+                        'div', { className: 'swiper-slide' },
                         React.createElement('div', { className: 'text-item', dangerouslySetInnerHTML: { __html: element.Value } })
                     );
                 }
                 if (element.ContentTypeId == 6) {
                     return React.createElement(
-                        'div',
-                        { className: 'swiper-slide' },
+                        'div', { className: 'swiper-slide' },
                         React.createElement('div', { className: 'botton-item', dangerouslySetInnerHTML: { __html: element.Value } })
                     );
                 }
                 if (element.ContentTypeId == 7) {
                     return React.createElement(
-                        'div',
-                        { className: 'swiper-slide' },
+                        'div', { className: 'swiper-slide' },
                         React.createElement(YoutubeContainer, { data: element.Value })
                     );
                 }
                 if (element.ContentTypeId == 8) {
                     return React.createElement(
-                        'div',
-                        { className: 'swiper-slide' },
+                        'div', { className: 'swiper-slide' },
                         React.createElement(GalleryContainer, { data: element.Resourceses })
                     );
                 }
                 if (element.ContentTypeId == 9) {
                     return React.createElement(
-                        'div',
-                        { className: 'swiper-slide' },
+                        'div', { className: 'swiper-slide' },
                         React.createElement('div', { className: 'difficult-botton-item', dangerouslySetInnerHTML: { __html: element.Value } })
                     );
                 }
             });
 
             return React.createElement(
-                'div',
-                { className: 'hBox-container swiper-container' },
+                'div', { className: 'hBox-container swiper-container' },
                 React.createElement(
-                    'div',
-                    { className: 'swiper-wrapper' },
+                    'div', { className: 'swiper-wrapper' },
                     elementModels
                 ),
                 React.createElement('div', { className: 'swiper-pagination' })
@@ -472,7 +569,7 @@ function reactRender() {
         render: function render() {
             var data = this.props.data;
             var json = data;
-            var elementModels = json.elements.map(function (element) {
+            var elementModels = json.elements.map(function(element) {
                 element.Value = replaceData(element.Value);
                 if (element.ContentTypeId == 2) {
                     return React.createElement('div', { className: 'link-item', dangerouslySetInnerHTML: { __html: element.Value } });
@@ -521,12 +618,14 @@ function reactRender() {
                 var objectForm = applicationData.Forms;
                 var styleLabel = this.props.data.Value.split("|")[0];
                 var styleSubmit = this.props.data.Value.split("|")[1];
+                var textSubmitButton = this.props.data.Value.split("|")[2];
                 $(ReactDOM.findDOMNode(this)).html("<form class='form-container' id='form-container'></form>");
-                $(objectForm).each(function (i, element) {
+                $(objectForm).each(function(i, element) {
                     if (element.Id == formId) {
                         renderForm(element);
                         $("#form-container").find(".formSubmit").attr("style", styleSubmit);
                         $("#form-container").find("label").attr("style", styleLabel);
+                        $("#form-container").find(".formSubmit").text(textSubmitButton);
                         $("#form-container").attr("id", "");
                         if (data.CountFormColumn == 2) {
                             $(".formBlock").addClass("formHalf");
@@ -569,7 +668,7 @@ function reactRender() {
                 var restaurants = [];
                 var selectRest = $("<select class='select-restaurant'></select>");
                 var selectMenu = $("<select class='select-menu'></select>");
-                $(restaurantsArr).each(function () {
+                $(restaurantsArr).each(function() {
                     $(selectRest).append("<option value='" + this.Id + "'>" + this.Name + "</option>");
                 });
                 restaurants = _.uniq(restaurants);
@@ -581,7 +680,7 @@ function reactRender() {
 
                 div = $(div).append($(selectRest)).append($(selectMenu)).append($(divContainer));
                 $(ReactDOM.findDOMNode(this)).append($(div));
-                var ThisRestaurantMenuBlock = this;
+                var ThisRestaurantaurantMenuBlock = this;
                 var weekday = new Array(7);
                 weekday[0] = "Sunday";
                 weekday[1] = "Monday";
@@ -592,36 +691,36 @@ function reactRender() {
                 weekday[6] = "Saturday";
                 var dayNow = weekday[new Date().getDay()];
                 //no working
-                $(restaurantsArr).each(function (i, thisRestaraunt) {
-                    $(thisRestaraunt.RestaurantMenus).each(function (index, thisRestarauntMenu) {
-                        var thisRestaurantMenu = thisRestarauntMenu;
-                        if (thisRestarauntMenu.IsOnline == false) {
-                            if (thisRestarauntMenu.UseDateTime == false) {
-                                renderRestaurantMenu(thisRestarauntMenu, data.LablePosition, data.StateShopItemResponsiveModel, data.StateShopItemName, data.StateShopItemPrice, data.StateShopItemDescription, data.StateShopItemButton, data.StateShopItemImage);
+                $(restaurantsArr).each(function(i, thisRestaurantaraunt) {
+                    $(thisRestaurantaraunt.RestaurantMenus).each(function(index, thisRestaurantarauntMenu) {
+                        var thisRestaurantaurantMenu = thisRestaurantarauntMenu;
+                        if (thisRestaurantarauntMenu.IsOnline == false) {
+                            if (thisRestaurantarauntMenu.UseDateTime == false) {
+                                renderRestaurantMenu(thisRestaurantarauntMenu, data.LablePosition, data.StateShopItemResponsiveModel, data.StateShopItemName, data.StateShopItemPrice, data.StateShopItemDescription, data.StateShopItemButton, data.StateShopItemImage);
                                 $(selectMenu).html("");
-                                $(thisRestaraunt.RestaurantMenus).each(function (count, option) {
+                                $(thisRestaurantaraunt.RestaurantMenus).each(function(count, option) {
                                     $(selectMenu).append("<option value='" + option.Id + "'>" + option.Name + "</option>");
                                 });
-                                $(".select-restaurant").val(thisRestaraunt.Id);
-                                $(".select-menu").val(thisRestarauntMenu.Id);
+                                $(".select-restaurant").val(thisRestaurantaraunt.Id);
+                                $(".select-menu").val(thisRestaurantarauntMenu.Id);
                             } else {
-                                $(thisRestaurantMenu.DateTimeRestaurantMenu).each(function (indexData, dataItem) {
-                                    if (dataItem.IsChecked && dataItem.Day == dayNow && ThisRestaurantMenuBlock.checkRestarauntTime(dataItem.FromHour, dataItem.ToHour, ThisRestaurantMenuBlock.getClockTime())) {
-                                        renderRestaurantMenu(thisRestaurantMenu, data.LablePosition, data.StateShopItemResponsiveModel, data.StateShopItemName, data.StateShopItemPrice, data.StateShopItemDescription, data.StateShopItemButton, data.StateShopItemImage);
+                                $(thisRestaurantaurantMenu.DateTimeRestaurantMenu).each(function(indexData, dataItem) {
+                                    if (dataItem.IsChecked && dataItem.Day == dayNow && ThisRestaurantaurantMenuBlock.checkRestarauntTime(dataItem.FromHour, dataItem.ToHour, ThisRestaurantaurantMenuBlock.getClockTime())) {
+                                        renderRestaurantMenu(thisRestaurantaurantMenu, data.LablePosition, data.StateShopItemResponsiveModel, data.StateShopItemName, data.StateShopItemPrice, data.StateShopItemDescription, data.StateShopItemButton, data.StateShopItemImage);
                                         $(selectMenu).html("");
-                                        $(thisRestaraunt.RestaurantMenus).each(function (count, option) {
+                                        $(thisRestaurantaraunt.RestaurantMenus).each(function(count, option) {
                                             $(selectMenu).append("<option value='" + option.Id + "'>" + option.Name + "</option>");
                                         });
-                                        $(".select-restaurant").val(thisRestaraunt.Id);
-                                        $(".select-menu").val(thisRestarauntMenu.Id);
-                                    } else if (dataItem.IsChecked && dataItem.Day == "Date" && ThisRestaurantMenuBlock.checkRestarauntTimeForDate(dataItem.FromHour, dataItem.ToHour)) {
-                                        renderRestaurantMenu(thisRestaurantMenu, data.LablePosition, data.StateShopItemResponsiveModel, data.StateShopItemName, data.StateShopItemPrice, data.StateShopItemDescription, data.StateShopItemButton, data.StateShopItemImage);
+                                        $(".select-restaurant").val(thisRestaurantaraunt.Id);
+                                        $(".select-menu").val(thisRestaurantarauntMenu.Id);
+                                    } else if (dataItem.IsChecked && dataItem.Day == "Date" && ThisRestaurantaurantMenuBlock.checkRestarauntTimeForDate(dataItem.FromHour, dataItem.ToHour)) {
+                                        renderRestaurantMenu(thisRestaurantaurantMenu, data.LablePosition, data.StateShopItemResponsiveModel, data.StateShopItemName, data.StateShopItemPrice, data.StateShopItemDescription, data.StateShopItemButton, data.StateShopItemImage);
                                         $(selectMenu).html("");
-                                        $(thisRestaraunt.RestaurantMenus).each(function (count, option) {
+                                        $(thisRestaurantaraunt.RestaurantMenus).each(function(count, option) {
                                             $(selectMenu).append("<option value='" + option.Id + "'>" + option.Name + "</option>");
                                         });
-                                        $(".select-restaurant").val(thisRestaraunt.Id);
-                                        $(".select-menu").val(thisRestarauntMenu.Id);
+                                        $(".select-restaurant").val(thisRestaurantaraunt.Id);
+                                        $(".select-menu").val(thisRestaurantarauntMenu.Id);
                                     }
                                 });
                             }
@@ -630,32 +729,32 @@ function reactRender() {
                             if (networkState == Connection.NONE) {
                                 $("#custom-restaurant-menu-container").html("Sorry, is only available online!");
                             } else {
-                                if (thisRestarauntMenu.UseDateTime == false) {
-                                    renderRestaurantMenu(thisRestarauntMenu, data.LablePosition, data.StateShopItemResponsiveModel, data.StateShopItemName, data.StateShopItemPrice, data.StateShopItemDescription, data.StateShopItemButton, data.StateShopItemImage);
+                                if (thisRestaurantarauntMenu.UseDateTime == false) {
+                                    renderRestaurantMenu(thisRestaurantarauntMenu, data.LablePosition, data.StateShopItemResponsiveModel, data.StateShopItemName, data.StateShopItemPrice, data.StateShopItemDescription, data.StateShopItemButton, data.StateShopItemImage);
                                     $(selectMenu).html("");
-                                    $(thisRestaraunt.RestaurantMenus).each(function (count, option) {
+                                    $(thisRestaurantaraunt.RestaurantMenus).each(function(count, option) {
                                         $(selectMenu).append("<option value='" + option.Id + "'>" + option.Name + "</option>");
                                     });
-                                    $(".select-restaurant").val(thisRestaraunt.Id);
-                                    $(".select-menu").val(thisRestarauntMenu.Id);
+                                    $(".select-restaurant").val(thisRestaurantaraunt.Id);
+                                    $(".select-menu").val(thisRestaurantarauntMenu.Id);
                                 } else {
-                                    $(thisRestaurantMenu.DateTimeRestaurantMenu).each(function (indexData, dataItem) {
-                                        if (dataItem.IsChecked && dataItem.Day == dayNow && ThisRestaurantMenuBlock.checkRestarauntTime(dataItem.FromHour, dataItem.ToHour, ThisRestaurantMenuBlock.getClockTime())) {
-                                            renderRestaurantMenu(thisRestaurantMenu, data.LablePosition, data.StateShopItemResponsiveModel, data.StateShopItemName, data.StateShopItemPrice, data.StateShopItemDescription, data.StateShopItemButton, data.StateShopItemImage);
+                                    $(thisRestaurantaurantMenu.DateTimeRestaurantMenu).each(function(indexData, dataItem) {
+                                        if (dataItem.IsChecked && dataItem.Day == dayNow && ThisRestaurantaurantMenuBlock.checkRestarauntTime(dataItem.FromHour, dataItem.ToHour, ThisRestaurantaurantMenuBlock.getClockTime())) {
+                                            renderRestaurantMenu(thisRestaurantaurantMenu, data.LablePosition, data.StateShopItemResponsiveModel, data.StateShopItemName, data.StateShopItemPrice, data.StateShopItemDescription, data.StateShopItemButton, data.StateShopItemImage);
                                             $(selectMenu).html("");
-                                            $(thisRestaraunt.RestaurantMenus).each(function (count, option) {
+                                            $(thisRestaurantaraunt.RestaurantMenus).each(function(count, option) {
                                                 $(selectMenu).append("<option value='" + option.Id + "'>" + option.Name + "</option>");
                                             });
-                                            $(".select-restaurant").val(thisRestaraunt.Id);
-                                            $(".select-menu").val(thisRestarauntMenu.Id);
-                                        } else if (dataItem.IsChecked && dataItem.Day == "Date" && ThisRestaurantMenuBlock.checkRestarauntTimeForDate(dataItem.FromHour, dataItem.ToHour)) {
-                                            renderRestaurantMenu(thisRestaurantMenu, data.LablePosition, data.StateShopItemResponsiveModel, data.StateShopItemName, data.StateShopItemPrice, data.StateShopItemDescription, data.StateShopItemButton, data.StateShopItemImage);
+                                            $(".select-restaurant").val(thisRestaurantaraunt.Id);
+                                            $(".select-menu").val(thisRestaurantarauntMenu.Id);
+                                        } else if (dataItem.IsChecked && dataItem.Day == "Date" && ThisRestaurantaurantMenuBlock.checkRestarauntTimeForDate(dataItem.FromHour, dataItem.ToHour)) {
+                                            renderRestaurantMenu(thisRestaurantaurantMenu, data.LablePosition, data.StateShopItemResponsiveModel, data.StateShopItemName, data.StateShopItemPrice, data.StateShopItemDescription, data.StateShopItemButton, data.StateShopItemImage);
                                             $(selectMenu).html("");
-                                            $(thisRestaraunt.RestaurantMenus).each(function (count, option) {
+                                            $(thisRestaurantaraunt.RestaurantMenus).each(function(count, option) {
                                                 $(selectMenu).append("<option value='" + option.Id + "'>" + option.Name + "</option>");
                                             });
-                                            $(".select-restaurant").val(thisRestaraunt.Id);
-                                            $(".select-menu").val(thisRestarauntMenu.Id);
+                                            $(".select-restaurant").val(thisRestaurantaraunt.Id);
+                                            $(".select-menu").val(thisRestaurantarauntMenu.Id);
                                         }
                                     });
                                 }
@@ -672,9 +771,9 @@ function reactRender() {
                 var styleLabel = this.props.data.Value;
                 var objectForm = applicationData.Forms;
                 $(ReactDOM.findDOMNode(this)).attr("id", "custom-form-container");
-                $(objectForm).each(function (i, element) {
+                $(objectForm).each(function(i, element) {
                     if (element.Id == formId) {
-                        $(element.FormFields).each(function (i, field) {
+                        $(element.FormFields).each(function(i, field) {
                             if (field.Id == fieldId) {
                                 var formToRender = {};
                                 formToRender.FormFields = [];
@@ -691,7 +790,7 @@ function reactRender() {
             }
             if (data.ContentTypeId == 16) {
                 $(ReactDOM.findDOMNode(this)).append("<div class='custom-container-booking' id='custom-container-booking'></div>");
-                $(applicationData.Institutions).each(function () {
+                $(applicationData.Institutions).each(function() {
                     if (this.Id == data.BookingCurrentInstitution) {
                         renderBooking(this, data.BookingSortingByService);
                     }
@@ -865,8 +964,7 @@ function reactRender() {
             }
             if (data.ContentTypeId == 8) {
                 return React.createElement(
-                    'div',
-                    { className: "cell-container col-xs-" + data.Colspan + " col-sm-" + data.Colspan + " col-md-" + data.Colspan + " col-lg-" + data.Colspan, onClick: this.onClickCell },
+                    'div', { className: "cell-container col-xs-" + data.Colspan + " col-sm-" + data.Colspan + " col-md-" + data.Colspan + " col-lg-" + data.Colspan, onClick: this.onClickCell },
                     React.createElement(GalleryContainer, { data: data.Resourceses })
                 );
             }
@@ -875,8 +973,7 @@ function reactRender() {
             }
             if (data.ContentTypeId == 7) {
                 return React.createElement(
-                    'div',
-                    { className: "cell-container col-xs-" + data.Colspan + " col-sm-" + data.Colspan + " col-md-" + data.Colspan + " col-lg-" + data.Colspan, onClick: this.onClickCell },
+                    'div', { className: "cell-container col-xs-" + data.Colspan + " col-sm-" + data.Colspan + " col-md-" + data.Colspan + " col-lg-" + data.Colspan, onClick: this.onClickCell },
                     React.createElement(YoutubeContainer, { data: data.Value })
                 );
             }
@@ -884,15 +981,13 @@ function reactRender() {
             //ContentTypeId - 10 start
             if (data.ContentTypeId == 10) {
                 return React.createElement(
-                    'div',
-                    { className: "cell-container col-xs-" + data.Colspan + " col-sm-" + data.Colspan + " col-md-" + data.Colspan + " col-lg-" + data.Colspan },
+                    'div', { className: "cell-container col-xs-" + data.Colspan + " col-sm-" + data.Colspan + " col-md-" + data.Colspan + " col-lg-" + data.Colspan },
                     React.createElement(Hbox, { data: data.Json })
                 );
             }
             if (data.ContentTypeId == 11) {
                 return React.createElement(
-                    'div',
-                    { className: "cell-container col-xs-" + data.Colspan + " col-sm-" + data.Colspan + " col-md-" + data.Colspan + " col-lg-" + data.Colspan },
+                    'div', { className: "cell-container col-xs-" + data.Colspan + " col-sm-" + data.Colspan + " col-md-" + data.Colspan + " col-lg-" + data.Colspan },
                     React.createElement(Vbox, { data: data.Json })
                 );
             }
@@ -915,5 +1010,4 @@ function reactRender() {
     });
     //ContentTypeId - 10 end
     ReactDOM.render(React.createElement(Rows, null), document.getElementById('container'));
-    $(".mainContainerApp").removeClass("hidden");
 }

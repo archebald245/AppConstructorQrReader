@@ -103,7 +103,7 @@ function onCheckJson() {
 function checkConnection() {
     var networkState = navigator.connection.type;
     if (networkState != Connection.NONE) {
-        var siteUrl = "http://appconstructor.newlinetechnologies.net"
+        var siteUrl = "http://appconstructornew.newlinetechnologies.net"
 
             applicationData = JSON.parse($.jStorage.get('appData'));
             var projectId = applicationData.ProjectId;
@@ -151,7 +151,7 @@ function callback() {
     reactRender();
     initGallaryClick();
     submitFormListener();
-    unBlockUi()
+    unBlockUi();
 }
 
 function replaceData(element) {

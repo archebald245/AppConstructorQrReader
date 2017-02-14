@@ -20,7 +20,8 @@ function searchResourcesAndReplacePatch(jsonObject) {
     }
     if ($.jStorage.get('resources') != null) {
         resourcesToDownload = compareResouces($.jStorage.get('resources'), resources, storePath);
-    } else {
+    } 
+    else {
         resourcesToDownload = resources;
     }
     $.jStorage.set('replaceImagePachJson', JSON.stringify(jsonObject));
@@ -89,12 +90,16 @@ function resourcesOfRestaurantMenus(restaurants, storePath) {
 function resourcesOfBooking(institutions, storePath) {
     institutions = replacePathToImageInstitution(institutions);
    $(institutions).each(function(){
-        $(this.BookResources).each(function(){
-            resources.push(this.ImagePath);
-            this.ImagePath = replacementPathImagesRestaurantMenu(this.ImagePath, storePath);
-            $(this.BookServiceProvides).each(function(){
+        $(this.BookResources).each(function(){ 
+            if(this.ImagePath != null){
                 resources.push(this.ImagePath);
                 this.ImagePath = replacementPathImagesRestaurantMenu(this.ImagePath, storePath);
+            }
+            $(this.BookServiceProvides).each(function(){
+            if(this.ImagePath != null){
+                resources.push(this.ImagePath);
+                this.ImagePath = replacementPathImagesRestaurantMenu(this.ImagePath, storePath);
+            }
             });
         });
     });
@@ -111,6 +116,10 @@ function resourcesOfGallary(gallary, storePath) {
 
     return gallary;
 }
+
+
+
+
 
 function resourcesPushInArray(element) {
     for (var i = 0; i < element.Resourceses.length; i++) {
@@ -239,11 +248,7 @@ function failDownload(error) {
 }
 
 function fail(error) {
-  console.log("/----ERROR-------/");
     console.log(error.code);
-    console.log(error.http_status);
-    console.log(error.body);
-    console.log(error.exception);
 }
 
 function replacePathToImageRestaurantMenu(restaurants) {
@@ -261,9 +266,17 @@ function replacePathToImageRestaurantMenu(restaurants) {
 function replacePathToImageInstitution(institutions) {
     $(institutions).each(function(){
         $(this.BookResources).each(function(){
-            this.ImagePath = applicationData.UrlForUpdateApp + this.ImagePath;
-            $(this.BookServiceProvides).each(function(){
+            if(this.ImagePath == null){
+                this.ImagePath = null
+            }else{
                 this.ImagePath = applicationData.UrlForUpdateApp + this.ImagePath;
+            }
+            $(this.BookServiceProvides).each(function(){
+                if(this.ImagePath == null){
+                    this.ImagePath = null
+                }else{
+                    this.ImagePath = applicationData.UrlForUpdateApp + this.ImagePath;
+                } 
             });
         });
     });
