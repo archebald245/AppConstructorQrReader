@@ -18,7 +18,7 @@
 //               );
 //         }
 //     });
-//
+
 //     var Service = React.createClass({
 //       render: function() {
 //         var data = this.props.data;
@@ -27,7 +27,7 @@
 //         if(data.ImagePath != null){
 //           image = <img src={data.ImagePath} />
 //         }else{
-//           image = <img className='noimage-elementInstitution' src='baseimages/cartItem.png' />
+//           image = null;
 //         }
 //           return (
 //               <div className='row-elementInstitution'>
@@ -45,9 +45,9 @@
 //               );
 //       }
 //     });
-//
+
 //     ReactDOM.render(<Institution data={thisInstitution}/>,document.getElementById("bookingServices"));
-//
+
 // }
 'use strict';
 
@@ -87,7 +87,7 @@ function renderServiceOfThisInstitution(thisInstitution) {
       if (data.ImagePath != null) {
         image = React.createElement('img', { src: data.ImagePath });
       } else {
-        image = React.createElement('img', { className: 'noimage-elementInstitution', src: 'baseimages/cartItem.png' });
+        image = null;
       }
       return React.createElement(
         'div',
