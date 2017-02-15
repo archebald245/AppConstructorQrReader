@@ -2,21 +2,21 @@ var collectionOrderItems;
 
 function clickOrder() {
     var orderItems = $("#cart").find(".cartItem");
-     collectionOrderItems = [];
+    collectionOrderItems = [];
     $(orderItems).each(function() {
         var id = $(this).find("[name=shopItemId]").val();
         var count = $(this).find("[name=shopItemCount]").val();
         $(applicationData.Restaurants).each(function() {
-          $(this.RestaurantMenus).each(function(){
-            $(this.RestaurantMenuItems).each(function() {
-                if (this.Id == id) {
-                    var item = JSON.parse(JSON.stringify(this));
-                    item.Count = count;
-                    item.RestaurantMenuImages = null;
-                    collectionOrderItems.push(item);
-                }
+            $(this.RestaurantMenus).each(function() {
+                $(this.RestaurantMenuItems).each(function() {
+                    if (this.Id == id) {
+                        var item = JSON.parse(JSON.stringify(this));
+                        item.Count = count;
+                        item.RestaurantMenuImages = null;
+                        collectionOrderItems.push(item);
+                    }
+                });
             });
-          });
         });
 
     });
@@ -47,11 +47,11 @@ function clickPlaceAnOrder() {
                 $("#cart").html("");
                 $("#orderInfo input, #orderInfo textarea").val("");
                 $("#container").removeClass("hidden");
-                 $("#orderInfo").addClass("hidden");
-                 
-               if($('.classMenuTop').length>0||$('.classMenuBottom').length>0){
-                   $(".classMenu").removeClass("hidden");
-               }
+                $("#orderInfo").addClass("hidden");
+                scrollTop();
+                if ($('.classMenuTop').length > 0 || $('.classMenuBottom').length > 0) {
+                    $(".classMenu").removeClass("hidden");
+                }
 
             },
             error: function() {
@@ -68,7 +68,7 @@ function bindListenerToClickBtn() {
         $(".classSwipeDropList").addClass("hidden");
         $(".cart").removeClass("hidden");
         $(".singleItem").addClass("hidden");
-        window.scrollTo(0,0);
+        window.scrollTo(0, 0);
     });
 
     $(".back-to-container").on("click", function() {
@@ -77,17 +77,19 @@ function bindListenerToClickBtn() {
         $(".classSwipeDropList").removeClass("hidden");
         $(".cart").addClass("hidden");
         $(".singleItem").addClass("hidden");
-
+        scrollTop();
     });
     $(".back-to-cart").on("click", function() {
         $("#orderInfo").addClass("hidden");
         $(".singleItem").addClass("hidden");
         $(".cart").removeClass("hidden");
+        scrollTop();
     });
     $(".btn-order").on("click", function() {
         if ($("#cart").children().length > 0) {
             $("#orderInfo").removeClass("hidden");
             $(".cart").addClass("hidden");
+            scrollTop();
         } else {
             alert("You have nothing ordered!");
         }

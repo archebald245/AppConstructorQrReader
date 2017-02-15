@@ -126,6 +126,7 @@ function reactRender() {
                 } else {
                     $(".container-statusBooking").removeClass("hidden");
                     $("#container, .classMenu").addClass("hidden");
+                    scrollTop();
                     var orderedArray = JSON.parse($.jStorage.get('bookOrderWithStatusPending'));
                     var arrayOfOrdersId = [];
                     orderedArray.forEach(function(e) {
