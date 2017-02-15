@@ -29,15 +29,15 @@ function onDeviceReady() {
     });
     appStart();
     $("#dateTimePicker-date").dateDropper({
-      dropBorder: "1px solid #939393",
-      dropPrimaryColor: "#939393",
-      dropWidth: "250"
+        dropBorder: "1px solid #939393",
+        dropPrimaryColor: "#939393",
+        dropWidth: "250"
     });
     $("#dateTimePicker-time").timeDropper({
-      primaryColor: "#939393",
-      borderColor: "#939393",
-      format: "HH:mm",
-      setCurrentTime: "false"
+        primaryColor: "#939393",
+        borderColor: "#939393",
+        format: "HH:mm",
+        setCurrentTime: "false"
     });
     StatusBar.hide();
     navigator.splashscreen.show();
@@ -53,8 +53,7 @@ function onGetDirectoryFail(error) {
 
 function appStart() {
     console.log("add" + store)
-    window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem) {
-    });
+    window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem) {});
 }
 
 function initYoutube() {
@@ -97,7 +96,7 @@ function onCheckJson() {
         submitFormListener();
         unBlockUi()
     }
-      $("#clearJsStorage").removeClass("hidden");
+    $("#clearJsStorage").removeClass("hidden");
 }
 
 function checkConnection() {
@@ -105,9 +104,9 @@ function checkConnection() {
     if (networkState != Connection.NONE) {
         var siteUrl = "http://appconstructor.newline.tech"
 
-            applicationData = JSON.parse($.jStorage.get('appData'));
-            var projectId = applicationData.ProjectId;
-            var versionId = applicationData.Id;
+        applicationData = JSON.parse($.jStorage.get('appData'));
+        var projectId = applicationData.ProjectId;
+        var versionId = applicationData.Id;
 
         if (applicationData.UrlForUpdateApp != "" && applicationData.UrlForUpdateApp != null && typeof applicationData.UrlForUpdateApp != 'undefined') {
             siteUrl = applicationData.UrlForUpdateApp;
@@ -122,6 +121,7 @@ function checkConnection() {
                 jsonObjectOfServer = JSON.parse(jsonObjectOfServer);
                 $.jStorage.deleteKey('appData');
                 $("#container").removeClass("hidden");
+                scrollTop();
                 applicationData = JSON.stringify(jsonObjectOfServer.Content);
                 checkUpdateRestaurantMenu(true);
                 onCheckJson();
@@ -174,22 +174,20 @@ function initGallaryClick() {
 }
 
 
-function doOnOrientationChange()
-  {
-    switch(window.orientation)
-    {
-      case -90:
-      case 90:
-      if(applicationData.Restaurants.length > 0){
-        restarauntMenuModelItems();
-      }
-        break;
-      default:
-      if(applicationData.Restaurants.length > 0){
-        restarauntMenuModelItems();
-      }
-        break;
+function doOnOrientationChange() {
+    switch (window.orientation) {
+        case -90:
+        case 90:
+            if (applicationData.Restaurants.length > 0) {
+                restarauntMenuModelItems();
+            }
+            break;
+        default:
+            if (applicationData.Restaurants.length > 0) {
+                restarauntMenuModelItems();
+            }
+            break;
     }
-  }
+}
 
-  window.addEventListener('orientationchange', doOnOrientationChange);
+window.addEventListener('orientationchange', doOnOrientationChange);

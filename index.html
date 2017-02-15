@@ -18,29 +18,29 @@
     <script type="text/javascript" src="js/momentJs/moment.min.js"></script>
     <script src="js/jquery-touchswipe/jquery.touchSwipe.js"></script>
     <script src="js/underscore-min.js"></script>
-	<script src="js/toAst.js"></script>
-  <script src="js/dateTimePicker-forDate/datedropper.min.js"></script>
+    <script src="js/toAst.js"></script>
+    <script src="js/dateTimePicker-forDate/datedropper.min.js"></script>
     <script src="js/dateTimePicker-forTime/timedropper.min.js"></script>
     <script src="js/buttonMaterialUI/buttonMaterialUI.min.js"></script>
     <script src="js/lightGallery/lightgallery.min.js"></script>
 
-	<script src="js/render-form.js"></script>
-	<script src="js/render-custom-form.js"></script>
-	<script src="js/render-custom-hide-form.js"></script>
-	<script src="js/render-restaurant-menu.js"></script>
-	<script src="js/render-cart-item.js"></script>
-  <script src="js/render-single-shopItem.js"></script>
-  <script src="js/render-booking.js"></script>
-  <script src="js/render-services.js"></script>
+    <script src="js/render-form.js"></script>
+    <script src="js/render-custom-form.js"></script>
+    <script src="js/render-custom-hide-form.js"></script>
+    <script src="js/render-restaurant-menu.js"></script>
+    <script src="js/render-cart-item.js"></script>
+    <script src="js/render-single-shopItem.js"></script>
+    <script src="js/render-booking.js"></script>
+    <script src="js/render-services.js"></script>
     <script src="js/jstorage.js"></script>
     <script src="js/jquery.blockUI.js"></script>
     <script src="js/jquery-ui.js"></script>
     <script src="js/eventsWork.js"></script>
     <script src="js/resourceWork.js"></script>
-	<script src="js/formsWork.js"></script>
-  <script src="js/bookingWork.js"></script>
-	<script src="js/restaurantMenuWork.js"></script>
-	<script src="js/cartWork.js"></script>
+    <script src="js/formsWork.js"></script>
+    <script src="js/bookingWork.js"></script>
+    <script src="js/restaurantMenuWork.js"></script>
+    <script src="js/cartWork.js"></script>
 
     <!-- lightGallery-->
     <link rel="stylesheet" href="js/lightGallery/lightgallery.css">
@@ -64,12 +64,12 @@
 </head>
 
 <body>
-  <button id="clearJsStorage" class="hidden"></button>
-	<div class="startScan-wrapper hidden">
-          <h1>Please Scan QR for your Application</h1>
-          <button id="startScan" >Start Scan</button>
-          <div class="Scan-spiner hidden"></div>
-        </div>
+    <button id="clearJsStorage" class="hidden"></button>
+    <div class="startScan-wrapper hidden">
+        <h1>Please Scan QR for your Application</h1>
+        <button id="startScan">Start Scan</button>
+        <div class="Scan-spiner hidden"></div>
+    </div>
 
     <div data-role="header" data-position="fixed" class="classMenu">
         <div class="menu-icon" onclick="onClickButtonMenu()">
@@ -85,44 +85,44 @@
     <div id="container" class="mainContainerApp hidden"></div>
 
     <div class="container-statusBooking hidden">
-    <div class="cart-top-line"><button class="back-to-container-from-book"></button>Your book status list</div>
-    <div class="status-list"></div>
-  </div>
-     <div class="bookingServices-container hidden">
-      <div class="cart-top-line"><button class="back-to-timelines"></button>Services</div>
-      <div  id='bookingServices'></div>
-      <button type="button" class="btn-order-booking">Order Booking</button>
+        <div class="cart-top-line"><button class="back-to-container-from-book"></button>Your book status list</div>
+        <div class="status-list"></div>
+    </div>
+    <div class="bookingServices-container hidden">
+        <div class="cart-top-line"><button class="back-to-timelines"></button>Services</div>
+        <div id='bookingServices'></div>
+        <button type="button" class="btn-order-booking">Order Booking</button>
     </div>
     <div class="container-selectFreeBookTime hidden">
         <div class="cart-top-line"><button class="back-to-container-from-book"></button>Select free time</div>
-      <p>We can offer you these times:</p>
-      <select  id="select-freeTimeBook">
+        <p>We can offer you these times:</p>
+        <select id="select-freeTimeBook">
       </select>
-      <button type="button" class="btn-order-booking-ForFreeTime" id="bookAfterConfirmFreeTime" >Book</button>
+        <button type="button" class="btn-order-booking-ForFreeTime" id="bookAfterConfirmFreeTime">Book</button>
     </div>
     <div class="dateTimePicker-container hidden">
-      <div class="cart-top-line"><button class="back-to-services"></button>Select Date</div>
-      <label for="dateTimePicker-date">Select date</label>
-      <input type="text" id="dateTimePicker-date" value="Date" />
-      <label for="dateTimePicker-time">Select time</label>
-      <input type="text" id="dateTimePicker-time" value="Time" />
-      <button class="btn-confirmDateForBook">Book</button>
-      <input type="hidden" class="thisServiceId" />
-      <input type="hidden" class="thisDuration" />
-      <input type="hidden" class="thisIdForTimeLine" />
-      <input type="hidden" class="thisIsConfirm" />
+        <div class="cart-top-line"><button class="back-to-services"></button>Select Date</div>
+        <label for="dateTimePicker-date">Select date</label>
+        <input type="text" id="dateTimePicker-date" value="Date" />
+        <label for="dateTimePicker-time">Select time</label>
+        <input type="text" id="dateTimePicker-time" value="Time" />
+        <button class="btn-confirmDateForBook">Book</button>
+        <input type="hidden" class="thisServiceId" />
+        <input type="hidden" class="thisDuration" />
+        <input type="hidden" class="thisIdForTimeLine" />
+        <input type="hidden" class="thisIsConfirm" />
     </div>
 
     <div class="order-booking hidden">
-      <div class="cart-top-line"><button class="btn-back-toservices"></button>Your Order Info</div>
-      <label for="nameOrder">Name</label>
-  		<input type="text" id="booking-nameOrder" class="nameOrder required"/>
-      <label for="phoneOrder">Phone Number</label>
-  		<input type="text" id="booking-phoneOrder" class="phoneOrder required"/>
-      <label for="emailOrder">Email</label>
-  		<input type="text"  id="booking-emailOrder" class="emailOrder required"/>
+        <div class="cart-top-line"><button class="btn-back-toservices"></button>Your Order Info</div>
+        <label for="nameOrder">Name</label>
+        <input type="text" id="booking-nameOrder" class="nameOrder required" />
+        <label for="phoneOrder">Phone Number</label>
+        <input type="text" id="booking-phoneOrder" class="phoneOrder required" />
+        <label for="emailOrder">Email</label>
+        <input type="text" id="booking-emailOrder" class="emailOrder required" />
 
-      <span class="hidden">
+        <span class="hidden">
         <label for="confirmMethod">Confirm Method</label>
             <select id="confirmMethod" class="required">
             <option value="SMS">SMS</option>
@@ -132,43 +132,39 @@
       </span>
 
 
-      <label for="commentOrder">Your Order Comments</label>
-  		<textarea id="booking-commentOrder" class="commentOrder"></textarea>
-  		<button class="btn-send-order-booking">Book</button>
+        <label for="commentOrder">Your Order Comments</label>
+        <textarea id="booking-commentOrder" class="commentOrder"></textarea>
+        <button class="btn-send-order-booking">Book</button>
 
     </div>
-	  <div class="cart hidden">
-	  <input type="hidden" name="cartRestaurantId" value=""/>
-		<div class="cart-top-line"><button class="back-to-container"></button>Your Order</div>
-			<div id="cart">
+    <div class="cart hidden">
+        <input type="hidden" name="cartRestaurantId" value="" />
+        <div class="cart-top-line"><button class="back-to-container"></button>Your Order</div>
+        <div id="cart">
 
 
 
-			</div>
-		<div class="totalPrice">Total $ <b>0</b></div>
-		<button class="btn-order">Order</button>
-		</div>
-	<div id="orderInfo" class="hidden">
-	<div class="cart-top-line"><button class="back-to-cart"></button>Your Order Info</div>
-    <label for="nameOrder">Name</label>
-		<input type="text" id="nameOrder" class="nameOrder required"/>
-    <label for="phoneOrder">Phone Number</label>
-		<input type="text" id="phoneOrder" class="phoneOrder required"/>
-    <label for="emailOrder">Email</label>
-		<input type="text"  id="emailOrder" class="emailOrder required"/>
-    <label for="commentOrder">Your Order Comments</label>
-		<textarea id="commentOrder" class="commentOrder"></textarea>
-		<button class="placeAnOrder btn-order">Buy</button>
-	</div>
-  <div class="singleItem hidden">
-    	<div class="cart-top-line"><button class="back-to-container"></button></div>
-    <div id="singleItem"> </div>
-  </div>
-
+        </div>
+        <div class="totalPrice">Total $ <b>0</b></div>
+        <button class="btn-order">Order</button>
+    </div>
+    <div id="orderInfo" class="hidden">
+        <div class="cart-top-line"><button class="back-to-cart"></button>Your Order Info</div>
+        <label for="nameOrder">Name</label>
+        <input type="text" id="nameOrder" class="nameOrder required" />
+        <label for="phoneOrder">Phone Number</label>
+        <input type="text" id="phoneOrder" class="phoneOrder required" />
+        <label for="emailOrder">Email</label>
+        <input type="text" id="emailOrder" class="emailOrder required" />
+        <label for="commentOrder">Your Order Comments</label>
+        <textarea id="commentOrder" class="commentOrder"></textarea>
+        <button class="placeAnOrder btn-order">Buy</button>
+    </div>
+    <div class="singleItem hidden">
+        <div class="cart-top-line"><button class="back-to-container"></button></div>
+        <div id="singleItem"> </div>
+    </div>
     <div id="custom-hide-container" class="hidden">
-
-
-
     </div>
     <script src="js/MobileView.js"></script>
     <script>
