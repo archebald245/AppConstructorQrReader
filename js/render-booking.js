@@ -69,13 +69,13 @@ var renderBooking = function renderBooking(thisInstitution, sortByService) {
           'time',
           null,
           'Open Time - ',
-          data.OpenTime
+          data.OpenTime.split("T")[1]
         ),
         React.createElement(
           'time',
           null,
           'Close Time - ',
-          data.CloseTime
+          data.CloseTime.split("T")[1]
         ),
         React.createElement(
           'p',
@@ -131,7 +131,7 @@ var renderBooking = function renderBooking(thisInstitution, sortByService) {
         React.createElement(
           'time',
           null,
-          'Open Time - ',
+          'Duration Time - ',
           data.Duration
         ),
         React.createElement(
@@ -167,110 +167,110 @@ var renderBooking = function renderBooking(thisInstitution, sortByService) {
 
   ReactDOM.render(React.createElement(Institution, { data: thisInstitution }), document.getElementById("custom-container-booking"));
 };
-// var renderBooking = function(thisInstitution, sortByService) {
-//     var Institution =  React.createClass({
-//       componentDidMount: function(){
-//                 addListenerToClickBookService();
-//                },
-//           render: function() {
-//             var data = this.props.data;
-//             var CollectionOfElementsInstitution;
-//             var ArrayOfObjectServices = [];
-//                   if(sortByService != true){
-//                     CollectionOfElementsInstitution = data.BookResources.map(function(item){
-//                       if(item.BookServiceProvides.length > 0){
-//                       return (
-//                            <TimeLine data={item} /> 
-//                       );
-//                       }
-//                     });
-//                   }else{
-//                   CollectionOfElementsInstitution =  data.BookResources.map(function(resources){
-//                         return(
-//                             <CollectionService data={resources.BookServiceProvides} isconfirm={resources.NeedConfirmation} />
-//                         );
-//                     }) ;
-//                 }
-//             return (
-//                   <div>
-//                     <h1>Institution - {data.Name}</h1>
-//                     {CollectionOfElementsInstitution}
-//                     <input type='hidden' className='value-sortByService' value={sortByService} />
-//                     <input type='hidden' className='value-currentInstitution' value={data.Id} />
-//                     <button  type="button" className={sortByService ? "btn-order-booking" : "hidden btn-order-booking"}>Order Booking</button>
-//                 </div>
-//                 );
-//           }
-//       });
+/*var renderBooking = function(thisInstitution, sortByService) {
+    var Institution =  React.createClass({
+      componentDidMount: function(){
+                addListenerToClickBookService();
+               },
+          render: function() {
+            var data = this.props.data;
+            var CollectionOfElementsInstitution;
+            var ArrayOfObjectServices = [];
+                  if(sortByService != true){
+                    CollectionOfElementsInstitution = data.BookResources.map(function(item){
+                      if(item.BookServiceProvides.length > 0){
+                      return (
+                           <TimeLine data={item} /> 
+                      );
+                      }
+                    });
+                  }else{
+                  CollectionOfElementsInstitution =  data.BookResources.map(function(resources){
+                        return(
+                            <CollectionService data={resources.BookServiceProvides} isconfirm={resources.NeedConfirmation} />
+                        );
+                    }) ;
+                }
+            return (
+                  <div>
+                    <h1>Institution - {data.Name}</h1>
+                    {CollectionOfElementsInstitution}
+                    <input type='hidden' className='value-sortByService' value={sortByService} />
+                    <input type='hidden' className='value-currentInstitution' value={data.Id} />
+                    <button  type="button" className={sortByService ? "btn-order-booking" : "hidden btn-order-booking"}>Order Booking</button>
+                </div>
+                );
+          }
+      });
 
-// var TimeLine = React.createClass({
+var TimeLine = React.createClass({
 
-//   render: function() {
-//     var data = this.props.data;
-//     var image;
-//     if(data.ImagePath != null){
-//       image = <img src={data.ImagePath} />;
-//     }else{
-//       image = null;
-//     }
-//       return (
-//           <div className='row-elementInstitution row-elementTimeLine'>
-//               {image}
-//               <p className='name-elementInstitution'>Name - {data.Name}</p>
-//               <time>Open Time - {data.OpenTime}</time>
-//               <time>Close Time - {data.CloseTime}</time>
-//               <p>Start book day - {data.StartBookDay}</p>
-//               <p>Step Minutes - {data.StepMinutes}</p>
-//               <p>Count Days For Book - {data.CountDaysForBook}</p>
-//               <input type='hidden' className='timeLineId' value={data.Id} />
-//           </div>
-//           );
-//   }
-// });
+  render: function() {
+    var data = this.props.data;
+    var image;
+    if(data.ImagePath != null){
+      image = <img src={data.ImagePath} />;
+    }else{
+      image = null;
+    }
+      return (
+          <div className='row-elementInstitution row-elementTimeLine'>
+              {image}
+              <p className='name-elementInstitution'>Name - {data.Name}</p>
+              <time>Open Time - {data.OpenTime.split("T")[1]}</time>
+              <time>Close Time - {data.CloseTime.split("T")[1]}</time>
+              <p>Start book day - {data.StartBookDay}</p>
+              <p>Step Minutes - {data.StepMinutes}</p>
+              <p>Count Days For Book - {data.CountDaysForBook}</p>
+              <input type='hidden' className='timeLineId' value={data.Id} />
+          </div>
+          );
+  }
+});
 
-// var Service = React.createClass({
-//   render: function() {
-//     var data = this.props.data;
-//     var isconfirm = this.props.isconfirm;
-//     var image;
-//     if(data.ImagePath != null){
-//       image = <img src={data.ImagePath} />;
-//     }else{
-//       image = null;
-//     }
-//       return (
-//           <div className='row-elementInstitution'>
-//               {image}
-//               <p className='name-elementInstitution'>Name - {data.Name}</p>
-//               <p>Description - {data.Description}</p>
-//               <time>Open Time - {data.Duration}</time>
-//               <button className='btn-bookThisService'>Book</button>
-//               <input type='hidden' className='serviceId' value={data.Id} />
-//               <input type='hidden' className='serviceDuration' value={data.Duration} />
-//               <input type="hidden" value={data.BookResourceId} className="thisTimeLineId" />
-//               <input type="hidden" value={isconfirm} className="thisTimeLineIsConfirm" />
-//               <input type="hidden" value={data.Name} className="servicesName" />
-//           </div>
-//           );
-//   }
-// });
+var Service = React.createClass({
+  render: function() {
+    var data = this.props.data;
+    var isconfirm = this.props.isconfirm;
+    var image;
+    if(data.ImagePath != null){
+      image = <img src={data.ImagePath} />;
+    }else{
+      image = null;
+    }
+      return (
+          <div className='row-elementInstitution'>
+              {image}
+              <p className='name-elementInstitution'>Name - {data.Name}</p>
+              <p>Description - {data.Description}</p>
+              <time>Duration Time - {data.Duration}</time>
+              <button className='btn-bookThisService'>Book</button>
+              <input type='hidden' className='serviceId' value={data.Id} />
+              <input type='hidden' className='serviceDuration' value={data.Duration} />
+              <input type="hidden" value={data.BookResourceId} className="thisTimeLineId" />
+              <input type="hidden" value={isconfirm} className="thisTimeLineIsConfirm" />
+              <input type="hidden" value={data.Name} className="servicesName" />
+          </div>
+          );
+  }
+});
 
-// var CollectionService = React.createClass({
-//   render: function() {
-//     var data = this.props.data;
-//     var isconfirm = this.props.isconfirm;
-//     var collectionServiceForRender = data.map(function(service){
-//         return(
-//           <Service data={service} isconfirm={isconfirm} />
-//         );
-//     });
-//       return (
-//         <div>
-//           {collectionServiceForRender}</div>
-//           );
-//   }
-// });
+var CollectionService = React.createClass({
+  render: function() {
+    var data = this.props.data;
+    var isconfirm = this.props.isconfirm;
+    var collectionServiceForRender = data.map(function(service){
+        return(
+          <Service data={service} isconfirm={isconfirm} />
+        );
+    });
+      return (
+        <div>
+          {collectionServiceForRender}</div>
+          );
+  }
+});
 
 
-// ReactDOM.render(<Institution data={thisInstitution}/>,document.getElementById("custom-container-booking"));
-// }
+ReactDOM.render(<Institution data={thisInstitution}/>,document.getElementById("custom-container-booking"));
+}*/
