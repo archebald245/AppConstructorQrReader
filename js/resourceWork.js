@@ -15,13 +15,12 @@ function searchResourcesAndReplacePatch(jsonObject) {
     if (jsonObject.Restaurants != null) {
         jsonObject.Restaurants = resourcesOfRestaurantMenus(jsonObject.Restaurants, storePath);
     }
-    if(jsonObject.Institutions != null){
+    if (jsonObject.Institutions != null) {
         jsonObject.Institutions = resourcesOfBooking(jsonObject.Institutions, storePath);
     }
     if ($.jStorage.get('resources') != null) {
         resourcesToDownload = compareResouces($.jStorage.get('resources'), resources, storePath);
-    } 
-    else {
+    } else {
         resourcesToDownload = resources;
     }
     $.jStorage.set('replaceImagePachJson', JSON.stringify(jsonObject));
@@ -42,7 +41,7 @@ function resourcesOfCellContainer(cellContainer, storePath) {
         if ((cellContainer[i].ContentTypeId == 11)) {
             cellContainer[i] = resourcesOfBoxConteiner(cellContainer[i], storePath);
         }
-        if(cellContainer[i].ContentTypeId == 8){
+        if (cellContainer[i].ContentTypeId == 8) {
             cellContainer[i] = resourcesOfGallary(cellContainer[i], storePath);
         }
     }
@@ -52,6 +51,10 @@ function resourcesOfCellContainer(cellContainer, storePath) {
 function resourcesOfBoxConteiner(boxConteiner, storePath) {
     var decodedJson = JSON.parse(Base64.decode(boxConteiner.Json));
     for (var i = 0; i < decodedJson.elements.length; i++) {
+        if (decodedJson.elements[i].ContentTypeId == 8) {
+            resourcesPushInArray(decodedJson.elements[i]);
+            resourcesOfGallary(decodedJson.elements[i], storePath);
+        }
         if (decodedJson.elements[i].IsDownloadable == true) {
             resourcesPushInArray(decodedJson.elements[i]);
             decodedJson.elements[i].Value = replacementPathImages(decodedJson.elements[i].Value, decodedJson.elements[i].Resourceses, storePath);
@@ -87,25 +90,27 @@ function resourcesOfRestaurantMenus(restaurants, storePath) {
 
     return restaurants;
 }
+
 function resourcesOfBooking(institutions, storePath) {
     institutions = replacePathToImageInstitution(institutions);
-   $(institutions).each(function(){
-        $(this.BookResources).each(function(){ 
-            if(this.ImagePath != null){
+    $(institutions).each(function() {
+        $(this.BookResources).each(function() {
+            if (this.ImagePath != null) {
                 resources.push(this.ImagePath);
                 this.ImagePath = replacementPathImagesRestaurantMenu(this.ImagePath, storePath);
             }
-            $(this.BookServiceProvides).each(function(){
-            if(this.ImagePath != null){
-                resources.push(this.ImagePath);
-                this.ImagePath = replacementPathImagesRestaurantMenu(this.ImagePath, storePath);
-            }
+            $(this.BookServiceProvides).each(function() {
+                if (this.ImagePath != null) {
+                    resources.push(this.ImagePath);
+                    this.ImagePath = replacementPathImagesRestaurantMenu(this.ImagePath, storePath);
+                }
             });
         });
     });
 
     return institutions;
 }
+
 function resourcesOfGallary(gallary, storePath) {
     $(gallary).each(function() {
         $(this.Resourceses).each(function() {
@@ -116,10 +121,6 @@ function resourcesOfGallary(gallary, storePath) {
 
     return gallary;
 }
-
-
-
-
 
 function resourcesPushInArray(element) {
     for (var i = 0; i < element.Resourceses.length; i++) {
@@ -162,6 +163,10 @@ function replacementPathImages(jsonObjectValue, arrayResources, storePath) {
         if (m[1] != "/Content/Images/noimage.gif") {
             urls.push(m[1]);
         }
+    }
+    rexPdf = /<span.+?data-locationpdf=[\"'](.+?)[\"'].*?>/g;
+    while (m = rexPdf.exec(jsonObjectValue)) {
+        urls.push(m[1]);
     }
     for (var i = 0; i < urls.length; i++) {
         jsonObjectValue = jsonObjectValue.replace(urls[i], storePath + arrayResources[i].FileName);
@@ -233,7 +238,8 @@ function download(fileName) {
         console.log(localPath);
         var ft = new FileTransfer();
         ft.download(remoteFile,
-            localPath, function(entry) {
+            localPath,
+            function(entry) {
                 countFileDownload = countFileDownload + 1;
                 if ((countFileDownload + countFileDownloadFail) === resourcesArr.length) {
                     callback();
@@ -263,20 +269,21 @@ function replacePathToImageRestaurantMenu(restaurants) {
     });
     return restaurants;
 }
+
 function replacePathToImageInstitution(institutions) {
-    $(institutions).each(function(){
-        $(this.BookResources).each(function(){
-            if(this.ImagePath == null){
+    $(institutions).each(function() {
+        $(this.BookResources).each(function() {
+            if (this.ImagePath == null) {
                 this.ImagePath = null
-            }else{
+            } else {
                 this.ImagePath = applicationData.UrlForUpdateApp + this.ImagePath;
             }
-            $(this.BookServiceProvides).each(function(){
-                if(this.ImagePath == null){
+            $(this.BookServiceProvides).each(function() {
+                if (this.ImagePath == null) {
                     this.ImagePath = null
-                }else{
+                } else {
                     this.ImagePath = applicationData.UrlForUpdateApp + this.ImagePath;
-                } 
+                }
             });
         });
     });

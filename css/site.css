@@ -28,7 +28,7 @@ form{
     /*height:80px;*/
     height: 55px;
     /*padding:25px 0 5px 0;*/
-    padding:10px 0 5px 0;
+    padding:5px 0 5px 0;
     z-index:1000;
     width:100%;
     margin-top:-1px;
@@ -41,15 +41,15 @@ form{
     bottom:0;
 }
 .menu-icon{
-    width:96px;
-    height:40px;
-    /*background:url(../baseimages/menuIcon.gif) no-repeat 0 50%;*/
-    background-size:contain;
-    text-indent:-9999px;
-    margin-left:10px;
-    cursor:pointer;
+    width: 37px;
+    height: 46px;
+    text-indent: -9999px;
+    margin-left: 10px;
+    cursor: pointer;
     display: block;
-
+    border: 2px solid black;
+    border-radius: 5px;
+    padding-left: 3px;
 }
 .menu-icon-right {
     position: absolute;
@@ -887,8 +887,113 @@ input[type="checkbox"].SwitcherFormElement:checked + div > div {
 /*~~~~~~~~~~~~STYLING MENU~~~~~~~~~~~~~~*/
 
 .classMenu .menu-icon>div {
-    width: 30px;
+    width: 27px;
     height: 5px;
     background-color: #555353;
-    margin: 5px 0;
+    margin: 7px 0;
+}
+
+.classSwiperMenu.left-menu {
+    width: 3px;
+    height: 100%;
+    background-color: #C5C5C5;
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    z-index: 99999;
+    display: none;
+}
+
+.classSwiperMenu.right-menu {
+    width: 3px;
+    height: 100%;
+    background-color: #C5C5C5;
+    position: fixed;
+    top: 0%;
+    right: 0%;
+    z-index: 99999;
+    display: none;
+}
+
+.menu-right {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 12.5px 15px 12.5px 0;
+    border-color: transparent #C5C5C5 transparent transparent;
+    position: absolute;
+    content: "";
+    top: 50%;
+    right: 0%;
+    z-index: 100;
+}
+
+.menu-left {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 12.5px 0 12.5px 15px;
+    border-color: transparent transparent transparent #C5C5C5;
+    position: absolute;
+    content: "";
+    top: 50%;
+    left: 0%;
+    z-index: 100;
+}
+
+.first {
+    background-image: url(../baseimages/booking.png);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.cart-backgroundImage {
+    background-image: url(../baseimages/cart2.png);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.swiper-container {
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    width: 100%;
+}
+
+.pdf-block {
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    display: block;
+    background: url(../baseimages/pdf-small.png) no-repeat 0 50%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+
+/* Tooltip */
+
+.custom-tooltip+.tooltip>.tooltip-inner {
+    background-color: #252525;
+    color: #FFFFFF;
+    border: 1px solid black;
+    padding: 15px;
+    font-size: 16px;
+}
+
+.tooltip {
+    overflow: hidden;
+    max-width: 50%;
+}
+
+.custom-tooltip+.tooltip.top>.tooltip-arrow {
+    border-top: 5px solid black;
+}
+
+.custom-tooltip+.tooltip.bottom>.tooltip-arrow {
+    border-bottom: 5px solid black;
 }
