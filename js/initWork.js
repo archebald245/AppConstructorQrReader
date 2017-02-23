@@ -103,7 +103,7 @@ function onCheckJson() {
 function checkConnection() {
     var networkState = navigator.connection.type;
     if (networkState != Connection.NONE) {
-        var siteUrl = "http://appconstructornew.newlinetechnologies.net"
+        var siteUrl = "http://appconstructor.newline.tech"
 
         applicationData = JSON.parse($.jStorage.get('appData'));
         var projectId = applicationData.ProjectId;
