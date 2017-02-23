@@ -1,6 +1,8 @@
 function goToPage(index) {
     indexPage = index;
-    setLastOpenPage(indexPage);
+    if (applicationData.IsTrackingLastPage == true) {
+        setLastOpenPage(indexPage);
+    }
     showActivePageInMenu(index);
     $("#container").empty();
     slideUp();
