@@ -65,6 +65,7 @@ var renderBooking = function renderBooking(thisInstitution, sortByService) {
           'Name - ',
           data.Name
         ),
+
         data.UseDayTime ? data.DayForBookResource.map(function (day) {
           return React.createElement(
             'div',
@@ -242,6 +243,7 @@ var TimeLine = React.createClass({
           <div className='row-elementInstitution row-elementTimeLine'>
               {image}
               <p className='name-elementInstitution'>Name - {data.Name}</p>
+
               {data.UseDayTime ?
                data.DayForBookResource.map(function(day){
                   return <div><time>Open Time {day.Day} - {day.OpenTime.split("T")[1]}</time>
@@ -251,6 +253,7 @@ var TimeLine = React.createClass({
               <time>Open Time - {data.OpenTime.split("T")[1]}</time>
               <time>Close Time - {data.CloseTime.split("T")[1]}</time>
               </div>}
+
               <p>Start book day - {data.StartBookDay}</p>
               <p>Step Minutes - {data.StepMinutes}</p>
               <p>Count Days For Book - {data.CountDaysForBook}</p>
