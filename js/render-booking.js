@@ -65,17 +65,42 @@ var renderBooking = function renderBooking(thisInstitution, sortByService) {
           'Name - ',
           data.Name
         ),
-        React.createElement(
-          'time',
+        data.UseDayTime ? data.DayForBookResource.map(function (day) {
+          return React.createElement(
+            'div',
+            null,
+            React.createElement(
+              'time',
+              null,
+              'Open Time ',
+              day.Day,
+              ' - ',
+              day.OpenTime.split("T")[1]
+            ),
+            React.createElement(
+              'time',
+              null,
+              'Close Time ',
+              day.Day,
+              ' - ',
+              day.CloseTime.split("T")[1]
+            )
+          );
+        }) : React.createElement(
+          'div',
           null,
-          'Open Time - ',
-          data.OpenTime.split("T")[1]
-        ),
-        React.createElement(
-          'time',
-          null,
-          'Close Time - ',
-          data.CloseTime.split("T")[1]
+          React.createElement(
+            'time',
+            null,
+            'Open Time - ',
+            data.OpenTime.split("T")[1]
+          ),
+          React.createElement(
+            'time',
+            null,
+            'Close Time - ',
+            data.CloseTime.split("T")[1]
+          )
         ),
         React.createElement(
           'p',
@@ -217,8 +242,15 @@ var TimeLine = React.createClass({
           <div className='row-elementInstitution row-elementTimeLine'>
               {image}
               <p className='name-elementInstitution'>Name - {data.Name}</p>
+              {data.UseDayTime ?
+               data.DayForBookResource.map(function(day){
+                  return <div><time>Open Time {day.Day} - {day.OpenTime.split("T")[1]}</time>
+                         <time>Close Time {day.Day} - {day.CloseTime.split("T")[1]}</time></div>
+               }) :
+              <div>
               <time>Open Time - {data.OpenTime.split("T")[1]}</time>
               <time>Close Time - {data.CloseTime.split("T")[1]}</time>
+              </div>}
               <p>Start book day - {data.StartBookDay}</p>
               <p>Step Minutes - {data.StepMinutes}</p>
               <p>Count Days For Book - {data.CountDaysForBook}</p>

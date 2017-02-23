@@ -1,20 +1,37 @@
 function createMenu() {
-    for (var i = 0; i < applicationData.Pages.length; i++) {
-        if (!!applicationData.Pages[i].IsStartPage) {
-            indexPage = applicationData.Pages[i].Id;
+    if (getLastOpenPage() == null) {
+        for (var i = 0; i < applicationData.Pages.length; i++) {
+            if (!!applicationData.Pages[i].IsStartPage) {
+                indexPage = applicationData.Pages[i].Id;
+                setLastOpenPage(indexPage);
+            }
+        }
+    } else {
+        var isContent = false;
+        indexPage = getLastOpenPage();
+        for (var i = 0; i < applicationData.Pages.length; i++) {
+            if (applicationData.Pages[i].Id == indexPage) {
+                isContent = true;
+            }
+        }
+        if (!isContent) {
+            for (var i = 0; i < applicationData.Pages.length; i++) {
+                if (!!applicationData.Pages[i].IsStartPage) {
+                    indexPage = applicationData.Pages[i].Id;
+                    setLastOpenPage(indexPage);
+                }
+            }
         }
     }
-    if (indexPage == 0) {
-        indexPage = applicationData.Pages[0].Id;
-    }
+
+    // if (indexPage == 0) {
+    //     indexPage = applicationData.Pages[0].Id;
+    // }
+
     if (applicationData.Menu != null) {
         var menu = getPositionMenu(applicationData.Menu.Position);
         var menuItems = applicationData.Menu.MenuItems;
-        var style = applicationData.Menu.Styles + "; display:block";
-        var sandwichStyle = applicationData.Menu.SandwichColor;
-        var sandwichColor = sandwichStyle.split(":")[1];
         var div;
-
         $(menu).html("");
         var label;
         for (var i = 0; i < menuItems.length; i++) {
@@ -25,27 +42,54 @@ function createMenu() {
             }
             div.appendTo(menu);
         }
-        if (applicationData.Menu.Position == "left-swipe" || applicationData.Menu.Position == "right-swipe") {
-            $(".menu-icon div").attr("style", sandwichStyle);
-            $(".classSwipeDropList").attr("style", style);
-            $(".classSwipeDropList").css("color", sandwichColor);
+        var style = applicationData.Menu.Styles + "; display:block";
+        var sandwichStyle = applicationData.Menu.SandwichColor;
+        if (sandwichStyle == null) {
+            sandwichStyle = "background-color:rgb(85, 83, 83)";
+        }
+        if (style == null) {
+            style = "background-color:rgb(94, 94, 94); display:block";
+        }
+        var sandwichColor = sandwichStyle.split(":")[1];
+        if (applicationData.Menu.Position != null) {
+            if (applicationData.Menu.Position == "left-swipe" || applicationData.Menu.Position == "right-swipe") {
+                $(".menu-icon div").attr("style", sandwichStyle);
+                $(".classSwipeDropList").attr("style", style);
+                $(".classSwipeDropList").css("color", sandwichColor);
 
-            $(".classSwipeDropList>div").css({
-                'border-bottom': '1px solid ' + sandwichColor
-            });
-        } else {
-            $(".menu-icon div").attr("style", sandwichStyle);
-            $(".classMenu").attr("style", style);
+                $(".classSwipeDropList>div").css({
+                    'border-bottom': '1px solid ' + sandwichColor
+                });
 
-            $(".classDropdownList").attr("style", style);
-            $(".classDropdownList").css("color", sandwichColor);
+                if ($(".menu-triangle").hasClass("menu-left")) {
+                    $(".menu-left").css({
+                        'border-color': 'transparent transparent transparent ' + style.split(";")[0].split(":")[1]
+                    });
+                    $(".classSwiperMenu.left-menu").attr("style", style);
+                }
+                if ($(".menu-triangle").hasClass("menu-right")) {
+                    $(".menu-right").css({
+                        'border-color': 'transparent ' + style.split(";")[0].split(":")[1] + ' transparent transparent'
+                    });
+                    $(".classSwiperMenu.right-menu").attr("style", style);
+                }
+            } else {
+                $(".menu-icon div").attr("style", sandwichStyle);
+                $(".classMenu").attr("style", style);
 
-            $(".classDropdownList>div").css({
-                'border-bottom': '1px solid ' + sandwichColor
-            });
-            $(".classDropdownList").css({
-                'border-top': '2px solid ' + sandwichColor
-            });
+                $(".classDropdownList").attr("style", style);
+                $(".classDropdownList").css("color", sandwichColor);
+
+                $(".classDropdownList>div").css({
+                    'border-bottom': '1px solid ' + sandwichColor
+                });
+                $(".classDropdownList").css({
+                    'border-top': '2px solid ' + sandwichColor
+                });
+                $(".menu-icon").css({
+                    'border': '2px solid ' + sandwichColor
+                });
+            }
         }
         addListener();
         slideUp();
@@ -79,11 +123,19 @@ function openMenu() {
 
 function showActivePageInMenu(page) {
     var activeColor = applicationData.Menu.Styles;
-    var borderColor = applicationData.Menu.SandwichColor.split(":")[1];
+    var borderColor = applicationData.Menu.SandwichColor;
+    if (borderColor == null) {
+        borderColor = "background-color:rgb(85, 83, 83)";
+    }
+    if (activeColor == null) {
+        activeColor = "background-color:rgb(94, 94, 94)"
+    }
+    borderColor = borderColor.split(":")[1];
     $(".classPageLink.activePage").attr('style', activeColor);
     $(".classPageLink.activePage").css({
         'border-bottom': '1px solid ' + borderColor
     });
+
     $(".classPageLink").removeClass("activePage");
 
     var colors = activeColor.replace(/[^\d,]/g, '').split(',');
@@ -121,7 +173,8 @@ function getPositionMenu(positionMenu) {
             $('div.menu-icon').hide();
             $('.classMenu').hide();
             $('.classSwipeDropList').addClass('side-menu-left');
-
+            $('.menu-triangle').addClass('menu-left');
+            $('.classSwiperMenu').addClass('left-menu');
             $("body").swipe({
                 swipe: function(event, direction, distance, duration, fingerCount, fingerData) {
                     if (swipeMenuInGallary == false) {
@@ -163,6 +216,8 @@ function getPositionMenu(positionMenu) {
             $('div.menu-icon').hide()
             $('.classMenu').hide();
             $('.classSwipeDropList').addClass('side-menu-right');
+            $('.menu-triangle').addClass('menu-right');
+            $('.classSwiperMenu').addClass('right-menu');
             $("body").swipe({
                 swipe: function(event, direction, distance, duration, fingerCount, fingerData) {
                     if (swipeMenuInGallary == false) {

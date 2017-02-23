@@ -46,6 +46,7 @@ function addListenerToClickBookService() {
         if ($("#container").find(".row-elementInstitution").length > 0) {
             $("#container, .classMenu").removeClass("hidden");
             scrollTop();
+
         } else {
             $(".bookingServices-container").removeClass("hidden");
             scrollTop();
@@ -135,19 +136,39 @@ function addListenerToClickBookService() {
     });
     $(".btn-confirmDateForBook").unbind("click");
     $(".btn-confirmDateForBook").click(function() {
+        var idService = listServiceForBooking[0].BookDateTime.BookServiceProvideId;
+        var needConfirmation = Boolean($(".serviceId[value=" + idService + "]").siblings(".thisTimeLineIsConfirm").val());
         var timeVal = $("#dateTimePicker-time").val();
-        var dateVal = $("#dateTimePicker-date").val();
+        var dateVal = $("#dateTimePicker-date").val().split(" ")[0];
+        var selectedDay = $("#dateTimePicker-date").val().split(" ")[1];
+        var currentInstitutionId = Number($(".value-currentInstitution").val());
+        var bookResourceId = Number($(".serviceId").first().siblings(".thisTimeLineId").val());
+        var currentResourceObject = applicationData.Institutions.filter(function(e){return e.Id == currentInstitutionId})[0].BookResources.filter(function(e){return e.Id == bookResourceId})[0];
         if (timeVal != "Time" && dateVal != "Date") {
-            $(".dateTimePicker-container").addClass("hidden");
-            $(".order-booking").removeClass("hidden");
-            scrollTop();
-            var idService = listServiceForBooking[0].BookDateTime.BookServiceProvideId;
-            var needConfirmation = Boolean($(".serviceId[value=" + idService + "]").siblings(".thisTimeLineIsConfirm").val());
-            var bookResourceId = Number($(".serviceId").first().siblings(".thisTimeLineId").val());
-            sendOrderBooking(dateVal, timeVal, needConfirmation, bookResourceId);
-        } else {
-            alert("Please, select date for this service!");
-        }
+            if(currentResourceObject.UseDayTime){
+                var currentDayObject = currentResourceObject.DayForBookResource.filter(function(e){return e.Day == selectedDay});
+                if(currentDayObject.length == 0){
+                    alert("Sorry, resource don't work in this day of week!");
+                    return false;
+                }else{
+                currentResourceObject.CloseTime = currentDayObject[0].CloseTime;
+                currentResourceObject.OpenTime = currentDayObject[0].OpenTime;
+                $(".dateTimePicker-container").addClass("hidden");
+                $(".order-booking").removeClass("hidden");
+                scrollTop();
+                sendOrderBooking(dateVal, timeVal, needConfirmation, bookResourceId);
+                }
+            
+            }else{
+                $(".dateTimePicker-container").addClass("hidden");
+                $(".order-booking").removeClass("hidden");
+                scrollTop();
+                sendOrderBooking(dateVal, timeVal, needConfirmation, bookResourceId);
+            } 
+        }else {
+                alert("Please, select date for this service!");
+            }
+
     });
 }
 
