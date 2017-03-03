@@ -1,5 +1,33 @@
 function goToPage(index) {
     indexPage = index;
+    var thisPage = applicationData.Pages.filter(function(item){return item.Id == indexPage})[0];
+    if(thisPage.IsPrivate){
+        if($.jStorage.get('isLogin')){
+            return true;
+        }else{
+            var pageWithForm = [];
+            applicationData.Pages.forEach(function(page){
+                page.Rows.forEach(function(row){
+                    row.CellContents.forEach(function(cell){
+                        if(cell.ContentTypeId == 12){
+                            pageWithForm.push({
+                                pageId: page.Id,
+                                formId: cell.FormId
+                            })
+                        }
+                    })
+                });
+            });
+            pageWithForm.forEach(function(item){
+                applicationData.Forms.forEach(function(form){
+                    if(form.Id == item.formId && form.LoginForm){
+                        indexPage = item.pageId
+                    }
+                });
+            });
+        }
+        window.plugins.toast.showShortBottom("Login, please!");
+    }
     if (applicationData.IsTrackingLastPage == true) {
         setLastOpenPage(indexPage);
     }

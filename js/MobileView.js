@@ -612,6 +612,9 @@ function reactRender() {
                         $("#form-container").find("label").attr("style", styleLabel);
                         $("#form-container").find(".formSubmit").text(textSubmitButton);
                         $("#form-container").attr("id", "");
+                        if ($.jStorage.get('isLogin') && element.RegistrationForm) {
+                            $(".form-container").find('input, button, textarea').prop("disabled", true);
+                        }
                         if (data.CountFormColumn == 2) {
                             $(".formBlock").addClass("formHalf");
                             $(".form-quantity-columns-select").val(2);
@@ -766,6 +769,14 @@ function reactRender() {
                                 formToRender.Id = element.Id;
                                 formToRender.Name = element.Name;
                                 renderCustomForm(formToRender);
+                                if ($.jStorage.get('isLogin') && element.RegistrationForm) {
+                                    $(".custom-form-item").find('.form_' + element.Id).siblings().find("input, textarea, button").prop("disabled", true);
+                                    $(".SubmitBtnIdForm.form-submit-item[name=" + element.Id + "]").find("button").prop("disabled", true);
+                                }
+                                if ($.jStorage.get('isLogin') && element.LoginForm) {
+                                    $(".SubmitBtnIdForm.form-submit-item[name=" + element.Id + "]").find("button").removeClass("formSubmit").addClass("formLogout").text("Logout")
+                                    submitFormListener();
+                                }
                                 $("#custom-form-container").find("label").attr("style", styleLabel);
                                 $("#custom-form-container").attr("id", "");
                             }
