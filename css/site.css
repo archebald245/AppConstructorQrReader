@@ -973,7 +973,9 @@ input[type="checkbox"].SwitcherFormElement:checked + div > div {
     overflow: hidden;
     white-space: nowrap;
 }
-
+.pdf-block span{
+    padding-left: 30px;
+}
 
 /* Tooltip */
 
