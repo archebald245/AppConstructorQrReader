@@ -2,9 +2,7 @@ function goToPage(index) {
     indexPage = index;
     var thisPage = applicationData.Pages.filter(function(item){return item.Id == indexPage})[0];
     if(thisPage.IsPrivate){
-        if($.jStorage.get('isLogin')){
-            return true;
-        }else{
+        if(!$.jStorage.get('isLogin')){
             var pageWithForm = [];
             applicationData.Pages.forEach(function(page){
                 page.Rows.forEach(function(row){
@@ -25,8 +23,9 @@ function goToPage(index) {
                     }
                 });
             });
+              window.plugins.toast.showShortBottom("Login, please!");
         }
-        window.plugins.toast.showShortBottom("Login, please!");
+      
     }
     if (applicationData.IsTrackingLastPage == true) {
         setLastOpenPage(indexPage);
