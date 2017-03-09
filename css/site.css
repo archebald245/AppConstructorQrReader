@@ -65,6 +65,7 @@ form{
     position:absolute;
     z-index: 10000;
     width:100%;
+	overflow: scroll;
 }
  .classDropdownList-topMenu{
 
@@ -180,11 +181,10 @@ form{
     top: 0;
     right: 0;
 }
+
 .classSwipeDropList{
-    width: 0px;
-}
-.classSwipeDropList{
-    overflow: hidden;
+    overflow: scroll;
+	width: 0;
 }
 .classSwipeDropList > div{
     padding:7px 10px 7px 10px;
