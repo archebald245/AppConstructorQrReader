@@ -31,7 +31,7 @@ function goToPage(index) {
     if (applicationData.IsTrackingLastPage == true) {
         setLastOpenPage(indexPage);
     }
-    showActivePageInMenu(index);
+    showActivePageInMenu(indexPage);
     $("#container").empty();
     slideUp();
     $("html, body").animate({ scrollTop: -$(document).height() }, "fast");
@@ -46,12 +46,17 @@ function goToPage(index) {
     $(".my-youtube").attr("height", "auto");
 
     var pageStyles = "";
-
+    var pageWithGeneralBg = applicationData.Pages.filter(function(page){return page.BackgroundForApplication});
+    if(pageWithGeneralBg.length > 0){
+        pageStyles = pageWithGeneralBg[0].Style;
+    }else{
     applicationData.Pages.forEach(function(element) {
-        if (element.Id == index && element.Style != null && element.Style != "") {
+        if (element.Id == indexPage && element.Style != null && element.Style != "") {
             pageStyles = element.Style;
         }
     }, this);
+    }
+
 
     $("#container").attr("style", pageStyles);
     submitFormListener();

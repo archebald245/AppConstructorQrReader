@@ -86,7 +86,8 @@ function createMenu() {
                     'border-bottom': '1px solid ' + sandwichColor
                 });
                 $(".classDropdownList").css({
-                    'border-top': '2px solid ' + sandwichColor
+                    'border-top': '2px solid ' + sandwichColor,
+					'max-height': $(document).height() / 1.5
                 });
                 $(".menu-icon").css({
                     'border': '2px solid ' + sandwichColor
