@@ -251,6 +251,15 @@ form{
 .formBlock {
     padding-bottom: 5px;
 }
+.formHalf {
+    width: 50%;
+    display: inline-block;
+    margin: 0;
+}
+.formThird {
+    width: 33.3333%;
+    display: inline-block
+}
 .item-shop-img{
 display: block;
 width: 100%;
