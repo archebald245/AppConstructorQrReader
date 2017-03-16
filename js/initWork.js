@@ -42,6 +42,10 @@ function onDeviceReady() {
     });
     StatusBar.hide();
     navigator.splashscreen.show();
+    $('[data-toggle="tooltip"]').tooltip();
+    if ('ontouchstart' in document.documentElement) { 
+         $('body').css('cursor', 'pointer');
+    }
 }
 
 function onGetDirectorySuccess(dir) {
