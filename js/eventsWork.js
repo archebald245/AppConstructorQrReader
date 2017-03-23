@@ -50,7 +50,7 @@ function goToPage(index) {
         pageStyles = pageWithGeneralBg[0].Style;
     }
     applicationData.Pages.forEach(function(element) {
-        if (element.Id == indexPage && element.Style != null && element.Style != "") {
+        if (element.Id == indexPage && element.BackgroundImagePath != null) {
             pageStyles = element.Style;
         }
     }, this);

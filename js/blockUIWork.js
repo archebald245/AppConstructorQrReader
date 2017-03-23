@@ -24,7 +24,7 @@ function unBlockUi() {
     if (pageWithGeneralBg.length > 0) {
         pageStyles = pageWithGeneralBg[0].Style;
     }
-    if (applicationData.Pages[0].Style != null) {
+    if (applicationData.Pages[0].BackgroundImagePath != null) {
         pageStyles = applicationData.Pages[0].Style;
     }
     $("#container").attr("style", pageStyles);
