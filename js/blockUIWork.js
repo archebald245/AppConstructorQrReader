@@ -24,8 +24,9 @@ function unBlockUi() {
     if (pageWithGeneralBg.length > 0) {
         pageStyles = pageWithGeneralBg[0].Style;
     }
-    if (applicationData.Pages[0].BackgroundImagePath != null) {
-        pageStyles = applicationData.Pages[0].Style;
+    var StartPage = applicationData.Pages.filter(function(p){return p.IsStartPage})[0];
+    if (StartPage.BackgroundImagePath != null) {
+        pageStyles = StartPage.Style;
     }
     $("#container").attr("style", pageStyles);
     changeRestaurant();
