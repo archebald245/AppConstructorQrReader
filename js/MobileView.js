@@ -806,6 +806,10 @@ function reactRender() {
                     });
                 });
             }
+            $("body a").click(function(e) {
+                e.preventDefault();
+                window.open($(this).attr("href"), '_system')
+            });
             //$(React.findDOMNode(this)).attr("style", styleCell);
             $(ReactDOM.findDOMNode(this)).attr("style", styleCell);
         },

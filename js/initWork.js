@@ -76,8 +76,14 @@ function onCheckJson() {
         var versionId = applicationData.Version;
         createMenu(applicationData);
         $(".my-youtube").attr("height", "auto");
-        var pageStyles = applicationData.Pages[0].Style;
-
+        var pageStyles;
+        var pageWithGeneralBg = applicationData.Pages.filter(function(page) { return page.BackgroundForApplication });
+        if (pageWithGeneralBg.length > 0) {
+            pageStyles = pageWithGeneralBg[0].Style;
+        }
+        if (applicationData.Pages[0].Style != null) {
+            pageStyles = applicationData.Pages[0].Style;
+        }   
         $("#container").attr("style", pageStyles);
     } else {
 
