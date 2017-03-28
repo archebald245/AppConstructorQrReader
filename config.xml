@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<widget xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:gap="http://phonegap.com/ns/1.0" xmlns="http://www.w3.org/ns/widgets" id="net.nlt.appconstructor.test" version="0.0.2" android-versionCode="0.0.2" ios-CFBundleVersion="0.0.2">
+<widget xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:gap="http://phonegap.com/ns/1.0" xmlns="http://www.w3.org/ns/widgets" id="tech.appconstructor.viewtool" version="0.0.2" android-versionCode="0.0.2" ios-CFBundleVersion="0.0.2">
   <name>AppConstructor View Tool</name>
   <description>This is application for testing your application created on AppConstructor.</description>
   <author email="a.mazepa@newline.tech" href="http://appconstructor.newline.tech/">AppConstructor</author>
