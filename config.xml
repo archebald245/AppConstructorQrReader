@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
 <widget xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:gap="http://phonegap.com/ns/1.0" xmlns="http://www.w3.org/ns/widgets" id="nlt.test.AppConstructorDebug" version="0.0.1" android-versionCode="0.0.1" ios-CFBundleVersion="0.0.1">
+
   <name>AppConstructor(Debug View Tool)</name>
   <description>This is application for testing your application created on AppConstructor.</description>
   <author email="a.mazepa@newline.tech" href="http://appconstructor.newline.tech/">AppConstructor</author>
@@ -45,7 +46,7 @@
   <gap:platform name="android" />
 <gap:platform name="ios" />
   <preference name="orientation" value="default" />
-  <preference name="phonegap-version" value="cli-6.5.0" />
+  <preference name="phonegap-version" value="cli-5.4.1" />
   <!--Icons-->
   <icon src="icons/icon.png" gap:role="default" />
     <!--Android-->

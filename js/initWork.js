@@ -14,12 +14,9 @@ function init() {
     blockUi();
     document.addEventListener("deviceready", onDeviceReady, false);
     $(".classDropdownList").addClass("classHide");
-try{
+
 document.querySelector("#startScan").addEventListener("touchend", startScan, false);
-}catch(err){
-    console.log(err);
-    alert(err);
-}
+
     
     deleteResourcesAll();
 }
