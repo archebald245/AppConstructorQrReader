@@ -14,11 +14,13 @@ function init() {
     blockUi();
     document.addEventListener("deviceready", onDeviceReady, false);
     $(".classDropdownList").addClass("classHide");
-
-    document.querySelector("#startScan").addEventListener("touchend", startScan, false);
-    document.querySelector("#testClick").addEventListener("touchend", function(){
-        alert("Test click");
-    }, false);
+try{
+document.querySelector("#startScan").addEventListener("touchend", startScan, false);
+}catch(err){
+    console.log(err);
+    alert(err);
+}
+    
     deleteResourcesAll();
 }
 
