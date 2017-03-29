@@ -16,6 +16,9 @@ function init() {
     $(".classDropdownList").addClass("classHide");
 
     document.querySelector("#startScan").addEventListener("touchend", startScan, false);
+    document.querySelector("#testClick").addEventListener("touchend", function(){
+        alert("Test click");
+    }, false);
     deleteResourcesAll();
 }
 
