@@ -67,13 +67,18 @@ form{
     width:100%;
 	overflow: scroll;
 }
- .classDropdownList-topMenu{
-
+ .classDropdownList-topMenu{       
      top:54px;
+    -webkit-box-shadow: 0px 20px 10px -10px rgba(0, 0, 0, 1);
+    -moz-box-shadow: 0px 20px 10px -10px rgba(0, 0, 0, 1);
+    box-shadow: 0px 20px 10px -10px rgba(0, 0, 0, 1);
+
 }
  .classDropdownList-downMenu{
-
      bottom:54px;
+    -webkit-box-shadow: 0px 20px 10px -10px rgba(0, 0, 0, 1);
+    -moz-box-shadow: 0px 20px 10px -10px rgba(0, 0, 0, 1);
+    box-shadow: 0px 20px 10px -10px rgba(0, 0, 0, 1);
 }
 .classDropdownList > div{
     padding:7px 10px 7px 10px;
