@@ -15,7 +15,21 @@
   <!--<plugin name="com.lampa.startapp" spec="0.1.4" source="npm"/>-->
   <plugin name="cordova-plugin-document-viewer" spec="0.8.1" source="npm" />
 
-
+  <!--  Ios splash-->
+  <platform name="ios">
+    <splash src="screen/ios/w1242xh2208.png"/>
+    <splash src="screen/ios/screen-iphone-portrait.png"         platform="ios" width="320" height="480" />
+    <splash src="screen/ios/screen-iphone-portrait-2x.png"      platform="ios" width="640" height="960" />
+    <splash src="screen/ios/screen-iphone-portrait-568h-2x.png" platform="ios" width="640" height="1136" />
+    <splash src="screen/ios/screen-ipad-portrait.png"           platform="ios" width="768" height="1024" />
+    <splash src="screen/ios/screen-ipad-landscape.png"          platform="ios" width="1024" height="768" />
+    <splash src="screen/ios/w750xh1334.png"                     platform="ios" width="750" height="1334" />
+    <splash src="screen/ios/w1242xh2208.png"                    platform="ios" width="1242" height="2208" />
+    <splash src="screen/ios/w1536xh2048.png"                    platform="ios" width="1536" height="2048" />
+    <splash src="screen/ios/w2048xh1536.png"                    platform="ios" width="2048" height="1536" />
+    <splash src="screen/ios/w2208xh1242.png"                    platform="ios" width="2208" height="1242" />
+  </platform>
+  <!--  Ios splash-->
   <allow-navigation href="http://*/*" />
   <allow-intent href="*" />
   <access origin="*" />
@@ -40,22 +54,23 @@
   <feature name="FileTransfer">
     <param name="android-package" value="org.apache.cordova.filetransfer.FileTransfer" />
   </feature>
-  <preference name="show-splash-screen-spinner" value="false" />           <!-- ios: if set to false, the spinner won't appear on the splash screen during app loading -->
-   <preference name="auto-hide-splash-screen"    value="true" />
+  <preference name="show-splash-screen-spinner" value="false" />
+  <!-- ios: if set to false, the spinner won't appear on the splash screen during app loading -->
+  <preference name="auto-hide-splash-screen"    value="true" />
   <preference name="SplashScreen" value="screen"/>
-<preference name="SplashScreenDelay" value="1000"/>
+  <preference name="SplashScreenDelay" value="1000"/>
   <gap:platform name="android" />
-<!--<gap:platform name="ios" />-->
+  <!--<gap:platform name="ios" />-->
   <preference name="orientation" value="default" />
   <preference name="phonegap-version" value="cli-6.5.0" />
   <!--Icons-->
   <icon src="icons/icon.png" gap:role="default" />
-    <!--Android-->
+  <!--Android-->
   <icon src="icons/android/ldpi.png" width="36" height="36"  qualifier="ldpi" platform="android" />
   <icon src="icons/android/mdpi.png" width="48" height="48"  qualifier="mdpi" platform="android" />
   <icon src="icons/android/hdpi.png" width="72" height="72"  qualifier="hdpi" platform="android" />
   <icon src="icons/android/xhdpi.png" width="96" height="96"  qualifier="xhdpi" platform="android" />
-    <!--Ios-->
+  <!--Ios-->
   <icon src="icons/ios/App-29.png" width="29" height="29" qualifier="" platform="ios" />
   <icon src="icons/ios/App-40.png" width="40" height="40" qualifier="" platform="ios" />
   <icon src="icons/ios/App-57.png" width="57" height="57" qualifier="" platform="ios" />
@@ -81,19 +96,5 @@
   <splash src="screen/android/screen-xhdpi-portrait" platform="android" density="port-xhdpi"/>
   <!--  Android splash -->
 
-  <!--  Ios splash-->
-  <platform name="ios">
-  <splash src="screen/ios/screen-iphone-portrait.png"         platform="ios" width="320" height="480" />
-  <splash src="screen/ios/screen-iphone-portrait-2x.png"      platform="ios" width="640" height="960" />
-  <splash src="screen/ios/screen-iphone-portrait-568h-2x.png" platform="ios" width="640" height="1136" />
-  <splash src="screen/ios/screen-ipad-portrait.png"           platform="ios" width="768" height="1024" />
-  <splash src="screen/ios/screen-ipad-landscape.png"          platform="ios" width="1024" height="768" />
-  <splash src="screen/ios/w750xh1334.png"                     platform="ios" width="750" height="1334" />
-  <splash src="screen/ios/w1242xh2208.png"                    platform="ios" width="1242" height="2208" />
-  <splash src="screen/ios/w1536xh2048.png"                    platform="ios" width="1536" height="2048" />
-  <splash src="screen/ios/w2048xh1536.png"                    platform="ios" width="2048" height="1536" />
-  <splash src="screen/ios/w2208xh1242.png"                    platform="ios" width="2208" height="1242" />
-  <splash src="screen/ios/w1242xh2208.png"/>
-  </platform>
-  <!--  Ios splash-->
+
 </widget>
