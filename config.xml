@@ -88,6 +88,11 @@
   <splash src="screen/ios/screen-iphone-portrait-568h-2x.png" platform="ios" width="640" height="1136" />
   <splash src="screen/ios/screen-ipad-portrait.png"           platform="ios" width="768" height="1024" />
   <splash src="screen/ios/screen-ipad-landscape.png"          platform="ios" width="1024" height="768" />
+  <splash src="screen/ios/w750xh1334.png"          platform="ios" width="750" height="1334" />
+  <splash src="screen/ios/w1242xh2208.png"          platform="ios" width="1242" height="2208" />
+  <splash src="screen/ios/w1536xh2048.png"          platform="ios" width="1536" height="2048" />
+  <splash src="screen/ios/w2048xh1536.png"          platform="ios" width="2048" height="1536" />
+  <splash src="screen/ios/w2208xh1242.png"          platform="ios" width="2208" height="1242" />
   </platform>
   <!--  Ios splash-->
 </widget>
