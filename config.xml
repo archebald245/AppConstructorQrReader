@@ -82,7 +82,7 @@
   <!--  Android splash -->
 
   <!--  Ios splash-->
-  <platform name="ios" />
+  <platform name="ios">
   <splash src="screen/ios/screen-iphone-portrait.png"         platform="ios" width="320" height="480" />
   <splash src="screen/ios/screen-iphone-portrait-2x.png"      platform="ios" width="640" height="960" />
   <splash src="screen/ios/screen-iphone-portrait-568h-2x.png" platform="ios" width="640" height="1136" />
