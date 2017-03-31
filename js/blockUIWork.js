@@ -26,7 +26,7 @@ function unBlockUi() {
     }
     if(applicationData.IsTrackingLastPage){
     var idLastPage = getLastOpenPage();
-    var lastPage = applicationData.Pages.filter(function(p){return p.Id = idLastPage})[0]
+    var lastPage = applicationData.Pages.filter(function(p){return p.Id == idLastPage})[0]
     if (lastPage.BackgroundImagePath != null) {
         pageStyles = lastPage.Style;
     }
