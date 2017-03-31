@@ -16,19 +16,7 @@
   <plugin name="cordova-plugin-document-viewer" spec="0.8.1" source="npm" />
 
   <!--  Ios splash-->
-  <platform name="ios">
-    <splash src="screen/ios/w1242xh2208.png"/>
-    <splash src="screen/ios/screen-iphone-portrait.png"         platform="ios" width="320" height="480" />
-    <splash src="screen/ios/screen-iphone-portrait-2x.png"      platform="ios" width="640" height="960" />
-    <splash src="screen/ios/screen-iphone-portrait-568h-2x.png" platform="ios" width="640" height="1136" />
-    <splash src="screen/ios/screen-ipad-portrait.png"           platform="ios" width="768" height="1024" />
-    <splash src="screen/ios/screen-ipad-landscape.png"          platform="ios" width="1024" height="768" />
-    <splash src="screen/ios/w750xh1334.png"                     platform="ios" width="750" height="1334" />
-    <splash src="screen/ios/w1242xh2208.png"                    platform="ios" width="1242" height="2208" />
-    <splash src="screen/ios/w1536xh2048.png"                    platform="ios" width="1536" height="2048" />
-    <splash src="screen/ios/w2048xh1536.png"                    platform="ios" width="2048" height="1536" />
-    <splash src="screen/ios/w2208xh1242.png"                    platform="ios" width="2208" height="1242" />
-  </platform>
+
   <!--  Ios splash-->
   <allow-navigation href="http://*/*" />
   <allow-intent href="*" />
@@ -58,43 +46,56 @@
   <!-- ios: if set to false, the spinner won't appear on the splash screen during app loading -->
   <preference name="auto-hide-splash-screen"    value="true" />
   <preference name="SplashScreen" value="screen"/>
-  <preference name="SplashScreenDelay" value="1000"/>
-  <gap:platform name="android" />
-  <!--<gap:platform name="ios" />-->
+  <preference name="SplashScreenDelay" value="3000"/>
   <preference name="orientation" value="default" />
   <preference name="phonegap-version" value="cli-6.5.0" />
+
+<platform name="android">
   <!--Icons-->
   <icon src="icons/icon.png" gap:role="default" />
   <!--Android-->
-  <icon src="icons/android/ldpi.png" width="36" height="36"  qualifier="ldpi" platform="android" />
-  <icon src="icons/android/mdpi.png" width="48" height="48"  qualifier="mdpi" platform="android" />
-  <icon src="icons/android/hdpi.png" width="72" height="72"  qualifier="hdpi" platform="android" />
-  <icon src="icons/android/xhdpi.png" width="96" height="96"  qualifier="xhdpi" platform="android" />
-  <!--Ios-->
-  <icon src="icons/ios/App-29.png" width="29" height="29" qualifier="" platform="ios" />
-  <icon src="icons/ios/App-40.png" width="40" height="40" qualifier="" platform="ios" />
-  <icon src="icons/ios/App-57.png" width="57" height="57" qualifier="" platform="ios" />
-  <icon src="icons/ios/App-58.png" width="58" height="58" qualifier="" platform="ios" />
-  <icon src="icons/ios/App-72.png" width="72" height="72" qualifier="" platform="ios"  />
-  <icon src="icons/ios/App-90.png" width="90" height="90" qualifier="" platform="ios"  />
-  <icon src="icons/ios/App-100.png" width="100" height="100" qualifier="" platform="ios"  />
-  <icon src="icons/ios/App-114.png" width="114" height="114" qualifier="" platform="ios" />
-  <icon src="icons/ios/App-120.png" width="120" height="120" qualifier="" platform="ios" />
-  <icon src="icons/ios/App-144.png" width="144" height="144" qualifier="" platform="ios" />
-  <icon src="icons/ios/App-152.png" width="152" height="152" qualifier="" platform="ios" />
-  <icon src="icons/ios/App-180.png" width="180" height="180" qualifier="" platform="ios" />
-  <!--Icons-->
+  <icon src="icons/android/ldpi.png" width="36" height="36"  qualifier="ldpi"  />
+  <icon src="icons/android/mdpi.png" width="48" height="48"  qualifier="mdpi"  />
+  <icon src="icons/android/hdpi.png" width="72" height="72"  qualifier="hdpi"  />
+  <icon src="icons/android/xhdpi.png" width="96" height="96"  qualifier="xhdpi"  />
 
   <!--  Android splash -->
-  <splash src="screen/android/screen-hdpi-landscape.png" platform="android" density="land-hdpi"/>
-  <splash src="screen/android/screen-ldpi-landscape.png" platform="android" density="land-ldpi"/>
-  <splash src="screen/android/screen-mdpi-landscape.png" platform="android" density="land-mdpi"/>
-  <splash src="screen/android/screen-xhdpi-landscape.png" platform="android" density="land-xhdpi"/>
-  <splash src="screen/android/screen-hdpi-portrait.png.png" platform="android" density="port-hdpi"/>
-  <splash src="screen/android/screen-ldpi-portrait.png" platform="android" density="port-ldpi"/>
-  <splash src="screen/android/screen-mdpi-portrait.png" platform="android" density="port-mdpi"/>
-  <splash src="screen/android/screen-xhdpi-portrait" platform="android" density="port-xhdpi"/>
+  <splash src="screen/android/screen-hdpi-landscape.png"  density="land-hdpi"/>
+  <splash src="screen/android/screen-ldpi-landscape.png"  density="land-ldpi"/>
+  <splash src="screen/android/screen-mdpi-landscape.png"  density="land-mdpi"/>
+  <splash src="screen/android/screen-xhdpi-landscape.png"  density="land-xhdpi"/>
+  <splash src="screen/android/screen-hdpi-portrait.png.png"  density="port-hdpi"/>
+  <splash src="screen/android/screen-ldpi-portrait.png"  density="port-ldpi"/>
+  <splash src="screen/android/screen-mdpi-portrait.png"  density="port-mdpi"/>
+  <splash src="screen/android/screen-xhdpi-portrait.png"  density="port-xhdpi"/>
   <!--  Android splash -->
+</platform>
 
-
+  <platform name="ios">
+    <!--Ios-->
+    <icon src="icons/ios/App-29.png" width="29" height="29"  />
+    <icon src="icons/ios/App-40.png" width="40" height="40"  />
+    <icon src="icons/ios/App-57.png" width="57" height="57"  />
+    <icon src="icons/ios/App-58.png" width="58" height="58" />
+    <icon src="icons/ios/App-72.png" width="72" height="72"   />
+    <icon src="icons/ios/App-90.png" width="90" height="90"  />
+    <icon src="icons/ios/App-100.png" width="100" height="100"   />
+    <icon src="icons/ios/App-114.png" width="114" height="114" />
+    <icon src="icons/ios/App-120.png" width="120" height="120"  />
+    <icon src="icons/ios/App-144.png" width="144" height="144"  />
+    <icon src="icons/ios/App-152.png" width="152" height="152"  />
+    <icon src="icons/ios/App-180.png" width="180" height="180"  />
+    <!--Icons-->
+    <splash src="screen/ios/w1242xh2208.png"/>
+    <splash src="screen/ios/screen-iphone-portrait.png"          width="320" height="480" />
+    <splash src="screen/ios/screen-iphone-portrait-2x.png"       width="640" height="960" />
+    <splash src="screen/ios/screen-iphone-portrait-568h-2x.png"  width="640" height="1136" />
+    <splash src="screen/ios/screen-ipad-portrait.png"            width="768" height="1024" />
+    <splash src="screen/ios/screen-ipad-landscape.png"           width="1024" height="768" />
+    <splash src="screen/ios/w750xh1334.png"                      width="750" height="1334" />
+    <splash src="screen/ios/w1242xh2208.png"                     width="1242" height="2208" />
+    <splash src="screen/ios/w1536xh2048.png"                     width="1536" height="2048" />
+    <splash src="screen/ios/w2048xh1536.png"                    width="2048" height="1536" />
+    <splash src="screen/ios/w2208xh1242.png"                     width="2208" height="1242" />
+  </platform>
 </widget>
