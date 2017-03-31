@@ -43,7 +43,7 @@ function onDeviceReady() {
         setCurrentTime: "false"
     });
     StatusBar.hide();
-    navigator.splashscreen.show();
+    // navigator.splashscreen.show();
     $('[data-toggle="tooltip"]').tooltip();
     if ('ontouchstart' in document.documentElement) { 
          $('body').css('cursor', 'pointer');
