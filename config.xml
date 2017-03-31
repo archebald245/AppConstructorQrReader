@@ -42,10 +42,10 @@
   </feature>
   <preference name="show-splash-screen-spinner" value="false" />           <!-- ios: if set to false, the spinner won't appear on the splash screen during app loading -->
    <preference name="auto-hide-splash-screen"    value="true" />
-  <preference name="SplashScreen" value="splash"/>
+  <preference name="SplashScreen" value="screen"/>
 <preference name="SplashScreenDelay" value="1000"/>
   <gap:platform name="android" />
-<gap:platform name="ios" />
+<!--<gap:platform name="ios" />-->
   <preference name="orientation" value="default" />
   <preference name="phonegap-version" value="cli-6.5.0" />
   <!--Icons-->
@@ -82,10 +82,12 @@
   <!--  Android splash -->
 
   <!--  Ios splash-->
-  <gap:splash src="screen/ios/screen-iphone-portrait.png"         platform="ios" width="320" height="480" />
-  <gap:splash src="screen/ios/screen-iphone-portrait-2x.png"      platform="ios" width="640" height="960" />
-  <gap:splash src="screen/ios/screen-iphone-portrait-568h-2x.png" platform="ios" width="640" height="1136" />
-  <gap:splash src="screen/ios/screen-ipad-portrait.png"           platform="ios" width="768" height="1024" />
-  <gap:splash src="screen/ios/screen-ipad-landscape.png"          platform="ios" width="1024" height="768" />
+  <platform name="ios" />
+  <splash src="screen/ios/screen-iphone-portrait.png"         platform="ios" width="320" height="480" />
+  <splash src="screen/ios/screen-iphone-portrait-2x.png"      platform="ios" width="640" height="960" />
+  <splash src="screen/ios/screen-iphone-portrait-568h-2x.png" platform="ios" width="640" height="1136" />
+  <splash src="screen/ios/screen-ipad-portrait.png"           platform="ios" width="768" height="1024" />
+  <splash src="screen/ios/screen-ipad-landscape.png"          platform="ios" width="1024" height="768" />
+  </platform>
   <!--  Ios splash-->
 </widget>
