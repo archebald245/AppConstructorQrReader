@@ -50,6 +50,8 @@
   <preference name="orientation" value="default" />
   <preference name="phonegap-version" value="cli-6.5.0" />
 
+<splash src="splash.png" />
+<platform name="ios" />
 <platform name="android">
   <!--Icons-->
   <icon src="icons/icon.png" gap:role="default" />
@@ -71,7 +73,7 @@
   <!--  Android splash -->
 </platform>
 
-  <platform name="ios">
+  
     <!--Ios-->
     <icon src="icons/ios/App-29.png" width="29" height="29"  />
     <icon src="icons/ios/App-40.png" width="40" height="40"  />
@@ -97,5 +99,5 @@
     <splash src="screen/ios/Default-Portrait@2x~ipad.png"                     width="1536" height="2048" />
     <splash src="screen/ios/Default-Landscape@2x~ipad.png"                    width="2048" height="1536" />
     <splash src="screen/ios/Default-Landscape-736h.png"                     width="2208" height="1242" />
-  </platform>
+
 </widget>
