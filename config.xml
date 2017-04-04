@@ -52,26 +52,25 @@
 
 <splash src="splash.png" />
 <platform name="ios" />
-<platform name="android">
+<platform name="android"/>
   <!--Icons-->
   <icon src="icons/icon.png" gap:role="default" />
   <!--Android-->
-  <icon src="icons/android/ldpi.png" width="36" height="36"  qualifier="ldpi"  />
-  <icon src="icons/android/mdpi.png" width="48" height="48"  qualifier="mdpi"  />
-  <icon src="icons/android/hdpi.png" width="72" height="72"  qualifier="hdpi"  />
-  <icon src="icons/android/xhdpi.png" width="96" height="96"  qualifier="xhdpi"  />
+  <icon src="icons/android/ldpi.png" width="36" height="36"  qualifier="ldpi"  platform="android"/>
+  <icon src="icons/android/mdpi.png" width="48" height="48"  qualifier="mdpi"  platform="android"/>
+  <icon src="icons/android/hdpi.png" width="72" height="72"  qualifier="hdpi" platform="android" />
+  <icon src="icons/android/xhdpi.png" width="96" height="96"  qualifier="xhdpi"  platform="android"/>
 
   <!--  Android splash -->
-  <splash src="screen/android/screen-hdpi-landscape.png"  density="land-hdpi"/>
-  <splash src="screen/android/screen-ldpi-landscape.png"  density="land-ldpi"/>
-  <splash src="screen/android/screen-mdpi-landscape.png"  density="land-mdpi"/>
-  <splash src="screen/android/screen-xhdpi-landscape.png"  density="land-xhdpi"/>
-  <splash src="screen/android/screen-hdpi-portrait.png.png"  density="port-hdpi"/>
-  <splash src="screen/android/screen-ldpi-portrait.png"  density="port-ldpi"/>
-  <splash src="screen/android/screen-mdpi-portrait.png"  density="port-mdpi"/>
-  <splash src="screen/android/screen-xhdpi-portrait.png"  density="port-xhdpi"/>
+  <splash src="screen/android/screen-hdpi-landscape.png"  density="land-hdpi" platform="android"/>
+  <splash src="screen/android/screen-ldpi-landscape.png"  density="land-ldpi" platform="android"/>
+  <splash src="screen/android/screen-mdpi-landscape.png"  density="land-mdpi" platform="android"/>
+  <splash src="screen/android/screen-xhdpi-landscape.png"  density="land-xhdpi" platform="android"/>
+  <splash src="screen/android/screen-hdpi-portrait.png.png"  density="port-hdpi" platform="android"/>
+  <splash src="screen/android/screen-ldpi-portrait.png"  density="port-ldpi" platform="android"/>
+  <splash src="screen/android/screen-mdpi-portrait.png"  density="port-mdpi" platform="android"/>
+  <splash src="screen/android/screen-xhdpi-portrait.png"  density="port-xhdpi" platform="android"/>
   <!--  Android splash -->
-</platform>
 
   
     <!--Ios-->
