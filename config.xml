@@ -98,6 +98,6 @@
     <splash src="screen/ios/Default-736h.png.png"                platform="ios"     width="1242" height="2208" />
     <splash src="screen/ios/Default-Portrait@2x~ipad.png"          platform="ios"           width="1536" height="2048" />
     <splash src="screen/ios/Default-Landscape@2x~ipad.png"            platform="ios"        width="2048" height="1536" />
-    <splash src="screen/ios/Default-Landscape-736h.png"              platform="ios"       width="2208" height="1242" />
+    <splash src="screen/ios/Default~iphone.png"              platform="ios"       width="2208" height="1242" />
 
 </widget>
