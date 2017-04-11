@@ -5,6 +5,7 @@ function deleteResourcesAll() { //Call in Init function
         $.jStorage.deleteKey('ApplicationId');
         checkJsStorage();
         $(".Scan-spiner").addClass("hidden");
+        $("#container").attr("style", "");
         $("#container, #custom-hide-container, .singleItem, #orderInfo, .cart, .container-statusBooking, .bookingServices-container, .container-selectFreeBookTime, .dateTimePicker-container, .order-booking").addClass("hidden");
     });
 }
@@ -31,7 +32,7 @@ function startScan() { //Call in Init function
                         applicationData = JSON.stringify(jsonObjectOfServer.Content);
                         $.jStorage.set('ApplicationId', jsonObjectOfServer.ApplicationId);
                         onCheckJson();
-                        checkUpdateRestaurantMenu(true);
+                        // checkUpdateRestaurantMenu(true);
                     },
                     error: function() {
                         $(".startScan-wrapper").removeClass("hidden");
