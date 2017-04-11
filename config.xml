@@ -95,9 +95,9 @@
     <splash src="screen/ios/Default-Portrait~ipad.png"        platform="ios"    width="768" height="1024" />
     <splash src="screen/ios/Default-Landscape~ipad.png"        platform="ios"   width="1024" height="768" />
     <splash src="screen/ios/Default-667h.png"                  platform="ios"    width="750" height="1334" />
-    <splash src="screen/ios/Default-736h.png.png"                platform="ios"     width="1242" height="2208" />
+    <!--<splash src="screen/ios/Default-736h.png.png"                platform="ios"     width="1242" height="2208" />
     <splash src="screen/ios/Default-Portrait@2x~ipad.png"          platform="ios"           width="1536" height="2048" />
     <splash src="screen/ios/Default-Landscape@2x~ipad.png"            platform="ios"        width="2048" height="1536" />
-    <splash src="screen/ios/Default-Landscape-736h.png"              platform="ios"       width="2208" height="1242" />
+    <splash src="screen/ios/Default-Landscape-736h.png"              platform="ios"       width="2208" height="1242" />-->
 
 </widget>
