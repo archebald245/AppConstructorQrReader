@@ -92,6 +92,7 @@
     <icon src="icons/ios/App-152.png" width="152" height="152"  platform="ios"/>
      <icon src="icons/ios/167x167.png" width="167" height="167"  platform="ios"/>
     <icon src="icons/ios/App-180.png" width="180" height="180"  platform="ios"/>
+    <icon src="icons/ios/1024x1024.png" width="1024" height="1024"  platform="ios"/>
     <!--Icons-->
 
     <splash src="screen/ios/Default~iphone.png"        platform="ios"  width="320" height="480" />
