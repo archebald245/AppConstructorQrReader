@@ -96,7 +96,8 @@ function onCheckJson() {
             }
         }
    
-        $("#container").attr("style", pageStyles);
+        $("#container").attr("style", pageStyles).removeClass("hidden");
+        $(".startScan-wrapper").addClass("hidden");
     } else {
 
         applicationData = replaceData(applicationData);
