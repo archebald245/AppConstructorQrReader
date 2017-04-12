@@ -257,14 +257,6 @@ function reactRender() {
                         'div',
                         null,
                         React.createElement('div', { className: 'backdrop' }),
-                        // React.createElement(
-                        //     'div', { className: 'fab child', 'data-subitem': '1' },
-                        //     React.createElement(
-                        //         'span',
-                        //         null,
-                        //         'C'
-                        //     )
-                        // ),
                         React.createElement(
                             'div', { className: 'fab child cart-btn', 'data-subitem': '2' },
                             React.createElement(
@@ -297,14 +289,6 @@ function reactRender() {
                         'div',
                         null,
                         React.createElement('div', { className: 'backdrop' }),
-                        // React.createElement(
-                        //     'div', { className: 'fab child cart-btn', 'data-subitem': '2' },
-                        //     React.createElement(
-                        //         'span',
-                        //         null,
-                        //         'R'
-                        //     )
-                        // ),
                         React.createElement(
                             'div', { className: 'fab child first', 'data-subitem': '1' },
                             React.createElement(
@@ -648,10 +632,8 @@ function reactRender() {
                 });
             }
             if (data.ContentTypeId == 15) {
-                // $(ReactDOM.findDOMNode(this)).append("<div><select class='select-restaurant'></select><select class='select-menu'></select><div id='custom-restaurant-menu-container'></div></div>");
                 var arrIdMenu = data.Value.split(',');
                 var restaurantCollection = applicationData.Restaurants;
-                // setUseRestaurantMenus(arrIdMenu, true,restaurantCollection);
                 var restaurantsArr = filterMenu(restaurantCollection, arrIdMenu);
                 var restaurants = [];
                 var selectRest = $("<select class='select-restaurant'></select>");
@@ -660,9 +642,6 @@ function reactRender() {
                     $(selectRest).append("<option value='" + this.Id + "'>" + this.Name + "</option>");
                 });
                 restaurants = _.uniq(restaurants);
-                // $(restaurants).each(function(){
-                //     $(selectRest).append("<option value='"+ this.Id +"'>"+this.Name+"</option>")
-                // });
                 var div = $("<div><hidden name='arrIdMenu' value=" + data.Value + "/></div>");
                 var divContainer = "<div id='custom-restaurant-menu-container' class='custom-restaurant-menu-container'></div>";
 
@@ -795,15 +774,6 @@ function reactRender() {
             }
             if (data.ContentTypeId == 17) {
                 $(ReactDOM.findDOMNode(this)).find("span").click(function(e) {
-                    // var sApp = startApp.set({ /* params */
-                    //     "uri": $(this).attr("data-locationpdf"),
-                    //     "type": "application/pdf"
-                    // });
-                    // sApp.start(function() { /* success */
-                    //     console.log("PDF open succses!");
-                    // }, function(error) { /* fail */
-                    //     console.log("PDF open error!");
-                    // });
                     var url = $(this).attr("data-locationpdf");
                     var options = {
                         openWith : {
@@ -822,7 +792,6 @@ function reactRender() {
                 e.preventDefault();
                 window.open($(this).attr("href"), '_system')
             });
-            //$(React.findDOMNode(this)).attr("style", styleCell);
             $(ReactDOM.findDOMNode(this)).attr("style", styleCell);
         },
         checkRestarauntTime: function checkRestarauntTime(FromHourModel, ToHourModel, NowHoursModel) {
@@ -868,60 +837,7 @@ function reactRender() {
                 return false;
             }
         },
-        // checkRestarauntTimeForDate: function(FromHourModel, ToHourModel, NowHoursModel) {
-        //                     var FromDataArray = FromHourModel.split("T")[1].split(":");
-        //     var ToDataArray = ToHourModel.split("T")[1].split(":");
-        //     var NowDataArray = NowHoursModel.split("T")[1].split(":");
-        //
-        //     var FromMonth =  Number((FromHourModel.split("T")[0]).split("-")[1]);
-        //     var FromDay =  Number((FromHourModel.split("T")[0]).split("-")[2]);
-        //     var FromHour = Number(FromDataArray[0]);
-        //     var FromMinuts = Number(FromDataArray[1]);
-        //     var FromSeconds = Number(FromDataArray[2]);
-        //
-        //     var ToMonth =  Number((ToHourModel.split("T")[0]).split("-")[1]);
-        //     var ToDay =  Number((ToHourModel.split("T")[0]).split("-")[2]);
-        //     var ToHour = Number(ToDataArray[0]);
-        //     var ToMinuts = Number(ToDataArray[1]);
-        //     var ToSeconds = Number(ToDataArray[2]);
-        //
-        //     var NowMonth = Number(NowHoursModel.split("-")[0]);
-        //     var NowDay = Number(NowHoursModel.split("-")[1]);
-        //     var NowHour = Number(NowDataArray[0]);
-        //     var NowMinuts = Number(NowDataArray[1]);
-        //     var NowSeconds = Number(NowDataArray[2]);
-        //
-        //
-        //     if ((FromMonth < NowMonth) && (NowMonth < ToMonth)) {
-        //                     return true;
-        //     }else
-        //     if((FromMonth == NowMonth) || (NowMonth == ToMonth))
-        //     {
-        //                     if((FromDay < NowDay) && (NowDay < ToDay)){
-        //                     return true;
-        //       }else   if((FromDay == NowDay) || (NowDay == ToDay)){
-        //                     if ((FromHour < NowHour) && (NowHour < ToHour)) {
-        //                     return true;
-        //         }else if ((FromHour == NowHour) && (NowHour == ToHour)) {
-        //                     if ((FromMinuts < NowMinuts) && (NowMinuts < ToMinuts)) {
-        //                     return true;
-        //           }else if ((FromMinuts == NowMinuts) && (NowMinuts == ToMinuts)) {
-        //                     if ((FromMinuts < NowMinuts) && (NowMinuts < ToMinuts)) {
-        //                     return true;
-        //             }else   if ((FromMinuts == NowMinuts) && (NowMinuts == ToMinuts)) {
-        //                     if ((FromSeconds < NowSeconds) && (NowSeconds < ToSeconds)) {
-        //                     return true;
-        //              }else  if ((FromSeconds == NowSeconds) && (NowSeconds == ToSeconds)) {
-        //                     return true;
-        //              }
-        //             }
-        //           }
-        //         }
-        //       }
-        //     }
-        //
-        //     return false;
-        // },
+        
         checkRestarauntTimeForDate: function checkRestarauntTimeForDate(FromHourModel, ToHourModel) {
             if (moment().isAfter(FromHourModel) && moment().isBefore(ToHourModel)) {
                 return true;
@@ -950,22 +866,6 @@ function reactRender() {
             var timeString = ap + hour + ':' + minute + ':' + second;
             return timeString;
         },
-        // getDateTime: function(){
-        //                     var now = new Date();
-        //   var month = now.getMonth() + 1;
-        //   var day = now.getDate();
-        //   var hour = now.getHours();
-        //   var minute = now.getMinutes();
-        //   var second = now.getSeconds();
-        //   var ap = "12T";
-        //   if (hour > 11) { ap = "24T"; }
-        //   if (hour < 10) { hour = "0" + hour; }
-        //   if (minute < 10) { minute = "0" + minute; }
-        //   if (second < 10) { second = "0" + second; }
-        //   if(day < 10) {day = "0" + day;}
-        //   var timeString = month + "-" + day + "-" + ap + hour + ':' + minute + ':' + second;
-        //   return timeString;
-        // },
         render: function render() {
             var data = this.props.data;
 

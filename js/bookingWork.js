@@ -26,21 +26,8 @@ function addListenerToClickTimeLine() {
         scrollTop();
     });
 }
-// $(".btn-container-editBookingList").click(function(){
-//   $(".container-editBookingList").removeClass("hidden");
-//   $("#container").addClass("hidden");
-//   $(".container-editBookingList").html("");
-//   $(listServiceForBooking).each(function(){
-//       $(".container-editBookingList").append("<p>"+ this.BookDateTime.NameServices +"-"+ this.BookDateTime.Duration+" </p>" + "<button>Delete</button>");
-//   });
-//
-//
-// });
+
 function addListenerToClickBookService() {
-    // $(".btn-send-order-booking").unbind("click");
-    // $(".btn-send-order-booking").click(function(){
-    //
-    // });
     $(".btn-back-toservices").click(function() {
         $(".order-booking").addClass("hidden");
         if ($("#container").find(".row-elementInstitution").length > 0) {
