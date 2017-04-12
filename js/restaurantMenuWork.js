@@ -163,7 +163,7 @@
          });
          return totalPrice;
      }
-     // var totalPrice = totalPrice();
+  
      $(".totalPrice b").html("");
      $(".totalPrice b").append(totalPrice());
      addListenerToClickDelete();
@@ -175,7 +175,7 @@
      $(".delete-cartItem").on("click", function() {
          $(this).closest(".cartItem").parent().remove();
 
-         // var totalPrice = totalPrice();
+      
          $(".totalPrice b").html("");
          $(".totalPrice b").append(totalPrice());
      });
@@ -305,7 +305,6 @@
          var idRest = $(this).val();
          var arrIdMenu = $(this).siblings("[name=arrIdMenu]").attr("value").split(',');
          var restaurantCollection = applicationData.Restaurants;
-         // setUseRestaurantMenus(arrIdMenu, true,restaurantCollection);
          var restaurantsArr = filterMenu(restaurantCollection, arrIdMenu);
          var selectMenu = $(this).siblings(".select-menu");
          $(selectMenu).children().remove();
