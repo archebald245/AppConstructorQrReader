@@ -30,8 +30,7 @@ function startScan() { //Call in Init function
                         applicationData = JSON.stringify(jsonObjectOfServer.Content);
                         $.jStorage.set('ApplicationId', jsonObjectOfServer.ApplicationId);
                         onCheckJson();
-                        $(".startScan-wrapper").addClass("hidden");
-                        $("#container").removeClass("hidden");
+
                         // checkUpdateRestaurantMenu(true);
                     },
                     error: function() {
