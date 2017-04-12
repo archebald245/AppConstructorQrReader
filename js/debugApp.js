@@ -5,6 +5,7 @@ function deleteResourcesAll() { //Call in Init function
         $.jStorage.deleteKey('ApplicationId');
         checkJsStorage();
         $(".Scan-spiner").addClass("hidden");
+        $("#container").attr("style", "");
         $("#container, #custom-hide-container, .singleItem, #orderInfo, .cart, .container-statusBooking, .bookingServices-container, .container-selectFreeBookTime, .dateTimePicker-container, .order-booking").addClass("hidden");
     });
 }
@@ -13,7 +14,7 @@ function startScan() { //Call in Init function
 
     cordova.plugins.barcodeScanner.scan(
         function(result) {
-            var siteUrl = "http://appconstructor.newline.tech";
+            var siteUrl = "http://appconstructornew.newlinetechnologies.net";
             if (!result.cancelled) {
                 $(".Scan-spiner").removeClass("hidden");
                 var ProjectId = result.text.split("-")[0];
@@ -25,13 +26,13 @@ function startScan() { //Call in Init function
                     cache: false,
                     success: function(jsonObjectOfServer) {
                         jsonObjectOfServer = JSON.parse(jsonObjectOfServer);
-                        $(".startScan-wrapper").addClass("hidden");
-                        $("#container").removeClass("hidden");
                         scrollTop();
                         applicationData = JSON.stringify(jsonObjectOfServer.Content);
                         $.jStorage.set('ApplicationId', jsonObjectOfServer.ApplicationId);
                         onCheckJson();
-                        checkUpdateRestaurantMenu(true);
+                        //  $(".startScan-wrapper").addClass("hidden");
+                        // $("#container").removeClass("hidden");
+                        // checkUpdateRestaurantMenu(true);
                     },
                     error: function() {
                         $(".startScan-wrapper").removeClass("hidden");

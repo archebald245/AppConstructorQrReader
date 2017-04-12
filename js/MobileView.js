@@ -795,15 +795,27 @@ function reactRender() {
             }
             if (data.ContentTypeId == 17) {
                 $(ReactDOM.findDOMNode(this)).find("span").click(function(e) {
-                    var sApp = startApp.set({ /* params */
-                        "uri": $(this).attr("data-locationpdf"),
-                        "type": "application/pdf"
-                    });
-                    sApp.start(function() { /* success */
-                        console.log("PDF open succses!");
-                    }, function(error) { /* fail */
-                        console.log("PDF open error!");
-                    });
+                    // var sApp = startApp.set({ /* params */
+                    //     "uri": $(this).attr("data-locationpdf"),
+                    //     "type": "application/pdf"
+                    // });
+                    // sApp.start(function() { /* success */
+                    //     console.log("PDF open succses!");
+                    // }, function(error) { /* fail */
+                    //     console.log("PDF open error!");
+                    // });
+                    var url = $(this).attr("data-locationpdf");
+                    var options = {
+                        openWith : {
+		                    enabled : true
+	                    }
+                    }
+                    function onShow(){
+                    window.console.log('document shown');
+                    //e.g. track document usage
+                    }
+                    cordova.plugins.SitewaertsDocumentViewer.viewDocument(
+                    url, 'application/pdf', options, onShow);
                 });
             }
             $("body a").click(function(e) {

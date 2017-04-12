@@ -25,7 +25,6 @@ function goToPage(index) {
             });
             window.plugins.toast.showShortBottom("Login, please!");
         }
-
     }
     if (applicationData.IsTrackingLastPage == true) {
         setLastOpenPage(indexPage);

@@ -88,7 +88,7 @@ function renderRestaurantMenu(menuCollection, position, responsiveModel, stateNa
                         "div", { className: "shopItem-row shopItem" },
                         React.createElement(
                             "div", { className: "img-column-shopItem" },
-                            React.createElement("img", { src: iimage, className: "item-shop-img" }),
+                            image,
                             React.createElement(
                                 "div", { className: "cartShop-price priceUnderImg" },
                                 item.Price
@@ -119,7 +119,7 @@ function renderRestaurantMenu(menuCollection, position, responsiveModel, stateNa
                         "div", { className: "shopItem-row shopItem" },
                         React.createElement(
                             "div", { className: "img-column-shopItem" },
-                            React.createElement("img", { src: image, className: "item-shop-img" })
+                            image
                         ),
                         React.createElement(
                             "div", { className: "content-column-shopItem shopMiddle-content" },

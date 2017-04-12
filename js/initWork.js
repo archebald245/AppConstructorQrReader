@@ -15,7 +15,9 @@ function init() {
     document.addEventListener("deviceready", onDeviceReady, false);
     $(".classDropdownList").addClass("classHide");
 
-    document.querySelector("#startScan").addEventListener("touchend", startScan, false);
+document.querySelector("#startScan").addEventListener("touchend", startScan, false);
+
+    
     deleteResourcesAll();
 }
 
@@ -41,7 +43,7 @@ function onDeviceReady() {
         setCurrentTime: "false"
     });
     StatusBar.hide();
-    navigator.splashscreen.show();
+    // navigator.splashscreen.show();
     $('[data-toggle="tooltip"]').tooltip();
     if ('ontouchstart' in document.documentElement) { 
          $('body').css('cursor', 'pointer');
@@ -83,7 +85,7 @@ function onCheckJson() {
         }
         if(applicationData.IsTrackingLastPage){
             var idLastPage = getLastOpenPage();
-            var lastPage = applicationData.Pages.filter(function(p){return p.Id = idLastPage})[0]
+            var lastPage = applicationData.Pages.filter(function(p){return p.Id == idLastPage})[0]
             if (lastPage.BackgroundImagePath != null) {
                 pageStyles = lastPage.Style;
             }
@@ -94,7 +96,8 @@ function onCheckJson() {
             }
         }
    
-        $("#container").attr("style", pageStyles);
+        $("#container").attr("style", pageStyles).removeClass("hidden");
+        $(".startScan-wrapper").addClass("hidden");
     } else {
 
         applicationData = replaceData(applicationData);
@@ -123,7 +126,7 @@ function onCheckJson() {
 function checkConnection() {
     var networkState = navigator.connection.type;
     if (networkState != Connection.NONE) {
-        var siteUrl = "http://appconstructor.newline.tech"
+        var siteUrl = "http://appconstructornew.newlinetechnologies.net"
 
         applicationData = JSON.parse($.jStorage.get('appData'));
         var projectId = applicationData.ProjectId;
@@ -173,6 +176,8 @@ function callback() {
     initGallaryClick();
     submitFormListener();
     unBlockUi();
+    $(".startScan-wrapper").addClass("hidden");
+    $("#container").removeClass("hidden");
 }
 
 function replaceData(element) {
