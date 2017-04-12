@@ -175,6 +175,8 @@ function callback() {
     initGallaryClick();
     submitFormListener();
     unBlockUi();
+    $(".startScan-wrapper").addClass("hidden");
+    $("#container").removeClass("hidden");
 }
 
 function replaceData(element) {
