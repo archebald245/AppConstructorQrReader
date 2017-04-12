@@ -26,12 +26,12 @@ function startScan() { //Call in Init function
                     cache: false,
                     success: function(jsonObjectOfServer) {
                         jsonObjectOfServer = JSON.parse(jsonObjectOfServer);
-                        $(".startScan-wrapper").addClass("hidden");
-                        $("#container").removeClass("hidden");
                         scrollTop();
                         applicationData = JSON.stringify(jsonObjectOfServer.Content);
                         $.jStorage.set('ApplicationId', jsonObjectOfServer.ApplicationId);
                         onCheckJson();
+                         $(".startScan-wrapper").addClass("hidden");
+                        $("#container").removeClass("hidden");
                         // checkUpdateRestaurantMenu(true);
                     },
                     error: function() {
