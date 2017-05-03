@@ -1,6 +1,12 @@
 function goToPage(index) {
     indexPage = index;
     var thisPage = applicationData.Pages.filter(function(item) { return item.Id == indexPage })[0];
+    var thisPageIsLocked = thisPage.IsLocked;
+    if (thisPageIsLocked) {
+        window.plugins.toast.showShortBottom("This page is locked!");
+        return false
+    }
+
     if (thisPage.IsPrivate) {
         if (!$.jStorage.get('isLogin')) {
             var pageWithForm = [];
