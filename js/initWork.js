@@ -15,9 +15,9 @@ function init() {
     document.addEventListener("deviceready", onDeviceReady, false);
     $(".classDropdownList").addClass("classHide");
 
-document.querySelector("#startScan").addEventListener("touchend", startScan, false);
+    document.querySelector("#startScan").addEventListener("touchend", startScan, false);
 
-    
+
     deleteResourcesAll();
 }
 
@@ -45,8 +45,8 @@ function onDeviceReady() {
     StatusBar.hide();
     // navigator.splashscreen.show();
     $('[data-toggle="tooltip"]').tooltip();
-    if ('ontouchstart' in document.documentElement) { 
-         $('body').css('cursor', 'pointer');
+    if ('ontouchstart' in document.documentElement) {
+        $('body').css('cursor', 'pointer');
     }
 }
 
@@ -83,19 +83,19 @@ function onCheckJson() {
         if (pageWithGeneralBg.length > 0) {
             pageStyles = pageWithGeneralBg[0].Style;
         }
-        if(applicationData.IsTrackingLastPage){
+        if (applicationData.IsTrackingLastPage) {
             var idLastPage = getLastOpenPage();
-            var lastPage = applicationData.Pages.filter(function(p){return p.Id == idLastPage})[0]
+            var lastPage = applicationData.Pages.filter(function(p) { return p.Id == idLastPage })[0]
             if (lastPage.BackgroundImagePath != null) {
                 pageStyles = lastPage.Style;
             }
-        }else{
-            var StartPage = applicationData.Pages.filter(function(p){return p.IsStartPage})[0];
+        } else {
+            var StartPage = applicationData.Pages.filter(function(p) { return p.IsStartPage })[0];
             if (StartPage.BackgroundImagePath != null) {
                 pageStyles = StartPage.Style;
             }
         }
-   
+
         $("#container").attr("style", pageStyles).removeClass("hidden");
         $(".startScan-wrapper").addClass("hidden");
     } else {
@@ -126,7 +126,7 @@ function onCheckJson() {
 function checkConnection() {
     var networkState = navigator.connection.type;
     if (networkState != Connection.NONE) {
-        var siteUrl = "http://appconstructor.tech"
+        var siteUrl = "http://appconstructor.newline.tech"
 
         applicationData = JSON.parse($.jStorage.get('appData'));
         var projectId = applicationData.ProjectId;
