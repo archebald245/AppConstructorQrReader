@@ -17,7 +17,6 @@ function init() {
 
     document.querySelector("#startScan").addEventListener("touchend", startScan, false);
 
-
     deleteResourcesAll();
 }
 
@@ -25,6 +24,10 @@ function onDeviceReady() {
 
     window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem) {
         window.myFileSystem = fileSystem;
+        if (!window.Promise) {
+            window.Promise = Promise;
+        }
+
         fileSystem.root.getDirectory("Phonegap", { create: true, exclusive: false }, onGetDirectorySuccess, onGetDirectoryFail);
         checkJsStorage();
         store = fileSystem.root.nativeURL + "Phonegap/";
@@ -126,7 +129,8 @@ function onCheckJson() {
 function checkConnection() {
     var networkState = navigator.connection.type;
     if (networkState != Connection.NONE) {
-        var siteUrl = "http://appconstructor.newline.tech"
+        var siteUrl = "http://appconstructor.newline.tech";
+
 
         applicationData = JSON.parse($.jStorage.get('appData'));
         var projectId = applicationData.ProjectId;

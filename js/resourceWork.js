@@ -216,11 +216,14 @@ function deleteImage(imagePath) {
 }
 
 function downloadResources() {
-
+    var promiseArray = [];
     for (var i = 0; i < resources.length; i++) {
         var fileNameImage = resources[i];
-        download(fileNameImage);
+        promiseArray.push(download(fileNameImage));
     }
+    Promise.all(promiseArray).then(callback).catch(function(err) {
+        callback();
+    })
 }
 
 function download(fileName) {
@@ -233,25 +236,27 @@ function download(fileName) {
             resourcesArr.push(resources[i]);
         }
     }
-    window.myFileSystem.root.getFile(localFileName, { create: true, exclusive: false }, function(fileEntry) {
-        localPath = fileEntry.toURL();
-        console.log(localPath);
-        var ft = new FileTransfer();
-        ft.download(remoteFile,
-            localPath,
-            function(entry) {
-                countFileDownload = countFileDownload + 1;
-                if ((countFileDownload + countFileDownloadFail) === resourcesArr.length) {
-                    callback();
-                }
-            }, failDownload);
-    }, fail);
+    return new Promise(function(resolve, reject) {
+        window.myFileSystem.root.getFile(localFileName, { create: true, exclusive: false }, function(fileEntry) {
+            localPath = fileEntry.toURL();
+            console.log(localPath);
+            var ft = new FileTransfer();
+            // readFile(entry);
+            // countFileDownload = countFileDownload + 1;
+            // if ((countFileDownload + countFileDownloadFail) === resourcesArr.length) {
+            //     callback();
+            // }
+            ft.download(remoteFile,
+                localPath,
+                resolve, reject);
+        }, fail);
+    });
 }
 
-function failDownload(error) {
-    countFileDownloadFail = countFileDownloadFail + 1;
-    console.log(error.code);
-}
+// function failDownload(error) {
+//     countFileDownloadFail = countFileDownloadFail + 1;
+//     console.log(error.code);
+// }
 
 function fail(error) {
     console.log(error.code);
