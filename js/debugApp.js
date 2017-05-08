@@ -14,7 +14,7 @@ function startScan() { //Call in Init function
 
     cordova.plugins.barcodeScanner.scan(
         function(result) {
-            var siteUrl = "http://appconstructor.newline.tech";
+            var siteUrl = "http://appconstructor.tech";
 
             if (!result.cancelled) {
                 $(".Scan-spiner").removeClass("hidden");
