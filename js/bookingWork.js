@@ -130,31 +130,31 @@ function addListenerToClickBookService() {
         var selectedDay = $("#dateTimePicker-date").val().split(" ")[1];
         var currentInstitutionId = Number($(".value-currentInstitution").val());
         var bookResourceId = Number($(".serviceId").first().siblings(".thisTimeLineId").val());
-        var currentResourceObject = applicationData.Institutions.filter(function(e){return e.Id == currentInstitutionId})[0].BookResources.filter(function(e){return e.Id == bookResourceId})[0];
+        var currentResourceObject = applicationData.Institutions.filter(function(e) { return e.Id == currentInstitutionId })[0].BookResources.filter(function(e) { return e.Id == bookResourceId })[0];
         if (timeVal != "Time" && dateVal != "Date") {
-            if(currentResourceObject.UseDayTime){
-                var currentDayObject = currentResourceObject.DayForBookResource.filter(function(e){return e.Day == selectedDay});
-                if(currentDayObject.length == 0){
+            if (currentResourceObject.UseDayTime) {
+                var currentDayObject = currentResourceObject.DayForBookResource.filter(function(e) { return e.Day == selectedDay });
+                if (currentDayObject.length == 0) {
                     alert("Sorry, resource don't work in this day of week!");
                     return false;
-                }else{
-                currentResourceObject.CloseTime = currentDayObject[0].CloseTime;
-                currentResourceObject.OpenTime = currentDayObject[0].OpenTime;
-                $(".dateTimePicker-container").addClass("hidden");
-                $(".order-booking").removeClass("hidden");
-                scrollTop();
-                sendOrderBooking(dateVal, timeVal, needConfirmation, bookResourceId);
+                } else {
+                    currentResourceObject.CloseTime = currentDayObject[0].CloseTime;
+                    currentResourceObject.OpenTime = currentDayObject[0].OpenTime;
+                    $(".dateTimePicker-container").addClass("hidden");
+                    $(".order-booking").removeClass("hidden");
+                    scrollTop();
+                    sendOrderBooking(dateVal, timeVal, needConfirmation, bookResourceId);
                 }
-            
-            }else{
+
+            } else {
                 $(".dateTimePicker-container").addClass("hidden");
                 $(".order-booking").removeClass("hidden");
                 scrollTop();
                 sendOrderBooking(dateVal, timeVal, needConfirmation, bookResourceId);
-            } 
-        }else {
-                alert("Please, select date for this service!");
             }
+        } else {
+            alert("Please, select date for this service!");
+        }
 
     });
 }
@@ -164,6 +164,9 @@ function parseEndDataTime(startTime, duration) {
     var minutes = moment(startTime, "h:mm").add(duration, 'minutes').minutes().toString();
     if (minutes < 10) {
         minutes = "0" + minutes;
+    }
+    if (hours < 10) {
+        hours = "0" + hours;
     }
     return hours + ":" + minutes;
 }
