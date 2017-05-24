@@ -54,6 +54,11 @@ function submitFormListener() {
             alert("Sorry, no internet connection!");
         }
     });
+
+    if ($.jStorage.get("isLogin")) {
+        $(".formLogout").prop("disabled", false);
+    }
+
     $(".formLogout").on("click", function() {
         $.jStorage.set('isLogin', false);
         goToPage(indexPage);
