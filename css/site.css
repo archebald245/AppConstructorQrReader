@@ -248,6 +248,10 @@ form {
     width: 100%;
 }
 
+.btn-defoult {
+    background-color: #a0a0a0;
+}
+
 .form-control {
     max-width: 1000px !important;
 }
