@@ -24,7 +24,7 @@
     <script src="js/buttonMaterialUI/buttonMaterialUI.min.js"></script>
     <script src="js/lightGallery/lightgallery.min.js"></script>
 
-	<script src="js/localized/cultureResources.js"></script>
+    <script src="js/localized/cultureResources.js"></script>
     <script src="js/render-form.js"></script>
     <script src="js/render-custom-form.js"></script>
     <script src="js/render-custom-hide-form.js"></script>
@@ -90,28 +90,28 @@
     <div id="container" class="mainContainerApp hidden"></div>
 
     <div class="container-statusBooking hidden">
-        <div class="cart-top-line"><button class="back-to-container-from-book"></button>Your book status list</div>
+        <div class="cart-top-line"><button class="back-to-container-from-book"></button><span>Your book status list</span></div>
         <div class="status-list"></div>
     </div>
     <div class="bookingServices-container hidden">
-        <div class="cart-top-line"><button class="back-to-timelines"></button>Services</div>
+        <div class="cart-top-line"><button class="back-to-timelines"></button><span>Services</span></div>
         <div id='bookingServices'></div>
-        <button type="button" class="btn-order-booking">Order Booking</button>
+        <button type="button" class="btn-order-booking"><span>Order Booking</span></button>
     </div>
     <div class="container-selectFreeBookTime hidden">
-        <div class="cart-top-line"><button class="back-to-container-from-book"></button>Select free time</div>
-        <p>We can offer you these times:</p>
+        <div class="cart-top-line"><button class="back-to-container-from-book"></button><span>Select free time</span></div>
+        <p><span>We can offer you these times:</span></p>
         <select id="select-freeTimeBook">
       </select>
-        <button type="button" class="btn-order-booking-ForFreeTime" id="bookAfterConfirmFreeTime">Book</button>
+        <button type="button" class="btn-order-booking-ForFreeTime" id="bookAfterConfirmFreeTime"><span>Book</span></button>
     </div>
     <div class="dateTimePicker-container hidden">
-        <div class="cart-top-line"><button class="back-to-services"></button>Select Date</div>
-        <label for="dateTimePicker-date">Select date</label>
+        <div class="cart-top-line"><button class="back-to-services"></button><span>Select Date</span></div>
+        <label for="dateTimePicker-date"><span>Select date</span></label>
         <input type="text" id="dateTimePicker-date" value="Date" />
-        <label for="dateTimePicker-time">Select time</label>
+        <label for="dateTimePicker-time"><span>Select time</span></label>
         <input type="text" id="dateTimePicker-time" value="Time" />
-        <button class="btn-confirmDateForBook">Book</button>
+        <button class="btn-confirmDateForBook"><span>Book</span></button>
         <input type="hidden" class="thisServiceId" />
         <input type="hidden" class="thisDuration" />
         <input type="hidden" class="thisIdForTimeLine" />
@@ -119,51 +119,51 @@
     </div>
 
     <div class="order-booking hidden">
-        <div class="cart-top-line"><button class="btn-back-toservices"></button>Your Order Info</div>
-        <label for="nameOrder">Name</label>
+        <div class="cart-top-line"><button class="btn-back-toservices"></button><span>Your Order Info</span></div>
+        <label for="nameOrder"><span>Name</span></label>
         <input type="text" id="booking-nameOrder" class="nameOrder required" />
-        <label for="phoneOrder">Phone Number</label>
+        <label for="phoneOrder"><span>Phone Number</span></label>
         <input type="text" id="booking-phoneOrder" class="phoneOrder required" />
-        <label for="emailOrder">Email</label>
+        <label for="emailOrder"><span>Email</span></label>
         <input type="text" id="booking-emailOrder" class="emailOrder required" />
 
         <span class="hidden">
-        <label for="confirmMethod">Confirm Method</label>
-            <select id="confirmMethod" class="required">
-            <option value="SMS">SMS</option>
-            <option value="InApplication">In Application</option>
-            <option value="Email">Email</option>
+        <label for="confirmMethod"><span>Confirm Method</span></label>
+        <select id="confirmMethod" class="required">
+            <option value="SMS"><span>SMS</span></option>
+            <option value="InApplication"><span>In Application</span></option>
+            <option value="Email"><span>Email</span></option>
             </select>
-      </span>
+        </span>
 
 
-        <label for="commentOrder">Your Order Comments</label>
+        <label for="commentOrder"><span>Your Order Comments</span></label>
         <textarea id="booking-commentOrder" class="commentOrder"></textarea>
-        <button class="btn-send-order-booking">Book</button>
+        <button class="btn-send-order-booking"><span>Book</span></button>
 
     </div>
     <div class="cart hidden">
         <input type="hidden" name="cartRestaurantId" value="" />
-        <div class="cart-top-line"><button class="back-to-container"></button>Your Order</div>
+        <div class="cart-top-line"><button class="back-to-container"></button><span>Your Order</span></div>
         <div id="cart">
 
 
 
         </div>
-        <div class="totalPrice">Total $ <b>0</b></div>
-        <button class="btn-order">Order</button>
+        <div class="totalPrice"><span>Total </span>$ <b>0</b></div>
+        <button class="btn-order"><span>Order</span></button>
     </div>
     <div id="orderInfo" class="hidden">
-        <div class="cart-top-line"><button class="back-to-cart"></button>Your Order Info</div>
-        <label for="nameOrder">Name</label>
+        <div class="cart-top-line"><button class="back-to-cart"></button><span>Your Order Info</span></div>
+        <label for="nameOrder"><span>Name</span></label>
         <input type="text" id="nameOrder" class="nameOrder required" />
-        <label for="phoneOrder">Phone Number</label>
+        <label for="phoneOrder"><span>Phone Number</span></label>
         <input type="text" id="phoneOrder" class="phoneOrder required" />
-        <label for="emailOrder">Email</label>
+        <label for="emailOrder"><span>Emai</span>l</label>
         <input type="text" id="emailOrder" class="emailOrder required" />
-        <label for="commentOrder">Your Order Comments</label>
+        <label for="commentOrder"><span>Your Order Comments</span></label>
         <textarea id="commentOrder" class="commentOrder"></textarea>
-        <button class="placeAnOrder btn-order">Buy</button>
+        <button class="placeAnOrder btn-order"><span>Buy</span></button>
     </div>
     <div class="singleItem hidden">
         <div class="cart-top-line"><button class="back-to-container"></button></div>

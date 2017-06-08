@@ -91,8 +91,8 @@ function initEnCulture() {
     cultureRes.alreadyBook = "You already have booked this service!";
     cultureRes.resourcesDontWork = "Sorry, resource don't work in this day of week!";
     cultureRes.selectServTime = "Please, select date for this service!";
-    cultureRes.cantBookOne = "Извените, но вы можете зарезервировать от";
-    cultureRes.cantBookTwo = "и до";
+    cultureRes.cantBookOne = "Sorry, you can book from ";
+    cultureRes.cantBookTwo = " to ";
     cultureRes.cantBookThree = "Time";
     cultureRes.ok = "OK";
     cultureRes.instOpen = "Sorry, Institution is open from ";

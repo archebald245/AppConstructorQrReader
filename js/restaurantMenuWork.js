@@ -112,7 +112,7 @@
              $(itemMenu.RestaurantMenuItems).each(function(i, e) {
                  if (e.Id == itemId) {
                      $("#cart").find("input[value='" + itemId + "']").siblings(".cartItem-info").find(".shopItem-price").text(Number(e.Price) * newItemCount);
-                     window.plugins.toast.showShortBottom("Item add to cart!");
+                     window.plugins.toast.showShortBottom(cultureRes.itemAdded);
                  }
              });
          });
@@ -126,12 +126,12 @@
                  if (e.Id == itemId) {
                      if ($("#cart").children().length > 0) {
                          if ($("[name=cartRestaurantId]").attr("value") != restaurantId) {
-                             if (confirm("Your shopping cart already has order from previous restaurant. If you add and confirm current order the order from previous restaurant will be removed. Continue?")) {
+                             if (confirm(cultureRes.restConf)) {
                                  $("#cart").children().remove();
                                  $("[name=cartRestaurantId]").attr("value", restaurantId);
                                  $("#cart").append("<div id='shopItem'></div>");
                                  renderCartItem(e);
-                                 window.plugins.toast.showShortBottom("Item add to cart!");
+                                 window.plugins.toast.showShortBottom(cultureRes.itemAdded);
                              } else {
 
                              }
@@ -139,13 +139,13 @@
                              $("[name=cartRestaurantId]").attr("value", restaurantId);
                              $("#cart").append("<div id='shopItem'></div>");
                              renderCartItem(e);
-                             window.plugins.toast.showShortBottom("Item add to cart!");
+                             window.plugins.toast.showShortBottom(cultureRes.itemAdded);
                          }
                      } else {
                          $("[name=cartRestaurantId]").attr("value", restaurantId);
                          $("#cart").append("<div id='shopItem'></div>");
                          renderCartItem(e);
-                         window.plugins.toast.showShortBottom("Item add to cart!");
+                         window.plugins.toast.showShortBottom(cultureRes.itemAdded);
                      }
                  }
 
@@ -163,7 +163,7 @@
          });
          return totalPrice;
      }
-  
+
      $(".totalPrice b").html("");
      $(".totalPrice b").append(totalPrice());
      addListenerToClickDelete();
@@ -175,7 +175,7 @@
      $(".delete-cartItem").on("click", function() {
          $(this).closest(".cartItem").parent().remove();
 
-      
+
          $(".totalPrice b").html("");
          $(".totalPrice b").append(totalPrice());
      });
@@ -317,13 +317,13 @@
          });
          var ThisRestaurantMenuBlock = $(this).siblings();
          var weekday = new Array(7);
-         weekday[0] = "Sunday";
-         weekday[1] = "Monday";
-         weekday[2] = "Tuesday";
-         weekday[3] = "Wednesday";
-         weekday[4] = "Thursday";
-         weekday[5] = "Friday";
-         weekday[6] = "Saturday";
+         weekday[0] = cultureRes.sunday;
+         weekday[1] = cultureRes.monday;
+         weekday[2] = cultureRes.tuesday;
+         weekday[3] = cultureRes.wednesday;
+         weekday[4] = cultureRes.thursday;
+         weekday[5] = cultureRes.friday;
+         weekday[6] = cultureRes.saturday;
          var dayNow = weekday[new Date().getDay()];
 
          $(restaurant.RestaurantMenus).each(function() {
@@ -366,7 +366,7 @@
              } else {
                  var networkState = navigator.connection.type;
                  if (networkState == Connection.NONE) {
-                     $("#custom-restaurant-menu-container").html("Sorry, is only available online!");
+                     $("#custom-restaurant-menu-container").html(cultureRes.sorryOnline);
                  } else {
                      if (thisRestarauntMenu.UseDateTime == false) {
                          renderRestaurantMenu(thisRestarauntMenu, ThisRestaurantMenuBlock.find("[name=restaurantMenuPosition]").attr("value"), ThisRestaurantMenuBlock.find("[name=responsiveModel]").attr("value"),
@@ -380,7 +380,7 @@
                                      ThisRestaurantMenuBlock.find("[name=stateName]").attr("value"), ThisRestaurantMenuBlock.find("[name=statePrice]").attr("value"), ThisRestaurantMenuBlock.find("[name=stateDescription]").attr("value"),
                                      ThisRestaurantMenuBlock.find("[name=stateButton]").attr("value"), ThisRestaurantMenuBlock.find("[name=stateImage]").attr("value"));
                                  $(".select-menu").val(thisRestarauntMenu.Id);
-                             } else if (dataItem.IsChecked && dataItem.Day == "Date" && CheckRestarauntTimeForDate(dataItem.FromHour, dataItem.ToHour, GetDateTime())) {
+                             } else if (dataItem.IsChecked && dataItem.Day == cultureRes.date && CheckRestarauntTimeForDate(dataItem.FromHour, dataItem.ToHour, GetDateTime())) {
                                  renderRestaurantMenu(thisRestarauntMenu, ThisRestaurantMenuBlock.find("[name=restaurantMenuPosition]").attr("value"), ThisRestaurantMenuBlock.find("[name=responsiveModel]").attr("value"),
                                      ThisRestaurantMenuBlock.find("[name=stateName]").attr("value"), ThisRestaurantMenuBlock.find("[name=statePrice]").attr("value"), ThisRestaurantMenuBlock.find("[name=stateDescription]").attr("value"),
                                      ThisRestaurantMenuBlock.find("[name=stateButton]").attr("value"), ThisRestaurantMenuBlock.find("[name=stateImage]").attr("value"));
@@ -396,7 +396,7 @@
              }
          });
          if ($(".custom-restaurant-menu-container").hasClass("hidden")) {
-             alert("No time for this rest!");
+             alert(cultureRes.noTime);
          }
          $(this).siblings(".custom-restaurant-menu-container").attr("id", "");
          addListenerToClickBuy();
@@ -417,13 +417,13 @@
          });
          var ThisRestaurantMenuBlock = $(this).siblings();
          var weekday = new Array(7);
-         weekday[0] = "Sunday";
-         weekday[1] = "Monday";
-         weekday[2] = "Tuesday";
-         weekday[3] = "Wednesday";
-         weekday[4] = "Thursday";
-         weekday[5] = "Friday";
-         weekday[6] = "Saturday";
+         weekday[0] = cultureRes.sunday;
+         weekday[1] = cultureRes.monday;
+         weekday[2] = cultureRes.tuesday;
+         weekday[3] = cultureRes.wednesday;
+         weekday[4] = cultureRes.thursday;
+         weekday[5] = cultureRes.friday;
+         weekday[6] = cultureRes.saturday;
          var dayNow = weekday[new Date().getDay()];
 
          $(this).siblings(".custom-restaurant-menu-container").attr("id", "custom-restaurant-menu-container");
@@ -440,7 +440,7 @@
                              ThisRestaurantMenuBlock.find("[name=stateName]").attr("value"), ThisRestaurantMenuBlock.find("[name=statePrice]").attr("value"), ThisRestaurantMenuBlock.find("[name=stateDescription]").attr("value"),
                              ThisRestaurantMenuBlock.find("[name=stateButton]").attr("value"), ThisRestaurantMenuBlock.find("[name=stateImage]").attr("value"));
                          $(".custom-restaurant-menu-container").removeClass("hidden");
-                     } else if (dataItem.IsChecked && dataItem.Day == "Date" && CheckRestarauntTimeForDate(dataItem.FromHour, dataItem.ToHour, GetDateTime())) {
+                     } else if (dataItem.IsChecked && dataItem.Day == cultureRes.date && CheckRestarauntTimeForDate(dataItem.FromHour, dataItem.ToHour, GetDateTime())) {
                          renderRestaurantMenu(menu, ThisRestaurantMenuBlock.find("[name=restaurantMenuPosition]").attr("value"), ThisRestaurantMenuBlock.find("[name=responsiveModel]").attr("value"),
                              ThisRestaurantMenuBlock.find("[name=stateName]").attr("value"), ThisRestaurantMenuBlock.find("[name=statePrice]").attr("value"), ThisRestaurantMenuBlock.find("[name=stateDescription]").attr("value"),
                              ThisRestaurantMenuBlock.find("[name=stateButton]").attr("value"), ThisRestaurantMenuBlock.find("[name=stateImage]").attr("value"));
@@ -454,7 +454,7 @@
              var networkState = navigator.connection.type;
              if (networkState == Connection.NONE) {
                  $(".custom-restaurant-menu-container").addClass("hidden");
-                 alert("Sorry, not time!");
+                 alert(cultureRes.noTime);
              } else {
                  if (menu.UseDateTime == false) {
                      renderRestaurantMenu(menu, ThisRestaurantMenuBlock.find("[name=restaurantMenuPosition]").attr("value"), ThisRestaurantMenuBlock.find("[name=responsiveModel]").attr("value"),
@@ -466,7 +466,7 @@
                              renderRestaurantMenu(menu, ThisRestaurantMenuBlock.find("[name=restaurantMenuPosition]").attr("value"), ThisRestaurantMenuBlock.find("[name=responsiveModel]").attr("value"),
                                  ThisRestaurantMenuBlock.find("[name=stateName]").attr("value"), ThisRestaurantMenuBlock.find("[name=statePrice]").attr("value"), ThisRestaurantMenuBlock.find("[name=stateDescription]").attr("value"),
                                  ThisRestaurantMenuBlock.find("[name=stateButton]").attr("value"), ThisRestaurantMenuBlock.find("[name=stateImage]").attr("value"));
-                         } else if (dataItem.IsChecked && dataItem.Day == "Date" && CheckRestarauntTimeForDate(dataItem.FromHour, dataItem.ToHour, GetDateTime())) {
+                         } else if (dataItem.IsChecked && dataItem.Day == cultureRes.date && CheckRestarauntTimeForDate(dataItem.FromHour, dataItem.ToHour, GetDateTime())) {
                              renderRestaurantMenu(menu, ThisRestaurantMenuBlock.find("[name=restaurantMenuPosition]").attr("value"), ThisRestaurantMenuBlock.find("[name=responsiveModel]").attr("value"),
                                  ThisRestaurantMenuBlock.find("[name=stateName]").attr("value"), ThisRestaurantMenuBlock.find("[name=statePrice]").attr("value"), ThisRestaurantMenuBlock.find("[name=stateDescription]").attr("value"),
                                  ThisRestaurantMenuBlock.find("[name=stateButton]").attr("value"), ThisRestaurantMenuBlock.find("[name=stateImage]").attr("value"));
@@ -477,7 +477,7 @@
              }
          }
          if ($(".custom-restaurant-menu-container").hasClass("hidden")) {
-             alert("No time for this rest!");
+             alert(cultureRes.noTime);
          }
          $(this).siblings(".custom-restaurant-menu-container").attr("id", "");
          addListenerToClickBuy();
