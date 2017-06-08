@@ -47,6 +47,8 @@ function setUseRestaurantMenu(id, use, restaurants) {
 //restaurant menu element
 
 function reactRender() {
+	 initCulture();
+	
     function onYouTubeIframeAPIReady(element, id) {
         var player = new YT.Player(element, {
             heidth: 'auto',
