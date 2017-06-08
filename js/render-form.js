@@ -7,7 +7,7 @@ function renderForm(form, id) {
     var isDropdownName;
     var isLogin = $.jStorage.get('isLogin');
     var FormBlock = React.createClass({
-        displayName: "FormBlock",
+        displayName: cultureRes.formBlock,
 
         getInitialState: function getInitialState() {
             return { data: form };
@@ -184,7 +184,7 @@ function renderForm(form, id) {
                                     field.Label
                                 )
                             ),
-                            React.createElement("input", { type: "text", name: field.Name, className: "phoneNumber required form-control", placeholder: "Format: +XXXXXXXXXXX", id: field.Id })
+                            React.createElement("input", { type: "text", name: field.Name, className: "phoneNumber required form-control", placeholder: cultureRes.telPlaceholder, id: field.Id })
                         );
                     } else {
                         return React.createElement(
@@ -198,7 +198,7 @@ function renderForm(form, id) {
                                     field.Label
                                 )
                             ),
-                            React.createElement("input", { type: "text", name: field.Name, className: "phoneNumber form-control", placeholder: "Format: +XXXXXXXXXXX", id: field.Id })
+                            React.createElement("input", { type: "text", name: field.Name, className: "phoneNumber form-control", placeholder: cultureRes.telPlaceholder, id: field.Id })
                         );
                     }
                 }
@@ -319,7 +319,7 @@ function renderForm(form, id) {
                     fieldModels,
                     React.createElement(
                         "button", { type: "button", className: "formLogout btn btn-defoult" },
-                        "Logout"
+                        cultureRes.logout
                     )
                 );
             } else {
@@ -331,14 +331,14 @@ function renderForm(form, id) {
                     fieldModels,
                     React.createElement(
                         "button", { type: "button", className: "formSubmit btn btn-defoult" },
-                        "Submit"
+                        cultureRes.submit
                     )
                 );
             }
         }
     });
     var DropDownModels = React.createClass({
-        displayName: "DropDownModels",
+        displayName: cultureRes.dropDown,
 
         render: function render() {
             var DropDownOptionModels = this.props.data.FieldOptions.map(function(option) {
@@ -354,7 +354,7 @@ function renderForm(form, id) {
         }
     });
     var CheckBoxModels = React.createClass({
-        displayName: "CheckBoxModels",
+        displayName: cultureRes.checkBox,
 
         render: function render() {
             var CheckBoxOptionModels = this.props.data.FieldOptions.map(function(option) {
@@ -374,7 +374,7 @@ function renderForm(form, id) {
         }
     });
     var RadioButtonModels = React.createClass({
-        displayName: "RadioButtonModels",
+        displayName: cultureRes.RadioButton,
         componentDidMount: function() {
             this.getDOMNode().querySelector('[type="radio"]:first-child').checked = "checked";
 

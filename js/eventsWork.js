@@ -3,7 +3,7 @@ function goToPage(index) {
     var thisPage = applicationData.Pages.filter(function(item) { return item.Id == indexPage })[0];
     var thisPageIsLocked = thisPage.IsLocked;
     if (thisPageIsLocked) {
-        window.plugins.toast.showShortBottom("This page is locked!");
+        window.plugins.toast.showShortBottom(cultureRes.lockedPage);
         return false
     }
 
@@ -29,7 +29,7 @@ function goToPage(index) {
                     }
                 });
             });
-            window.plugins.toast.showShortBottom("Login, please!");
+            window.plugins.toast.showShortBottom(cultureRes.loginPlease);
         }
     }
     if (applicationData.IsTrackingLastPage == true) {

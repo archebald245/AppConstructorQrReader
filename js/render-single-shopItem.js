@@ -1,7 +1,8 @@
 "use strict";
+
 function renderSingleShopItem(singleItem) {
     var singleShopItem = React.createClass({
-        displayName: "singleShopItem",
+        displayName: cultureRes.shopitem,
 
         getInitialState: function getInitialState() {
             return { data: singleItem };
@@ -19,60 +20,51 @@ function renderSingleShopItem(singleItem) {
         render: function render() {
             var data = this.state.data;
             var sliderItem;
-            if(data.RestaurantMenuImages.length > 0){
-              sliderItem = data.RestaurantMenuImages.map(function(item) {
-                  return React.createElement(
-                      "div",
-                      { className: "swiper-slide" },
-                      React.createElement("img", { src: item.Path })
-                  );
-              });
-            }else{
-              sliderItem =  React.createElement('img', { src:'baseimages/cartItem.png',className: 'restaurantMenuNoImages item-shop-img' });
+            if (data.RestaurantMenuImages.length > 0) {
+                sliderItem = data.RestaurantMenuImages.map(function(item) {
+                    return React.createElement(
+                        "div", { className: "swiper-slide" },
+                        React.createElement("img", { src: item.Path })
+                    );
+                });
+            } else {
+                sliderItem = React.createElement('img', { src: 'baseimages/cartItem.png', className: 'restaurantMenuNoImages item-shop-img' });
             }
 
             return React.createElement(
-                "div",
-                { className: "singleShop-item" },
+                "div", { className: "singleShop-item" },
                 React.createElement(
-                    "div",
-                    { className: "singleShop-wrapper" },
+                    "div", { className: "singleShop-wrapper" },
                     React.createElement(
                         "h4",
                         null,
                         data.ProdName
                     ),
                     React.createElement(
-                        "div",
-                        { className: "swiper-container" },
+                        "div", { className: "swiper-container" },
                         React.createElement(
-                            "div",
-                            { className: "swiper-wrapper" },
+                            "div", { className: "swiper-wrapper" },
                             sliderItem
                         )
                     ),
                     React.createElement(
-                        "p",
-                        { className: "singleShop-category" },
+                        "p", { className: "singleShop-category" },
                         data.Category
                     ),
                     React.createElement(
-                        "p",
-                        { className: "singleShop-price" },
+                        "p", { className: "singleShop-price" },
                         React.createElement(
-                            "span",
-                            { className: "img-dollar-singleItem" },
+                            "span", { className: "img-dollar-singleItem" },
                             null
                         ),
                         data.Price
                     ),
                     React.createElement(
-                        "div",
-                        { className: "singleShop-description" },
+                        "div", { className: "singleShop-description" },
                         React.createElement(
                             "h5",
                             null,
-                            "Description:"
+                            cultureRes.shopitemDesc
                         ),
                         React.createElement(
                             "p",
@@ -80,15 +72,13 @@ function renderSingleShopItem(singleItem) {
                             data.Description
                         ),
                         React.createElement(
-                            'input',
-                            { type: 'hidden', name: "singleItemId", value: data.Id }
+                            'input', { type: 'hidden', name: "singleItemId", value: data.Id }
                         )
                     )
                 ),
                 React.createElement(
-                    "button",
-                    { className: "singleShop-btn" },
-                    "+ Add to Cart"
+                    "button", { className: "singleShop-btn" },
+                    cultureRes.addToCart
                 )
             );
         }

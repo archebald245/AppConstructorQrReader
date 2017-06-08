@@ -43,7 +43,7 @@ function clickPlaceAnOrder() {
             },
             cache: false,
             success: function() {
-                alert("Thank you!");
+                alert(cultureRes.thankYou);
                 $("#cart").html("");
                 $("#orderInfo input, #orderInfo textarea").val("");
                 $("#container").removeClass("hidden");
@@ -55,7 +55,7 @@ function clickPlaceAnOrder() {
 
             },
             error: function() {
-                alert("Sorry, error!");
+                alert(cultureRes.sorryError);
             }
         });
     }
@@ -91,7 +91,7 @@ function bindListenerToClickBtn() {
             $(".cart").addClass("hidden");
             scrollTop();
         } else {
-            alert("You have nothing ordered!");
+            alert(cultureRes.nothingOrdered);
         }
 
     });

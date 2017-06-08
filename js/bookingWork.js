@@ -42,7 +42,7 @@ function addListenerToClickBookService() {
     $(".btn-order-booking").unbind("click");
     $(".btn-order-booking").click(function() {
         if (listServiceForBooking == 0) {
-            alert("You don't book any service!");
+            alert(cultureRes.dontAnyBook);
         } else {
             $(".dateTimePicker-container").removeClass("hidden");
             if ($("#container").find(".row-elementInstitution").length > 0) {
@@ -86,9 +86,9 @@ function addListenerToClickBookService() {
                     }
                 }
                 listServiceForBooking.push(BookOrder);
-                alert("Book!");
+                alert(cultureRes.book);
             } else {
-                if (confirm("You can  order only  one kind of time line! If you continue booking this service, other services will be cleared from booking list?")) {
+                if (confirm(cultureRes.bookConf)) {
                     listServiceForBooking = [];
                     var BookOrder = {
                         BookDateTime: {
@@ -100,11 +100,11 @@ function addListenerToClickBookService() {
                         }
                     }
                     listServiceForBooking.push(BookOrder);
-                    alert("Book!");
+                    alert(cultureRes.book);
                 }
             }
         } else {
-            alert("You already have booked this service!");
+            alert(cultureRes.alreadyBook);
         }
 
     });
@@ -117,8 +117,8 @@ function addListenerToClickBookService() {
             $(".bookingServices-container").removeClass("hidden");
             scrollTop();
         }
-        $("#dateTimePicker-time").val("Time");
-        $("#dateTimePicker-date").val("Date");
+        $("#dateTimePicker-time").val(cultureRes.time);
+        $("#dateTimePicker-date").val(cultureRes.date);
 
     });
     $(".btn-confirmDateForBook").unbind("click");
@@ -131,11 +131,11 @@ function addListenerToClickBookService() {
         var currentInstitutionId = Number($(".value-currentInstitution").val());
         var bookResourceId = Number($(".serviceId").first().siblings(".thisTimeLineId").val());
         var currentResourceObject = applicationData.Institutions.filter(function(e) { return e.Id == currentInstitutionId })[0].BookResources.filter(function(e) { return e.Id == bookResourceId })[0];
-        if (timeVal != "Time" && dateVal != "Date") {
+        if (timeVal != cultureRes.time && dateVal != cultureRes.date) {
             if (currentResourceObject.UseDayTime) {
                 var currentDayObject = currentResourceObject.DayForBookResource.filter(function(e) { return e.Day == selectedDay });
                 if (currentDayObject.length == 0) {
-                    alert("Sorry, resource don't work in this day of week!");
+                    alert(cultureRes.resourcesDontWork);
                     return false;
                 } else {
                     currentResourceObject.CloseTime = currentDayObject[0].CloseTime;
@@ -153,7 +153,7 @@ function addListenerToClickBookService() {
                 sendOrderBooking(dateVal, timeVal, needConfirmation, bookResourceId);
             }
         } else {
-            alert("Please, select date for this service!");
+            alert(cultureRes.selectServTime);
         }
 
     });
@@ -217,15 +217,15 @@ function sendOrderBooking(dateVal, timeVal, needConfirmation, bookResourceId) {
                         var toDay = moment(fromDay, ["MM/DD/YYYY"]).add(bookResources.CountDaysForBook, "days").format("MM/DD/YYYY");
 
                         if (!((moment(dateVal, ["MM/DD/YYYY"]).isAfter(fromDay) || moment(dateVal, ["MM/DD/YYYY"]).isSame(fromDay)) && (moment(dateVal, ["MM/DD/YYYY"]).isBefore(toDay)) || moment(dateVal, ["MM/DD/YYYY"]).isSame(toDay))) {
-                            alert("Sorry, you can book from" + fromDay + " to " + toDay + "!");
+                            alert(cultureRes.cantBookOne + fromDay + cultureRes.cantBookTwo + toDay + "!");
                             return false;
                         } else {
                             if (bookedStart >= startTime && bookedEnd <= bookedEnd) {
-                                alert("OKK");
+                                alert(cultureRes.ok);
                                 BookingAjax();
                                 return true;
                             } else {
-                                alert("Sorry, Institution is open from " + arrayOpenTime[0] + ":" + arrayOpenTime[1] + " to " + arrayCloseTime[0] + ":" + arrayCloseTime[1] + "!")
+                                alert(cultureRes.instOpen + arrayOpenTime[0] + ":" + arrayOpenTime[1] + cultureRes.cantBookTwo + arrayCloseTime[0] + ":" + arrayCloseTime[1] + "!")
                                 return false;
                             }
                         }
@@ -249,7 +249,7 @@ function sendOrderBooking(dateVal, timeVal, needConfirmation, bookResourceId) {
                     duration = 0;
                     object = JSON.parse(object);
                     if (object.IsCreated == true) {
-                        alert("success");
+                        alert(cultureRes.ok);
                         if (listServiceForBooking[0].ConfirmMethod == "InApplication") {
                             addOrderBookingInJStorage(listServiceForBooking, object.resourceModel);
                         }
@@ -300,7 +300,7 @@ function sendOrderBooking(dateVal, timeVal, needConfirmation, bookResourceId) {
                                     duration = 0;
                                     object = JSON.parse(object);
                                     if (object.IsCreated == true) {
-                                        alert("success");
+                                        alert(cultureRes.ok);
                                         if (listServiceForBooking[0].ConfirmMethod == "InApplication") {
                                             addOrderBookingInJStorage(listServiceForBooking, object.resourceModel);
                                         }
@@ -308,13 +308,13 @@ function sendOrderBooking(dateVal, timeVal, needConfirmation, bookResourceId) {
                                         $("#container, .classMenu").removeClass("hidden");
                                         scrollTop();
                                     } else {
-                                        alert("Sorry, error!");
+                                        alert(cultureRes.sorryError);
                                     }
                                 }
                             });
                         });
                     } else {
-                        alert("Sorry, error!");
+                        alert(cultureRes.sorryError);
                     }
                 }
             });
