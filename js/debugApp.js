@@ -18,7 +18,7 @@ function startScan() { //Call in Init function
             if (!result.cancelled) {
                 $(".Scan-spiner").removeClass("hidden");
                 var qrResult = result.text.split("-");
-                siteUrl = qrresult[0];
+                siteUrl = qrResult[0];
                 var ProjectId = qrResult[1];
                 var VersionName = qrResult[2];
                 $.ajax({
