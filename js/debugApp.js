@@ -17,8 +17,10 @@ function startScan() { //Call in Init function
             var siteUrl = "http://appconstructornew.newlinetechnologies.net/";
             if (!result.cancelled) {
                 $(".Scan-spiner").removeClass("hidden");
-                var ProjectId = result.text.split("-")[0];
-                var VersionName = result.text.split("-")[1];
+                var qrResult = result.text.split("-");
+                siteUrl = qrresult[0];
+                var ProjectId = qrResult[1];
+                var VersionName = qrResult[2];
                 $.ajax({
                     type: "POST",
                     url: siteUrl + "/Constructor/GetContentById",
