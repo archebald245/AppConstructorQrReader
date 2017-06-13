@@ -21,7 +21,7 @@ function startScan() { //Call in Init function
                 var ProjectId = qrResult[0];
                 var VersionName = qrResult[1];
                 if (qrResult[3] != null) {
-                    siteUrl = qrResult[0];
+                    siteUrl = qrResult[3];
                 }
                 $.ajax({
                     type: "POST",
