@@ -6,7 +6,7 @@ function renderCustomForm(form) {
     var idRadioBtn;
     var isDropdownName;
     var FormBlock = React.createClass({
-        displayName: "FormBlock",
+        displayName: cultureRes.formBlock,
 
         getInitialState: function getInitialState() {
             return { data: form };
@@ -183,7 +183,7 @@ function renderCustomForm(form) {
                                     field.Label
                                 )
                             ),
-                            React.createElement("input", { type: "text", name: field.Name, className: "phoneNumber required form-control", placeholder: "Format: +XXXXXXXXXXX", id: field.Id })
+                            React.createElement("input", { type: "text", name: field.Name, className: "phoneNumber required form-control", placeholder: cultureRes.telPlaceholder, id: field.Id })
                         );
                     } else {
                         return React.createElement(
@@ -197,7 +197,7 @@ function renderCustomForm(form) {
                                     field.Label
                                 )
                             ),
-                            React.createElement("input", { type: "text", name: field.Name, className: "phoneNumber form-control", placeholder: "Format: +XXXXXXXXXXX", id: field.Id })
+                            React.createElement("input", { type: "text", name: field.Name, className: "phoneNumber form-control", placeholder: cultureRes.telPlaceholder, id: field.Id })
                         );
                     }
                 }
@@ -318,7 +318,7 @@ function renderCustomForm(form) {
         }
     });
     var DropDownModels = React.createClass({
-        displayName: "DropDownModels",
+        displayName: cultureRes.dropDown,
 
         render: function render() {
             var DropDownOptionModels = this.props.data.FieldOptions.map(function(option) {
@@ -334,7 +334,7 @@ function renderCustomForm(form) {
         }
     });
     var CheckBoxModels = React.createClass({
-        displayName: "CheckBoxModels",
+        displayName: cultureRes.checkBox,
 
         render: function render() {
             var CheckBoxOptionModels = this.props.data.FieldOptions.map(function(option) {
@@ -354,7 +354,7 @@ function renderCustomForm(form) {
         }
     });
     var RadioButtonModels = React.createClass({
-        displayName: "RadioButtonModels",
+        displayName: cultureRes.RadioButton,
         componentDidMount: function() {
             this.getDOMNode().querySelector('[type="radio"]:first-child').checked = "checked";
         },
