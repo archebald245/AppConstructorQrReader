@@ -3,7 +3,7 @@
 function renderRestaurantMenu(menuCollection, position, responsiveModel, stateName, statePrice, stateDescription, stateButton, stateImage) {
 
     var RestaurantMenuBlock = React.createClass({
-        displayName: "RestaurantMenuBlock",
+        displayName: cultureRes.RestMenu,
         getInitialState: function getInitialState() {
             return { data: menuCollection };
         },
@@ -106,7 +106,7 @@ function renderRestaurantMenu(menuCollection, position, responsiveModel, stateNa
                             ),
                             React.createElement(
                                 "button", { type: "button", className: "btn-restaurant-menu" },
-                                "Add"
+                                cultureRes.add
                             ),
                             React.createElement(
                                 "input", { type: "hidden", name: "shopItemId", value: item.Id }
@@ -140,7 +140,7 @@ function renderRestaurantMenu(menuCollection, position, responsiveModel, stateNa
                             ),
                             React.createElement(
                                 "button", { type: "button", className: "btn-restaurant-menu" },
-                                "Add"
+                                cultureRes.add
                             ),
                             React.createElement(
                                 "input", { type: "hidden", name: "shopItemId", value: item.Id }

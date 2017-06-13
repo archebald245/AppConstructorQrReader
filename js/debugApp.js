@@ -18,8 +18,12 @@ function startScan() { //Call in Init function
 
             if (!result.cancelled) {
                 $(".Scan-spiner").removeClass("hidden");
-                var ProjectId = result.text.split("-")[0];
-                var VersionName = result.text.split("-")[1];
+                var qrResult = result.text.split("-");
+                var ProjectId = qrResult[0];
+                var VersionName = qrResult[1];
+                if (qrResult[3] != null) {
+                    siteUrl = qrResult[0];
+                }
                 $.ajax({
                     type: "POST",
                     url: siteUrl + "/Constructor/GetContentById",

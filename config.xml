@@ -68,7 +68,7 @@
   <splash src="screen/android/screen-ldpi-landscape.png"  density="land-ldpi"/>
   <splash src="screen/android/screen-mdpi-landscape.png"  density="land-mdpi"/>
   <splash src="screen/android/screen-xhdpi-landscape.png"  density="land-xhdpi"/>
-  <splash src="screen/android/screen-hdpi-portrait.png.png"  density="port-hdpi"/>
+  <splash src="screen/android/screen-hdpi-portrait.png"  density="port-hdpi"/>
   <splash src="screen/android/screen-ldpi-portrait.png"  density="port-ldpi"/>
   <splash src="screen/android/screen-mdpi-portrait.png"  density="port-mdpi"/>
   <splash src="screen/android/screen-xhdpi-portrait.png"  density="port-xhdpi"/>
