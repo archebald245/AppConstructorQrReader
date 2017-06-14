@@ -18,8 +18,8 @@
   <!--  Ios splash-->
 
   <!--  Ios splash-->
-  <allow-navigation href="^https?://*/*" />
-  <!--<allow-navigation href="https://*youtube.com/*"/>-->
+  <allow-navigation href="http://*/*" />
+  <allow-navigation href="https://*youtube.com/*"/>
   <allow-intent href="*" />
   <access origin="*" />
   <feature name="http://api.phonegap.com/1.0/file">
