@@ -54,6 +54,7 @@ function reactRender() {
             heidth: 'auto',
             width: '100%',
             videoId: id,
+			playerVars: { rel: 0 },
             events: {
                 'onReady': onPlayerReady,
                 'onStateChange': onPlayerStateChange
