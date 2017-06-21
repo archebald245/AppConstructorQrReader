@@ -922,7 +922,7 @@ function reactRender() {
             }
             if (data.ContentTypeId == 7 && this.checkDeniedTools(deniedTools, "youtube-item")) {
                 return React.createElement(
-                    'div', { className: "cell-container col-xs-" + data.Colspan + " col-sm-" + data.Colspan + " col-md-" + data.Colspan + " col-lg-" + data.Colspan, onClick: this.onClickCell },
+                    'div', { className: "videoWrapper cell-container col-xs-" + data.Colspan + " col-sm-" + data.Colspan + " col-md-" + data.Colspan + " col-lg-" + data.Colspan, onClick: this.onClickCell },
                     React.createElement(YoutubeContainer, { data: data.Value })
                 );
             } else if (data.ContentTypeId == 7) {
