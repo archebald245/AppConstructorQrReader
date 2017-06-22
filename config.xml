@@ -21,6 +21,7 @@
 
   <!--  Ios splash-->
   <allow-navigation href="http://*/*" />
+  <allow-navigation href="https://*youtube.com/*"/>
   <allow-intent href="*" />
   <allow-navigation href="https://*youtube.com/*"/>
   <access origin="*" />
