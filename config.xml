@@ -74,12 +74,6 @@
   <splash src="screen/android/screen-xhdpi-portrait.png"  density="port-xhdpi"/>
   <!--  Android splash -->
 </platform>
-  <platform name="android">
-    <resource-file src="google-services.json" target="google-services.json" />
-  </platform>
-  <platform name="ios">
-    <resource-file src="GoogleService-Info.plist" />
-  </platform>
     <!--Ios-->
     <icon src="icons/ios/App-29.png" width="29" height="29"  platform="ios"/>
     <icon src="icons/ios/App-40.png" width="40" height="40"  platform="ios"/>
