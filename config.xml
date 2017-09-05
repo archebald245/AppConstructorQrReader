@@ -12,7 +12,7 @@
   <plugin name="cordova-plugin-document-viewer" spec="0.8.1" source="npm" />
   <plugin name="cordova-plugin-statusbar" spec="2.2.0" source="npm" />
 
-  <plugin name="cordova-plugin-splashscreen" spec="4.0.4" source="npm" />
+  <plugin name="cordova-plugin-splashscreen" spec="4.0.2" source="npm" />
   <plugin name="phonegap-plugin-barcodescanner" spec="6.0.8" source="npm" />
   <!--<plugin name="com.lampa.startapp" spec="0.1.4" source="npm"/>-->
   
