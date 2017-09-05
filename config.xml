@@ -49,6 +49,7 @@
   <preference name="SplashScreen" value="screen"/>
   <preference name="SplashScreenDelay" value="3000"/>
   <preference name="orientation" value="default" />
+  <preference name="AndroidPersistentFileLocation" value="Compatibility" />
   <preference name="phonegap-version" value="cli-7.0.1" />
 
 <!--<splash src="splash.png" />-->
