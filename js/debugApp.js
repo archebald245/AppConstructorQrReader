@@ -7,7 +7,7 @@ function deleteResourcesAll() { //Call in Init function
         var Token = $.jStorage.get('notificationTokenSuccess');
         $.ajax({
             type: "POST",
-            url: siteUrl + "/Constructor/GetContentById",
+            url: siteUrl + "/Constructor/UnsubscribePushNotification",
             data: {
                 projectId: ProjectId,
                 token: Token
