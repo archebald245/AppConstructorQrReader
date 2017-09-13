@@ -13,7 +13,8 @@ function deleteResourcesAll() { //Call in Init function
                 token: Token
             },
             cache: false,
-            success: function() {}
+            success: function() {},
+            error: function() {}
         });
 
         $.jStorage.deleteKey("appData");
