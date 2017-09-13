@@ -1,6 +1,21 @@
 function deleteResourcesAll() { //Call in Init function
     $("#clearJsStorage").click(function() {
         deleteResourcesImg();
+
+        var siteUrl = applicationData.UrlForUpdateApp;
+        var ProjectId = applicationData.ProjectId;
+        var Token = $.jStorage.get('notificationTokenSuccess');
+        $.ajax({
+            type: "POST",
+            url: siteUrl + "/Constructor/GetContentById",
+            data: {
+                projectId: ProjectId,
+                token: Token
+            },
+            cache: false,
+            success: function() {}
+        });
+
         $.jStorage.deleteKey("appData");
         $.jStorage.deleteKey('ApplicationId');
         checkJsStorage();
@@ -20,13 +35,18 @@ function startScan() { //Call in Init function
                 var qrResult = result.text.split("-");
                 var ProjectId = qrResult[0];
                 var VersionName = qrResult[1];
+                var Token = $.jStorage.get('notificationTokenSuccess');
                 if (qrResult[2] != null) {
                     siteUrl = qrResult[2];
                 }
                 $.ajax({
                     type: "POST",
                     url: siteUrl + "/Constructor/GetContentById",
-                    data: { projectId: ProjectId, contentId: VersionName },
+                    data: {
+                        projectId: ProjectId,
+                        contentId: VersionName,
+                        token: Token
+                    },
                     cache: false,
                     success: function(jsonObjectOfServer) {
                         jsonObjectOfServer = JSON.parse(jsonObjectOfServer);

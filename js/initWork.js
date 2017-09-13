@@ -76,6 +76,16 @@ function onDeviceReady() {
     });
 
     push.on('notification', function(data) {
+        window.plugins.toast.hide();
+
+        window.plugins.toast.showWithOptions({
+            message: data.message,
+            duration: 7500,
+            position: "top",
+            addPixelsY: 50
+        });
+
+
         // alert(data.title + "Message:" + data.message);
         // data.message,
         // data.title,
@@ -186,7 +196,7 @@ function checkConnection() {
 
         $.ajax({
             type: "POST",
-            url: siteUrl + "/Constructor/GetContentById",
+            url: startScan + "/Constructor/GetContentById",
             data: { projectId: projectId, contentId: versionId },
             cache: false,
             success: function(jsonObjectOfServer) {
@@ -198,10 +208,10 @@ function checkConnection() {
                 checkUpdateRestaurantMenu(true);
                 onCheckJson();
                 //push notification
-                if (applicationData.EnablePushNotification && !$.jStorage.get('notificationTokenSuccess')) {
-                    alert($.jStorage.get('notificationTokenSuccess'));
-                    sendPushNotificationToken();
-                }
+                // if (applicationData.EnablePushNotification && !$.jStorage.get('notificationTokenSuccess')) {
+                //     alert($.jStorage.get('notificationTokenSuccess'));
+                //     sendPushNotificationToken();
+                // }
 
             }
         });
@@ -211,22 +221,22 @@ function checkConnection() {
     }
 }
 
-function sendPushNotificationToken() {
-    if ($.jStorage.get('notificationToken') == null) {
-        var token = $.jStorage.get('notificationToken');
-        var projectId = applicationData.ProjectId;
-        $.ajax({
-            type: "POST",
-            url: applicationData.UrlForUpdateApp + "/PushNotification/SaveUserToken",
-            data: { token: token, projectId: projectId },
-            cache: false,
-            success: function(response) {
-                alert(response);
-                $.jStorage.set('notificationTokenSuccess', response);
-            }
-        });
-    }
-}
+// function sendPushNotificationToken() {
+//     if ($.jStorage.get('notificationToken') == null) {
+//         var token = $.jStorage.get('notificationToken');
+//         var projectId = applicationData.ProjectId;
+//         $.ajax({
+//             type: "POST",
+//             url: applicationData.UrlForUpdateApp + "/PushNotification/SaveUserToken",
+//             data: { token: token, projectId: projectId },
+//             cache: false,
+//             success: function(response) {
+//                 alert(response);
+//                 $.jStorage.set('notificationTokenSuccess', response);
+//             }
+//         });
+//     }
+// }
 
 function initMenuYoutunbe() {
     createMenu();
