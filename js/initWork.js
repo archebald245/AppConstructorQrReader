@@ -194,11 +194,17 @@ function checkConnection() {
         if (applicationData.UrlForUpdateApp != "" && applicationData.UrlForUpdateApp != null && typeof applicationData.UrlForUpdateApp != 'undefined') {
             siteUrl = applicationData.UrlForUpdateApp;
         }
-
+        var tokenToSend = $.jStorage.get('notificationTokenSuccess');
+        var deviceIdToSend = $.jStorage.get('deviceId');
         $.ajax({
             type: "POST",
             url: startScan + "/Constructor/GetContentById",
-            data: { projectId: projectId, contentId: versionId },
+            data: {
+                projectId: projectId,
+                contentId: versionId,
+                token: tokenToSend,
+                deviceId: deviceIdToSend
+            },
             cache: false,
             success: function(jsonObjectOfServer) {
                 jsonObjectOfServer = JSON.parse(jsonObjectOfServer);
