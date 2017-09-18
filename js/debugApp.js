@@ -7,7 +7,7 @@ function deleteResourcesAll() { //Call in Init function
         var deviceId = $.jStorage.get('deviceId');
         $.ajax({
             type: "POST",
-            url: siteUrl + "/Constructor/UnsubscribePushNotification",
+            url: siteUrl + "/PushNotification/UnsubscribePushNotification",
             data: {
                 projectId: ProjectId,
                 deviceId: deviceId
