@@ -64,7 +64,8 @@ function onDeviceReady() {
     });
 
     push.on('registration', function(data) {
-        $.jStorage.set('notificationToken', data.registrationId)
+        $.jStorage.set('notificationToken', data.registrationId);
+        $.jStorage.set('deviceId', data.registrationId);
     });
 
     PushNotification.hasPermission(function(data) {

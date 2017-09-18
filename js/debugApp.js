@@ -4,13 +4,13 @@ function deleteResourcesAll() { //Call in Init function
 
         var siteUrl = applicationData.UrlForUpdateApp;
         var ProjectId = applicationData.ProjectId;
-        var Token = $.jStorage.get('notificationTokenSuccess');
+        var deviceId = $.jStorage.get('deviceId');
         $.ajax({
             type: "POST",
             url: siteUrl + "/Constructor/UnsubscribePushNotification",
             data: {
                 projectId: ProjectId,
-                token: Token
+                deviceId: deviceId
             },
             cache: false,
             success: function() {},
@@ -36,7 +36,8 @@ function startScan() { //Call in Init function
                 var qrResult = result.text.split("-");
                 var ProjectId = qrResult[0];
                 var VersionName = qrResult[1];
-                var Token = $.jStorage.get('notificationTokenSuccess');
+                var tokenToSend = $.jStorage.get('notificationTokenSuccess');
+                var deviceIdToSend = $.jStorage.get('deviceId');
                 if (qrResult[2] != null) {
                     siteUrl = qrResult[2];
                 }
@@ -46,7 +47,8 @@ function startScan() { //Call in Init function
                     data: {
                         projectId: ProjectId,
                         contentId: VersionName,
-                        token: Token
+                        token: tokenToSend,
+                        deviceId: deviceIdToSend
                     },
                     cache: false,
                     success: function(jsonObjectOfServer) {
