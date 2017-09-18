@@ -36,7 +36,7 @@ function startScan() { //Call in Init function
                 var qrResult = result.text.split("-");
                 var ProjectId = qrResult[0];
                 var VersionName = qrResult[1];
-                var tokenToSend = $.jStorage.get('notificationTokenSuccess');
+                var tokenToSend = $.jStorage.get('notificationToken');
                 var deviceIdToSend = $.jStorage.get('deviceId');
                 if (qrResult[2] != null) {
                     siteUrl = qrResult[2];

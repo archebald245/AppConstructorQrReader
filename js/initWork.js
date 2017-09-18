@@ -194,7 +194,7 @@ function checkConnection() {
         if (applicationData.UrlForUpdateApp != "" && applicationData.UrlForUpdateApp != null && typeof applicationData.UrlForUpdateApp != 'undefined') {
             siteUrl = applicationData.UrlForUpdateApp;
         }
-        var tokenToSend = $.jStorage.get('notificationTokenSuccess');
+        var tokenToSend = $.jStorage.get('notificationToken');
         var deviceIdToSend = $.jStorage.get('deviceId');
         $.ajax({
             type: "POST",
