@@ -65,7 +65,6 @@ function onDeviceReady() {
 
     push.on('registration', function(data) {
         $.jStorage.set('notificationToken', data.registrationId);
-        $.jStorage.set('deviceId', data.registrationId);
     });
 
     PushNotification.hasPermission(function(data) {
@@ -107,6 +106,8 @@ function onDeviceReady() {
     if ('ontouchstart' in document.documentElement) {
         $('body').css('cursor', 'pointer');
     }
+
+    checkApplicationId();
 }
 
 function onGetDirectorySuccess(dir) {
@@ -191,7 +192,7 @@ function checkConnection() {
         var projectId = applicationData.ProjectId;
         var versionId = applicationData.Id;
         var tokenToSend = $.jStorage.get('notificationToken');
-        var deviceIdToSend = $.jStorage.get('deviceId');
+        var deviceIdToSend = $.jStorage.get('ApplicationId');
 
         if (applicationData.UrlForUpdateApp != "" && applicationData.UrlForUpdateApp != null && typeof applicationData.UrlForUpdateApp != 'undefined') {
             siteUrl = applicationData.UrlForUpdateApp;
@@ -288,6 +289,18 @@ function initGallaryClick() {
     });
 }
 
+function checkApplicationId() {
+    if ($.jStorage.get('ApplicationId') == null) {
+        $.ajax({
+            type: "POST",
+            url: applicationData.UrlForUpdateApp + "/UploadFiles/GetApplicationIdForMobileApp",
+            cache: false,
+            success: function(applicationId) {
+                $.jStorage.set('ApplicationId', applicationId)
+            }
+        });
+    }
+}
 
 function doOnOrientationChange() {
     switch (window.orientation) {

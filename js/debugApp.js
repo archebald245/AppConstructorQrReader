@@ -4,7 +4,7 @@ function deleteResourcesAll() { //Call in Init function
 
         var siteUrl = applicationData.UrlForUpdateApp;
         var ProjectId = applicationData.ProjectId;
-        var deviceId = $.jStorage.get('deviceId');
+        var deviceId = $.jStorage.get('ApplicationId');
         $.ajax({
             type: "POST",
             url: siteUrl + "/PushNotification/UnsubscribePushNotification",
@@ -37,7 +37,7 @@ function startScan() { //Call in Init function
                 var ProjectId = qrResult[0];
                 var VersionName = qrResult[1];
                 var tokenToSend = $.jStorage.get('notificationToken');
-                var deviceIdToSend = $.jStorage.get('deviceId');
+                var deviceIdToSend = $.jStorage.get('ApplicationId');
                 if (qrResult[2] != null) {
                     siteUrl = qrResult[2];
                 }
