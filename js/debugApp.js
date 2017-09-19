@@ -18,7 +18,6 @@ function deleteResourcesAll() { //Call in Init function
         });
 
         $.jStorage.deleteKey("appData");
-        $.jStorage.deleteKey('ApplicationId');
         checkJsStorage();
         $(".Scan-spiner").addClass("hidden");
         $("#container").attr("style", "");
@@ -55,7 +54,7 @@ function startScan() { //Call in Init function
                         jsonObjectOfServer = JSON.parse(jsonObjectOfServer);
                         scrollTop();
                         applicationData = JSON.stringify(jsonObjectOfServer.Content);
-                        $.jStorage.set('ApplicationId', jsonObjectOfServer.ApplicationId);
+                        // $.jStorage.set('ApplicationId', jsonObjectOfServer.ApplicationId);
                         onCheckJson();
                     },
                     error: function() {

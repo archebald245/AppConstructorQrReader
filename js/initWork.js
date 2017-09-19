@@ -33,6 +33,9 @@ function onDeviceReady() {
         store = fileSystem.root.nativeURL + "Phonegap/";
     });
     appStart();
+
+    checkApplicationId();
+
     $("#dateTimePicker-date").dateDropper({
         dropBorder: "1px solid #939393",
         dropPrimaryColor: "#939393",
@@ -106,8 +109,6 @@ function onDeviceReady() {
     if ('ontouchstart' in document.documentElement) {
         $('body').css('cursor', 'pointer');
     }
-
-    checkApplicationId();
 }
 
 function onGetDirectorySuccess(dir) {
