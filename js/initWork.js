@@ -34,8 +34,6 @@ function onDeviceReady() {
     });
     appStart();
 
-    checkApplicationId();
-
     $("#dateTimePicker-date").dateDropper({
         dropBorder: "1px solid #939393",
         dropPrimaryColor: "#939393",
@@ -104,6 +102,9 @@ function onDeviceReady() {
     });
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Notification Area End
     StatusBar.hide();
+
+    checkApplicationId();
+
     // navigator.splashscreen.show();
     $('[data-toggle="tooltip"]').tooltip();
     if ('ontouchstart' in document.documentElement) {
@@ -187,7 +188,7 @@ function onCheckJson() {
 function checkConnection() {
     var networkState = navigator.connection.type;
     if (networkState != Connection.NONE) {
-        var siteUrl = "http://appconstructornew.newlinetechnologies.net/"
+        var siteUrl = "http://appconstructornew.newlinetechnologies.net/";
 
         applicationData = JSON.parse($.jStorage.get('appData'));
         var projectId = applicationData.ProjectId;
@@ -291,10 +292,16 @@ function initGallaryClick() {
 }
 
 function checkApplicationId() {
+    var siteUrl = "http://appconstructornew.newlinetechnologies.net/";
+
+    if (applicationData.UrlForUpdateApp != "" && applicationData.UrlForUpdateApp != null && typeof applicationData.UrlForUpdateApp != 'undefined') {
+        siteUrl = applicationData.UrlForUpdateApp;
+    }
+
     if ($.jStorage.get('ApplicationId') == null) {
         $.ajax({
             type: "POST",
-            url: applicationData.UrlForUpdateApp + "/UploadFiles/GetApplicationIdForMobileApp",
+            url: siteUrl + "/UploadFiles/GetApplicationIdForMobileApp",
             cache: false,
             success: function(applicationId) {
                 $.jStorage.set('ApplicationId', applicationId)
