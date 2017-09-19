@@ -294,10 +294,11 @@ function initGallaryClick() {
 function checkApplicationId() {
     var siteUrl = "http://appconstructornew.newlinetechnologies.net/";
 
-    if (applicationData.UrlForUpdateApp != "" && applicationData.UrlForUpdateApp != null && typeof applicationData.UrlForUpdateApp != 'undefined') {
-        siteUrl = applicationData.UrlForUpdateApp;
+    if (applicationData != null) {
+        if (applicationData.UrlForUpdateApp != "" && applicationData.UrlForUpdateApp != null && typeof applicationData.UrlForUpdateApp != 'undefined') {
+            siteUrl = applicationData.UrlForUpdateApp;
+        }
     }
-
     if ($.jStorage.get('ApplicationId') == null) {
         $.ajax({
             type: "POST",
