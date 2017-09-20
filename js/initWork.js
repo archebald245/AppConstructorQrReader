@@ -20,6 +20,58 @@ function init() {
     deleteResourcesAll();
 }
 
+function initPushNotification() {
+    push = PushNotification.init({
+        android: {
+            //senderID: 418915081706
+            sound: true,
+            vibrate: true,
+            forceShow: true
+        },
+        browser: {
+            pushServiceURL: 'http://push.api.phonegap.com/v1/push'
+        },
+        ios: {
+            alert: "true",
+            badge: "true",
+            sound: "true"
+        },
+        windows: {}
+    });
+
+}
+
+function checkNotificationTimeOut() {
+    PushNotification.hasPermission(function(data) {
+        alert('P timeout ' + data.isEnabled);
+        if (data.isEnabled) {
+            initPushNotificationHandlers();
+        }
+    });
+}
+
+function initPushNotificationHandlers() {
+    push.on('registration', function(data) {
+        $.jStorage.set('notificationToken', data.registrationId);
+    });
+
+    push.on('notification', function(data) {
+        window.plugins.toast.hide();
+
+        window.plugins.toast.showWithOptions({
+            message: data.message,
+            duration: 7500,
+            position: "top",
+            addPixelsY: 50
+        });
+    });
+
+    push.on('error', function(e) {
+        // e.message
+        // alert("Error " + e.message);
+    });
+}
+
 function onDeviceReady() {
 
     window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem) {
@@ -47,59 +99,26 @@ function onDeviceReady() {
         setCurrentTime: "false"
     });
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Notification Area Start
-    var push = PushNotification.init({
-        android: {
-            //senderID: 418915081706
-            sound: true,
-            vibrate: true
-        },
-        browser: {
-            pushServiceURL: 'http://push.api.phonegap.com/v1/push'
-        },
-        ios: {
-            alert: "true",
-            badge: "true",
-            sound: "true"
-        },
-        windows: {}
-    });
+    if ($.jStorage.get('notificationToken') == null) {
+        PushNotification.hasPermission(function(data) {
+            if (data.isEnabled) {
+                alert("P true");
+                initPushNotification();
+                initPushNotificationHandlers();
+            } else {
+                alert("P false");
+                initPushNotification();
 
-    push.on('registration', function(data) {
-        $.jStorage.set('notificationToken', data.registrationId);
-    });
+                setTimeout(checkNotificationTimeOut, 10000);
 
-    PushNotification.hasPermission(function(data) {
-        // if (data.isEnabled) {
-        //     alert("is enabled");
-        // } else {
-        //     alert("is disabled");
-        // }
-    });
-
-    push.on('notification', function(data) {
-        window.plugins.toast.hide();
-
-        window.plugins.toast.showWithOptions({
-            message: data.message,
-            duration: 7500,
-            position: "top",
-            addPixelsY: 50
+            }
         });
-
-
-        // alert(data.title + "Message:" + data.message);
-        // data.message,
-        // data.title,
-        // data.count,
-        // data.sound,
-        // data.image,
-        // data.additionalData
-    });
-
-    push.on('error', function(e) {
-        // e.message
-        // alert("Error " + e.message);
-    });
+    }
+    //  else {
+    //     if (!$.jStorage.get('notificationTokenSuccess')) {
+    //         checkApplicationId(sendPushNotificationToken);
+    //     }
+    // }
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Notification Area End
     StatusBar.hide();
 
