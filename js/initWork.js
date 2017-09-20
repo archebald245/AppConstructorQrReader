@@ -202,7 +202,7 @@ function checkConnection() {
 
         $.ajax({
             type: "POST",
-            url: startScan + "/Constructor/GetContentById",
+            url: siteUrl + "/Constructor/GetContentById",
             data: {
                 projectId: projectId,
                 contentId: versionId,
@@ -218,12 +218,6 @@ function checkConnection() {
                 applicationData = JSON.stringify(jsonObjectOfServer.Content);
                 checkUpdateRestaurantMenu(true);
                 onCheckJson();
-                //push notification
-                // if (applicationData.EnablePushNotification && !$.jStorage.get('notificationTokenSuccess')) {
-                //     alert($.jStorage.get('notificationTokenSuccess'));
-                //     sendPushNotificationToken();
-                // }
-
             }
         });
 
@@ -231,23 +225,6 @@ function checkConnection() {
         onCheckJson();
     }
 }
-
-// function sendPushNotificationToken() {
-//     if ($.jStorage.get('notificationToken') == null) {
-//         var token = $.jStorage.get('notificationToken');
-//         var projectId = applicationData.ProjectId;
-//         $.ajax({
-//             type: "POST",
-//             url: applicationData.UrlForUpdateApp + "/PushNotification/SaveUserToken",
-//             data: { token: token, projectId: projectId },
-//             cache: false,
-//             success: function(response) {
-//                 alert(response);
-//                 $.jStorage.set('notificationTokenSuccess', response);
-//             }
-//         });
-//     }
-// }
 
 function initMenuYoutunbe() {
     createMenu();
