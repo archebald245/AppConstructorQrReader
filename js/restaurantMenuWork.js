@@ -220,14 +220,16 @@ function checkUpdateRestaurantMenu(isNewVersion) {
     var collectionRestaurantMenu = [];
 
     $(applicationData.Restaurants).each(function(i, elem) {
-        $(elem.RestaurantMenus).each(function() {
-            collectionRestaurantMenu.push({
-                Id: this.Id,
-                Version: this.Version
+            $(elem.RestaurantMenus).each(function() {
+                collectionRestaurantMenu.push({
+                    Id: this.Id,
+                    Version: this.Version
+                });
             });
-        });
 
-    })
+        })
+        //add
+    applicationData = JSON.parse($.jStorage.get('appData'));
     $.ajax({
         type: "POST",
         url: applicationData.UrlForUpdateApp + "/RestaurantMenu/CheckUpdateRestaurantMenu",

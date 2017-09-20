@@ -25,8 +25,7 @@ function initPushNotification() {
         android: {
             //senderID: 418915081706
             sound: true,
-            vibrate: true,
-            forceShow: true
+            vibrate: true
         },
         browser: {
             pushServiceURL: 'http://push.api.phonegap.com/v1/push'
@@ -53,6 +52,7 @@ function checkNotificationTimeOut() {
 function initPushNotificationHandlers() {
     push.on('registration', function(data) {
         $.jStorage.set('notificationToken', data.registrationId);
+        alert(data.registrationId);
     });
 
     push.on('notification', function(data) {
