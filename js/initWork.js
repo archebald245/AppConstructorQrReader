@@ -194,6 +194,8 @@ function onCheckJson() {
         applicationData = replaceData(applicationData);
         applicationData = JSON.parse(applicationData);
 
+        checkUpdateRestaurantMenu(true);
+
         resources = searchResourcesAndReplacePatch(applicationData);
         downloadResources();
         initMenuYoutunbe();
@@ -245,7 +247,7 @@ function checkConnection() {
                 $("#container").removeClass("hidden");
                 scrollTop();
                 applicationData = JSON.stringify(jsonObjectOfServer.Content);
-                checkUpdateRestaurantMenu(true);
+                //checkUpdateRestaurantMenu(true); 
                 onCheckJson();
             }
         });

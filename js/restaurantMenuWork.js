@@ -229,7 +229,6 @@ function checkUpdateRestaurantMenu(isNewVersion) {
 
         })
         //add
-    applicationData = JSON.parse($.jStorage.get('appData'));
     $.ajax({
         type: "POST",
         url: applicationData.UrlForUpdateApp + "/RestaurantMenu/CheckUpdateRestaurantMenu",
