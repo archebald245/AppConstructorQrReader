@@ -7,6 +7,8 @@ var countFileDownload = 0;
 var countFileDownloadFail = 0;
 var swipeMenuInGallary = false;
 var jsonStringify;
+var push;
+var checkCount = 0;
 
 initYoutube();
 
@@ -20,44 +22,27 @@ function init() {
     deleteResourcesAll();
 }
 
-function initPushNotification() {
-    push = PushNotification.init({
-        android: {
-            //senderID: 418915081706
-            sound: true,
-            vibrate: true
-        },
-        browser: {
-            pushServiceURL: 'http://push.api.phonegap.com/v1/push'
-        },
-        ios: {
-            alert: "true",
-            badge: "true",
-            sound: "true"
-        },
-        windows: {}
-    });
-
-}
-
 function checkNotificationTimeOut() {
     PushNotification.hasPermission(function(data) {
-        alert('P timeout ' + data.isEnabled);
+        checkCount += 1;
+        alert('P timeout ' + data.isEnabled + checkCount);
         if (data.isEnabled) {
             initPushNotificationHandlers();
+        } else {
+            if (checkCount < 3) { initPushNotificationHandlers(); }
         }
+
     });
 }
 
 function initPushNotificationHandlers() {
     push.on('registration', function(data) {
         $.jStorage.set('notificationToken', data.registrationId);
-        alert(data.registrationId);
     });
 
     push.on('notification', function(data) {
         window.plugins.toast.hide();
-
+		alert(data.message);
         window.plugins.toast.showWithOptions({
             message: data.message,
             duration: 7500,
@@ -71,7 +56,6 @@ function initPushNotificationHandlers() {
         // alert("Error " + e.message);
     });
 }
-
 function onDeviceReady() {
 
     window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem) {
@@ -99,26 +83,33 @@ function onDeviceReady() {
         setCurrentTime: "false"
     });
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Notification Area Start
-    if ($.jStorage.get('notificationToken') == null) {
-        PushNotification.hasPermission(function(data) {
-            if (data.isEnabled) {
-                alert("P true");
-                initPushNotification();
-                initPushNotificationHandlers();
-            } else {
-                alert("P false");
-                initPushNotification();
 
-                setTimeout(checkNotificationTimeOut, 10000);
+    push = PushNotification.init({
+        android: {
+            //senderID: 418915081706
+            sound: true,
+            vibrate: true
+        },
+        browser: {
+            pushServiceURL: 'http://push.api.phonegap.com/v1/push'
+        },
+        ios: {
+            alert: "true",
+            badge: "true",
+            sound: "true"
+        },
+        windows: {}
+    });
 
-            }
-        });
-    }
-    //  else {
-    //     if (!$.jStorage.get('notificationTokenSuccess')) {
-    //         checkApplicationId(sendPushNotificationToken);
-    //     }
-    // }
+    PushNotification.hasPermission(function(data) {
+        if (data.isEnabled) {
+            initPushNotificationHandlers();
+        } else {
+            alert("P false " + checkCount);
+            setTimeout(checkNotificationTimeOut, 10000);
+        }
+    });
+
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Notification Area End
     StatusBar.hide();
 
