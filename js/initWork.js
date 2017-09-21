@@ -110,8 +110,8 @@ function onDeviceReady() {
     });
 
     push.on('registration', function(data) {
-        PushNotification.hasPermission(function(data) {
-            if (data.isEnabled) {
+        PushNotification.hasPermission(function(dataPer) {
+            if (dataPer.isEnabled) {
                 alert("P is enabled " + data.registrationId);
             } else {
                 alert("P is disabled " + data.registrationId);
