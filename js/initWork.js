@@ -22,40 +22,44 @@ function init() {
     deleteResourcesAll();
 }
 
-// function checkNotificationTimeOut() {
-//     PushNotification.hasPermission(function(data) {
-//         checkCount += 1;
-//         alert('P timeout ' + data.isEnabled + checkCount);
-//         if (data.isEnabled) {
-//             initPushNotificationHandlers();
-//         } else {
-//             if (checkCount < 3) { initPushNotificationHandlers(); }
-//         }
+function checkNotificationTimeOut() {
+    PushNotification.hasPermission(function(data) {
+        checkCount += 1;
+        alert('P timeout ' + data.isEnabled + checkCount);
+        if (data.isEnabled) {
+            initPushNotificationHandlers();
+        } else {
+            if (checkCount < 3) { checkNotificationTimeOut(); }
+        }
 
-//     });
-// }
+    });
+}
 
-// function initPushNotificationHandlers() {
-//     push.on('registration', function(data) {
-//         $.jStorage.set('notificationToken', data.registrationId);
-//     });
+function initPushNotificationHandlers() {
+    push.on('registration', function(data) {
+        $.jStorage.set('notificationToken', data.registrationId);
+        if (applicationData.EnablePushNotification && !$.jStorage.get('notificationTokenSuccess')) {
+            checkApplicationId(sendPushNotificationToken);
+        }
 
-//     push.on('notification', function(data) {
-//         window.plugins.toast.hide();
-//         alert(data.message);
-//         window.plugins.toast.showWithOptions({
-//             message: data.message,
-//             duration: 7500,
-//             position: "top",
-//             addPixelsY: 50
-//         });
-//     });
+    });
 
-//     push.on('error', function(e) {
-//         // e.message
-//         // alert("Error " + e.message);
-//     });
-// }
+    push.on('notification', function(data) {
+        window.plugins.toast.hide();
+
+        window.plugins.toast.showWithOptions({
+            message: data.message,
+            duration: 7500,
+            position: "top",
+            addPixelsY: 50
+        });
+    });
+
+    push.on('error', function(e) {
+        // e.message
+        // alert("Error " + e.message);
+    });
+}
 
 function onDeviceReady() {
 
@@ -84,7 +88,7 @@ function onDeviceReady() {
         setCurrentTime: "false"
     });
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Notification Area Start
-    var push = PushNotification.init({
+     push = PushNotification.init({
         android: {
             //senderID: 418915081706
             sound: true,
@@ -103,36 +107,10 @@ function onDeviceReady() {
 
     PushNotification.hasPermission(function(data) {
         if (data.isEnabled) {
-            alert("is enabled");
+            initPushNotificationHandlers();
         } else {
-            alert("is disabled");
+            setTimeout(checkNotificationTimeOut, 10000);
         }
-    });
-
-    push.on('registration', function(data) {
-        PushNotification.hasPermission(function(dataPer) {
-            if (dataPer.isEnabled) {
-                alert("P is enabled " + data.registrationId);
-            } else {
-                alert("P is disabled " + data.registrationId);
-            }
-        });
-        $.jStorage.set('notificationToken', data.registrationId);
-    });
-
-    push.on('notification', function(data) {
-        alert(data.title + "Message:" + data.message);
-        // data.message,
-        // data.title,
-        // data.count,
-        // data.sound,
-        // data.image,
-        // data.additionalData
-    });
-
-    push.on('error', function(e) {
-        // e.message
-        alert("Error " + e.message);
     });
 
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Notification Area End
