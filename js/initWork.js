@@ -37,10 +37,8 @@ function checkNotificationTimeOut() {
 
 function initPushNotificationHandlers() {
     push.on('registration', function(data) {
-        $.jStorage.set('notificationToken', data.registrationId);
-        if (applicationData.EnablePushNotification && !$.jStorage.get('notificationTokenSuccess')) {
-            checkApplicationId(sendPushNotificationToken);
-        }
+alert(data.registrationId);
+	$.jStorage.set('notificationToken', data.registrationId);
 
     });
 
@@ -57,7 +55,7 @@ function initPushNotificationHandlers() {
 
     push.on('error', function(e) {
         // e.message
-        // alert("Error " + e.message);
+         alert("Error " + e.message);
     });
 }
 
