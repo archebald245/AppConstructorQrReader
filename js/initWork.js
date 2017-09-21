@@ -37,7 +37,7 @@ function checkNotificationTimeOut() {
 
 function initPushNotificationHandlers() {
     push.on('registration', function(data) {
-alert(data.registrationId);
+
 	$.jStorage.set('notificationToken', data.registrationId);
 
     });
