@@ -22,40 +22,41 @@ function init() {
     deleteResourcesAll();
 }
 
-function checkNotificationTimeOut() {
-    PushNotification.hasPermission(function(data) {
-        checkCount += 1;
-        alert('P timeout ' + data.isEnabled + checkCount);
-        if (data.isEnabled) {
-            initPushNotificationHandlers();
-        } else {
-            if (checkCount < 3) { initPushNotificationHandlers(); }
-        }
+// function checkNotificationTimeOut() {
+//     PushNotification.hasPermission(function(data) {
+//         checkCount += 1;
+//         alert('P timeout ' + data.isEnabled + checkCount);
+//         if (data.isEnabled) {
+//             initPushNotificationHandlers();
+//         } else {
+//             if (checkCount < 3) { initPushNotificationHandlers(); }
+//         }
 
-    });
-}
+//     });
+// }
 
-function initPushNotificationHandlers() {
-    push.on('registration', function(data) {
-        $.jStorage.set('notificationToken', data.registrationId);
-    });
+// function initPushNotificationHandlers() {
+//     push.on('registration', function(data) {
+//         $.jStorage.set('notificationToken', data.registrationId);
+//     });
 
-    push.on('notification', function(data) {
-        window.plugins.toast.hide();
-		alert(data.message);
-        window.plugins.toast.showWithOptions({
-            message: data.message,
-            duration: 7500,
-            position: "top",
-            addPixelsY: 50
-        });
-    });
+//     push.on('notification', function(data) {
+//         window.plugins.toast.hide();
+//         alert(data.message);
+//         window.plugins.toast.showWithOptions({
+//             message: data.message,
+//             duration: 7500,
+//             position: "top",
+//             addPixelsY: 50
+//         });
+//     });
 
-    push.on('error', function(e) {
-        // e.message
-        // alert("Error " + e.message);
-    });
-}
+//     push.on('error', function(e) {
+//         // e.message
+//         // alert("Error " + e.message);
+//     });
+// }
+
 function onDeviceReady() {
 
     window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem) {
@@ -83,8 +84,7 @@ function onDeviceReady() {
         setCurrentTime: "false"
     });
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Notification Area Start
-
-    push = PushNotification.init({
+    var push = PushNotification.init({
         android: {
             //senderID: 418915081706
             sound: true,
@@ -103,11 +103,30 @@ function onDeviceReady() {
 
     PushNotification.hasPermission(function(data) {
         if (data.isEnabled) {
-            initPushNotificationHandlers();
+            alert("is enabled");
         } else {
-            alert("P false " + checkCount);
-            setTimeout(checkNotificationTimeOut, 10000);
+            alert("is disabled");
         }
+    });
+
+    push.on('registration', function(data) {
+        alert("registr " + data.registrationId);
+        $.jStorage.set('notificationToken', data.registrationId);
+    });
+
+    push.on('notification', function(data) {
+        alert(data.title + "Message:" + data.message);
+        // data.message,
+        // data.title,
+        // data.count,
+        // data.sound,
+        // data.image,
+        // data.additionalData
+    });
+
+    push.on('error', function(e) {
+        // e.message
+        alert("Error " + e.message);
     });
 
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Notification Area End
