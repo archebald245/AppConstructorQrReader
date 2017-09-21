@@ -110,7 +110,13 @@ function onDeviceReady() {
     });
 
     push.on('registration', function(data) {
-        alert("registr " + data.registrationId);
+        PushNotification.hasPermission(function(data) {
+            if (data.isEnabled) {
+                alert("P is enabled " + data.registrationId);
+            } else {
+                alert("P is disabled " + data.registrationId);
+            }
+        });
         $.jStorage.set('notificationToken', data.registrationId);
     });
 
