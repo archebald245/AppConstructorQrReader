@@ -7,8 +7,6 @@ var countFileDownload = 0;
 var countFileDownloadFail = 0;
 var swipeMenuInGallary = false;
 var jsonStringify;
-var push;
-var checkCount = 0;
 
 initYoutube();
 
@@ -20,43 +18,6 @@ function init() {
     document.querySelector("#startScan").addEventListener("touchend", startScan, false);
 
     deleteResourcesAll();
-}
-
-function checkNotificationTimeOut() {
-    PushNotification.hasPermission(function(data) {
-        checkCount += 1;
-        alert('P timeout ' + data.isEnabled + checkCount);
-        if (data.isEnabled) {
-            initPushNotificationHandlers();
-        } else {
-            if (checkCount < 3) { checkNotificationTimeOut(); }
-        }
-
-    });
-}
-
-function initPushNotificationHandlers() {
-    push.on('registration', function(data) {
-
-	$.jStorage.set('notificationToken', data.registrationId);
-
-    });
-
-    push.on('notification', function(data) {
-        window.plugins.toast.hide();
-
-        window.plugins.toast.showWithOptions({
-            message: data.message,
-            duration: 7500,
-            position: "top",
-            addPixelsY: 50
-        });
-    });
-
-    push.on('error', function(e) {
-        // e.message
-         alert("Error " + e.message);
-    });
 }
 
 function onDeviceReady() {
@@ -86,7 +47,7 @@ function onDeviceReady() {
         setCurrentTime: "false"
     });
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Notification Area Start
-     push = PushNotification.init({
+    var push = PushNotification.init({
         android: {
             //senderID: 418915081706
             sound: true,
@@ -103,14 +64,41 @@ function onDeviceReady() {
         windows: {}
     });
 
-    PushNotification.hasPermission(function(data) {
-        if (data.isEnabled) {
-            initPushNotificationHandlers();
-        } else {
-            setTimeout(checkNotificationTimeOut, 10000);
-        }
+    push.on('registration', function(data) {
+        $.jStorage.set('notificationToken', data.registrationId);
     });
 
+    // PushNotification.hasPermission(function(data) {
+
+    //     if (data.isEnabled) {
+    //         alert("is enabled");
+    //     } else {
+    //         alert("is disabled");
+    //     }
+    // });
+
+    push.on('notification', function(data) {
+        // data.message,
+        // data.title,
+        // data.count,
+        // data.sound,
+        // data.image,
+        // data.additionalData
+        window.plugins.toast.hide();
+
+        window.plugins.toast.showWithOptions({
+            message: data.message,
+            duration: 7500,
+            position: "top",
+            addPixelsY: 50
+        });
+
+    });
+
+    push.on('error', function(e) {
+        // e.message
+        // alert("Error " + e.message);
+    });
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Notification Area End
     StatusBar.hide();
 
