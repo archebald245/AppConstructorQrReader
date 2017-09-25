@@ -1333,6 +1333,7 @@ label[for='nameOrder'] {
     display: inline-block;
     cursor: default;
     z-index: 999;
+    content: "";
 }
 
 #masterfab span {
@@ -1345,9 +1346,8 @@ label[for='nameOrder'] {
     bottom: 80px;
 }
 
-.fab span {}
-
 .fab.child {
+    background-color: red;
     right: 37px;
     width: 35px;
     height: 35px;
@@ -1716,7 +1716,7 @@ input[type="checkbox"].SwitcherFormElement:checked+div>div {
 }
 
 @media (max-width: 480px) {
-   label[for='nameOrder'] {
+    label[for='nameOrder'] {
         margin-top: 20px
     }
     .resource-info,
