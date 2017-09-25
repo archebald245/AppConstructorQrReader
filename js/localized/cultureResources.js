@@ -22,7 +22,7 @@ function initCulture() {
     } else {
         initEnCulture();
     }
-    $(".startScan-wrapper h1").html(cultureRes.pleaseScan);
+	$(".startScan-wrapper h1").html(cultureRes.pleaseScan);
     $("#startScan").html(cultureRes.startScan);
 
 
@@ -44,7 +44,8 @@ function initCulture() {
     $(".cart .cart-top-line span").html(cultureRes.yourOrder);
     $(".cart .totalPrice span ").html(cultureRes.total);
     $(".cart .btn-order span ").html(cultureRes.order);
-    $(".cart .go-to-menu ").html(cultureRes.contShop);
+    $(".cart .go-to-menu").html(cultureRes.contShop);
+    $("#orderInfo .go-to-menu-btn").html(cultureRes.contShop);
     $("#orderInfo .cart-top-line span ").html(cultureRes.orderInfo);
     $("#orderInfo label[for='nameOrder']").html(cultureRes.name);
     $("#orderInfo label[for='phoneOrder']").html(cultureRes.phone);
@@ -56,7 +57,7 @@ function initCulture() {
 function initEnCulture() {
     window.cultureRes = new Object();
     //index.html
-    cultureRes.startScan = "Start Scan";
+	cultureRes.startScan = "Start Scan";
     cultureRes.pleaseScan = "Please Scan QR for your Application";
     cultureRes.bookStatus = "Your book status list";
     cultureRes.services = "Services";
@@ -68,7 +69,7 @@ function initEnCulture() {
     cultureRes.phone = "Phone Number";
     cultureRes.email = "Email";
     cultureRes.orderComments = "Your Order Comments";
-    cultureRes.confirmMeth = "Confirm Method";
+    cultureRes.confirmMeth = "Сontinue";
     cultureRes.orderInfo = "Your Order Info";
     cultureRes.yourOrder = "Your Order";
     cultureRes.total = "Total ";
@@ -93,9 +94,8 @@ function initEnCulture() {
     cultureRes.alreadyBook = "You already have booked this service!";
     cultureRes.resourcesDontWork = "Sorry, resource don't work in this day of week!";
     cultureRes.selectServTime = "Please, select date for this service!";
-    cultureRes.cantBookOne = "Sorry, you can book from ";
-    cultureRes.cantBookTwo = " to ";
-
+    cultureRes.cantBookOne = "Извените, но вы можете зарезервировать от";
+    cultureRes.cantBookTwo = "и до";
     cultureRes.cantBookThree = "Time";
     cultureRes.ok = "OK";
     cultureRes.instOpen = "Sorry, Institution is open from ";
@@ -124,7 +124,7 @@ function initEnCulture() {
     cultureRes.orderBook = "Order Booking";
     cultureRes.timeLine = "Time Line";
     cultureRes.displayName = 'Name - ';
-    cultureRes.openTime = "Open Time";
+    cultureRes.openTime = "Working hours ";
     cultureRes.closeTime = "Close Time";
     cultureRes.startBookDay = "Start book day - ";
     cultureRes.stepMin = "Step Minutes - ";
@@ -133,6 +133,7 @@ function initEnCulture() {
     cultureRes.description = "Description - ";
     cultureRes.durationTime = "Duration Time - ";
     cultureRes.book = "Book";
+    cultureRes.resource = "Resource";
 
     //render-*-form
     cultureRes.formBlock = "FormBlock";
@@ -167,7 +168,7 @@ function initEnCulture() {
 function initRuCulture() {
     window.cultureRes = new Object();
     //index.html
-    cultureRes.startScan = "Начать сканировать";
+	cultureRes.startScan = "Начать сканировать";
     cultureRes.pleaseScan = "Пожалуйста, отсканируйте QR-код Вашего приложения";
     cultureRes.bookStatus = "Список статусов Ваших бронирований";
     cultureRes.services = "Сервисы";
@@ -179,7 +180,7 @@ function initRuCulture() {
     cultureRes.phone = "Номер телефона";
     cultureRes.email = "Email";
     cultureRes.orderComments = "Коментарии к заказу";
-    cultureRes.confirmMeth = "Метод подтверждения";
+    cultureRes.confirmMeth = "Продолжить";
     cultureRes.orderInfo = "Информация и заказе";
     cultureRes.yourOrder = "Ваш заказ";
     cultureRes.total = "Всего: ";
@@ -234,15 +235,16 @@ function initRuCulture() {
     cultureRes.orderBook = "Бронирование заказа";
     cultureRes.timeLine = "График";
     cultureRes.displayName = 'Название - ';
-    cultureRes.openTime = "Время открытия";
+    cultureRes.openTime = "Время работы ";
     cultureRes.closeTime = "Время закрытия";
-    cultureRes.startBookDay = "Начало работы - ";
+    cultureRes.startBookDay = "Дни до начала работы - ";
     cultureRes.stepMin = "Шаг(минут) - ";
-    cultureRes.countDay = "Количество дней для бронирования - ";
+    cultureRes.countDay = "Дни бронирования - ";
     cultureRes.service = "Сервис";
     cultureRes.description = "Описание - ";
     cultureRes.durationTime = "Продолжительность - ";
     cultureRes.book = "Бронировать";
+    cultureRes.resource = "Ресурс";
 
     //render-*-form
     cultureRes.formBlock = "Форма";
@@ -276,7 +278,7 @@ function initRuCulture() {
 function initUaCulture() {
     window.cultureRes = new Object();
     //index.html
-    cultureRes.startScan = "Почати сканування";
+	cultureRes.startScan = "Почати сканування";
     cultureRes.pleaseScan = "Будь ласка, відскануйте QR-код Вашого додатку";
     cultureRes.bookStatus = "Список статусів Ваших замовлень";
     cultureRes.services = "Сервіси";
@@ -288,7 +290,7 @@ function initUaCulture() {
     cultureRes.phone = "Номер телефону";
     cultureRes.email = "Email";
     cultureRes.orderComments = "Коментарі до Вашого резервування";
-    cultureRes.confirmMeth = "Метод підтвердження";
+    cultureRes.confirmMeth = "Продовжити";
     cultureRes.orderInfo = "Інофрмація про резервування";
     cultureRes.yourOrder = "Ваше резервування";
     cultureRes.total = "Всього ";
@@ -343,15 +345,16 @@ function initUaCulture() {
     cultureRes.orderBook = "Заказ бронювання";
     cultureRes.timeLine = "Графік";
     cultureRes.displayName = 'Назва - ';
-    cultureRes.openTime = "Час відкріття";
+    cultureRes.openTime = "Час роботи";
     cultureRes.closeTime = "Час закріття";
-    cultureRes.startBookDay = "День початку роботи - ";
+    cultureRes.startBookDay = "Днів до початку роботи - ";
     cultureRes.stepMin = "Крок(хвилин) - ";
-    cultureRes.countDay = "Кількість днів для броннювання - ";
+    cultureRes.countDay = "Днів броннювання - ";
     cultureRes.service = "Сервіс";
     cultureRes.description = "Описання - ";
     cultureRes.durationTime = "Тривалість - ";
-    cultureRes.book = "Бронівання";
+    cultureRes.book = "Бронювання";
+    cultureRes.resource = "Ресурс";
 
     //render-*-form
     cultureRes.formBlock = "Форма";

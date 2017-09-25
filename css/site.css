@@ -555,7 +555,18 @@ p.item-shop-description {
     z-index: 10;
 }
 
+.container-statusBooking .cart-top-line,
+.order-booking .cart-top-line,
+.bookingServices-container .cart-top-line,
+.dateTimePicker-container .cart-top-line {
+    background-color: #000;
+}
+
 .cart-top-line .back-to-container,
+.cart-top-line .back-to-timelines,
+.back-to-container-from-book,
+.btn-back-toservices,
+.back-to-services,
 .back-to-cart {
     position: absolute;
     left: 0;
@@ -584,20 +595,23 @@ p.item-shop-description {
     background-repeat: no-repeat;
 }
 
-
-/* .btn-order, */
-
 .btn-send-order-booking {
     position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
+    height: 70px;
+    line-height: 46px;
+    text-transform: uppercase;
     padding: 12px 0;
-    color: #fff;
-    background-color: #939393;
+    color: #000;
+    background-color: #febdb7;
     text-align: center;
-    font-size: 20px;
+    font-size: 24px;
     border: none;
+    -webkit-box-shadow: 0px -1px 3px 0px rgba(74, 74, 74, 1);
+    -moz-box-shadow: 0px -1px 3px 0px rgba(74, 74, 74, 1);
+    box-shadow: 0px -1px 3px 0px rgba(74, 74, 74, 1);
 }
 
 #cart {
@@ -672,7 +686,10 @@ p.item-shop-description {
     box-shadow: 0px 0px 1px 0px rgba(74, 74, 74, 1);
 }
 
-.cartItem {
+.row-elementInstitution .inst-profile,
+.bookingCartItem,
+.cartItem,
+.status-list-container {
     width: 95%;
     margin: 8px 2.5%;
     padding: 8px 32px 8px 16px;
@@ -774,11 +791,13 @@ p.item-shop-description {
     text-align: center;
 }
 
+.order-booking {
+    width: 95%;
+    margin: 50px 2.5% 80px;
+}
+
 #orderInfo input,
 #orderInfo textarea,
-.order-booking input,
-.order-booking textarea,
-.order-booking select,
 .container-selectFreeBookTime select {
     width: 80%;
     margin: auto;
@@ -789,8 +808,29 @@ p.item-shop-description {
     margin-bottom: 20px;
 }
 
-#orderInfo label,
+.order-booking textarea,
+.order-booking select,
+.order-booking input {
+    width: 100%;
+    height: 50px;
+    margin-bottom: 30px;
+    line-height: 50px;
+    color: #000;
+    font-size: 20px;
+    text-align: left;
+    padding-left: 16px;
+    border-radius: none;
+}
+
 .order-booking label {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: left;
+    color: #000;
+    margin-bottom: 10px;
+}
+
+#orderInfo label {
     display: block;
     margin-left: 10%;
     color: #000;
@@ -948,15 +988,196 @@ label[for='nameOrder'] {
     content: "X" !important;
 }
 
+.custom-container-booking h1 {
+    text-align: center;
+    font-size: 32px;
+    font-weight: 500;
+    color: #000000;
+    margin: 15px auto 25px;
+}
+
+
+/* 
+.row-elementInstitution.inst-profile {
+    overflow: auto;
+    margin-bottom: 0;
+    border: 1px solid rgba(50, 50, 50, 0.72);
+    border-bottom: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+
+.row-elementInstitution.inst-profile:last-child {
+    border-bottom: 1px solid rgba(50, 50, 50, 0.72);
+    margin-bottom: 80px;
+} */
+
+.row-elementInstitution {
+    width: 95%;
+    margin: 0 2.5% 15px;
+    padding: 15px 24px;
+    color: #000;
+    font-size: 20px;
+    -webkit-box-shadow: 0px 0px 3px 0px rgba(74, 74, 74, 1);
+    -moz-box-shadow: 0px 0px 3px 0px rgba(74, 74, 74, 1);
+    box-shadow: 0px 0px 3px 0px rgba(74, 74, 74, 1);
+}
+
+.row-elementInstitution img {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
 .row-elementInstitution time {
     display: block;
     margin-bottom: 10px;
+    margin-top: 10px;
 }
 
-.row-elementInstitution {
+.name-elementInstitution {
+    font-size: 24px;
+    text-align: left;
+}
+
+.image-elementInstitution {
+    width: 30%;
+}
+
+.inst-profile .image-elementInstitution {
+    float: left;
+}
+
+.inst-profile .content-elementInstitution {
+    float: right;
+}
+
+.content-elementInstitution {
+    width: 70%;
+    font-size: 15px;
+    text-align: left;
+    padding-left: 20px;
+    overflow: auto;
+}
+
+.image-elementInstitution image {
+    -webkit-box-shadow: 0px 0px 3px 0px rgba(74, 74, 74, 1);
+    -moz-box-shadow: 0px 0px 3px 0px rgba(74, 74, 74, 1);
+    box-shadow: 0px 0px 3px 0px rgba(74, 74, 74, 1);
+}
+
+.price-elementInstitution {
+    float: left;
+    height: 40px;
+    line-height: 40px;
+    font-size: 20px;
+}
+
+.content-elementInstitution .name-elementInstitution {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.dur-elementInstitution {
+    color: #010101;
+}
+
+.desc-elementInstitution {
+    color: #494949;
+    margin-bottom: 20px;
+}
+
+.btn-bookThisService {
+    width: 200px;
+    height: 40px;
+    background-color: #000000;
+    color: #fff;
+    float: right;
+    outline: none;
+    border: none;
+}
+
+.inst-profile .btn-bookThisService {
+    background-color: #febdb7;
     color: #000;
-    border-bottom: 1px solid #000;
-    padding-bottom: 20px;
+    font-size: 22px;
+    line-height: 22px;
+}
+
+.time-elementTimeLine,
+.sDay-elementTimeLine,
+.cDay-elementTimeLine {
+    height: 25px;
+    padding-left: 40px;
+    margin-bottom: 15px;
+    line-height: 25px;
+}
+
+.status-list-date-day,
+.time-elementTimeLine {
+    background: url(../baseimages/booking-icons/clock-large.png);
+    background-size: 25px 25px;
+    background-repeat: no-repeat;
+    background-position: 0 0;
+}
+
+.status-list-date-time,
+.sDay-elementTimeLine {
+    background: url(../baseimages/booking-icons/calendar-large.png);
+    background-size: 25px 25px;
+    background-repeat: no-repeat;
+    background-position: 0 0;
+}
+
+.cDay-elementTimeLine {
+    background: url(../baseimages/booking-icons/calendar-clock-large.png);
+    background-size: 25px 25px;
+    background-repeat: no-repeat;
+    background-position: 0 0;
+}
+
+.resource-data {
+    width: 95%;
+    margin: 25px 2.5% 15px;
+    padding: 18px 25px 25px 16px;
+    overflow: auto;
+    -webkit-box-shadow: 0px 0px 3px 0px rgba(74, 74, 74, 1);
+    -moz-box-shadow: 0px 0px 3px 0px rgba(74, 74, 74, 1);
+    box-shadow: 0px 0px 3px 0px rgba(74, 74, 74, 1);
+}
+
+.resource-name {
+    margin-bottom: 13px;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: left;
+    color: #000000;
+}
+
+.resource-info {
+    width: 40%;
+    float: left;
+    font-size: 15px;
+    text-align: left;
+    color: #000000;
+}
+
+.resource-info img {
+    width: 100%;
+    max-height: 300px;
+    margin-bottom: 16px;
+    -webkit-box-shadow: 0px 0px 3px 0px rgba(74, 74, 74, 1);
+    -moz-box-shadow: 0px 0px 3px 0px rgba(74, 74, 74, 1);
+    box-shadow: 0px 0px 3px 0px rgba(74, 74, 74, 1);
+}
+
+.resource-desc {
+    width: 60%;
+    float: right;
+    padding: 0 25px 25px 15px;
+    font-size: 14px;
+    text-align: left;
+    color: #484848;
 }
 
 .noimage-elementInstitution {
@@ -973,33 +1194,81 @@ label[for='nameOrder'] {
     padding-bottom: 40px;
 }
 
-.btn-bookThisService {
-    width: 100px;
-    padding: 4px 0;
-    background: transparent;
-    border: 1px solid #939393;
-    color: #939393;
-}
-
 #dateTimePicker-date,
 #dateTimePicker-time {
     border: 1px solid #939393;
     padding: 10px 0;
+    font-size: 20px;
     text-align: center;
+    line-height: 70px;
+    text-transform: uppercase;
+    color: #000;
     width: 90%;
+    height: 70px;
     margin: auto;
     display: block;
-    margin-top: 20px;
+    margin-top: 10px;
+    border-radius: 0;
 }
 
 .dateTimePicker-container {
-    margin-top: 60px;
+    margin-top: 80px;
 }
 
 .dateTimePicker-container label {
     margin-left: 5%;
-    margin-top: 30px;
+    margin-top: 40px;
+    margin-bottom: 10px;
     display: block;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: left;
+    color: #000000;
+}
+
+#booking-order {
+    width: 100%;
+    border-top: 1px solid #000048;
+    padding-top: 30px;
+    margin-top: 30px;
+    margin-bottom: 80px;
+}
+
+.bookingCartItem-data {
+    width: 70%;
+    min-width: 150px;
+    float: left;
+}
+
+.bookingCartItem-data div {
+    width: 100%;
+    margin-top: 10px;
+    font-size: 18px;
+    text-align: left;
+    color: #494949;
+}
+
+.bookingCartItem-Currency {
+    font-weight: 500;
+}
+
+.cartItem-delete {
+    float: right;
+    width: 30%;
+    height: 100%;
+    min-width: 25px;
+    background: url(../baseimages/booking-icons/tresh.png);
+    background-size: 24px 33px;
+    background-repeat: no-repeat;
+    background-position: right;
+}
+
+#booking-order .bookingCartItem {
+    height: 165px;
+}
+
+#booking-order div:last-child {
+    margin-bottom: 5px;
 }
 
 .btn-confirmDateForBook,
@@ -1008,21 +1277,50 @@ label[for='nameOrder'] {
     width: 100%;
     position: fixed;
     bottom: 0;
-    height: 47px;
-    background-color: #939393;
-    color: #fff;
+    height: 65px;
+    background-color: #febdb7;
+    color: #000;
     border: none;
-    font-size: 18px;
+    font-size: 24px;
+    text-transform: uppercase;
+    line-height: 65px;
+    text-align: center;
+    -webkit-box-shadow: 0px -1px 3px 0px rgba(74, 74, 74, 1);
+    -moz-box-shadow: 0px -1px 3px 0px rgba(74, 74, 74, 1);
+    box-shadow: 0px -1px 3px 0px rgba(74, 74, 74, 1);
 }
+
+
+/* 
+.btn-confirmDateForBook {
+    background-color: #2c2a50;
+    color: #fff;
+} */
 
 .kc_fab_wrapper {
     z-index: 9999;
+}
+
+.status-list-date {
+    width: 25%;
+    float: left;
+}
+
+.status-list-info {
+    width: 50%;
+    float: left;
+}
+
+.status-list-status {
+    width: 25%;
+    float: right;
 }
 
 .fab {
     background: red;
     width: 50px;
     height: 50px;
+    line-height: 50px;
     border-radius: 50%;
     text-align: center;
     color: #FFF;
@@ -1036,6 +1334,11 @@ label[for='nameOrder'] {
     z-index: 999;
 }
 
+#masterfab span {
+    vertical-align: top;
+    line-height: 50px;
+}
+
 .fab.bottom-menu,
 .cart-btn.bottom-menu {
     bottom: 80px;
@@ -1044,9 +1347,9 @@ label[for='nameOrder'] {
 .fab span {}
 
 .fab.child {
-    right: 40px;
-    width: 30px;
-    height: 30px;
+    right: 37px;
+    width: 35px;
+    height: 35px;
     display: none;
     opacity: 0;
     font-size: 1em;
@@ -1069,13 +1372,24 @@ label[for='nameOrder'] {
     padding-top: 60px;
 }
 
+.status-list .status-list-data {
+    font-weight: bold;
+}
+
+.status-list-status,
+.status-list-info p,
+.status-list-date-time,
+.status-list-date-day {
+    padding-left: 40px;
+    height: 25px;
+    margin-top: 15px;
+    font-size: 18px;
+    color: #000;
+}
+
 .container-selectFreeBookTime p {
     padding-top: 100px;
     padding-left: 10%;
-}
-
-.row-elementInstitution img {
-    width: 100%;
 }
 
 .image-block img {
@@ -1401,6 +1715,21 @@ input[type="checkbox"].SwitcherFormElement:checked+div>div {
 }
 
 @media (max-width: 480px) {
+    .resource-info,
+    .resource-desc {
+        float: none;
+        width: 100%;
+    }
+    .resource-desc {
+        padding: 0;
+        font-size: 16px;
+    }
+    .time-elementTimeLine,
+    .sDay-elementTimeLine,
+    .cDay-elementTimeLine {
+        line-height: 25px;
+        font-size: 14px;
+    }
     .cartItem-name {
         width: 100%;
         float: none;
@@ -1451,8 +1780,8 @@ input[type="checkbox"].SwitcherFormElement:checked+div>div {
 /*~~~~~~~~~~~~STYLING MENU END~~~~~~~~~~~~~~*/
 
 .first {
-    background-image: url(../baseimages/booking.png);
-    background-size: contain;
+    background-image: url(../baseimages/booking-icons/calendar-white.png);
+    background-size: 65%;
     background-position: center;
     background-repeat: no-repeat;
 }
@@ -1527,7 +1856,6 @@ input[type="checkbox"].SwitcherFormElement:checked+div>div {
     width: 100%;
     height: 100%;
 }
-
 
 /*~~~~~~Main Page Styles~~~~~*/
 

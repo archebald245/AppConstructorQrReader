@@ -74,7 +74,7 @@
         <div class="Scan-spiner hidden"></div>
     </div>
 
-    <div data-role="header" data-position="fixed" class="classMenu">
+ <div data-role="header" data-position="fixed" class="classMenu">
         <div class="menu-icon" onclick="onClickButtonMenu()">
             <div></div>
             <div></div>
@@ -82,19 +82,20 @@
         </div>
         <div class="classDropdownList"></div>
     </div>
+
     <div class="classSwiperMenu">
         <div class="menu-triangle"></div>
         <div class="classSwipeDropList"></div>
     </div>
-
-    <div id="container" class="mainContainerApp hidden"></div>
+    <div id="container"></div>
 
     <div class="container-statusBooking hidden">
         <div class="cart-top-line"><button class="back-to-container-from-book"></button><span>Your book status list</span></div>
         <div class="status-list"></div>
     </div>
     <div class="bookingServices-container hidden">
-        <div class="cart-top-line"><button class="back-to-timelines"></button><span>Services</span></div>
+        <div class="cart-top-line">
+            <div class="back-to-timelines"></div><span>Services</span></div>
         <div id='bookingServices'></div>
         <button type="button" class="btn-order-booking"><span>Order Booking</span></button>
     </div>
@@ -111,6 +112,7 @@
             <input type="text" id="dateTimePicker-date" value="Date" />
             <label for="dateTimePicker-time"><span>Select time</span></label>
             <input type="text" id="dateTimePicker-time" value="Time" />
+            <div id="booking-order"></div>
             <button class="btn-confirmDateForBook"><span>Book</span></button>
             <input type="hidden" class="thisServiceId" />
             <input type="hidden" class="thisDuration" />
@@ -119,7 +121,8 @@
         </div>
 
         <div class="order-booking hidden">
-            <div class="cart-top-line"><button class="btn-back-toservices"></button><span>Your Order Info</span></div>
+            <div class="cart-top-line">
+                <div class="btn-back-toservices"></div><span>Your Order Info</span></div>
             <label for="nameOrder"><span>Name</span></label>
             <input type="text" id="booking-nameOrder" class="nameOrder required" />
             <label for="phoneOrder"><span>Phone Number</span></label>
@@ -139,7 +142,7 @@
 
             <label for="commentOrder"><span>Your Order Comments</span></label>
             <textarea id="booking-commentOrder" class="commentOrder"></textarea>
-            <button class="btn-send-order-booking"><span>Book</span></button>
+            <div class="btn-send-order-booking"><span>Book</span></div>
 
         </div>
 
@@ -186,7 +189,8 @@
             <div id="singleItem"> </div>
         </div>
 
-        <div id="custom-hide-container" class="hidden"></div>
+        <div id="custom-hide-container" class="hidden">
+        </div>
         <script src="js/MobileView.js"></script>
         <script>
             init();
