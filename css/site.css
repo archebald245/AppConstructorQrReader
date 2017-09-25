@@ -1715,6 +1715,9 @@ input[type="checkbox"].SwitcherFormElement:checked+div>div {
 }
 
 @media (max-width: 480px) {
+   label[for='nameOrder'] {
+        margin-top: 20px
+    }
     .resource-info,
     .resource-desc {
         float: none;
