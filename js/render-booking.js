@@ -6,7 +6,7 @@ var renderBooking = function renderBooking(thisInstitution, sortByService) {
         componentDidMount: function componentDidMount() {
             addListenerToClickBookService();
             $(".btn-bookThisService").on("click", function() {
-                var itemId = $(this).parents(".row-elementInstitution.inst-profile").find(".serviceId").val();
+                var itemId = $(this).parents(".row-elementInstitution").find(".serviceId").val();
                 workToClickBook(itemId);
             });
             if (sortByService) {
