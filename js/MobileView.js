@@ -54,7 +54,7 @@ function reactRender() {
             heidth: 'auto',
             width: '100%',
             videoId: id,
-			playerVars: { rel: 0 },
+            playerVars: { rel: 0 },
             events: {
                 'onReady': onPlayerReady,
                 'onStateChange': onPlayerStateChange
@@ -201,8 +201,7 @@ function reactRender() {
                             'div', { className: 'fab bottom-menu', id: 'masterfab' },
                             React.createElement(
                                 'span',
-                                null,
-                                '+'
+                                null
                             )
                         ),
                         React.createElement(
@@ -225,8 +224,7 @@ function reactRender() {
                             'div', { className: 'fab bottom-menu', id: 'masterfab' },
                             React.createElement(
                                 'span',
-                                null,
-                                '+'
+                                null
                             )
                         ),
                         React.createElement(
@@ -275,8 +273,7 @@ function reactRender() {
                             'div', { className: 'fab', id: 'masterfab' },
                             React.createElement(
                                 'span',
-                                null,
-                                '+'
+                                null
                             )
                         ),
                         React.createElement(
@@ -299,8 +296,7 @@ function reactRender() {
                             'div', { className: 'fab', id: 'masterfab' },
                             React.createElement(
                                 'span',
-                                null,
-                                '+'
+                                null
                             )
                         ),
                         React.createElement(

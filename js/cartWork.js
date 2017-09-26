@@ -45,6 +45,7 @@ function clickPlaceAnOrder() {
             success: function() {
                 alert(cultureRes.thankYou);
                 $("#cart").html("");
+                $("#cart .cartItem").html("");
                 $("#orderInfo input, #orderInfo textarea").val("");
                 $("#container").removeClass("hidden");
                 $("#orderInfo").addClass("hidden");
@@ -62,7 +63,18 @@ function clickPlaceAnOrder() {
 }
 
 function bindListenerToClickBtn() {
-    $(".cart-btn").on("click", function() {
+    //to menu
+    $(".back-to-container, .go-to-menu-btn, .go-to-menu").on("click", function() {
+        $("#container").removeClass("hidden");
+        $(".classMenu").removeClass("hidden");
+        $(".classSwipeDropList").removeClass("hidden");
+        $(".cart").addClass("hidden");
+        $(".singleItem").addClass("hidden");
+        $("#orderInfo").addClass("hidden");
+        scrollTop();
+    });
+    //to cart
+    $(".to-cart, .cart-btn").on("click", function() {
         $("#container").addClass("hidden");
         $(".classMenu").addClass("hidden");
         $(".classSwipeDropList").addClass("hidden");
@@ -70,21 +82,14 @@ function bindListenerToClickBtn() {
         $(".singleItem").addClass("hidden");
         window.scrollTo(0, 0);
     });
-
-    $(".back-to-container").on("click", function() {
-        $("#container").removeClass("hidden");
-        $(".classMenu").removeClass("hidden");
-        $(".classSwipeDropList").removeClass("hidden");
-        $(".cart").addClass("hidden");
-        $(".singleItem").addClass("hidden");
-        scrollTop();
-    });
+    //to cart from order page
     $(".back-to-cart").on("click", function() {
         $("#orderInfo").addClass("hidden");
         $(".singleItem").addClass("hidden");
         $(".cart").removeClass("hidden");
         scrollTop();
     });
+    //to order
     $(".btn-order").on("click", function() {
         if ($("#cart").children().length > 0) {
             $("#orderInfo").removeClass("hidden");
@@ -93,10 +98,9 @@ function bindListenerToClickBtn() {
         } else {
             alert(cultureRes.nothingOrdered);
         }
-
     });
+
     $(".placeAnOrder").on("click", function() {
         clickPlaceAnOrder();
     });
-
 }

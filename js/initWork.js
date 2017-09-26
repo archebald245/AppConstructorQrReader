@@ -33,6 +33,7 @@ function onDeviceReady() {
         store = fileSystem.root.nativeURL + "Phonegap/";
     });
     appStart();
+
     $("#dateTimePicker-date").dateDropper({
         dropBorder: "1px solid #939393",
         dropPrimaryColor: "#939393",
@@ -45,7 +46,64 @@ function onDeviceReady() {
         format: "HH:mm",
         setCurrentTime: "false"
     });
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Notification Area Start
+    var push = PushNotification.init({
+        android: {
+            //senderID: 418915081706
+            sound: true,
+            vibrate: true
+        },
+        browser: {
+            pushServiceURL: 'http://push.api.phonegap.com/v1/push'
+        },
+        ios: {
+            alert: "true",
+            badge: "true",
+            sound: "true"
+        },
+        windows: {}
+    });
+
+    push.on('registration', function(data) {
+        $.jStorage.set('notificationToken', data.registrationId);
+    });
+
+    // PushNotification.hasPermission(function(data) {
+
+    //     if (data.isEnabled) {
+    //         alert("is enabled");
+    //     } else {
+    //         alert("is disabled");
+    //     }
+    // });
+
+    push.on('notification', function(data) {
+        // data.message,
+        // data.title,
+        // data.count,
+        // data.sound,
+        // data.image,
+        // data.additionalData
+        window.plugins.toast.hide();
+
+        window.plugins.toast.showWithOptions({
+            message: data.message,
+            duration: 7500,
+            position: "top",
+            addPixelsY: 50
+        });
+
+    });
+
+    push.on('error', function(e) {
+        // e.message
+        // alert("Error " + e.message);
+    });
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Notification Area End
     StatusBar.hide();
+
+    checkApplicationId();
+
     // navigator.splashscreen.show();
     $('[data-toggle="tooltip"]').tooltip();
     if ('ontouchstart' in document.documentElement) {
@@ -106,6 +164,8 @@ function onCheckJson() {
         applicationData = replaceData(applicationData);
         applicationData = JSON.parse(applicationData);
 
+        checkUpdateRestaurantMenu(true);
+
         resources = searchResourcesAndReplacePatch(applicationData);
         downloadResources();
         initMenuYoutunbe();
@@ -134,6 +194,8 @@ function checkConnection() {
         applicationData = JSON.parse($.jStorage.get('appData'));
         var projectId = applicationData.ProjectId;
         var versionId = applicationData.Id;
+        var tokenToSend = $.jStorage.get('notificationToken');
+        var deviceIdToSend = $.jStorage.get('ApplicationId');
 
         if (applicationData.UrlForUpdateApp != "" && applicationData.UrlForUpdateApp != null && typeof applicationData.UrlForUpdateApp != 'undefined') {
             siteUrl = applicationData.UrlForUpdateApp;
@@ -142,7 +204,12 @@ function checkConnection() {
         $.ajax({
             type: "POST",
             url: siteUrl + "/Constructor/GetContentById",
-            data: { projectId: projectId, contentId: versionId },
+            data: {
+                projectId: projectId,
+                contentId: versionId,
+                token: tokenToSend,
+                deviceId: deviceIdToSend
+            },
             cache: false,
             success: function(jsonObjectOfServer) {
                 jsonObjectOfServer = JSON.parse(jsonObjectOfServer);
@@ -150,7 +217,7 @@ function checkConnection() {
                 $("#container").removeClass("hidden");
                 scrollTop();
                 applicationData = JSON.stringify(jsonObjectOfServer.Content);
-                checkUpdateRestaurantMenu(true);
+                //checkUpdateRestaurantMenu(true); 
                 onCheckJson();
             }
         });
@@ -202,6 +269,25 @@ function initGallaryClick() {
     });
 }
 
+function checkApplicationId() {
+    var siteUrl = "http://appconstructornew.newlinetechnologies.net/";
+
+    if (applicationData != null) {
+        if (applicationData.UrlForUpdateApp != "" && applicationData.UrlForUpdateApp != null && typeof applicationData.UrlForUpdateApp != 'undefined') {
+            siteUrl = applicationData.UrlForUpdateApp;
+        }
+    }
+    if ($.jStorage.get('ApplicationId') == null) {
+        $.ajax({
+            type: "POST",
+            url: siteUrl + "/UploadFiles/GetApplicationIdForMobileApp",
+            cache: false,
+            success: function(applicationId) {
+                $.jStorage.set('ApplicationId', applicationId)
+            }
+        });
+    }
+}
 
 function doOnOrientationChange() {
     switch (window.orientation) {

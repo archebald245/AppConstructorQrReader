@@ -9,6 +9,7 @@ function addListenerToClickTimeLine() {
         $(applicationData.Institutions).each(function(i, institution) {
             $(institution.BookResources).each(function(ind, resources) {
                 if (resources.Id == thisInstitutionId) {
+                    $("#booking-order").html("");
                     listServiceForBooking = [];
                     renderServiceOfThisInstitution(resources);
                 }
@@ -28,6 +29,15 @@ function addListenerToClickTimeLine() {
 }
 
 function addListenerToClickBookService() {
+    $(".cartItem-delete").unbind("click");
+    $(".cartItem-delete").click(function() {
+        $(this).closest(".bookingCartItem").parent().remove();
+        var itemDeleteId = $(this).siblings(".cart-service-itemId").val();
+        listServiceForBooking = $.grep(listServiceForBooking, function(e) {
+            return e.BookDateTime.BookServiceProvideId != itemDeleteId;
+        });
+    });
+
     $(".btn-back-toservices").click(function() {
         $(".order-booking").addClass("hidden");
         if ($("#container").find(".row-elementInstitution").length > 0) {
@@ -55,59 +65,7 @@ function addListenerToClickBookService() {
             }
         }
     });
-    $(".btn-bookThisService").unbind("click");
-    $(".btn-bookThisService").on("click", function() {
-        var thisTimeLineId = $(this).siblings(".thisTimeLineId").val();
-        var serviceId = $(this).siblings(".serviceId").val();
-        var durationService = $(this).siblings(".serviceDuration").val();
-        var nameServices = $(this).siblings(".servicesName").val();
-        var partOfGeneralTimeLine = true;
-        var thisServiceNotBooking = true;
-        $(listServiceForBooking).each(function(i, e) {
-            if (e.BookDateTime.ThisTimeLineId != thisTimeLineId) {
-                partOfGeneralTimeLine = false;
-            }
-        });
-        $(listServiceForBooking).each(function(i, e) {
-            if (e.BookDateTime.BookServiceProvideId == serviceId) {
-                thisServiceNotBooking = false;
-            }
-        });
-        if (thisServiceNotBooking) {
-            if (partOfGeneralTimeLine) {
-                var BookOrder = {
-                    BookDateTime: {
-                        StringFromTime: null,
-                        StringToTime: null,
-                        BookServiceProvideId: serviceId,
-                        ThisTimeLineId: thisTimeLineId,
-                        Duration: Number(durationService),
-                        NameServices: nameServices
-                    }
-                }
-                listServiceForBooking.push(BookOrder);
-                alert(cultureRes.book);
-            } else {
-                if (confirm(cultureRes.bookConf)) {
-                    listServiceForBooking = [];
-                    var BookOrder = {
-                        BookDateTime: {
-                            StringFromTime: null,
-                            StringToTime: null,
-                            BookServiceProvideId: serviceId,
-                            ThisTimeLineId: thisTimeLineId,
-                            Duration: Number(durationService),
-                        }
-                    }
-                    listServiceForBooking.push(BookOrder);
-                    alert(cultureRes.book);
-                }
-            }
-        } else {
-            alert(cultureRes.alreadyBook);
-        }
 
-    });
     $(".back-to-services").on("click", function() {
         $(".dateTimePicker-container").addClass("hidden");
         if ($("#container").find(".row-elementInstitution").length > 0) {
@@ -117,9 +75,6 @@ function addListenerToClickBookService() {
             $(".bookingServices-container").removeClass("hidden");
             scrollTop();
         }
-        $("#dateTimePicker-time").val(cultureRes.time);
-        $("#dateTimePicker-date").val(cultureRes.date);
-
     });
     $(".btn-confirmDateForBook").unbind("click");
     $(".btn-confirmDateForBook").click(function() {
@@ -220,7 +175,7 @@ function sendOrderBooking(dateVal, timeVal, needConfirmation, bookResourceId) {
                             alert(cultureRes.cantBookOne + fromDay + cultureRes.cantBookTwo + toDay + "!");
                             return false;
                         } else {
-                            if (bookedStart >= startTime && bookedEnd <= bookedEnd) {
+                            if (bookedStart >= startTime && bookedEnd <= closeTime) {
                                 alert(cultureRes.ok);
                                 BookingAjax();
                                 return true;
@@ -235,6 +190,9 @@ function sendOrderBooking(dateVal, timeVal, needConfirmation, bookResourceId) {
         });
 
         function BookingAjax() {
+            var projectId = applicationData.ProjectId;
+            var contentId = applicationData.Id;
+            var token = $.jStorage.get('notificationToken');
             $.ajax({
                 type: "POST",
                 url: applicationData.UrlForUpdateApp + "/Booking/CreateOrder",
@@ -242,14 +200,17 @@ function sendOrderBooking(dateVal, timeVal, needConfirmation, bookResourceId) {
                     model: listServiceForBooking,
                     duration: duration,
                     start: dateVal + " " + timeVal,
-                    bookResourceId: bookResourceId
+                    bookResourceId: bookResourceId,
+                    projectId: projectId,
+                    contentId: contentId,
+                    notificationToken: token
                 },
                 cache: false,
                 success: function(object) {
                     duration = 0;
                     object = JSON.parse(object);
                     if (object.IsCreated == true) {
-                        alert(cultureRes.ok);
+                        alert("success");
                         if (listServiceForBooking[0].ConfirmMethod == "InApplication") {
                             addOrderBookingInJStorage(listServiceForBooking, object.resourceModel);
                         }
@@ -293,14 +254,17 @@ function sendOrderBooking(dateVal, timeVal, needConfirmation, bookResourceId) {
                                     model: listServiceForBooking,
                                     duration: duration,
                                     start: dateVal + " " + timeVal,
-                                    bookResourceId: bookResourceId
+                                    bookResourceId: bookResourceId,
+                                    projectId: applicationData.ProjectId,
+                                    contentId: applicationData.Id,
+                                    notificationToken: $.jStorage.get('notificationToken')
                                 },
                                 cache: false,
                                 success: function(object) {
                                     duration = 0;
                                     object = JSON.parse(object);
                                     if (object.IsCreated == true) {
-                                        alert(cultureRes.ok);
+                                        alert("success");
                                         if (listServiceForBooking[0].ConfirmMethod == "InApplication") {
                                             addOrderBookingInJStorage(listServiceForBooking, object.resourceModel);
                                         }
@@ -326,9 +290,22 @@ function addOrderBookingInJStorage(listServiceForBooking, listOfOrders) {
 
     var arrayForOrder = [];
     listServiceForBooking.forEach(function(service) {
+        var resourceName;
+        $(applicationData.Institutions).each(function() {
+            $(this.BookResources).each(function() {
+                var res = this.Name;
+                $(this.BookServiceProvides).each(function() {
+                    if (this.Id == service.BookDateTime.BookServiceProvideId) {
+                        resourceName = res;
+                    }
+                });
+            });
+        });
         arrayForOrder.push({
             status: "pending",
             nemesService: service.BookDateTime.NameServices,
+            serviceObject: service.BookDateTime,
+            resourceName: resourceName,
             id: 0
         });
     });
@@ -384,10 +361,88 @@ function checkUpdateBooking(isNewVersion) {
             initGallaryClick();
             submitFormListener();
             unBlockUi()
-            console.log("error");
-            console.log(err);
+                //  console.log("error");
+                // console.log(err);
         }
     });
 
 
+}
+
+function workToClickBook(itemId) {
+    var bookedService = {};
+    var ser;
+    $(applicationData.Institutions).each(function() {
+        $(this.BookResources).each(function() {
+            ser = this.Name;
+            $(this.BookServiceProvides).each(function() {
+                if (this.Id == itemId) {
+                    bookedService = this;
+                    bookedService.selectedService = ser;
+                }
+            });
+        });
+    });
+
+    var thisTimeLineId = bookedService.BookResourceId;
+    var serviceId = itemId;
+    var durationService = bookedService.Duration;
+    var nameServices = bookedService.servicesName;
+
+    var partOfGeneralTimeLine = true;
+    var thisServiceNotBooking = true;
+
+    $(listServiceForBooking).each(function(i, e) {
+        if (e.BookDateTime.ThisTimeLineId != thisTimeLineId) {
+            partOfGeneralTimeLine = false;
+        }
+    });
+    $(listServiceForBooking).each(function(i, e) {
+        if (e.BookDateTime.BookServiceProvideId == serviceId) {
+            thisServiceNotBooking = false;
+        }
+    });
+    if (thisServiceNotBooking) {
+        if (partOfGeneralTimeLine) {
+            var BookOrder = {
+                BookDateTime: {
+                    StringFromTime: null,
+                    StringToTime: null,
+                    BookServiceProvideId: serviceId,
+                    ThisTimeLineId: thisTimeLineId,
+                    Duration: Number(durationService),
+                    NameServices: bookedService.Name,
+                    Currency: bookedService.Currency,
+                    Price: bookedService.Price
+                }
+            }
+            listServiceForBooking.push(BookOrder);
+            $("#booking-order").append("<div id='bookShopItem'></div>");
+            renderBookingCartItem(bookedService);
+            window.plugins.toast.showShortBottom(cultureRes.book);
+        } else {
+            if (confirm(cultureRes.bookConf)) {
+                listServiceForBooking = [];
+                $("#booking-order").html("");
+                var BookOrder = {
+                    BookDateTime: {
+                        StringFromTime: null,
+                        StringToTime: null,
+                        BookServiceProvideId: serviceId,
+                        ThisTimeLineId: thisTimeLineId,
+                        Duration: Number(durationService),
+                        Currency: bookedService.Currency,
+                        Price: bookedService.Price
+                    }
+                }
+                listServiceForBooking.push(BookOrder);
+                $("#cart").append("<div id='bookShopItem'></div>");
+                renderBookingCartItem(bookedService);
+                window.plugins.toast.showShortBottom(cultureRes.book);
+            }
+        }
+        $("#bookShopItem").attr("id", "");
+    } else {
+        alert(cultureRes.alreadyBook);
+    }
 }

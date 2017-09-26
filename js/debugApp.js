@@ -1,8 +1,23 @@
 function deleteResourcesAll() { //Call in Init function
     $("#clearJsStorage").click(function() {
         deleteResourcesImg();
+
+        var siteUrl = applicationData.UrlForUpdateApp;
+        var ProjectId = applicationData.ProjectId;
+        var deviceId = $.jStorage.get('ApplicationId');
+        $.ajax({
+            type: "POST",
+            url: siteUrl + "/PushNotification/UnsubscribePushNotification",
+            data: {
+                projectId: ProjectId,
+                deviceId: deviceId
+            },
+            cache: false,
+            success: function() {},
+            error: function() {}
+        });
+
         $.jStorage.deleteKey("appData");
-        $.jStorage.deleteKey('ApplicationId');
         checkJsStorage();
         $(".Scan-spiner").addClass("hidden");
         $("#container").attr("style", "");
@@ -21,19 +36,26 @@ function startScan() { //Call in Init function
                 var qrResult = result.text.split("-");
                 var ProjectId = qrResult[0];
                 var VersionName = qrResult[1];
+                var tokenToSend = $.jStorage.get('notificationToken');
+                var deviceIdToSend = $.jStorage.get('ApplicationId');
                 if (qrResult[2] != null) {
                     siteUrl = qrResult[2];
                 }
                 $.ajax({
                     type: "POST",
                     url: siteUrl + "/Constructor/GetContentById",
-                    data: { projectId: ProjectId, contentId: VersionName },
+                    data: {
+                        projectId: ProjectId,
+                        contentId: VersionName,
+                        token: tokenToSend,
+                        deviceId: deviceIdToSend
+                    },
                     cache: false,
                     success: function(jsonObjectOfServer) {
                         jsonObjectOfServer = JSON.parse(jsonObjectOfServer);
                         scrollTop();
                         applicationData = JSON.stringify(jsonObjectOfServer.Content);
-                        $.jStorage.set('ApplicationId', jsonObjectOfServer.ApplicationId);
+                        // $.jStorage.set('ApplicationId', jsonObjectOfServer.ApplicationId);
                         onCheckJson();
                     },
                     error: function() {
