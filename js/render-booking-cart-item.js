@@ -30,7 +30,7 @@ function renderBookingCartItem(cartItem) {
                     ),
                     React.createElement(
                         "div", { className: "bookingCartItem-Currency" },
-                        data.Price != null ? data.Price : "" + " " + data.Currency != null ? data.Currency : ""
+                        data.Price != null ? data.Price : "", " ", data.Currency != null ? data.Currency : ""
                     )
                 ),
                 React.createElement(
