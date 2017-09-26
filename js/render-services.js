@@ -110,7 +110,7 @@ function renderServiceOfThisInstitution(thisInstitution) {
                     ),
                     React.createElement(
                         'div', { className: 'price-elementInstitution' },
-                        data.Price != null ? data.Price : "" + " " + data.Currency != null ? data.Price : ""
+                        data.Price != null ? data.Price : "" + " " + data.Currency != null ? data.Currency : ""
                     ),
                     React.createElement(
                         'button', { className: 'btn-bookThisService' },
