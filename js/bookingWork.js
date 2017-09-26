@@ -1,4 +1,4 @@
-
+var listServiceForBooking = [];
 
 function addListenerToClickTimeLine() {
     $(".row-elementTimeLine").on("click", function() {

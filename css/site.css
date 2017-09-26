@@ -1343,6 +1343,10 @@ label[for='nameOrder'] {
     content: "";
 }
 
+.fab.fab-moved{
+	 bottom: 80px;
+}
+
 #masterfab span {
     vertical-align: top;
     line-height: 50px;

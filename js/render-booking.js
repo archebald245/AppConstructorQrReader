@@ -9,6 +9,10 @@ var renderBooking = function renderBooking(thisInstitution, sortByService) {
                 var itemId = $(this).parents(".row-elementInstitution.inst-profile").find(".serviceId").val();
                 workToClickBook(itemId);
             });
+            if (sortByService) {
+                $(".fab").addClass("fab-moved");
+            }
+
         },
         render: function render() {
             var data = this.props.data;
