@@ -1123,7 +1123,7 @@ label[for='nameOrder'] {
 .status-list-date-day,
 .time-elementTimeLine {
     background: url(../baseimages/booking-icons/clock-large.png);
-    background-size: 25px 25px;
+    /* background-size: 25px 25px; */
     background-repeat: no-repeat;
     background-position: 0 0;
 }
@@ -1131,14 +1131,14 @@ label[for='nameOrder'] {
 .status-list-date-time,
 .sDay-elementTimeLine {
     background: url(../baseimages/booking-icons/calendar-large.png);
-    background-size: 25px 25px;
+    /* background-size: 25px 25px; */
     background-repeat: no-repeat;
     background-position: 0 0;
 }
 
 .cDay-elementTimeLine {
     background: url(../baseimages/booking-icons/calendar-clock-large.png);
-    background-size: 25px 25px;
+    /* background-size: 25px 25px; */
     background-repeat: no-repeat;
     background-position: 0 0;
 }
