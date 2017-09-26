@@ -38,6 +38,7 @@ function renderRestaurantMenu(menuCollection, position, responsiveModel, stateNa
             }
         },
         render: function render() {
+            var currency = this.state.data.Currency;
             var RestaurantMenuItemModels = this.state.data.RestaurantMenuItems.map(function(item) {
                 var image;
                 if (item.RestaurantMenuImages.length == 0) {
@@ -71,7 +72,7 @@ function renderRestaurantMenu(menuCollection, position, responsiveModel, stateNa
                                 "div", { className: "btn-restaurant-menu-container" },
                                 React.createElement(
                                     "div", { className: "cartShop-price" },
-                                    item.Price + " ГРН"
+                                    item.Price + " " + currency != null ? currency : ""
                                 ),
                                 React.createElement(
                                     "div", { className: "cartShop-buy btn-restaurant-menu" },
@@ -110,7 +111,7 @@ function renderRestaurantMenu(menuCollection, position, responsiveModel, stateNa
                                 "div", { className: "btn-restaurant-menu-container" },
                                 React.createElement(
                                     "div", { className: "cartShop-price" },
-                                    item.Price + " ГРН"
+                                    item.Price + " " + currency
                                 ),
                                 React.createElement(
                                     "div", { className: "cartShop-buy btn-restaurant-menu" },
@@ -146,7 +147,7 @@ function renderRestaurantMenu(menuCollection, position, responsiveModel, stateNa
                                 "div", { className: "btn-restaurant-menu-container" },
                                 React.createElement(
                                     "div", { className: "cartShop-price" },
-                                    item.Price + " ГРН"
+                                    item.Price + " " + currency
                                 ),
                                 React.createElement(
                                     "div", { className: "cartShop-buy btn-restaurant-menu" },
