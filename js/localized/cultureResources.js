@@ -22,7 +22,7 @@ function initCulture() {
     } else {
         initEnCulture();
     }
-	$(".startScan-wrapper h1").html(cultureRes.pleaseScan);
+    $(".startScan-wrapper h1").html(cultureRes.pleaseScan);
     $("#startScan").html(cultureRes.startScan);
 
 
@@ -57,7 +57,7 @@ function initCulture() {
 function initEnCulture() {
     window.cultureRes = new Object();
     //index.html
-	cultureRes.startScan = "Start Scan";
+    cultureRes.startScan = "Start Scan";
     cultureRes.pleaseScan = "Please Scan QR for your Application";
     cultureRes.bookStatus = "Your book status list";
     cultureRes.services = "Services";
@@ -168,7 +168,7 @@ function initEnCulture() {
 function initRuCulture() {
     window.cultureRes = new Object();
     //index.html
-	cultureRes.startScan = "Начать сканировать";
+    cultureRes.startScan = "Начать сканировать";
     cultureRes.pleaseScan = "Пожалуйста, отсканируйте QR-код Вашего приложения";
     cultureRes.bookStatus = "Список статусов Ваших бронирований";
     cultureRes.services = "Сервисы";
@@ -215,7 +215,7 @@ function initRuCulture() {
     cultureRes.thankYou = "Спасибо";
     cultureRes.nothingOrdered = "Вам нечего заказивать!";
     //eventWork
-    cultureRes.lockedPage = "Это страница заблокирована!";
+    cultureRes.lockedPage = "Эта страница заблокирована!";
     cultureRes.loginPlease = "Войдите в систему, пожалуйста";
     //formWork
     cultureRes.noInternet = "Извините, проверте Интернет соединение!";
@@ -278,7 +278,7 @@ function initRuCulture() {
 function initUaCulture() {
     window.cultureRes = new Object();
     //index.html
-	cultureRes.startScan = "Почати сканування";
+    cultureRes.startScan = "Почати сканування";
     cultureRes.pleaseScan = "Будь ласка, відскануйте QR-код Вашого додатку";
     cultureRes.bookStatus = "Список статусів Ваших замовлень";
     cultureRes.services = "Сервіси";

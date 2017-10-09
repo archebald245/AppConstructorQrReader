@@ -45,10 +45,12 @@ function clickPlaceAnOrder() {
             success: function() {
                 alert(cultureRes.thankYou);
                 $("#cart").html("");
+                $(".totalPrice b").html("0");
                 $("#cart .cartItem").html("");
                 $("#orderInfo input, #orderInfo textarea").val("");
                 $("#container").removeClass("hidden");
-                $("#orderInfo").addClass("hidden");
+                $("#orderInfo, .cart").addClass("hidden");
+
                 scrollTop();
                 if ($('.classMenuTop').length > 0 || $('.classMenuBottom').length > 0) {
                     $(".classMenu").removeClass("hidden");
@@ -90,6 +92,7 @@ function bindListenerToClickBtn() {
         scrollTop();
     });
     //to order
+    $(".btn-order").unbind("click");
     $(".btn-order").on("click", function() {
         if ($("#cart").children().length > 0) {
             $("#orderInfo").removeClass("hidden");

@@ -483,7 +483,7 @@ function changeMenu() {
             var networkState = navigator.connection.type;
             if (networkState == Connection.NONE) {
                 $(".custom-restaurant-menu-container").addClass("hidden");
-                alert("Sorry, not time!");
+                // alert("Sorry, not time!");
             } else {
                 if (menu.UseDateTime == false) {
                     renderRestaurantMenu(menu, ThisRestaurantMenuBlock.find("[name=restaurantMenuPosition]").attr("value"), ThisRestaurantMenuBlock.find("[name=responsiveModel]").attr("value"),
