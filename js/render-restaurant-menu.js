@@ -72,7 +72,7 @@ function renderRestaurantMenu(menuCollection, position, responsiveModel, stateNa
                                 "div", { className: "btn-restaurant-menu-container" },
                                 React.createElement(
                                     "div", { className: "cartShop-price" },
-                                    item.Price + " " + currency != null ? currency : ""
+                                    item.Price + " " + currency
                                 ),
                                 React.createElement(
                                     "div", { className: "cartShop-buy btn-restaurant-menu" },
