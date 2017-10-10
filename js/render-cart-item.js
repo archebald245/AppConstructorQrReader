@@ -32,12 +32,12 @@ function renderCartItem(cartItem) {
                         ),
                         React.createElement(
                             "div", { className: "cartItem-name-price" },
-                            "Цена: " + data.Price + " ГРН"
+                            "Цена: " + data.Price
                         )
                     ),
 
                     React.createElement("div", { className: "cartItem-count-container" },
-                        React.createElement("div", { className: "cartItem-count-total-price" }, data.Price + " ГРН"),
+                        React.createElement("div", { className: "cartItem-count-total-price" }, data.Price),
                         React.createElement(
                             "div", { className: "cartItem-info" },
                             React.createElement(

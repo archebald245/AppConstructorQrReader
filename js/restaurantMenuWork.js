@@ -156,7 +156,7 @@ function workToClickBuy(itemId) {
     $("#shopItem").attr("id", "");
 
     $(".totalPrice b").html("");
-    $(".totalPrice b").append(totalPrice() + " ГРН");
+    $(".totalPrice b").append(totalPrice());
     addListenerToClickDelete();
     addListenerToChangeCount();
 }
@@ -167,7 +167,7 @@ function addListenerToClickDelete() {
         $(this).closest(".cartItem").parent().remove();
 
         $(".totalPrice b").html("");
-        $(".totalPrice b").append(totalPrice() + " ГРН"); //add currency
+        $(".totalPrice b").append(totalPrice()); //add currency
     });
 }
 
@@ -197,13 +197,13 @@ function addListenerToChangeCount() {
 function updateCount(e, count) {
     var newPrice = Number($(e).closest(".cartItem").find("input[name=shopItemPrice]").val()) * count;
     $(e).closest(".cartItem").find(".cartItem-count-total-price").html("");
-    $(e).closest(".cartItem").find(".cartItem-count-total-price").append(newPrice + " ГРН");
+    $(e).closest(".cartItem").find(".cartItem-count-total-price").append(newPrice);
 
     $(e).siblings(".shopItem-count").html("");
     $(e).siblings(".shopItem-count").append(count);
 
     $(".totalPrice b").html("");
-    $(".totalPrice b").append(totalPrice() + " ГРН");
+    $(".totalPrice b").append(totalPrice());
 }
 
 function totalPrice() {
