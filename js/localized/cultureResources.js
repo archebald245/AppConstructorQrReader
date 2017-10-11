@@ -213,7 +213,7 @@ function initRuCulture() {
     cultureRes.sorryError = "Извините, ошибка!";
     //cartWork
     cultureRes.thankYou = "Спасибо";
-    cultureRes.nothingOrdered = "Вам нечего заказивать!";
+    cultureRes.nothingOrdered = "Вам нечего заказывать!";
     //eventWork
     cultureRes.lockedPage = "Эта страница заблокирована!";
     cultureRes.loginPlease = "Войдите в систему, пожалуйста";
