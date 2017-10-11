@@ -784,7 +784,7 @@ function reactRender() {
                         url, 'application/pdf', options, onShow);
                 });
             }
-            if (data.ContentTypeId == 2 || data.ContentTypeId == 4) {
+            if (data.ContentTypeId == 2 || data.ContentTypeId == 4 || data.ContentTypeId == 9) {
                 $(ReactDOM.findDOMNode(this)).click(function(e) {
                     e.preventDefault();
                     window.open($(this).attr("href"), '_system')
