@@ -23,7 +23,10 @@
   <allow-navigation href="http://*/*" />
   <allow-navigation href="https://*youtube.com/*"/>
   <allow-intent href="*" />
-  <access origin="*" />
+  <!-- <access origin="*" /> -->
+
+  <access origin='*' allows-arbitrary-loads-for-media='true' allows-arbitrary-loads-in-web-content='true' allows-local-networking='true' />
+  
   <feature name="http://api.phonegap.com/1.0/file">
     <param name="" value="" />
   </feature>

@@ -44,10 +44,15 @@ function submitFormListener() {
                 });
             } else {
                 $.post('' + siteUrl + '/Form/SaveFormData', $(form).serialize(), function() {
-                    alert(cultureRes.thankYou);
-                    $(form).find(".formBlock").find("input, textarea").val("");
-                    $(form).find("input[type='checkbox']").removeAttr("checked");
-                });
+                        alert(cultureRes.thankYou);
+                        $(form).find(".formBlock").find("input, textarea").val("");
+                        $(form).find("input[type='checkbox']").removeAttr("checked");
+                    }).fail(function() {
+                        alert("error");
+                    })
+                    .always(function() {
+                        alert("finished");
+                    });
             }
 
         } else {
@@ -115,12 +120,17 @@ function bindChangeValForms() {
                                 });
                             } else {
                                 $.post('' + siteUrl + '/Form/SaveFormData', $(elem).serialize(), function() {
-                                    alert(cultureRes.thankYou);
-                                    $(elem).find(".formBlock").find("input[type='number'], input[type='text'], textarea").val("");
-                                    $("." + $(elem).attr("id")).siblings(".formBlock").find("input[type='number'], input[type='text'], textarea").val("");
-                                    $(elem).find("input[type='checkbox']").removeAttr("checked");
-                                    $("." + $(elem).attr("id")).siblings(".formBlock").find("input[type='checkbox']").removeAttr("checked");
-                                });
+                                        alert(cultureRes.thankYou);
+                                        $(elem).find(".formBlock").find("input[type='number'], input[type='text'], textarea").val("");
+                                        $("." + $(elem).attr("id")).siblings(".formBlock").find("input[type='number'], input[type='text'], textarea").val("");
+                                        $(elem).find("input[type='checkbox']").removeAttr("checked");
+                                        $("." + $(elem).attr("id")).siblings(".formBlock").find("input[type='checkbox']").removeAttr("checked");
+                                    }).fail(function() {
+                                        alert("error");
+                                    })
+                                    .always(function() {
+                                        alert("finished");
+                                    });
                             }
                         }
                     } else {
@@ -141,13 +151,18 @@ function bindChangeValForms() {
                         var check = checkValidationAndRequired(elem);
                         if (check != false) {
                             $.post('' + siteUrl + '/Form/SaveFormData', $(elem).serialize(), function() {
-                                alert(cultureRes.thankYou);
-                                $(elem).find(".formBlock").find("input[type='number'], input[type='text'], textarea").val("");
-                                $("." + $(elem).attr("id")).siblings(".formBlock").find("input[type='number'], input[type='text'], textarea").val("");
+                                    alert(cultureRes.thankYou);
+                                    $(elem).find(".formBlock").find("input[type='number'], input[type='text'], textarea").val("");
+                                    $("." + $(elem).attr("id")).siblings(".formBlock").find("input[type='number'], input[type='text'], textarea").val("");
 
-                                $(elem).find("input[type='checkbox']").removeAttr("checked");
-                                $("." + $(elem).attr("id")).siblings(".formBlock").find("input[type='checkbox']").removeAttr("checked");
-                            });
+                                    $(elem).find("input[type='checkbox']").removeAttr("checked");
+                                    $("." + $(elem).attr("id")).siblings(".formBlock").find("input[type='checkbox']").removeAttr("checked");
+                                }).fail(function() {
+                                    alert("error");
+                                })
+                                .always(function() {
+                                    alert("finished");
+                                });
                         }
                     } else {
                         alert(cultureRes.noInternet);
