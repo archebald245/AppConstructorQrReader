@@ -43,10 +43,11 @@ function submitFormListener() {
                     }
                 });
             } else {
+                var data = toJSONString(form);
                 $.ajax({
                     type: "POST",
                     url: applicationData.UrlForUpdateApp + "/Form/SaveFormData",
-                    data: $(form).serialize(),
+                    data: data,
                     cache: false,
                     success: function(object) {
                         alert(cultureRes.thankYou);
@@ -131,10 +132,11 @@ function bindChangeValForms() {
                                     }
                                 });
                             } else {
+                                var data = toJSONString(form);
                                 $.ajax({
                                     type: "POST",
                                     url: applicationData.UrlForUpdateApp + "/Form/SaveFormData",
-                                    data: $(form).serialize(),
+                                    data: data,
                                     cache: false,
                                     success: function(object) {
                                         alert(cultureRes.thankYou);
@@ -170,11 +172,12 @@ function bindChangeValForms() {
                     var networkState = navigator.connection.type;
                     if (networkState != Connection.NONE) {
                         var check = checkValidationAndRequired(elem);
+                        var data = toJSONString(form);
                         if (check != false) {
                             $.ajax({
                                 type: "POST",
                                 url: applicationData.UrlForUpdateApp + "/Form/SaveFormData",
-                                data: $(form).serialize(),
+                                data: data,
                                 cache: false,
                                 success: function(object) {
                                     alert(cultureRes.thankYou);
@@ -290,4 +293,20 @@ function addPlaceholder() {
         }
 
     });
+}
+
+function toJSONString(form) {
+    var obj = {};
+    var elements = form.querySelectorAll("input, select, textarea");
+    for (var i = 0; i < elements.length; ++i) {
+        var element = elements[i];
+        var name = element.name;
+        var value = element.value;
+
+        if (name) {
+            obj[name] = value;
+        }
+    }
+
+    return JSON.stringify(obj);
 }
