@@ -43,11 +43,28 @@ function submitFormListener() {
                     }
                 });
             } else {
-                $.post('' + siteUrl + '/Form/SaveFormData', $(form).serialize(), function() {
-                    alert(cultureRes.thankYou);
-                    $(form).find(".formBlock").find("input, textarea").val("");
-                    $(form).find("input[type='checkbox']").removeAttr("checked");
+                $.ajax({
+                    type: "POST",
+                    url: applicationData.UrlForUpdateApp + "/Form/SaveFormData",
+                    data: $(form).serialize(),
+                    cache: false,
+                    success: function(object) {
+                        alert(cultureRes.thankYou);
+                        $(form).find(".formBlock").find("input, textarea").val("");
+                        $(form).find("input[type='checkbox']").removeAttr("checked");
+                    },
+                    error: function() {
+                        alert("Error");
+                    }
                 });
+
+
+
+                // $.post('' + siteUrl + '/Form/SaveFormData', $(form).serialize(), function() {
+                //     alert(cultureRes.thankYou);
+                //     $(form).find(".formBlock").find("input, textarea").val("");
+                //     $(form).find("input[type='checkbox']").removeAttr("checked");
+                // });
             }
 
         } else {
@@ -114,13 +131,27 @@ function bindChangeValForms() {
                                     }
                                 });
                             } else {
-                                $.post('' + siteUrl + '/Form/SaveFormData', $(elem).serialize(), function() {
-                                    alert(cultureRes.thankYou);
-                                    $(elem).find(".formBlock").find("input[type='number'], input[type='text'], textarea").val("");
-                                    $("." + $(elem).attr("id")).siblings(".formBlock").find("input[type='number'], input[type='text'], textarea").val("");
-                                    $(elem).find("input[type='checkbox']").removeAttr("checked");
-                                    $("." + $(elem).attr("id")).siblings(".formBlock").find("input[type='checkbox']").removeAttr("checked");
+                                $.ajax({
+                                    type: "POST",
+                                    url: applicationData.UrlForUpdateApp + "/Form/SaveFormData",
+                                    data: $(form).serialize(),
+                                    cache: false,
+                                    success: function(object) {
+                                        alert(cultureRes.thankYou);
+                                    },
+                                    error: function() {
+                                        alert("Error");
+                                    }
                                 });
+
+
+                                // $.post('' + siteUrl + '/Form/SaveFormData', $(elem).serialize(), function() {
+                                //     alert(cultureRes.thankYou);
+                                //     $(elem).find(".formBlock").find("input[type='number'], input[type='text'], textarea").val("");
+                                //     $("." + $(elem).attr("id")).siblings(".formBlock").find("input[type='number'], input[type='text'], textarea").val("");
+                                //     $(elem).find("input[type='checkbox']").removeAttr("checked");
+                                //     $("." + $(elem).attr("id")).siblings(".formBlock").find("input[type='checkbox']").removeAttr("checked");
+                                // });
                             }
                         }
                     } else {
@@ -140,14 +171,27 @@ function bindChangeValForms() {
                     if (networkState != Connection.NONE) {
                         var check = checkValidationAndRequired(elem);
                         if (check != false) {
-                            $.post('' + siteUrl + '/Form/SaveFormData', $(elem).serialize(), function() {
-                                alert(cultureRes.thankYou);
-                                $(elem).find(".formBlock").find("input[type='number'], input[type='text'], textarea").val("");
-                                $("." + $(elem).attr("id")).siblings(".formBlock").find("input[type='number'], input[type='text'], textarea").val("");
-
-                                $(elem).find("input[type='checkbox']").removeAttr("checked");
-                                $("." + $(elem).attr("id")).siblings(".formBlock").find("input[type='checkbox']").removeAttr("checked");
+                            $.ajax({
+                                type: "POST",
+                                url: applicationData.UrlForUpdateApp + "/Form/SaveFormData",
+                                data: $(form).serialize(),
+                                cache: false,
+                                success: function(object) {
+                                    alert(cultureRes.thankYou);
+                                },
+                                error: function() {
+                                    alert("Error");
+                                }
                             });
+
+                            // $.post('' + siteUrl + '/Form/SaveFormData', $(elem).serialize(), function() {
+                            //     alert(cultureRes.thankYou);
+                            //     $(elem).find(".formBlock").find("input[type='number'], input[type='text'], textarea").val("");
+                            //     $("." + $(elem).attr("id")).siblings(".formBlock").find("input[type='number'], input[type='text'], textarea").val("");
+
+                            //     $(elem).find("input[type='checkbox']").removeAttr("checked");
+                            //     $("." + $(elem).attr("id")).siblings(".formBlock").find("input[type='checkbox']").removeAttr("checked");
+                            // });
                         }
                     } else {
                         alert(cultureRes.noInternet);
