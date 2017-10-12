@@ -46,7 +46,7 @@ function submitFormListener() {
                 $.ajax({
                     type: "POST",
                     url: applicationData.UrlForUpdateApp + "/Form/SaveFormData",
-                    data: $(form).serialize(),
+                    data: $(form).serializeArray(),
                     cache: false,
                     success: function(object) {
                         alert(cultureRes.thankYou);
@@ -134,7 +134,7 @@ function bindChangeValForms() {
                                 $.ajax({
                                     type: "POST",
                                     url: applicationData.UrlForUpdateApp + "/Form/SaveFormData",
-                                    data: $(form).serialize(),
+                                    data: $(form).serializeArray(),
                                     cache: false,
                                     success: function(object) {
                                         alert(cultureRes.thankYou);
@@ -174,7 +174,7 @@ function bindChangeValForms() {
                             $.ajax({
                                 type: "POST",
                                 url: applicationData.UrlForUpdateApp + "/Form/SaveFormData",
-                                data: $(form).serialize(),
+                                data: $(form).serializeArray(),
                                 cache: false,
                                 success: function(object) {
                                     alert(cultureRes.thankYou);
