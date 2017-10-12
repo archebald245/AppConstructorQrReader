@@ -297,7 +297,7 @@ function addPlaceholder() {
 
 function toJSONString(form) {
     var obj = {};
-    var elements = $("form").find("input, select, textarea");
+    var elements = $(form).find("input, select, textarea");
     for (var i = 0; i < elements.length; ++i) {
         var element = elements[i];
         var name = element.name;
