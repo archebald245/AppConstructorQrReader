@@ -43,24 +43,6 @@ function submitFormListener() {
                     }
                 });
             } else {
-                // var data = toJSONString(form);
-                // $.ajax({
-                //     type: "POST",
-                //     url: applicationData.UrlForUpdateApp + "/Form/SaveFormData",
-                //     data: data,
-                //     cache: false,
-                //     success: function(object) {
-                //         alert(cultureRes.thankYou);
-                //         $(form).find(".formBlock").find("input, textarea").val("");
-                //         $(form).find("input[type='checkbox']").removeAttr("checked");
-                //     },
-                //     error: function() {
-                //         alert("Error");
-                //     }
-                // });
-
-
-
                 $.post('' + siteUrl + '/Form/SaveFormData', $(form).serialize(), function() {
                     alert(cultureRes.thankYou);
                     $(form).find(".formBlock").find("input, textarea").val("");
@@ -132,21 +114,6 @@ function bindChangeValForms() {
                                     }
                                 });
                             } else {
-                                // var data = toJSONString(form);
-                                // $.ajax({
-                                //     type: "POST",
-                                //     url: applicationData.UrlForUpdateApp + "/Form/SaveFormData",
-                                //     data: data,
-                                //     cache: false,
-                                //     success: function(object) {
-                                //         alert(cultureRes.thankYou);
-                                //     },
-                                //     error: function() {
-                                //         alert("Error");
-                                //     }
-                                // });
-
-
                                 $.post('' + siteUrl + '/Form/SaveFormData', $(elem).serialize(), function() {
                                     alert(cultureRes.thankYou);
                                     $(elem).find(".formBlock").find("input[type='number'], input[type='text'], textarea").val("");
@@ -174,19 +141,6 @@ function bindChangeValForms() {
                         var check = checkValidationAndRequired(elem);
                         var data = toJSONString(form);
                         if (check != false) {
-                            // $.ajax({
-                            //     type: "POST",
-                            //     url: applicationData.UrlForUpdateApp + "/Form/SaveFormData",
-                            //     data: data,
-                            //     cache: false,
-                            //     success: function(object) {
-                            //         alert(cultureRes.thankYou);
-                            //     },
-                            //     error: function() {
-                            //         alert("Error");
-                            //     }
-                            // });
-
                             $.post('' + siteUrl + '/Form/SaveFormData', $(elem).serialize(), function() {
                                 alert(cultureRes.thankYou);
                                 $(elem).find(".formBlock").find("input[type='number'], input[type='text'], textarea").val("");
@@ -293,20 +247,4 @@ function addPlaceholder() {
         }
 
     });
-}
-
-function toJSONString(form) {
-    var obj = {};
-    var elements = $(form).find("input, select, textarea");
-    for (var i = 0; i < elements.length; ++i) {
-        var element = elements[i];
-        var name = element.name;
-        var value = element.value;
-
-        if (name) {
-            obj[name] = value;
-        }
-    }
-
-    return JSON.stringify(obj);
 }

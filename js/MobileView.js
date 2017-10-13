@@ -781,7 +781,8 @@ function reactRender() {
                         //e.g. track document usage
                     }
                     cordova.plugins.SitewaertsDocumentViewer.viewDocument(
-                        url, 'application/pdf', options, onShow);
+                        url, 'application/pdf', options,
+                        onShow);
                 });
             }
             if (data.ContentTypeId == 2 || data.ContentTypeId == 4 || data.ContentTypeId == 9) {
