@@ -139,7 +139,6 @@ function bindChangeValForms() {
                     var networkState = navigator.connection.type;
                     if (networkState != Connection.NONE) {
                         var check = checkValidationAndRequired(elem);
-                        var data = toJSONString(form);
                         if (check != false) {
                             $.post('' + siteUrl + '/Form/SaveFormData', $(elem).serialize(), function() {
                                 alert(cultureRes.thankYou);
