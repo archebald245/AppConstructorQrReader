@@ -66,7 +66,7 @@ function resourcesOfBoxConteiner(boxConteiner, storePath) {
         boxConteiner.Json = decodedJson;
         return boxConteiner;
     } else {
-        return null;
+        return boxConteiner;
     }
 }
 

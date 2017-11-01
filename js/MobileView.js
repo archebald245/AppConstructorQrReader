@@ -928,7 +928,7 @@ function reactRender() {
             }
 
             //ContentTypeId - 10 start
-            if (data.ContentTypeId == 10 && this.checkDeniedTools(deniedTools, "hbox-container-item")) {
+            if (data.ContentTypeId == 10 && data.Json.elements !== undefined && this.checkDeniedTools(deniedTools, "hbox-container-item")) {
                 return React.createElement(
                     'div', { className: "cell-container col-xs-" + data.Colspan + " col-sm-" + data.Colspan + " col-md-" + data.Colspan + " col-lg-" + data.Colspan },
                     React.createElement(Hbox, { data: data.Json })
@@ -936,7 +936,7 @@ function reactRender() {
             } else if (data.ContentTypeId == 10) {
                 return null
             }
-            if (data.ContentTypeId == 11 && this.checkDeniedTools(deniedTools, "vbox-container-item")) {
+            if (data.ContentTypeId == 11 && data.Json.elements !== undefined && this.checkDeniedTools(deniedTools, "vbox-container-item")) {
                 return React.createElement(
                     'div', { className: "cell-container col-xs-" + data.Colspan + " col-sm-" + data.Colspan + " col-md-" + data.Colspan + " col-lg-" + data.Colspan },
                     React.createElement(Vbox, { data: data.Json })
