@@ -37,9 +37,11 @@ function resourcesOfCellContainer(cellContainer, storePath) {
         }
         if ((cellContainer[i].ContentTypeId == 10)) {
             cellContainer[i] = resourcesOfBoxConteiner(cellContainer[i], storePath);
+            continue;
         }
         if ((cellContainer[i].ContentTypeId == 11)) {
             cellContainer[i] = resourcesOfBoxConteiner(cellContainer[i], storePath);
+            continue;
         }
         if (cellContainer[i].ContentTypeId == 8) {
             cellContainer[i] = resourcesOfGallary(cellContainer[i], storePath);
