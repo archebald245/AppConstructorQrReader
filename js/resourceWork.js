@@ -50,7 +50,7 @@ function resourcesOfCellContainer(cellContainer, storePath) {
 
 function resourcesOfBoxConteiner(boxConteiner, storePath) {
     var decodedJson = JSON.parse(Base64.decode(boxConteiner.Json));
-    if (decodedJson.elements !== "undefined") {
+    if (decodedJson.elements !== undefined) {
         for (var i = 0; i < decodedJson.elements.length; i++) {
             if (decodedJson.elements[i].ContentTypeId == 8) {
                 resourcesPushInArray(decodedJson.elements[i]);
