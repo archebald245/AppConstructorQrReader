@@ -50,14 +50,16 @@ function resourcesOfCellContainer(cellContainer, storePath) {
 
 function resourcesOfBoxConteiner(boxConteiner, storePath) {
     var decodedJson = JSON.parse(Base64.decode(boxConteiner.Json));
-    for (var i = 0; i < decodedJson.elements.length; i++) {
-        if (decodedJson.elements[i].ContentTypeId == 8) {
-            resourcesPushInArray(decodedJson.elements[i]);
-            resourcesOfGallary(decodedJson.elements[i], storePath);
-        }
-        if (decodedJson.elements[i].IsDownloadable == true) {
-            resourcesPushInArray(decodedJson.elements[i]);
-            decodedJson.elements[i].Value = replacementPathImages(decodedJson.elements[i].Value, decodedJson.elements[i].Resourceses, storePath);
+    if (decodedJson.elements !== "undefined") {
+        for (var i = 0; i < decodedJson.elements.length; i++) {
+            if (decodedJson.elements[i].ContentTypeId == 8) {
+                resourcesPushInArray(decodedJson.elements[i]);
+                resourcesOfGallary(decodedJson.elements[i], storePath);
+            }
+            if (decodedJson.elements[i].IsDownloadable == true) {
+                resourcesPushInArray(decodedJson.elements[i]);
+                decodedJson.elements[i].Value = replacementPathImages(decodedJson.elements[i].Value, decodedJson.elements[i].Resourceses, storePath);
+            }
         }
     }
     boxConteiner.Json = decodedJson;
@@ -239,7 +241,6 @@ function download(fileName) {
     return new Promise(function(resolve, reject) {
         window.myFileSystem.root.getFile(localFileName, { create: true, exclusive: false }, function(fileEntry) {
             localPath = fileEntry.toURL();
-            console.log(localPath);
             var ft = new FileTransfer();
             // readFile(entry);
             // countFileDownload = countFileDownload + 1;
