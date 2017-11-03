@@ -23,12 +23,12 @@ function clickOrder() {
 }
 
 function clickPlaceAnOrder() {
-    clickOrder();
     if (checkValidationAndRequired($("#orderInfo"))) {
         var name = $("#orderInfo").find(".nameOrder").val();
         var phone = $("#orderInfo").find(".phoneOrder").val();
         var email = $("#orderInfo").find(".emailOrder").val();
         var comment = $("#orderInfo").find(".commentOrder").val();
+
         $.ajax({
             type: "POST",
             url: applicationData.UrlForUpdateApp + "/RestaurantMenu/CreateOrder",
@@ -39,7 +39,8 @@ function clickPlaceAnOrder() {
                 Email: email,
                 Comment: comment,
                 ProjectId: applicationData.ProjectId,
-                ContentId: applicationData.Id
+                ContentId: applicationData.Id,
+                Nonce: ""
             },
             cache: false,
             success: function() {
@@ -55,7 +56,6 @@ function clickPlaceAnOrder() {
                 if ($('.classMenuTop').length > 0 || $('.classMenuBottom').length > 0) {
                     $(".classMenu").removeClass("hidden");
                 }
-
             },
             error: function() {
                 alert(cultureRes.sorryError);
@@ -95,15 +95,62 @@ function bindListenerToClickBtn() {
     $(".btn-order").unbind("click");
     $(".btn-order").on("click", function() {
         if ($("#cart").children().length > 0) {
-            $("#orderInfo").removeClass("hidden");
-            $(".cart").addClass("hidden");
-            scrollTop();
+
+            var restAmount = TotalRestAmount();
+            if (restAmount >= 1) {
+                $("#restAmount").val(restAmount);
+                InitRestarauntPayment();
+            } else {
+                //RestOrderHandlers();
+                $("#orderInfo").removeClass("hidden");
+                $(".cart").addClass("hidden");
+                scrollTop();
+
+                $(".placeAnOrder").unbind().on("click", function() {
+                    clickPlaceAnOrder();
+                });
+            }
+
+
+
+
+
+            //ADD VALIDATION TO ENABLED PAYMENT
+            // if (true) {
+            //     initPayment();
+
+            //     $(".placeAnOrder").on("click", function() {
+            //         $("#payment-form").submit();
+            //     });
+            // } else {
+            //     $("#orderInfo").removeClass("hidden");
+            //     $(".cart").addClass("hidden");
+            //     scrollTop();
+
+            //     $(".placeAnOrder").on("click", function() {
+            //         clickPlaceAnOrder();
+            //     });
+            // }
+
         } else {
             alert(cultureRes.nothingOrdered);
         }
     });
 
-    $(".placeAnOrder").on("click", function() {
-        clickPlaceAnOrder();
+    // $(".placeAnOrder").on("click", function() {
+    //     $("#payment-form").submit();
+
+    //     clickPlaceAnOrder();
+    // });
+}
+
+function TotalRestAmount() {
+    clickOrder();
+    var total = 0;
+    collectionOrderItems.forEach(function(element) {
+        if (element.Price !== "") {
+            total = total + parseInt(element.Price);
+        }
     });
+    return total;
 }

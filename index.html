@@ -25,6 +25,7 @@
     <script src="js/buttonMaterialUI/buttonMaterialUI.min.js"></script>
     <script src="js/lightGallery/lightgallery.min.js"></script>
 
+    <script src="js/payment/dropin.min.js"></script>
     <script src="js/localized/cultureResources.js"></script>
     <script src="js/render-form.js"></script>
     <script src="js/render-custom-form.js"></script>
@@ -42,6 +43,7 @@
     <script src="js/resourceWork.js"></script>
     <script src="js/formsWork.js"></script>
     <script src="js/bookingWork.js"></script>
+    <script src="js/paymentWork.js"></script>
     <script src="js/restaurantMenuWork.js"></script>
     <script src="js/cartWork.js"></script>
     <script src="js/bootstrap.min.js"></script>
@@ -123,28 +125,38 @@
 
         <div class="order-booking hidden">
             <div class="cart-top-line">
-                <div class="btn-back-toservices"></div><span>Your Order Info</span></div>
-            <label for="nameOrder"><span>Name</span></label>
-            <input type="text" id="booking-nameOrder" class="nameOrder required" />
-            <label for="phoneOrder"><span>Phone Number</span></label>
-            <input type="text" id="booking-phoneOrder" class="phoneOrder required" />
-            <label for="emailOrder"><span>Email</span></label>
-            <input type="text" id="booking-emailOrder" class="emailOrder required" />
+                <div class="btn-back-toservices"></div><span>Your Order Info</span>
+            </div>
+            <form id="payment-form-booking" method="post" action="/Booking/CreateOrder">
 
-            <span class="hidden">
-        <label for="confirmMethod"><span>Confirm Method</span></label>
-            <select id="confirmMethod" class="required">
-            <option value="SMS"><span>SMS</span></option>
-            <option value="InApplication"><span>In Application</span></option>
-            <option value="Email"><span>Email</span></option>
+                <label for="nameOrder"><span>Name</span></label>
+                <input type="text" id="booking-nameOrder" class="nameOrder required" />
+                <label for="phoneOrder"><span>Phone Number</span></label>
+                <input type="text" id="booking-phoneOrder" class="phoneOrder" />
+                <label for="emailOrder"><span>Email</span></label>
+                <input type="text" id="booking-emailOrder" class="emailOrder" />
+                <span class="hidden">
+            <label for="confirmMethod"><span>Confirm Method</span></label>
+                <select id="confirmMethod" class="required">
+                <option value="SMS"><span>SMS</span></option>
+                <option value="InApplication"><span>In Application</span></option>
+                <option value="Email"><span>Email</span></option>
             </select>
-            </span>
+                </span>
+                <label for="commentOrder"><span>Your Order Comments</span></label>
+                <textarea id="booking-commentOrder" class="commentOrder"></textarea>
 
-
-            <label for="commentOrder"><span>Your Order Comments</span></label>
-            <textarea id="booking-commentOrder" class="commentOrder"></textarea>
+                <section>
+                    <div class="bt-drop-in-wrapper-booking hidden">
+                        <label for="amount"><span class="input-label">Amount</span></label>
+                        <input id="bookingAmount" name="amount" type="tel" min="1" value="1" disabled />
+                        <div id="bt-dropin-booking"></div>
+                        <input id="nonce" name="Nonce" type="hidden" />
+                        <button class="button" type="submit"><span>Pay</span></button>
+                    </div>
+                </section>
+            </form>
             <div class="btn-send-order-booking"><span>Book</span></div>
-
         </div>
 
         <div class="cart hidden">
@@ -166,14 +178,36 @@
         <div id="orderInfo" class="hidden">
             <div class="cart-top-line">
                 <div class="back-to-cart"></div><span>Your Order Info</span></div>
-            <label for="nameOrder"><span>Nam</span>e</label>
-            <input type="text" id="nameOrder" class="nameOrder required" />
-            <label for="phoneOrder"><span>Phone Number</span></label>
-            <input type="text" id="phoneOrder" class="phoneOrder required" />
-            <label for="emailOrder"><span>Email</span></label>
-            <input type="text" id="emailOrder" class="emailOrder required" />
-            <label for="commentOrder"><span>Your Order Comments</span></label>
-            <textarea id="commentOrder" class="commentOrder"></textarea>
+            <div class="braintree-container">
+                <div class="checkout container">
+                    <form id="payment-form" method="post" action="/RestaurantMenu/CreateOrder">
+                        <section>
+                            <label for="nameOrder"><span>Name</span></label>
+                            <input type="text" id="nameOrder" class="nameOrder required" />
+
+                            <label for="phoneOrder"><span>Phone Number</span></label>
+                            <input type="text" id="phoneOrder" class="phoneOrder" />
+
+                            <label for="emailOrder"><span>Email</span></label>
+                            <input type="text" id="emailOrder" class="emailOrder" />
+
+                            <label for="commentOrder"><span>Your Order Comments</span></label>
+                            <textarea id="commentOrder" class="commentOrder"></textarea>
+
+                            <div class="bt-drop-in-wrapper hidden">
+                                <label for="amount"><span class="input-label">Amount</span></label>
+                                <input id="restAmount" name="amount" type="tel" min="1" value="1" disabled />
+
+                                <div id="bt-dropin"></div>
+                            </div>
+                        </section>
+
+                        <input id="nonceRest" name="payment_method_nonce" type="hidden" />
+                        <button class="button" type="submit"><span>Pay</span></button>
+                    </form>
+
+                </div>
+            </div>
 
             <div class="menuOrder-fixed-nav-bottom">
                 <div class="go-to-menu-btn">Сontinue shopping</div>

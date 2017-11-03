@@ -555,6 +555,10 @@ p.item-shop-description {
     z-index: 10;
 }
 
+.braintree-container {
+    margin: 50px 0 100px;
+}
+
 .container-statusBooking .cart-top-line,
 .order-booking .cart-top-line,
 .bookingServices-container .cart-top-line,
@@ -597,6 +601,7 @@ p.item-shop-description {
 
 .btn-send-order-booking {
     position: fixed;
+    z-index: 3;
     bottom: 0;
     left: 0;
     width: 100%;
@@ -840,11 +845,21 @@ p.item-shop-description {
 #orderInfo textarea,
 .order-booking textarea {
     padding-bottom: 80px;
-    margin-bottom: 85px;
 }
 
-label[for='nameOrder'] {
-    margin-top: 80px;
+form#payment-form-booking button,
+form#payment-form button {
+    border: 1px solid #777;
+    outline: none;
+    min-width: 100px;
+    line-height: 40px;
+    font-size: 20px;
+    color: #fff;
+    background-color: #4a8b23;
+}
+
+form#payment-form-booking {
+    padding-bottom: 100px;
 }
 
 .swiper-slide img {
@@ -908,6 +923,7 @@ label[for='nameOrder'] {
 .menuCart-fixed-nav-bottom,
 .singleShop-fixed-nav-bottom {
     position: fixed;
+    z-index: 3;
     bottom: 0;
     left: 0;
     width: 100%;
@@ -1877,6 +1893,8 @@ input[type="checkbox"].SwitcherFormElement:checked+div>div {
     width: 100%;
     height: 100%;
 }
+
+
 /*~~~~~~Main Page Styles~~~~~*/
 
 #startScan {
