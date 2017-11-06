@@ -99,6 +99,7 @@ function bindListenerToClickBtn() {
             var restAmount = TotalRestAmount();
             if (restAmount >= 1) {
                 $("#restAmount").val(restAmount);
+                $(".rest-amount-count").html(restAmount);
                 InitRestarauntPayment();
             } else {
                 //RestOrderHandlers();

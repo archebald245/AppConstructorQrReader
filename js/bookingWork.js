@@ -117,6 +117,7 @@ function addListenerToClickBookService() {
                 var totalAmount = TotalBookingAmount();
                 if (totalAmount > 0) {
                     $("#bookingAmount").val(totalAmount);
+                    $(".booking-amount-count").html(totalAmount);
                     $(".bt-drop-in-wrapper-booking").removeClass("hidden");
                     GetClientTokenForBooking(sendOrderBooking, dateVal, timeVal, needConfirmation, bookResourceId);
                 } else {
