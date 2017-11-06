@@ -804,12 +804,14 @@ p.item-shop-description {
 #orderInfo input,
 #orderInfo textarea,
 .container-selectFreeBookTime select {
-    width: 80%;
+    width: 100%;
     margin: auto;
     display: block;
     background-color: transparent;
     border: 1px solid #939393;
-    height: 40px;
+    height: 44px;
+    line-height: 1.2;
+    padding-left: 5px;
     margin-bottom: 20px;
 }
 
@@ -818,18 +820,17 @@ p.item-shop-description {
 .order-booking input {
     width: 100%;
     height: 50px;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     line-height: 50px;
     color: #000;
-    font-size: 20px;
+    font-size: 16px;
     text-align: left;
-    padding-left: 16px;
+    padding-left: 5px;
     border-radius: none;
 }
 
 .order-booking label {
-    font-size: 18px;
-    font-weight: bold;
+    font-size: 16px;
     text-align: left;
     color: #000;
     margin-bottom: 10px;
@@ -837,9 +838,9 @@ p.item-shop-description {
 
 #orderInfo label {
     display: block;
-    margin-left: 10%;
     color: #000;
     font-size: 16px;
+    font-weight: normal;
 }
 
 #orderInfo textarea,
