@@ -857,19 +857,22 @@ p.item-shop-description {
 .rest-amount-label {
     float: left;
     font-weight: bold;
+    font-size: 18px;
 }
 
 .booking-amount-count,
 .rest-amount-count {
     border: 1px solid #777;
     float: right;
-    padding: 10px 20px;
+    padding: 0 20px;
     font-size: 20px;
     color: #000048;
     height: 60px;
     line-height: 60px;
+    text-decoration: underline;
 }
 
+section,
 .amount-container {
     overflow: auto;
 }
