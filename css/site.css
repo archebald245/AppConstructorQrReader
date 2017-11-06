@@ -819,9 +819,9 @@ p.item-shop-description {
 .order-booking select,
 .order-booking input {
     width: 100%;
-    height: 50px;
+    height: 44px;
     margin-bottom: 20px;
-    line-height: 50px;
+    line-height: 44px;
     color: #000;
     font-size: 16px;
     text-align: left;
@@ -834,6 +834,7 @@ p.item-shop-description {
     text-align: left;
     color: #000;
     margin-bottom: 10px;
+    font-weight: normal;
 }
 
 #orderInfo label {
@@ -861,14 +862,24 @@ p.item-shop-description {
     float: right;
     padding: 0 20px;
     font-size: 20px;
-    color: #000048;
-    height: 60px;
-    line-height: 60px;
+    font-weight: bold;
+    height: 50px;
+    line-height: 50px;
     text-decoration: underline;
 }
 
-.amount-containerr {
-    line-height: 60px;
+.booking-amount-count {
+    border: 1px solid #2c2a50;
+    color: #2c2a50;
+}
+
+.rest-amount-count {
+    border: 1px solid #4a8b23;
+    color: #4a8b23;
+}
+
+.amount-container {
+    line-height: 50px;
 }
 
 .bt-drop-in-wrapper,
