@@ -872,9 +872,9 @@ p.item-shop-description {
     text-decoration: underline;
 }
 
-section,
+#payment-form section,
 .amount-container {
-    overflow: auto;
+    overflow: hidden;
 }
 
 form#payment-form-booking button,
