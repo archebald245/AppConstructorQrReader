@@ -848,11 +848,6 @@ p.item-shop-description {
     padding-bottom: 80px;
 }
 
-.bt-drop-in-wrapper {
-    height: 60px;
-    line-height: 60px;
-}
-
 .booking-amount-label,
 .rest-amount-label {
     float: left;
@@ -872,7 +867,11 @@ p.item-shop-description {
     text-decoration: underline;
 }
 
-#payment-form section,
+.amount-containerr {
+    line-height: 60px;
+}
+
+.bt-drop-in-wrapper,
 .amount-container {
     overflow: hidden;
 }
