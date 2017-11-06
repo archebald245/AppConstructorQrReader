@@ -15,7 +15,7 @@ function InitRestarauntBraintree(token) {
                     number: {
                         placeholder: 'xxxx xxxx xxxx xxxx xxxx' // Update the number field placeholder
                     },
-                    cvv: { placeholder: "xxx" } // Remove the CVV field from your form
+                    cvv: { placeholder: "&#8226;&#8226;&#8226;" }
                 }
             }
         }
