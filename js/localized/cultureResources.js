@@ -105,6 +105,7 @@ function initEnCulture() {
     cultureRes.nothingOrdered = "You have nothing ordered!";
     //eventWork
     cultureRes.lockedPage = "This page is locked!";
+    cultureRes.privatePage = "This page is private!";
     cultureRes.loginPlease = "Login Please";
     //formWork
     cultureRes.noInternet = "Извините, проверте Интернет соединение!";
@@ -216,6 +217,7 @@ function initRuCulture() {
     cultureRes.nothingOrdered = "Вам нечего заказывать!";
     //eventWork
     cultureRes.lockedPage = "Эта страница заблокирована!";
+    cultureRes.privatePage = "Эта страница приватная!";
     cultureRes.loginPlease = "Войдите в систему, пожалуйста";
     //formWork
     cultureRes.noInternet = "Извините, проверте Интернет соединение!";
@@ -326,6 +328,7 @@ function initUaCulture() {
     cultureRes.nothingOrdered = "Вам немає чого бронювати!";
     //eventWork
     cultureRes.lockedPage = "Ця сторінка заблокована!";
+    cultureRes.privatePage = "Вибачте, але це приватна сторінка";
     cultureRes.loginPlease = "Увійдить у систему";
     //formWork
     cultureRes.noInternet = "Вибачте, відсутнє Інтернет з`єднання!";

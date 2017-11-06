@@ -9,6 +9,7 @@ function goToPage(index) {
 
     if (thisPage.IsPrivate) {
         if (!$.jStorage.get('isLogin')) {
+            var findLoginForm = false;
             var pageWithForm = [];
             applicationData.Pages.forEach(function(page) {
                 page.Rows.forEach(function(row) {
@@ -26,10 +27,16 @@ function goToPage(index) {
                 applicationData.Forms.forEach(function(form) {
                     if (form.Id == item.formId && form.LoginForm) {
                         indexPage = item.pageId
+                        findLoginForm = true;
                     }
                 });
             });
-            window.plugins.toast.showShortBottom(cultureRes.loginPlease);
+            if (findLoginForm) {
+                window.plugins.toast.showShortBottom(cultureRes.loginPlease);
+            } else {
+                window.plugins.toast.showShortBottom(cultureRes.lockedPage);
+                return false;
+            }
         }
     }
     if (applicationData.IsTrackingLastPage == true) {
@@ -39,6 +46,7 @@ function goToPage(index) {
     $("#container").empty();
     slideUp();
     $("html, body").animate({ scrollTop: -$(document).height() }, "fast");
+
     reactRender();
 
     $("a:not(.galleryHref)").each(function(i, e) {
