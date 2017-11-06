@@ -148,8 +148,17 @@
 
                 <section>
                     <div class="bt-drop-in-wrapper-booking hidden">
-                        <label for="amount"><span class="input-label">Amount</span></label>
-                        <input id="bookingAmount" name="amount" type="tel" min="1" value="1" disabled />
+                        <input id="bookingAmount" name="amount" type="hidden" />
+
+                        <div class="booking-amount-label">
+                            <span class="input-label">Amount</span>
+                        </div>
+                        <div class="booking-amount-count">
+                            <span> </span>
+                        </div>
+
+
+
                         <div id="bt-dropin-booking"></div>
                         <input id="nonce" name="Nonce" type="hidden" />
                         <button class="button" type="submit"><span>Pay</span></button>
@@ -196,11 +205,11 @@
                             <textarea id="commentOrder" class="commentOrder"></textarea>
 
                             <div class="bt-drop-in-wrapper hidden">
-                                <input id="restAmount" name="amount" type="hidden" min="1" value="1" />
-                                <div>
-                                    <label for="amount"><span class="input-label">Amount</span></label>
+                                <input id="restAmount" name="amount" type="hidden" />
+                                <div class="rest-amount-label">
+                                    <span class="input-label">Amount</span>
                                 </div>
-                                <div>
+                                <div class="rest-amount-count">
                                     <span> </span>
                                 </div>
                                 <div id="bt-dropin"></div>

@@ -848,6 +848,28 @@ p.item-shop-description {
     padding-bottom: 80px;
 }
 
+.bt-drop-in-wrapper {
+    height: 60px;
+    line-height: 60px;
+}
+
+.booking-amount-label,
+.rest-amount-label {
+    float: left;
+    font-weight: bold;
+}
+
+.booking-amount-count,
+.rest-amount-count {
+    border: 1px solid #777;
+    float: right;
+    padding: 10px 20px;
+    font-size: 20px;
+    color: #000048;
+    height: 60px;
+    line-height: 60px;
+}
+
 form#payment-form-booking button,
 form#payment-form button {
     border: 1px solid #777;
