@@ -13,9 +13,9 @@ function InitRestarauntBraintree(token) {
             overrides: {
                 fields: {
                     number: {
-                        placeholder: 'xxxx xxxx xxxx xxxx xxxx' // Update the number field placeholder
+                        placeholder: 'XXXX XXXX XXXX XXXX XXXX' // Update the number field placeholder
                     },
-                    cvv: { placeholder: "&#8226;&#8226;&#8226;" }
+                    cvv: { placeholder: "XXX" }
                 }
             }
         }

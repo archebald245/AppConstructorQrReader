@@ -161,9 +161,9 @@ function sendOrderBooking(dateVal, timeVal, needConfirmation, bookResourceId, to
             overrides: {
                 fields: {
                     number: {
-                        placeholder: 'xxxx xxxx xxxx xxxx xxxx' // Update the number field placeholder
+                        placeholder: 'XXXX XXXX XXXX XXXX XXXX'
                     },
-                    cvv: { placeholder: "&#8226;&#8226;&#8226;" }
+                    cvv: { placeholder: "XXX" }
                 }
             }
         }
