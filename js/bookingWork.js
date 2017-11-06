@@ -156,7 +156,17 @@ function sendOrderBooking(dateVal, timeVal, needConfirmation, bookResourceId, to
 
     braintree.dropin.create({
         authorization: client_token,
-        container: '#bt-dropin-booking'
+        container: '#bt-dropin-booking',
+        card: {
+            overrides: {
+                fields: {
+                    number: {
+                        placeholder: 'xxxx xxxx xxxx xxxx xxxx' // Update the number field placeholder
+                    },
+                    cvv: { placeholder: "xxx" } // Remove the CVV field from your form
+                }
+            }
+        }
     }, function(createErr, instance) {
         form.addEventListener('submit', function(event) {
             event.preventDefault();
