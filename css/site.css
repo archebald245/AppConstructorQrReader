@@ -859,6 +859,7 @@ p.item-shop-description {
 .booking-amount-count,
 .rest-amount-count {
     min-width: 25%;
+    text-align: center;
     border: 1px solid #777;
     float: right;
     padding: 0 20px;
@@ -900,7 +901,7 @@ form#payment-form button {
 }
 
 form#payment-form-booking {
-    padding-bottom: 100px;
+    padding-bottom: 20px;
 }
 
 .swiper-slide img {
