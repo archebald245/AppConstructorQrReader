@@ -154,9 +154,9 @@ function workToClickBuy(itemId) {
 
     }
     $("#shopItem").attr("id", "");
-
+    var curr = restaurantMenu[0].Currency;
     $(".totalPrice b").html("");
-    $(".totalPrice b").append(totalPrice());
+    $(".totalPrice b").append(totalPrice() + " " + curr);
     addListenerToClickDelete();
     addListenerToChangeCount();
 }
@@ -165,9 +165,9 @@ function addListenerToClickDelete() {
     $(".delete-cartItem").unbind("click");
     $(".delete-cartItem").on("click", function() {
         $(this).closest(".cartItem").parent().remove();
-
+        var curr = $(".totalPrice b").html().split(" ")[1];
         $(".totalPrice b").html("");
-        $(".totalPrice b").append(totalPrice()); //add currency
+        $(".totalPrice b").append(totalPrice() + " " + curr); //add currency
     });
 }
 

@@ -31,7 +31,7 @@ function InitRestarauntBraintree(token) {
             hostedFieldsTokenizationNetworkErrorError: cultureRes.hostedFieldsTokenizationNetworkErrorError,
             hostedFieldsFieldsInvalidError: cultureRes.hostedFieldsFieldsInvalidError,
             unsupportedCardTypeError: cultureRes.unsupportedCardTypeError,
-
+            cvvThreeDigitLabelSubheading: cultureRes.cvvThreeDigitLabelSubheading,
             cardNumberLabel: cultureRes.cardNumberLabel,
             cvvLabel: cultureRes.cvvLabel,
             expirationDateLabel: cultureRes.expirationDateLabel,

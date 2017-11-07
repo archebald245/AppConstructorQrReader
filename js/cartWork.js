@@ -103,7 +103,8 @@ function bindListenerToClickBtn() {
             var restAmount = TotalRestAmount();
             if (restAmount >= 1) {
                 $("#restAmount").val(restAmount);
-                $(".rest-amount-count").html(restAmount);
+                var curr = $(".totalPrice b").html().split(" ")[1];
+                $(".rest-amount-count").html(restAmount + " " + curr);
                 InitRestarauntPayment();
             } else {
                 //RestOrderHandlers();
