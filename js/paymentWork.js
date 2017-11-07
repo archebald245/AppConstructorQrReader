@@ -96,7 +96,13 @@ function GetClientToken(InitBraintree) {
             $(".braintree-container").removeClass("hidden");
             $(".bt-drop-in-wrapper").removeClass("hidden");
             $(".cart").addClass("hidden");
-            InitBraintree(data);
+            if (data != "") {
+                InitBraintree(data);
+            } else {
+                alert(cultureRes.sorryError);
+                return false;
+            }
+
 
             scrollTop();
         },
