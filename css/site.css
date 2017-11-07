@@ -1968,6 +1968,9 @@ input[type="checkbox"].SwitcherFormElement:checked+div>div {
     height: 15%;
     background-color: #333;
     border-radius: 100%;
+}
+
+.spinner-container:not(.hidden) .sk-fading-circle .sk-circle:before {
     -webkit-animation: sk-circleFadeDelay 1.2s infinite ease-in-out both;
     animation: sk-circleFadeDelay 1.2s infinite ease-in-out both;
 }
