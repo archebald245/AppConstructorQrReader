@@ -10,6 +10,17 @@ function renderCartItem(cartItem) {
         render: function render() {
             var data = this.state.data;
             var cartImg;
+            var restId = $("[name=cartRestaurantId]").val();
+            var curr;
+            applicationData.Restaurants.forEach(function(element) {
+                if (element.Id = restId) {
+                    element.RestaurantMenus.forEach(function(el) {
+                        if (el.Id == dat.RestaurantMenuId) {
+                            curr = el.Currency;
+                        }
+                    });
+                }
+            }, this);
             if (data.RestaurantMenuImages.length == 0) {
                 cartImg = React.createElement('img', { src: 'baseimages/cartItem.png', className: 'restaurantMenuNoImages ' });
             } else {
@@ -32,12 +43,12 @@ function renderCartItem(cartItem) {
                         ),
                         React.createElement(
                             "div", { className: "cartItem-name-price" },
-                            "Цена: " + data.Price
+                            "Цена: " + data.Price + " " + curr
                         )
                     ),
 
                     React.createElement("div", { className: "cartItem-count-container" },
-                        React.createElement("div", { className: "cartItem-count-total-price" }, data.Price),
+                        React.createElement("div", { className: "cartItem-count-total-price" }, data.Price + " " + curr),
                         React.createElement(
                             "div", { className: "cartItem-info" },
                             React.createElement(

@@ -161,6 +161,7 @@ function initEnCulture() {
     cultureRes.shopitem = "singleShopItem";
     cultureRes.shopitemDesc = "Description:";
     cultureRes.addToCart = "Add to Cart";
+    cultureRes.toCart = "To cart";
     cultureRes.goToMenu = "Menu";
 
     cultureRes.itemAdded = "Item add to cart!";
@@ -307,6 +308,7 @@ function initRuCulture() {
     cultureRes.shopitem = "Магазин";
     cultureRes.shopitemDesc = "Описание:";
     cultureRes.addToCart = "Добавить в корзину";
+    cultureRes.toCart = "В корзину";
     cultureRes.goToMenu = "Перейти к меню";
 
     cultureRes.itemAdded = "Добавленно в корзину!";
@@ -455,6 +457,7 @@ function initUaCulture() {
     cultureRes.shopitem = "Магазин";
     cultureRes.shopitemDesc = "Описання:";
     cultureRes.addToCart = "Додати в корзину";
+    cultureRes.toCart = "В корзину";
     cultureRes.goToMenu = "Перейти до меню";
     cultureRes.itemAdded = "Додано в корзину!";
     cultureRes.restConf = "У Вашій корзині є замовлення від попереднього ресторану. Якщо додати і підтвердити поточне замовлення, замовлення від попереднього ресторану буде видалено. Продовжити?";

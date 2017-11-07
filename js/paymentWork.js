@@ -138,8 +138,6 @@ function GetClientToken(InitBraintree) {
                 alert(cultureRes.sorryError);
                 return false;
             }
-
-
             scrollTop();
         },
         error: function() {
