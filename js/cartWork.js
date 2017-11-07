@@ -155,7 +155,7 @@ function TotalRestAmount() {
     var total = 0;
     collectionOrderItems.forEach(function(element) {
         if (element.Price !== "") {
-            total = total + parseInt(element.Price);
+            total = total + (parseInt(element.Price) * parseInt(element.Count));
         }
     });
     return total;

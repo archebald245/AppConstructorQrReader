@@ -198,7 +198,7 @@ function updateCount(e, count) {
     var curr = $(".totalPrice b").html().split(" ")[1];
     var newPrice = Number($(e).closest(".cartItem").find("input[name=shopItemPrice]").val()) * count;
     $(e).closest(".cartItem").find(".cartItem-count-total-price").html("");
-    $(e).closest(".cartItem").find(".cartItem-count-total-price").append(newPrice) + " " + curr;
+    $(e).closest(".cartItem").find(".cartItem-count-total-price").append(newPrice + " " + curr);
 
     $(e).siblings(".shopItem-count").html("");
     $(e).siblings(".shopItem-count").append(count);
