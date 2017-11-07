@@ -169,7 +169,7 @@ function initEnCulture() {
     cultureRes.noTime = "No time for this rest!";
 
     //PAYMENT FORM
-    cultureRes.payingWith = 'Paying with ' + paymentSource;
+    cultureRes.payingWith = 'Paying with {{paymentSource}}';
     cultureRes.chooseAnotherWayToPay = 'Choose another way to pay';
     cultureRes.chooseAWayToPay = 'Choose a way to pay';
     cultureRes.otherWaysToPay = 'Other ways to pay';
@@ -196,7 +196,7 @@ function initEnCulture() {
     cultureRes.expirationDatePlaceholder = 'MM/YY';
     cultureRes.payWithCard = 'Pay with card';
     // Payment Method descriptions
-    cultureRes.endingIn = 'Ending in XX' + lastTwoCardDigits;
+    cultureRes.endingIn = 'Ending in XX{{lastTwoCardDigits}}';
     cultureRes.Card = 'Card';
     cultureRes.PayPal = 'PayPal';
 
@@ -315,7 +315,7 @@ function initRuCulture() {
     cultureRes.noTime = "В ресторане, нет свободного времени!";
 
     //PAYMENT FORM
-    cultureRes.payingWith = 'Способы оплаты: ' + paymentSource;
+    cultureRes.payingWith = 'Способы оплаты:{{paymentSource}}';
     cultureRes.chooseAnotherWayToPay = 'Выберите другой способ оплаты';
     cultureRes.chooseAWayToPay = 'Выберите способ оплаты';
     cultureRes.otherWaysToPay = 'Другие способы оплаты';
@@ -346,7 +346,7 @@ function initRuCulture() {
     cultureRes.payWithCard = 'Оплатить картой';
 
     // Payment Method descriptions
-    cultureRes.endingIn = 'Последние две цифры номера карты: XX' + LastTwoCardDigits;
+    cultureRes.endingIn = 'Последние две цифры номера карты: XX{{lastTwoCardDigits}}';
     cultureRes.Card = 'Карта';
     cultureRes.PayPal = 'PayPal';
 }
@@ -462,7 +462,7 @@ function initUaCulture() {
     cultureRes.noTime = "Ресторан не має вільного часу!";
 
     //PAYMENT FORM
-    cultureRes.payingWith = 'Способи оплати: ' + paymentSource;
+    cultureRes.payingWith = 'Способи оплати: {{paymentSource}}';
     cultureRes.chooseAnotherWayToPay = 'Виберіть інший спосіб оплати';
     cultureRes.chooseAWayToPay = 'Оберіть спосіб оплати';
     cultureRes.otherWaysToPay = 'Інші способи оплати';
@@ -493,7 +493,7 @@ function initUaCulture() {
     cultureRes.payWithCard = 'Сплатити карткою';
 
     // Payment Method descriptions
-    cultureRes.endingIn = 'Останні дві цифри номера карти: XX' + LastTwoCardDigits;
+    cultureRes.endingIn = 'Останні дві цифри номера карти: XX {{lastTwoCardDigits}}';
     cultureRes.Card = 'Картка';
     cultureRes.PayPal = 'PayPal';
 
