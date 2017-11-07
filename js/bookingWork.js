@@ -430,6 +430,7 @@ function BookingOrderHandlers(dateVal, timeVal, needConfirmation, bookResourceId
 
 
     function BookingAjax() {
+        $(".spinner-container").removeClass("hidden")
         var projectId = applicationData.ProjectId;
         var contentId = applicationData.Id;
         var token = $.jStorage.get('notificationToken');
@@ -449,6 +450,7 @@ function BookingOrderHandlers(dateVal, timeVal, needConfirmation, bookResourceId
             },
             cache: false,
             success: function(object) {
+                $(".spinner-container").addClass("hidden");
                 duration = 0;
                 object = JSON.parse(object);
                 if (object.IsCreated == true) {
@@ -474,6 +476,7 @@ function BookingOrderHandlers(dateVal, timeVal, needConfirmation, bookResourceId
                     });
                     var selectDate = selectFreeTimeBook.val();
                     $("#bookAfterConfirmFreeTime").unbind().click(function() {
+                        $(".spinner-container").removeClass("hidden");
                         var hours = selectDate.split("T")[1].split(":")[0];
                         var minutes = selectDate.split("T")[1].split(":")[1];
                         var timeVal = hours + ":" + minutes;
@@ -508,6 +511,7 @@ function BookingOrderHandlers(dateVal, timeVal, needConfirmation, bookResourceId
                             },
                             cache: false,
                             success: function(object) {
+                                $(".spinner-container").addClass("hidden");
                                 duration = 0;
                                 object = JSON.parse(object);
                                 if (object.IsCreated == true) {

@@ -1949,10 +1949,11 @@ input[type="checkbox"].SwitcherFormElement:checked+div>div {
 }
 
 .sk-fading-circle {
-    margin: 100px auto;
+    margin: -20px auto;
     width: 40px;
     height: 40px;
     position: relative;
+    top: 50%;
 }
 
 .sk-fading-circle .sk-circle {
@@ -1971,11 +1972,13 @@ input[type="checkbox"].SwitcherFormElement:checked+div>div {
     height: 15%;
     background-color: #333;
     border-radius: 100%;
-}
-
-.spinner-container:not(.hidden) .sk-fading-circle .sk-circle:before {
     -webkit-animation: sk-circleFadeDelay 1.2s infinite ease-in-out both;
     animation: sk-circleFadeDelay 1.2s infinite ease-in-out both;
+}
+
+.spinner-container:not(.hidden) .sk-fading-circle {
+    -webkit-animation: sk-spin 1.2s infinite linear both;
+    animation: sk-spin 1.2s infinite linear both;
 }
 
 .sk-fading-circle .sk-circle2 {
@@ -2118,6 +2121,24 @@ input[type="checkbox"].SwitcherFormElement:checked+div>div {
     }
     40% {
         opacity: 1;
+    }
+}
+
+@-webkit-keyframes sk-spin {
+    from {
+        -webkit-transform: rotate(0deg);
+    }
+    to {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes sk-spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
     }
 }
 

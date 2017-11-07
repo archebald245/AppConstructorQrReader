@@ -29,6 +29,7 @@ function InitRestarauntBraintree(token) {
                         alert(err);
                         return;
                     }
+                    $(".spinner-container").removeClass("hidden");
 
                     // Add the nonce to the form and submit
                     document.querySelector('#nonceRest').value = payload.nonce;
@@ -54,6 +55,7 @@ function InitRestarauntBraintree(token) {
                         },
                         dataType: 'json',
                         success: function(data) {
+                            $(".spinner-container").addClass("hidden");
                             $(".bt-dropin").html("");
                             $(".bt-drop-in-wrapper").addClass("hidden");
                             if (data.Success) {

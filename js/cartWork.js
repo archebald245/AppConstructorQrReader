@@ -24,6 +24,8 @@ function clickOrder() {
 
 function clickPlaceAnOrder() {
     if (checkValidationAndRequired($("#orderInfo"))) {
+        $(".spinner-container").removeClass("hidden");
+
         var name = $("#orderInfo").find(".nameOrder").val();
         var phone = $("#orderInfo").find(".phoneOrder").val();
         var email = $("#orderInfo").find(".emailOrder").val();
@@ -44,6 +46,7 @@ function clickPlaceAnOrder() {
             },
             cache: false,
             success: function() {
+                $(".spinner-container").addClass("hidden");
                 alert(cultureRes.thankYou);
                 $("#cart").html("");
                 $(".totalPrice b").html("0");
