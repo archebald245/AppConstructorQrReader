@@ -169,6 +169,7 @@ function sendOrderBooking(dateVal, timeVal, needConfirmation, bookResourceId, to
             }
         }
     }, function(createErr, instance) {
+        dropinInstance = instance;
         form.addEventListener('submit', function(event) {
             event.preventDefault();
 
@@ -450,6 +451,7 @@ function BookingOrderHandlers(dateVal, timeVal, needConfirmation, bookResourceId
             },
             cache: false,
             success: function(object) {
+                destroyPayment();
                 $(".spinner-container").addClass("hidden");
                 duration = 0;
                 object = JSON.parse(object);
@@ -512,9 +514,11 @@ function BookingOrderHandlers(dateVal, timeVal, needConfirmation, bookResourceId
                             cache: false,
                             success: function(object) {
                                 $(".spinner-container").addClass("hidden");
+                                destroyPayment();
                                 duration = 0;
                                 object = JSON.parse(object);
                                 if (object.IsCreated == true) {
+
                                     alert("success");
                                     if (listServiceForBooking[0].ConfirmMethod == "InApplication") {
                                         addOrderBookingInJStorage(listServiceForBooking, object.resourceModel);

@@ -1945,7 +1945,8 @@ input[type="checkbox"].SwitcherFormElement:checked+div>div {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.3)
+    z-index: 9999;
+    background-color: rgba(0, 0, 0, 0.3);
 }
 
 .sk-fading-circle {

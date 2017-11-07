@@ -1,3 +1,5 @@
+var dropinInstance;
+
 function InitRestarauntPayment() {
     GetClientToken(InitRestarauntBraintree);
 }
@@ -20,6 +22,7 @@ function InitRestarauntBraintree(token) {
             }
         }
     }, function(createErr, instance) {
+        dropinInstance = instance;
         form.addEventListener('submit', function(event) {
             event.preventDefault();
             if (checkValidationAndRequired($("#orderInfo"))) {
@@ -137,5 +140,11 @@ function GetClientTokenForBooking(callback, dateVal, timeVal, needConfirmation, 
         error: function() {
             alert(cultureRes.sorryError);
         }
+    });
+}
+
+function destroyPayment() {
+    dropinInstance.teardown(function(err) {
+        if (err) { console.error('An error occurred during teardown:', err); }
     });
 }

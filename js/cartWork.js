@@ -47,6 +47,7 @@ function clickPlaceAnOrder() {
             cache: false,
             success: function() {
                 $(".spinner-container").addClass("hidden");
+                destroyPayment();
                 alert(cultureRes.thankYou);
                 $("#cart").html("");
                 $(".totalPrice b").html("0");
