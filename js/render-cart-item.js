@@ -15,7 +15,7 @@ function renderCartItem(cartItem) {
             applicationData.Restaurants.forEach(function(element) {
                 if (element.Id = restId) {
                     element.RestaurantMenus.forEach(function(el) {
-                        if (el.Id == dat.RestaurantMenuId) {
+                        if (el.Id == data.RestaurantMenuId) {
                             curr = el.Currency;
                         }
                     });
