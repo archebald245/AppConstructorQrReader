@@ -169,7 +169,7 @@ function initEnCulture() {
     cultureRes.noTime = "No time for this rest!";
 
     //PAYMENT FORM
-    cultureRes.payingWith = 'Paying with {{paymentSource}}';
+    cultureRes.payingWith = 'Paying with ' + paymentSource;
     cultureRes.chooseAnotherWayToPay = 'Choose another way to pay';
     cultureRes.chooseAWayToPay = 'Choose a way to pay';
     cultureRes.otherWaysToPay = 'Other ways to pay';
@@ -196,7 +196,7 @@ function initEnCulture() {
     cultureRes.expirationDatePlaceholder = 'MM/YY';
     cultureRes.payWithCard = 'Pay with card';
     // Payment Method descriptions
-    cultureRes.endingIn = 'Ending in XX{{lastTwoCardDigits}}';
+    cultureRes.endingIn = 'Ending in XX' + lastTwoCardDigits;
     cultureRes.Card = 'Card';
     cultureRes.PayPal = 'PayPal';
 
@@ -315,7 +315,7 @@ function initRuCulture() {
     cultureRes.noTime = "В ресторане, нет свободного времени!";
 
     //PAYMENT FORM
-    cultureRes.payingWith = 'Способы оплаты: {{paymentSource}}';
+    cultureRes.payingWith = 'Способы оплаты: ' + paymentSource;
     cultureRes.chooseAnotherWayToPay = 'Выберите другой способ оплаты';
     cultureRes.chooseAWayToPay = 'Выберите способ оплаты';
     cultureRes.otherWaysToPay = 'Другие способы оплаты';
@@ -346,7 +346,7 @@ function initRuCulture() {
     cultureRes.payWithCard = 'Оплатить картой';
 
     // Payment Method descriptions
-    cultureRes.endingIn = 'Последние две цифры номера карты: XX{{LastTwoCardDigits}}';
+    cultureRes.endingIn = 'Последние две цифры номера карты: XX' + LastTwoCardDigits;
     cultureRes.Card = 'Карта';
     cultureRes.PayPal = 'PayPal';
 }
@@ -462,39 +462,39 @@ function initUaCulture() {
     cultureRes.noTime = "Ресторан не має вільного часу!";
 
     //PAYMENT FORM
-    cultureRes.payingWith = 'Способы оплаты: {{paymentSource}}';
-    cultureRes.chooseAnotherWayToPay = 'Выберите другой способ оплаты';
-    cultureRes.chooseAWayToPay = 'Выберите способ оплаты';
-    cultureRes.otherWaysToPay = 'Другие способы оплаты';
-    cultureRes.cardVerification = 'Проверка карты';
+    cultureRes.payingWith = 'Способи оплати: ' + paymentSource;
+    cultureRes.chooseAnotherWayToPay = 'Виберіть інший спосіб оплати';
+    cultureRes.chooseAWayToPay = 'Оберіть спосіб оплати';
+    cultureRes.otherWaysToPay = 'Інші способи оплати';
+    cultureRes.cardVerification = 'Перевірка карти';
 
     // Errors
-    cultureRes.fieldEmptyForCvv = 'Укажите код безопасности.';
-    cultureRes.fieldEmptyForExpirationDate = 'Укажите дату окончания срока действия.';
-    cultureRes.fieldEmptyForCardholderName = 'Введите имя и фамилию владельца карты.';
-    cultureRes.fieldEmptyForNumber = 'Введите номер.';
-    cultureRes.fieldInvalidForCvv = 'Этот код безопасности недействителен.';
-    cultureRes.fieldInvalidForExpirationDate = 'Эта дата окончания срока действия недействительна.';
-    cultureRes.fieldInvalidForNumber = 'Этот номер карты недействителен.';
-    cultureRes.genericError = 'Возникла проблема с нашей стороны.';
-    cultureRes.hostedFieldsFailedTokenizationError = 'Проверьте правильность ввода данных и повторите попытку.';
-    cultureRes.hostedFieldsTokenizationCvvVerificationFailedError = 'Проверка банковской карты не выполнена. Проверьте правильность ввода данных и повторите попытку.';
-    cultureRes.hostedFieldsTokenizationNetworkErrorError = 'Ошибка сети. Повторите попытку.';
-    cultureRes.hostedFieldsFieldsInvalidError = 'Проверьте правильность ввода данных и повторите попытку.';
-    cultureRes.unsupportedCardTypeError = 'Этот тип карты не поддерживается. Попробуйте воспользоваться другой картой.';
+    cultureRes.fieldEmptyForCvv = 'Вкажіть код безпеки.';
+    cultureRes.fieldEmptyForExpirationDate = 'Вкажіть дату закінчення терміну дії.';
+    cultureRes.fieldEmptyForCardholderName = "Введіть ім'я та прізвище власника карти.";
+    cultureRes.fieldEmptyForNumber = 'Введіть номер.';
+    cultureRes.fieldInvalidForCvv = 'Цей код безпеки недійсний.';
+    cultureRes.fieldInvalidForExpirationDate = 'Ця дата закінчення терміну дії недійсна.';
+    cultureRes.fieldInvalidForNumber = 'Цей номер карти недійсний.';
+    cultureRes.genericError = 'Виникла проблема з нашого боку.';
+    cultureRes.hostedFieldsFailedTokenizationError = 'Перевірте правильність введення даних і спробуйте ще раз.';
+    cultureRes.hostedFieldsTokenizationCvvVerificationFailedError = 'Перевірка банківської картки не виконана. Перевірте правильність введення даних і спробуйте ще раз.';
+    cultureRes.hostedFieldsTokenizationNetworkErrorError = 'Помилка мережі. Повторіть спробу.';
+    cultureRes.hostedFieldsFieldsInvalidError = 'Перевірте правильність введення даних і спробуйте ще раз.';
+    cultureRes.unsupportedCardTypeError = 'Цей тип картки не підтримується. Спробуйте скористатися іншою картою.';
 
     // Card form
-    cultureRes.cardNumberLabel = 'Номер карты';
-    cultureRes.cvvLabel = 'Код безопасности';
-    cultureRes.expirationDateLabel = 'Действует до';
-    cultureRes.expirationDateLabelSubheading = '(ММ/ГГ)';
-    cultureRes.cvvThreeDigitLabelSubheading = '(3 цифры)';
-    cultureRes.expirationDatePlaceholder = 'ММ/ГГ';
-    cultureRes.payWithCard = 'Оплатить картой';
+    cultureRes.cardNumberLabel = 'Номер картки';
+    cultureRes.cvvLabel = 'Код безпеки';
+    cultureRes.expirationDateLabel = 'Діє до';
+    cultureRes.expirationDateLabelSubheading = '(ММ/РР)';
+    cultureRes.cvvThreeDigitLabelSubheading = '(3 цифри)';
+    cultureRes.expirationDatePlaceholder = 'ММ/РР';
+    cultureRes.payWithCard = 'Сплатити карткою';
 
     // Payment Method descriptions
-    cultureRes.endingIn = 'Последние две цифры номера карты: XX{{LastTwoCardDigits}}';
-    cultureRes.Card = 'Карта';
+    cultureRes.endingIn = 'Останні дві цифри номера карти: XX' + LastTwoCardDigits;
+    cultureRes.Card = 'Картка';
     cultureRes.PayPal = 'PayPal';
 
 }
