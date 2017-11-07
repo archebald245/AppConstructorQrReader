@@ -535,7 +535,6 @@ function BookingOrderHandlers(dateVal, timeVal, needConfirmation, bookResourceId
                 } else {
                     alert(cultureRes.sorryError);
                 }
-                $("#bt-dropin-booking").html("");
                 $(".bt-drop-in-wrapper-booking").addClass("hidden");
             }
         });

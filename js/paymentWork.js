@@ -59,7 +59,7 @@ function InitRestarauntBraintree(token) {
                         dataType: 'json',
                         success: function(data) {
                             $(".spinner-container").addClass("hidden");
-                            $(".bt-dropin").html("");
+                            destroyPayment()
                             $(".bt-drop-in-wrapper").addClass("hidden");
                             if (data.Success) {
                                 alert(cultureRes.thankYou);
@@ -147,4 +147,6 @@ function destroyPayment() {
     dropinInstance.teardown(function(err) {
         if (err) { console.error('An error occurred during teardown:', err); }
     });
+    $("#bt-dropin-booking").html("");
+    $("#bt-dropin").html("");
 }
