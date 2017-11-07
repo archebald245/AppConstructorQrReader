@@ -52,6 +52,9 @@ function initCulture() {
     $("#orderInfo label[for='emailOrder']").html(cultureRes.email);
     $("#orderInfo label[for='commentOrder']").html(cultureRes.orderComments);
     $("#orderInfo .placeAnOrder span").html(cultureRes.buy);
+    // $("#orderInfo .rest-amount-label .input-label").html(cultureRes.amount);
+    // $(".order-booking .booking-amount-labe .input-label").html(cultureRes.amount);
+    $(".amount-container .input-label").html(cultureRes.amount);
 }
 
 function initEnCulture() {
@@ -75,7 +78,8 @@ function initEnCulture() {
     cultureRes.total = "Total ";
     cultureRes.order = "Order";
     cultureRes.buy = "Buy";
-    cultureRes.contShop = "Сontinue shopping"
+    cultureRes.contShop = "Сontinue shopping";
+    cultureRes.amount = "Amount";
 
     //day of week
     cultureRes.sunday = "Sunday";
@@ -164,6 +168,39 @@ function initEnCulture() {
     cultureRes.sorryOnline = "Sorry, is only available online!";
     cultureRes.noTime = "No time for this rest!";
 
+    //PAYMENT FORM
+    cultureRes.payingWith = 'Paying with {{paymentSource}}';
+    cultureRes.chooseAnotherWayToPay = 'Choose another way to pay';
+    cultureRes.chooseAWayToPay = 'Choose a way to pay';
+    cultureRes.otherWaysToPay = 'Other ways to pay';
+    cultureRes.cardVerification = 'Card Verification';
+    // Errors
+    cultureRes.fieldEmptyForCvv = 'Please fill out a CVV.';
+    cultureRes.fieldEmptyForExpirationDate = 'Please fill out an expiration date.';
+    cultureRes.fieldEmptyForNumber = 'Please fill out a card number.';
+    cultureRes.fieldInvalidForCvv = 'This security code is not valid.';
+    cultureRes.fieldInvalidForExpirationDate = 'This expiration date is not valid.';
+    cultureRes.fieldInvalidForNumber = 'This card number is not valid.';
+    cultureRes.genericError = 'Something went wrong on our end.';
+    cultureRes.hostedFieldsFailedTokenizationError = 'Please check your information and try again.';
+    cultureRes.hostedFieldsTokenizationCvvVerificationFailedError = 'Credit card verification failed. Please check your information and try again.';
+    cultureRes.hostedFieldsTokenizationNetworkErrorError = 'Network error. Please try again.';
+    cultureRes.hostedFieldsFieldsInvalidError = 'Please check your information and try again.';
+    cultureRes.unsupportedCardTypeError = 'This card type is not supported. Please try another card.';
+    // Card form
+    cultureRes.cardNumberLabel = 'Card Number';
+    cultureRes.cvvLabel = 'CVV';
+    cultureRes.cvvThreeDigitLabelSubheading = '(3 digits)';
+    cultureRes.expirationDateLabel = 'Expiration Date';
+    cultureRes.expirationDateLabelSubheading = '(MM/YY)';
+    cultureRes.expirationDatePlaceholder = 'MM/YY';
+    cultureRes.payWithCard = 'Pay with card';
+    // Payment Method descriptions
+    cultureRes.endingIn = 'Ending in XX{{lastTwoCardDigits}}';
+    cultureRes.Card = 'Card';
+    cultureRes.PayPal = 'PayPal';
+
+
 }
 
 function initRuCulture() {
@@ -188,6 +225,7 @@ function initRuCulture() {
     cultureRes.order = "Заказ";
     cultureRes.buy = "Купить";
     cultureRes.contShop = "Продолжить покупки"
+    cultureRes.amount = "Сумма";
 
     //day of week
     cultureRes.sunday = "Воскресенье";
@@ -275,6 +313,42 @@ function initRuCulture() {
     cultureRes.restConf = "В Вашей корзине есть заказ и предыдущего ресторана. Если вы добавите и подтвердите текущий заказ, заказ из предыдущего ресторана будет удален. Продолжить?";
     cultureRes.sorryOnline = "Извинити, но требуется подключение к сети Интернет!";
     cultureRes.noTime = "В ресторане, нет свободного времени!";
+
+    //PAYMENT FORM
+    cultureRes.payingWith = 'Способы оплаты: {{paymentSource}}';
+    cultureRes.chooseAnotherWayToPay = 'Выберите другой способ оплаты';
+    cultureRes.chooseAWayToPay = 'Выберите способ оплаты';
+    cultureRes.otherWaysToPay = 'Другие способы оплаты';
+    cultureRes.cardVerification = 'Проверка карты';
+
+    // Errors
+    cultureRes.fieldEmptyForCvv = 'Укажите код безопасности.';
+    cultureRes.fieldEmptyForExpirationDate = 'Укажите дату окончания срока действия.';
+    cultureRes.fieldEmptyForCardholderName = 'Введите имя и фамилию владельца карты.';
+    cultureRes.fieldEmptyForNumber = 'Введите номер.';
+    cultureRes.fieldInvalidForCvv = 'Этот код безопасности недействителен.';
+    cultureRes.fieldInvalidForExpirationDate = 'Эта дата окончания срока действия недействительна.';
+    cultureRes.fieldInvalidForNumber = 'Этот номер карты недействителен.';
+    cultureRes.genericError = 'Возникла проблема с нашей стороны.';
+    cultureRes.hostedFieldsFailedTokenizationError = 'Проверьте правильность ввода данных и повторите попытку.';
+    cultureRes.hostedFieldsTokenizationCvvVerificationFailedError = 'Проверка банковской карты не выполнена. Проверьте правильность ввода данных и повторите попытку.';
+    cultureRes.hostedFieldsTokenizationNetworkErrorError = 'Ошибка сети. Повторите попытку.';
+    cultureRes.hostedFieldsFieldsInvalidError = 'Проверьте правильность ввода данных и повторите попытку.';
+    cultureRes.unsupportedCardTypeError = 'Этот тип карты не поддерживается. Попробуйте воспользоваться другой картой.';
+
+    // Card form
+    cultureRes.cardNumberLabel = 'Номер карты';
+    cultureRes.cvvLabel = 'Код безопасности';
+    cultureRes.expirationDateLabel = 'Действует до';
+    cultureRes.expirationDateLabelSubheading = '(ММ/ГГ)';
+    cultureRes.cvvThreeDigitLabelSubheading = '(3 цифры)';
+    cultureRes.expirationDatePlaceholder = 'ММ/ГГ';
+    cultureRes.payWithCard = 'Оплатить картой';
+
+    // Payment Method descriptions
+    cultureRes.endingIn = 'Последние две цифры номера карты: XX{{LastTwoCardDigits}}';
+    cultureRes.Card = 'Карта';
+    cultureRes.PayPal = 'PayPal';
 }
 
 function initUaCulture() {
@@ -298,7 +372,8 @@ function initUaCulture() {
     cultureRes.total = "Всього ";
     cultureRes.order = "Резервування";
     cultureRes.buy = "Придбати";
-    cultureRes.contShop = "Продовжити покупки"
+    cultureRes.contShop = "Продовжити покупки";
+    cultureRes.amount = "Сума";
 
     //day of week
     cultureRes.sunday = "Неділя";
@@ -385,5 +460,41 @@ function initUaCulture() {
     cultureRes.restConf = "У Вашій корзині є замовлення від попереднього ресторану. Якщо додати і підтвердити поточне замовлення, замовлення від попереднього ресторану буде видалено. Продовжити?";
     cultureRes.sorryOnline = "Вибачте, але для цього потрібне Інтернет з`єднання!";
     cultureRes.noTime = "Ресторан не має вільного часу!";
+
+    //PAYMENT FORM
+    cultureRes.payingWith = 'Способы оплаты: {{paymentSource}}';
+    cultureRes.chooseAnotherWayToPay = 'Выберите другой способ оплаты';
+    cultureRes.chooseAWayToPay = 'Выберите способ оплаты';
+    cultureRes.otherWaysToPay = 'Другие способы оплаты';
+    cultureRes.cardVerification = 'Проверка карты';
+
+    // Errors
+    cultureRes.fieldEmptyForCvv = 'Укажите код безопасности.';
+    cultureRes.fieldEmptyForExpirationDate = 'Укажите дату окончания срока действия.';
+    cultureRes.fieldEmptyForCardholderName = 'Введите имя и фамилию владельца карты.';
+    cultureRes.fieldEmptyForNumber = 'Введите номер.';
+    cultureRes.fieldInvalidForCvv = 'Этот код безопасности недействителен.';
+    cultureRes.fieldInvalidForExpirationDate = 'Эта дата окончания срока действия недействительна.';
+    cultureRes.fieldInvalidForNumber = 'Этот номер карты недействителен.';
+    cultureRes.genericError = 'Возникла проблема с нашей стороны.';
+    cultureRes.hostedFieldsFailedTokenizationError = 'Проверьте правильность ввода данных и повторите попытку.';
+    cultureRes.hostedFieldsTokenizationCvvVerificationFailedError = 'Проверка банковской карты не выполнена. Проверьте правильность ввода данных и повторите попытку.';
+    cultureRes.hostedFieldsTokenizationNetworkErrorError = 'Ошибка сети. Повторите попытку.';
+    cultureRes.hostedFieldsFieldsInvalidError = 'Проверьте правильность ввода данных и повторите попытку.';
+    cultureRes.unsupportedCardTypeError = 'Этот тип карты не поддерживается. Попробуйте воспользоваться другой картой.';
+
+    // Card form
+    cultureRes.cardNumberLabel = 'Номер карты';
+    cultureRes.cvvLabel = 'Код безопасности';
+    cultureRes.expirationDateLabel = 'Действует до';
+    cultureRes.expirationDateLabelSubheading = '(ММ/ГГ)';
+    cultureRes.cvvThreeDigitLabelSubheading = '(3 цифры)';
+    cultureRes.expirationDatePlaceholder = 'ММ/ГГ';
+    cultureRes.payWithCard = 'Оплатить картой';
+
+    // Payment Method descriptions
+    cultureRes.endingIn = 'Последние две цифры номера карты: XX{{LastTwoCardDigits}}';
+    cultureRes.Card = 'Карта';
+    cultureRes.PayPal = 'PayPal';
 
 }

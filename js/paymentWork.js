@@ -11,6 +11,37 @@ function InitRestarauntBraintree(token) {
     braintree.dropin.create({
         authorization: client_token,
         container: '#bt-dropin',
+        translations: {
+            payingWith: cultureRes.payingWith,
+            chooseAnotherWayToPay: cultureRes.chooseAnotherWayToPay,
+            chooseAWayToPay: cultureRes.chooseAWayToPay,
+            otherWaysToPay: cultureRes.otherWaysToPay,
+            cardVerification: cultureRes.cardVerification,
+
+            fieldEmptyForCvv: cultureRes.fieldEmptyForCvv,
+            fieldEmptyForExpirationDate: cultureRes.fieldEmptyForExpirationDate,
+            fieldEmptyForCardholderName: cultureRes.fieldEmptyForCardholderName,
+            fieldEmptyForNumber: cultureRes.fieldEmptyForNumber,
+            fieldInvalidForCvv: cultureRes.fieldInvalidForCvv,
+            fieldInvalidForExpirationDate: cultureRes.fieldInvalidForExpirationDate,
+            fieldInvalidForNumber: cultureRes.fieldInvalidForNumber,
+            genericError: cultureRes.genericError,
+            hostedFieldsFailedTokenizationError: cultureRes.hostedFieldsFailedTokenizationError,
+            hostedFieldsTokenizationCvvVerificationFailedError: cultureRes.hostedFieldsTokenizationCvvVerificationFailedError,
+            hostedFieldsTokenizationNetworkErrorError: cultureRes.hostedFieldsTokenizationNetworkErrorError,
+            hostedFieldsFieldsInvalidError: cultureRes.hostedFieldsFieldsInvalidError,
+            unsupportedCardTypeError: cultureRes.unsupportedCardTypeError,
+
+            cardNumberLabel: cultureRes.cardNumberLabel,
+            cvvLabel: cultureRes.cvvLabel,
+            expirationDateLabel: cultureRes.expirationDateLabel,
+            expirationDateLabelSubheading: cultureRes.expirationDateLabelSubheading,
+            expirationDatePlaceholder: cultureRes.expirationDatePlaceholderexpirationDatePlaceholder,
+            payWithCard: cultureRes.payWithCard,
+            endingIn: cultureRes.endingIn,
+            Card: cultureRes.Card,
+            PayPal: cultureRes.PayPal
+        },
         card: {
             overrides: {
                 fields: {
