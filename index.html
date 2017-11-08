@@ -146,11 +146,11 @@
             <form id="payment-form-booking" method="post" action="/Booking/CreateOrder">
 
                 <label for="nameOrder"><span>Name</span></label>
-                <input type="text" id="booking-nameOrder" class="nameOrder required" />
+                <input type="text" id="booking-nameOrder" class="nameOrder " />
                 <label for="phoneOrder"><span>Phone Number</span></label>
-                <input type="text" id="booking-phoneOrder" class="phoneOrder" />
+                <input type="text" id="booking-phoneOrder" class="phoneOrder required" />
                 <label for="emailOrder"><span>Email</span></label>
-                <input type="text" id="booking-emailOrder" class="emailOrder" />
+                <input type="text" id="booking-emailOrder" class="emailOrder required" />
                 <span class="hidden">
             <label for="confirmMethod"><span>Confirm Method</span></label>
                 <select id="confirmMethod" class="required">
@@ -173,9 +173,6 @@
                                 <span></span>
                             </div>
                         </div>
-
-
-
                         <div id="bt-dropin-booking"></div>
                         <input id="nonce" name="Nonce" type="hidden" />
                         <button class="button hidden" type="submit"><span>Pay</span></button>
@@ -210,13 +207,13 @@
                     <form id="payment-form" method="post" action="/RestaurantMenu/CreateOrder">
                         <section>
                             <label for="nameOrder"><span>Name</span></label>
-                            <input type="text" id="nameOrder" class="nameOrder required" />
+                            <input type="text" id="nameOrder" class="nameOrder" />
 
                             <label for="phoneOrder"><span>Phone Number</span></label>
-                            <input type="text" id="phoneOrder" class="phoneOrder" />
+                            <input type="text" id="phoneOrder" class="phoneOrder required" />
 
                             <label for="emailOrder"><span>Email</span></label>
-                            <input type="text" id="emailOrder" class="emailOrder" />
+                            <input type="text" id="emailOrder" class="emailOrder required" />
 
                             <label for="commentOrder"><span>Your Order Comments</span></label>
                             <textarea id="commentOrder" class="commentOrder"></textarea>
