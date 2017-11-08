@@ -98,7 +98,7 @@ function addListenerToClickBookService() {
                     var totalAmount = TotalBookingAmount();
                     if (totalAmount >= 1) {
                         $("#bookingAmount").val(totalAmount);
-                        $(".booking-amount-count").html(totalAmount + listServiceForBooking[0].BookDateTime.Currency);
+                        $(".booking-amount-count").html(totalAmount + " " + listServiceForBooking[0].BookDateTime.Currency);
                         $(".bt-drop-in-wrapper-booking").removeClass("hidden");
                         GetClientTokenForBooking(sendOrderBooking, dateVal, timeVal, needConfirmation, bookResourceId);
                     } else {
@@ -118,7 +118,7 @@ function addListenerToClickBookService() {
                 var totalAmount = TotalBookingAmount();
                 if (totalAmount >= 1) {
                     $("#bookingAmount").val(totalAmount);
-                    $(".booking-amount-count").html(totalAmount + listServiceForBooking[0].BookDateTime.Currency);
+                    $(".booking-amount-count").html(totalAmount + " " + listServiceForBooking[0].BookDateTime.Currency);
                     $(".bt-drop-in-wrapper-booking").removeClass("hidden");
                     GetClientTokenForBooking(sendOrderBooking, dateVal, timeVal, needConfirmation, bookResourceId);
                 } else {
