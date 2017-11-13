@@ -46,7 +46,7 @@ function InitRestarauntBraintree(token) {
             overrides: {
                 fields: {
                     number: {
-                        placeholder: 'XXXX XXXX XXXX XXXX XXXX' // Update the number field placeholder
+                        placeholder: 'XXXX XXXX XXXX XXXX' // Update the number field placeholder
                     },
                     cvv: { placeholder: "XXX" }
                 }
@@ -73,6 +73,8 @@ function InitRestarauntBraintree(token) {
                     var email = $("#orderInfo").find(".emailOrder").val();
                     var comment = $("#orderInfo").find(".commentOrder").val();
                     var nonce = payload.nonce;
+
+                    alert(payload.nonce);
 
                     $.ajax({
                         type: "POST",

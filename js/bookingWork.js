@@ -95,8 +95,25 @@ function addListenerToClickBookService() {
                 } else {
                     currentResourceObject.CloseTime = currentDayObject[0].CloseTime;
                     currentResourceObject.OpenTime = currentDayObject[0].OpenTime;
+
+                    var isInstUsePayment = false;
+                    var servId = listServiceForBooking[0].BookDateTime.BookServiceProvideId
+
+                    var isInstUsePayment = false;
+                    var servId = listServiceForBooking[0].BookDateTime.BookServiceProvideId
+
+                    applicationData.Institutions.forEach(function(i) {
+                        var inst = i;
+                        i.BookResources.forEach(function(r) {
+                            r.BookServiceProvides.forEach(function(s) {
+                                if (s.Id == servId) {
+                                    isInstUsePayment = inst.UseCustomerPayment;
+                                }
+                            });
+                        });
+                    });
                     var totalAmount = TotalBookingAmount();
-                    if (totalAmount >= 1) {
+                    if (isInstUsePayment && totalAmount >= 1) {
                         $("#bookingAmount").val(totalAmount);
                         $(".booking-amount-count").html(totalAmount + " " + listServiceForBooking[0].BookDateTime.Currency);
                         $(".bt-drop-in-wrapper-booking").removeClass("hidden");
@@ -114,9 +131,21 @@ function addListenerToClickBookService() {
                     }
                 }
             } else {
+                var isInstUsePayment = false;
+                var servId = listServiceForBooking[0].BookDateTime.BookServiceProvideId
 
+                applicationData.Institutions.forEach(function(i) {
+                    var inst = i;
+                    i.BookResources.forEach(function(r) {
+                        r.BookServiceProvides.forEach(function(s) {
+                            if (s.Id == servId) {
+                                isInstUsePayment = inst.UseCustomerPayment;
+                            }
+                        });
+                    });
+                });
                 var totalAmount = TotalBookingAmount();
-                if (totalAmount >= 1) {
+                if (isInstUsePayment && totalAmount >= 1) {
                     $("#bookingAmount").val(totalAmount);
                     $(".booking-amount-count").html(totalAmount + " " + listServiceForBooking[0].BookDateTime.Currency);
                     $(".bt-drop-in-wrapper-booking").removeClass("hidden");
@@ -484,7 +513,6 @@ function BookingOrderHandlers(dateVal, timeVal, needConfirmation, bookResourceId
             },
             cache: false,
             success: function(object) {
-                destroyPayment();
                 $(".spinner-container").addClass("hidden");
                 duration = 0;
                 object = JSON.parse(object);
@@ -547,7 +575,6 @@ function BookingOrderHandlers(dateVal, timeVal, needConfirmation, bookResourceId
                             cache: false,
                             success: function(object) {
                                 $(".spinner-container").addClass("hidden");
-                                destroyPayment();
                                 duration = 0;
                                 object = JSON.parse(object);
                                 if (object.IsCreated == true) {

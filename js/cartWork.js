@@ -47,7 +47,6 @@ function clickPlaceAnOrder() {
             cache: false,
             success: function() {
                 $(".spinner-container").addClass("hidden");
-                destroyPayment();
                 alert(cultureRes.thankYou);
                 $("#cart").html("");
                 $(".totalPrice b").html("0");
@@ -101,10 +100,23 @@ function bindListenerToClickBtn() {
         if ($("#cart").children().length > 0) {
 
             var restAmount = TotalRestAmount();
-            if (restAmount >= 1) {
+            var restMenuId = $("input[name='restaurantMenuId']").val();
+            var isRestUsePayment = false;
+
+            applicationData.Restaurants.forEach(function(el) {
+                var rest = el;
+                el.RestaurantMenus.forEach(function(e) {
+                    if (e.Id == restMenuId) {
+                        isRestUsePayment = rest.UseCustomerPayment;
+                    }
+                });
+            });
+
+            if (isRestUsePayment && restAmount >= 1) {
                 $("#restAmount").val(restAmount);
                 var curr = $(".totalPrice b").html().split(" ")[1];
                 $(".rest-amount-count").html(restAmount + " " + curr);
+
                 InitRestarauntPayment();
             } else {
                 //RestOrderHandlers();
@@ -116,28 +128,6 @@ function bindListenerToClickBtn() {
                     clickPlaceAnOrder();
                 });
             }
-
-
-
-
-
-            //ADD VALIDATION TO ENABLED PAYMENT
-            // if (true) {
-            //     initPayment();
-
-            //     $(".placeAnOrder").on("click", function() {
-            //         $("#payment-form").submit();
-            //     });
-            // } else {
-            //     $("#orderInfo").removeClass("hidden");
-            //     $(".cart").addClass("hidden");
-            //     scrollTop();
-
-            //     $(".placeAnOrder").on("click", function() {
-            //         clickPlaceAnOrder();
-            //     });
-            // }
-
         } else {
             alert(cultureRes.nothingOrdered);
         }
