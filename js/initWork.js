@@ -140,23 +140,32 @@ function onCheckJson() {
         createMenu(applicationData);
         $(".my-youtube").attr("height", "auto");
         var pageStyles;
+        // var pageWithGeneralBg = applicationData.Pages.filter(function(page) { return page.BackgroundForApplication });
+        // if (pageWithGeneralBg.length > 0) {
+        //     pageStyles = pageWithGeneralBg[0].Style;
+        // }
+        // if (applicationData.IsTrackingLastPage) {
+        //     var idLastPage = getLastOpenPage();
+        //     var lastPage = applicationData.Pages.filter(function(p) { return p.Id == idLastPage })[0]
+        //     if (lastPage.BackgroundImagePath != null) {
+        //         pageStyles = lastPage.Style;
+        //     }
+        // } else {
+        //     var StartPage = applicationData.Pages.filter(function(p) { return p.IsStartPage })[0];
+        //     if (StartPage.BackgroundImagePath != null) {
+        //         pageStyles = StartPage.Style;
+        //     }
+        // }
+        applicationData.Pages.forEach(function(element) {
+            if (element.Id == indexPage) {
+                pageStyles = element.Style;
+            }
+        }, this);
+
         var pageWithGeneralBg = applicationData.Pages.filter(function(page) { return page.BackgroundForApplication });
         if (pageWithGeneralBg.length > 0) {
             pageStyles = pageWithGeneralBg[0].Style;
         }
-        if (applicationData.IsTrackingLastPage) {
-            var idLastPage = getLastOpenPage();
-            var lastPage = applicationData.Pages.filter(function(p) { return p.Id == idLastPage })[0]
-            if (lastPage.BackgroundImagePath != null) {
-                pageStyles = lastPage.Style;
-            }
-        } else {
-            var StartPage = applicationData.Pages.filter(function(p) { return p.IsStartPage })[0];
-            if (StartPage.BackgroundImagePath != null) {
-                pageStyles = StartPage.Style;
-            }
-        }
-
         $("#container").attr("style", pageStyles).removeClass("hidden");
         $(".startScan-wrapper").addClass("hidden");
     } else {
