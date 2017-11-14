@@ -124,6 +124,11 @@ function bindListenerToClickBtn() {
                 $(".cart").addClass("hidden");
                 scrollTop();
 
+
+                $("#restAmount").val(restAmount);
+                var curr = $(".totalPrice b").html().split(" ")[1];
+                $(".rest-amount-count").html(restAmount + " " + curr);
+
                 $(".placeAnOrder").unbind().on("click", function() {
                     clickPlaceAnOrder();
                 });

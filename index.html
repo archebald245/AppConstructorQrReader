@@ -125,7 +125,7 @@
       </select>
         <button type="button" class="btn-order-booking-ForFreeTime" id="bookAfterConfirmFreeTime"><span>Book</span></button>
     </div>
-    <div class="dateTimePicker-container hidden">
+  <div class="dateTimePicker-container hidden">
         <div class="cart-top-line"><button class="back-to-services"></button><span>Select Date</div>
         <label for="dateTimePicker-date"><span>Select date</span></label>
             <input type="text" id="dateTimePicker-date" value="Date" />
@@ -146,7 +146,7 @@
             <form id="payment-form-booking" method="post" action="/Booking/CreateOrder">
 
                 <label for="nameOrder"><span>Name</span></label>
-                <input type="text" id="booking-nameOrder" class="nameOrder " />
+                <input type="text" id="booking-nameOrder" class="nameOrder" />
                 <label for="phoneOrder"><span>Phone Number</span></label>
                 <input type="text" id="booking-phoneOrder" class="phoneOrder required" />
                 <label for="emailOrder"><span>Email</span></label>
@@ -163,16 +163,24 @@
                 <textarea id="booking-commentOrder" class="commentOrder"></textarea>
 
                 <section>
+                    <div class="amount-container">
+                        <div class="booking-amount-label">
+                            <span class="input-label">Amount</span>
+                        </div>
+                        <div class="booking-amount-count">
+                            <span></span>
+                        </div>
+                    </div>
+                    <div class="payment-method-container">
+                        <label for="payMethod-booking"><span>Payment Method</span></label>
+                        <select id="payMethod-booking" class="required">
+                            <option value="cash"><span>Cash</span></option>
+                            <option value="card"><span>Card</span></option>
+                        </select>
+                    </div>
+
                     <div class="bt-drop-in-wrapper-booking hidden">
                         <input id="bookingAmount" name="amount" type="hidden" />
-                        <div class="amount-container">
-                            <div class="booking-amount-label">
-                                <span class="input-label">Amount</span>
-                            </div>
-                            <div class="booking-amount-count">
-                                <span></span>
-                            </div>
-                        </div>
                         <div id="bt-dropin-booking"></div>
                         <input id="nonce" name="Nonce" type="hidden" />
                         <button class="button hidden" type="submit"><span>Pay</span></button>
@@ -218,16 +226,27 @@
                             <label for="commentOrder"><span>Your Order Comments</span></label>
                             <textarea id="commentOrder" class="commentOrder"></textarea>
 
+                            <div class="amount-container">
+                                <div class="rest-amount-label">
+                                    <span class="input-label">Amount</span>
+                                </div>
+                                <div class="rest-amount-count">
+                                    <span></span>
+                                </div>
+
+                            </div>
+                            <div class="payment-method-container">
+                                <label for="payMethod"><span>Payment Method</span></label>
+                                <select id="payMethod" class="required">
+                                    <option value="cash"><span>Cash</span></option>
+                                    <option value="card"><span>Card</span></option>
+                                    </select>
+                            </div>
+
+
                             <div class="bt-drop-in-wrapper hidden">
                                 <input id="restAmount" name="amount" type="hidden" />
-                                <div class="amount-container">
-                                    <div class="rest-amount-label">
-                                        <span class="input-label">Amount</span>
-                                    </div>
-                                    <div class="rest-amount-count">
-                                        <span></span>
-                                    </div>
-                                </div>
+
                                 <div id="bt-dropin"></div>
                             </div>
                         </section>

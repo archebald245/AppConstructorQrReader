@@ -116,19 +116,20 @@ function addListenerToClickBookService() {
                     if (isInstUsePayment && totalAmount >= 1) {
                         $("#bookingAmount").val(totalAmount);
                         $(".booking-amount-count").html(totalAmount + " " + listServiceForBooking[0].BookDateTime.Currency);
-                        $(".bt-drop-in-wrapper-booking").removeClass("hidden");
                         GetClientTokenForBooking(sendOrderBooking, dateVal, timeVal, needConfirmation, bookResourceId);
                     } else {
+
+                        $(".booking-amount-count").html(totalAmount + " " + listServiceForBooking[0].BookDateTime.Currency);
                         $(".dateTimePicker-container").addClass("hidden");
                         $(".order-booking").removeClass("hidden");
                         scrollTop();
-
-                        $(".btn-send-order-booking").unbind().on("click", function() {
-                            if (checkValidationAndRequired($(".order-booking"))) {
-                                BookingOrderHandlers(dateVal, timeVal, needConfirmation, bookResourceId);
-                            }
-                        });
                     }
+                    //cash method selected by default
+                    $(".btn-send-order-booking").unbind().on("click", function() {
+                        if (checkValidationAndRequired($(".order-booking"))) {
+                            BookingOrderHandlers(dateVal, timeVal, needConfirmation, bookResourceId);
+                        }
+                    });
                 }
             } else {
                 var isInstUsePayment = false;
@@ -148,19 +149,20 @@ function addListenerToClickBookService() {
                 if (isInstUsePayment && totalAmount >= 1) {
                     $("#bookingAmount").val(totalAmount);
                     $(".booking-amount-count").html(totalAmount + " " + listServiceForBooking[0].BookDateTime.Currency);
-                    $(".bt-drop-in-wrapper-booking").removeClass("hidden");
                     GetClientTokenForBooking(sendOrderBooking, dateVal, timeVal, needConfirmation, bookResourceId);
                 } else {
+                    $(".booking-amount-count").html(totalAmount + " " + listServiceForBooking[0].BookDateTime.Currency);
+
                     $(".dateTimePicker-container").addClass("hidden");
                     $(".order-booking").removeClass("hidden");
                     scrollTop();
-
-                    $(".btn-send-order-booking").unbind().on("click", function() {
-                        if (checkValidationAndRequired($(".order-booking"))) {
-                            BookingOrderHandlers(dateVal, timeVal, needConfirmation, bookResourceId);
-                        }
-                    });
                 }
+                //cash method selected by default
+                $(".btn-send-order-booking").unbind().on("click", function() {
+                    if (checkValidationAndRequired($(".order-booking"))) {
+                        BookingOrderHandlers(dateVal, timeVal, needConfirmation, bookResourceId);
+                    }
+                });
             }
         } else {
             alert(cultureRes.selectServTime);
@@ -224,7 +226,7 @@ function sendOrderBooking(dateVal, timeVal, needConfirmation, bookResourceId, to
             overrides: {
                 fields: {
                     number: {
-                        placeholder: 'XXXX XXXX XXXX XXXX XXXX'
+                        placeholder: 'XXXX XXXX XXXX XXXX'
                     },
                     cvv: { placeholder: "XXX" }
                 }
@@ -250,9 +252,9 @@ function sendOrderBooking(dateVal, timeVal, needConfirmation, bookResourceId, to
                 });
             }
         });
-        $(".btn-send-order-booking").unbind().on("click", function() {
-            $("#payment-form-booking button.button").click();
-        });
+        // $(".btn-send-order-booking").unbind().on("click", function() {
+        //     $("#payment-form-booking button.button").click();
+        // });
     });
 
 }

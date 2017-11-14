@@ -64,7 +64,6 @@ function InitRestarauntBraintree(token) {
                         return;
                     }
                     $(".spinner-container").removeClass("hidden");
-
                     // Add the nonce to the form and submit
                     document.querySelector('#nonceRest').value = payload.nonce;
 
@@ -73,8 +72,6 @@ function InitRestarauntBraintree(token) {
                     var email = $("#orderInfo").find(".emailOrder").val();
                     var comment = $("#orderInfo").find(".commentOrder").val();
                     var nonce = payload.nonce;
-
-                    alert(payload.nonce);
 
                     $.ajax({
                         type: "POST",
@@ -92,7 +89,6 @@ function InitRestarauntBraintree(token) {
                         dataType: 'json',
                         success: function(data) {
                             $(".spinner-container").addClass("hidden");
-                            destroyPayment()
                             $(".bt-drop-in-wrapper").addClass("hidden");
                             if (data.Success) {
                                 alert(cultureRes.thankYou);
@@ -132,9 +128,9 @@ function GetClientToken(InitBraintree) {
         success: function(data) {
             $("#orderInfo").removeClass("hidden");
             $(".braintree-container").removeClass("hidden");
-            $(".bt-drop-in-wrapper").removeClass("hidden");
             $(".cart").addClass("hidden");
             if (data != "") {
+                paymentMethodHandler();
                 InitBraintree(data);
             } else {
                 alert(cultureRes.sorryError);
@@ -172,6 +168,27 @@ function GetClientTokenForBooking(callback, dateVal, timeVal, needConfirmation, 
             alert(cultureRes.sorryError);
         }
     });
+
+    //paymentMethodBookingHandler
+    $("select#payMethod-booking").on("change", function() {
+        var payMethod = $("select#payMethod-booking option:selected").val();
+        if (payMethod === "card") {
+            $(".bt-drop-in-wrapper-booking").removeClass("hidden");
+
+            $(".btn-send-order-booking").unbind().on("click", function() {
+                $("#payment-form-booking button.button").click();
+            });
+
+        } else if (payMethod === "cash") {
+
+            $(".btn-send-order-booking").unbind().on("click", function() {
+                if (checkValidationAndRequired($(".order-booking"))) {
+                    BookingOrderHandlers(dateVal, timeVal, needConfirmation, bookResourceId);
+                }
+            });
+            $(".bt-drop-in-wrapper-booking").addClass("hidden");
+        }
+    });
 }
 
 function destroyPayment() {
@@ -181,3 +198,45 @@ function destroyPayment() {
     $("#bt-dropin-booking").html("");
     $("#bt-dropin").html("");
 }
+
+function paymentMethodHandler() {
+    $("select#payMethod").on("change", function() {
+        var payMethod = $("select#payMethod option:selected").val();
+        if (payMethod === "card") {
+            $(".bt-drop-in-wrapper").removeClass("hidden");
+
+            $(".placeAnOrder").unbind().on("click", function() {
+                $("#payment-form button.button").click();
+            });
+
+        } else if (payMethod === "cash") {
+
+            $(".placeAnOrder").unbind().on("click", function() {
+                clickPlaceAnOrder();
+            });
+            $(".bt-drop-in-wrapper").addClass("hidden");
+        }
+    });
+}
+
+// function paymentMethodBookingHandler() {
+//     $("select#payMethod-booking").on("change", function() {
+//         var payMethod = $("select#payMethod-booking option:selected").val();
+//         if (payMethod === "card") {
+//             $(".bt-drop-in-wrapper-booking").removeClass("hidden");
+
+//             $(".btn-send-order-booking").unbind().on("click", function() {
+//                 $("#payment-form button.button").click();
+//             });
+
+//         } else if (payMethod === "cash") {
+
+//             $(".btn-send-order-booking").unbind().on("click", function() {
+//                 if (checkValidationAndRequired($(".order-booking"))) {
+//                     BookingOrderHandlers(dateVal, timeVal, needConfirmation, bookResourceId);
+//                 }
+//             });
+//             $(".bt-drop-in-wrapper-booking").addClass("hidden");
+//         }
+//     });
+// }
