@@ -120,7 +120,7 @@ function addListenerToClickBookService() {
                     } else {
 
                         $(".booking-amount-count").html(totalAmount + " " + listServiceForBooking[0].BookDateTime.Currency);
-                        $(".dateTimePicker-container").addClass("hidden");
+                        $(".dateTimePicker-container, .payment-method-container-booking").addClass("hidden");
                         $(".order-booking").removeClass("hidden");
                         scrollTop();
                     }
@@ -153,7 +153,7 @@ function addListenerToClickBookService() {
                 } else {
                     $(".booking-amount-count").html(totalAmount + " " + listServiceForBooking[0].BookDateTime.Currency);
 
-                    $(".dateTimePicker-container").addClass("hidden");
+                    $(".dateTimePicker-container, .payment-method-container-booking").addClass("hidden");
                     $(".order-booking").removeClass("hidden");
                     scrollTop();
                 }

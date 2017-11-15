@@ -121,7 +121,7 @@ function bindListenerToClickBtn() {
             } else {
                 //RestOrderHandlers();
                 $("#orderInfo").removeClass("hidden");
-                $(".cart").addClass("hidden");
+                $(".cart,.payment-method-container").addClass("hidden");
                 scrollTop();
 
 
