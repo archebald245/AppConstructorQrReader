@@ -19,6 +19,7 @@ function deleteResourcesAll() { //Call in Init function
 
         $.jStorage.deleteKey("appData");
         checkJsStorage();
+        $(".project-list-wrapper").removeClass("hidden");
         $(".Scan-spiner").addClass("hidden");
         $("#container").attr("style", "");
         $("#container, #custom-hide-container, .singleItem, #orderInfo, .cart, .container-statusBooking, .bookingServices-container, .container-selectFreeBookTime, .dateTimePicker-container, .order-booking").addClass("hidden");
@@ -100,7 +101,7 @@ function startLogin() {
 
 function checkJsStorage() { //Call in onDeviceReady function
     if ($.jStorage.get('appData') == null) {
-        $(".project-list-wrapper").removeClass("hidden");
+        $(".login-wrapper").removeClass("hidden");
         $("#container, #custom-hide-container, .singleItem, #orderInfo, .cart, .container-statusBooking, .bookingServices-container, .container-selectFreeBookTime, .dateTimePicker-container, .order-booking").addClass("hidden");
     } else {
         checkConnection();
