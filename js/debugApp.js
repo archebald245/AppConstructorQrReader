@@ -86,6 +86,7 @@ function startLogin() {
         $.post('' + siteUrl + '/Account/LoginViewTool', $(form).serialize(), function(data) {
             $(".login-spiner").addClass("hidden");
             if (data.IsLogin) {
+                renderProjectList(data.ProjectList)
                 $(".project-list-wrapper").removeClass('hidden');
                 $(".project-list-wrapper").html(data.IsLogin);
             } else {
