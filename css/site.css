@@ -2193,17 +2193,14 @@ input[type="checkbox"].SwitcherFormElement:checked+div>div {
     text-align: center;
     color: #fff;
     font-weight: bold;
-    position: absolute;
-    top: 40%;
-    left: 0;
-    right: 0;
+    margin-bottom: 20px;
 }
 
 .login-spiner {
     background-image: url(../baseimages/loading.gif);
     width: 25px;
     height: 25px;
-    z: 9999;
+    z-index: 9999;
     z-index: 99999;
     position: absolute;
     background-size: cover;

@@ -78,16 +78,16 @@ function startLogin() {
     var networkState = navigator.connection.type;
     if (networkState != Connection.NONE) {
         var form = $(this).parents("form")
-        var check = checkValidationAndRequired(form);
-        if (check) {
-            $(".login-spiner").removeClass("hidden");
-            var siteUrl = "http://appconstructornew.newlinetechnologies.net/";
-            alert($(form).serialize());
-            $.post('' + siteUrl + '/Account/LoginViewTool', $(form).serialize(), function(data) {
-                $(".login-spiner").addClass("hidden");
-                alert(data);
-            });
-        }
+            // var check = checkValidationAndRequired(form);
+            // if (check) {
+        $(".login-spiner").removeClass("hidden");
+        var siteUrl = "http://appconstructornew.newlinetechnologies.net/";
+        alert($(form).serialize());
+        $.post('' + siteUrl + '/Account/LoginViewTool', $(form).serialize(), function(data) {
+            $(".login-spiner").addClass("hidden");
+            alert(data);
+        });
+        // }
     }
 }
 
