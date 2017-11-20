@@ -83,7 +83,6 @@ function startLogin() {
             // if (check) {
         $(".login-spiner").removeClass("hidden");
         var siteUrl = "http://appconstructornew.newlinetechnologies.net/";
-        alert($(form).serialize());
         $.post('' + siteUrl + '/Account/LoginViewTool', $(form).serialize(), function(data) {
             $(".login-spiner").addClass("hidden");
             $(".project-list-wrapper").removeClass('hidden');

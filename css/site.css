@@ -2179,6 +2179,7 @@ input[type="checkbox"].SwitcherFormElement:checked+div>div {
     margin: auto;
 }
 
+.project-list-wrapper,
 .login-wrapper {
     background-color: #06C1A1;
     width: 100%;
