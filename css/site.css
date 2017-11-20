@@ -2202,7 +2202,6 @@ input[type="checkbox"].SwitcherFormElement:checked+div>div {
     width: 25px;
     height: 25px;
     z-index: 9999;
-    z-index: 99999;
     position: absolute;
     background-size: cover;
     background-position: center;

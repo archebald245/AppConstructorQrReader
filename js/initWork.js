@@ -11,7 +11,7 @@ var jsonStringify;
 initYoutube();
 
 function init() {
-    blockUi();
+    // blockUi();
     document.addEventListener("deviceready", onDeviceReady, false);
     $(".classDropdownList").addClass("classHide");
 
