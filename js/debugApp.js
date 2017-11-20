@@ -91,7 +91,7 @@ function startLogin() {
 
 function checkJsStorage() { //Call in onDeviceReady function
     if ($.jStorage.get('appData') == null) {
-        $(".startScan-wrapper").removeClass("hidden");
+        $(".login-wrapper").removeClass("hidden");
         $("#container, #custom-hide-container, .singleItem, #orderInfo, .cart, .container-statusBooking, .bookingServices-container, .container-selectFreeBookTime, .dateTimePicker-container, .order-booking").addClass("hidden");
     } else {
         checkConnection();

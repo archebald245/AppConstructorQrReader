@@ -167,7 +167,7 @@ function onCheckJson() {
             pageStyles = pageWithGeneralBg[0].Style;
         }
         $("#container").attr("style", pageStyles).removeClass("hidden");
-        $(".startScan-wrapper").addClass("hidden");
+        $(".login-wrapper").addClass("hidden");
     } else {
 
         applicationData = replaceData(applicationData);
@@ -255,7 +255,7 @@ function callback() {
     initGallaryClick();
     submitFormListener();
     unBlockUi();
-    $(".startScan-wrapper").addClass("hidden");
+    $(".login-wrapper").addClass("hidden");
     $("#container").removeClass("hidden");
 }
 
