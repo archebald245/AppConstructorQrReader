@@ -80,9 +80,11 @@ function startLogin() {
         var form = $(this).parents("form")
         var check = checkValidationAndRequired(elem);
         if (check) {
+            $(".login-spiner").removeClass("hidden");
             var siteUrl = "http://appconstructornew.newlinetechnologies.net/";
             alert($(form).serialize());
             $.post('' + siteUrl + '/Account/LoginViewTool', $(form).serialize(), function(data) {
+                $(".login-spiner").addClass("hidden");
                 alert(data);
             });
         }

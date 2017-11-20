@@ -2152,21 +2152,16 @@ input[type="checkbox"].SwitcherFormElement:checked+div>div {
 
 /*~~~~~~Main Page Styles~~~~~*/
 
-#startScan {
-    width: 200px;
-    height: 40px;
-    border-radius: 40px;
-    background-color: #eeeeee;
+.login-form-container {
     z-index: 9999;
     position: absolute;
     top: 50%;
     left: 0;
     right: 0;
     margin: auto;
-    border: 1px solid #939393;
 }
 
-.startScan-wrapper {
+.login-wrapper {
     background-color: #06C1A1;
     width: 100%;
     height: 100%;
@@ -2174,7 +2169,7 @@ input[type="checkbox"].SwitcherFormElement:checked+div>div {
     position: relative;
 }
 
-.startScan-wrapper h1 {
+.login-wrapper h1 {
     font-size: 20px;
     margin: 0;
     text-align: center;
@@ -2186,7 +2181,7 @@ input[type="checkbox"].SwitcherFormElement:checked+div>div {
     right: 0;
 }
 
-.Scan-spiner {
+.login-spiner {
     background-image: url(../baseimages/loading.gif);
     width: 25px;
     height: 25px;
