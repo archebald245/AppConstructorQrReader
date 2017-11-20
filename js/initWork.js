@@ -15,7 +15,7 @@ function init() {
     document.addEventListener("deviceready", onDeviceReady, false);
     $(".classDropdownList").addClass("classHide");
 
-    document.querySelector("#startScan").addEventListener("touchend", startScan, false);
+    document.querySelector("#vt-login").addEventListener("touchend", startLogin, false);
 
     deleteResourcesAll();
 }

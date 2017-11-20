@@ -27,49 +27,66 @@ function deleteResourcesAll() { //Call in Init function
 
 function startScan() { //Call in Init function
 
-    cordova.plugins.barcodeScanner.scan(
-        function(result) {
+    // cordova.plugins.barcodeScanner.scan(
+    //     function(result) {
+    //         var siteUrl = "http://appconstructornew.newlinetechnologies.net/";
+    //         if (!result.cancelled) {
+    //             $(".Scan-spiner").removeClass("hidden");
+    //             var qrResult = result.text.split("-");
+    //             var ProjectId = qrResult[0];
+    //             var VersionName = qrResult[1];
+    //             var tokenToSend = $.jStorage.get('notificationToken');
+    //             var deviceIdToSend = $.jStorage.get('ApplicationId');
+    //             if (qrResult[2] != null) {
+    //                 siteUrl = qrResult[2];
+    //             }
+    //             $.ajax({
+    //                 type: "POST",
+    //                 url: siteUrl + "/Constructor/GetContentById",
+    //                 data: {
+    //                     projectId: ProjectId,
+    //                     contentId: VersionName,
+    //                     token: tokenToSend,
+    //                     deviceId: deviceIdToSend
+    //                 },
+    //                 cache: false,
+    //                 success: function(jsonObjectOfServer) {
+    //                     jsonObjectOfServer = JSON.parse(jsonObjectOfServer);
+    //                     scrollTop();
+    //                     applicationData = JSON.stringify(jsonObjectOfServer.Content);
+    //                     // $.jStorage.set('ApplicationId', jsonObjectOfServer.ApplicationId);
+    //                     onCheckJson();
+    //                 },
+    //                 error: function() {
+    //                     $(".startScan-wrapper").removeClass("hidden");
+    //                 }
+    //             });
+    //         }
+
+    //     },
+    //     function(error) {
+    //         alert("Scanning failed: " + error);
+    //         $(".startScan-wrapper").removeClass("hidden");
+    //     }
+    // );
+
+}
+
+function startLogin() {
+    event.preventDefault();
+    alert('click');
+    var networkState = navigator.connection.type;
+    if (networkState != Connection.NONE) {
+        var form = $(this).parents("form")
+        var check = checkValidationAndRequired(elem);
+        if (check) {
             var siteUrl = "http://appconstructornew.newlinetechnologies.net/";
-            if (!result.cancelled) {
-                $(".Scan-spiner").removeClass("hidden");
-                var qrResult = result.text.split("-");
-                var ProjectId = qrResult[0];
-                var VersionName = qrResult[1];
-                var tokenToSend = $.jStorage.get('notificationToken');
-                var deviceIdToSend = $.jStorage.get('ApplicationId');
-                if (qrResult[2] != null) {
-                    siteUrl = qrResult[2];
-                }
-                $.ajax({
-                    type: "POST",
-                    url: siteUrl + "/Constructor/GetContentById",
-                    data: {
-                        projectId: ProjectId,
-                        contentId: VersionName,
-                        token: tokenToSend,
-                        deviceId: deviceIdToSend
-                    },
-                    cache: false,
-                    success: function(jsonObjectOfServer) {
-                        jsonObjectOfServer = JSON.parse(jsonObjectOfServer);
-                        scrollTop();
-                        applicationData = JSON.stringify(jsonObjectOfServer.Content);
-                        // $.jStorage.set('ApplicationId', jsonObjectOfServer.ApplicationId);
-                        onCheckJson();
-                    },
-                    error: function() {
-                        $(".startScan-wrapper").removeClass("hidden");
-                    }
-                });
-            }
-
-        },
-        function(error) {
-            alert("Scanning failed: " + error);
-            $(".startScan-wrapper").removeClass("hidden");
+            alert($(form).serialize());
+            $.post('' + siteUrl + '/Account/LoginViewTool', $(form).serialize(), function(data) {
+                alert(data);
+            });
         }
-    );
-
+    }
 }
 
 function checkJsStorage() { //Call in onDeviceReady function

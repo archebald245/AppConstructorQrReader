@@ -1,4 +1,5 @@
 ﻿<!DOCTYPE html>
+<html>
 
 <head>
     <meta charset="UTF-8">
@@ -76,7 +77,23 @@
         <button id="startScan">Start Scan</button>
         <div class="Scan-spiner hidden"></div>
     </div>
+    <div class="login-wrapper hidden">
+        <span>Login with AppConstructor account</span>
+        <form id="payment-form" method="post" action="/Account/LoginViewTool">
 
+            <label for="login-data"><span>Login(AppConstructor account)</span></label>
+            <input type="text" id="login-data" class=" required" />
+
+            <label for="password-data"><span>Password</span></label>
+            <input type="text" id="password-data" class="required" />
+
+            <button type="submit" id="vt-login">Log In</button>
+        </form>
+    </div>
+    <div class="project-list-wrapper hidden">
+
+
+    </div>
     <div class="spinner-container hidden">
         <div class="sk-fading-circle">
             <div class="sk-circle1 sk-circle"></div>
