@@ -85,8 +85,14 @@ function startLogin() {
         var siteUrl = "http://appconstructornew.newlinetechnologies.net/";
         $.post('' + siteUrl + '/Account/LoginViewTool', $(form).serialize(), function(data) {
             $(".login-spiner").addClass("hidden");
-            $(".project-list-wrapper").removeClass('hidden');
-            $(".project-list-wrapper").html(data);
+            if (data.IsLogin) {
+                $(".project-list-wrapper").removeClass('hidden');
+                $(".project-list-wrapper").html(data.IsLogin);
+            } else {
+                alert(data.ErrorMessage);
+                $(".login-wrapper").removeClass('hidden');
+                return false;
+            }
         });
         // }
     }
