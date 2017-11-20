@@ -7,6 +7,9 @@ function renderProjectList(projectList) {
         getInitialState: function getInitialState() {
             return { data: projectList };
         },
+        componentDidMount: function componentDidMount() {
+            ProjectListEventListener();
+        },
         render: function render() {
             var data = this.state.data;
             var projectListModel = this.state.data.map(function(item) {

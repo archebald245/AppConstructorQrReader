@@ -119,3 +119,45 @@ function deleteResourcesImg() {
     countFileDownloadFail = 0;
 
 }
+
+function ProjectListEventListener() {
+    $(".project-list-item").on("click", function() {
+        var projectId = $(this).find("[name='projectId']").val();
+        var version = $(this).find("[name='project-version']").val();
+        GetApplicationData(projectId, version);
+    });
+    $(".project-list-version").on("click", function() {
+        var projectId = $(this).parents(".project-list-item").find("[name='projectId']").val();
+        var version = $(this).find("[name='project-version']").val();
+        GetApplicationData(projectId, version);
+    });
+}
+
+function GetApplicationData(project, version) {
+    $(".spinner-container").removeClass("hidden");
+    var siteUrl = "http://appconstructornew.newlinetechnologies.net/";
+    var tokenToSend = $.jStorage.get('notificationToken');
+    var deviceIdToSend = $.jStorage.get('ApplicationId');
+    $.ajax({
+        type: "POST",
+        url: siteUrl + "/Constructor/GetContentById",
+        data: {
+            projectId: project,
+            contentId: version,
+            token: tokenToSend,
+            deviceId: deviceIdToSend
+        },
+        cache: false,
+        success: function(jsonObjectOfServer) {
+            $(".spinner-container").addClass("hidden");
+            jsonObjectOfServer = JSON.parse(jsonObjectOfServer);
+            scrollTop();
+            applicationData = JSON.stringify(jsonObjectOfServer.Content);
+            // $.jStorage.set('ApplicationId', jsonObjectOfServer.ApplicationId);
+            onCheckJson();
+        },
+        error: function() {
+            $(".spinner-container").addClass("hidden");
+        }
+    });
+}
