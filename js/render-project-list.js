@@ -9,7 +9,7 @@ function renderProjectList(projectList) {
         },
         render: function render() {
             var data = this.state.data;
-            var projectListModel = this.state.data.ProjectList.map(function(item) {
+            var projectListModel = this.state.data.map(function(item) {
                 var image;
                 if (item.ImagePath.length == 0) {
                     //image = React.createElement('span', { className: 'restaurantMenuNoImages item-shop-img' });
