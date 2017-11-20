@@ -123,17 +123,17 @@ function deleteResourcesImg() {
 function ProjectListEventListener() {
     $(".project-list-item").on("click", function() {
         var projectId = $(this).find("[name='projectId']").val();
-        var version = $(this).find("[name='project-version']").val();
-        GetApplicationData(projectId, version);
+        var content = $(this).find("[name='project-version-contentId']").val();
+        GetApplicationData(projectId, content);
     });
     $(".project-list-version").on("click", function() {
         var projectId = $(this).parents(".project-list-item").find("[name='projectId']").val();
-        var version = $(this).find("[name='project-version']").val();
-        GetApplicationData(projectId, version);
+        var content = $(this).find("[name='project-version-contentId']").val();
+        GetApplicationData(projectId, content);
     });
 }
 
-function GetApplicationData(project, version) {
+function GetApplicationData(project, content) {
     $(".spinner-container").removeClass("hidden");
     var siteUrl = "http://appconstructornew.newlinetechnologies.net/";
     var tokenToSend = $.jStorage.get('notificationToken');
@@ -143,7 +143,7 @@ function GetApplicationData(project, version) {
         url: siteUrl + "/Constructor/GetContentById",
         data: {
             projectId: project,
-            contentId: version,
+            contentId: content,
             token: tokenToSend,
             deviceId: deviceIdToSend
         },

@@ -23,10 +23,10 @@ function renderProjectList(projectList) {
                     return React.createElement(
                         "div", { className: "project-list-version" },
                         React.createElement(
-                            "span", { className: "project-version" },
-                            el
+                            "span", { className: "project-version" + (il.IsLive ? 'version-islive' : '') },
+                            el.Version
                         ),
-                        React.createElement("input", { type: "hidden", name: "project-version", value: el })
+                        React.createElement("input", { type: "hidden", name: "project-version-contentId", value: el.ContentId })
                     );
                 });
                 return React.createElement(
