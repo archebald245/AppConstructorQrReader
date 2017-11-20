@@ -2246,6 +2246,11 @@ input[type="checkbox"].SwitcherFormElement:checked+div>div {
     width: 100px;
 }
 
+.project-list-item-img img {
+    max-height: 100px;
+    max-width: 100px;
+}
+
 .project-list-item-data {
     display: inline-block;
 }
