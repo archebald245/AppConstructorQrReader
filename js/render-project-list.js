@@ -43,7 +43,7 @@ function renderProjectList(projectList) {
                             projectListVersion
                         )
                     ),
-                    React.createElement("input", { type: "hidden", name: "projectId", value: item.ProjectId }),
+                    React.createElement("input", { type: "hidden", name: "projectId", value: item.ProjectId })
                 );
             });
             return React.createElement(

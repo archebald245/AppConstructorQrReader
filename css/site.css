@@ -2167,6 +2167,8 @@ input[type="checkbox"].SwitcherFormElement:checked+div>div {
     border-radius: 40px;
     background-color: #eeeeee;
     color: #000;
+    margin: auto;
+    display: block;
 }
 
 .login-form-container {
