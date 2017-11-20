@@ -2152,10 +2152,28 @@ input[type="checkbox"].SwitcherFormElement:checked+div>div {
 
 /*~~~~~~Main Page Styles~~~~~*/
 
+#login-form {
+    margin-top: 30px;
+}
+
+#login-form input,
+#login-form button {
+    width: 100%;
+}
+
+#login-form button {
+    width: 200px;
+    height: 40px;
+    border-radius: 40px;
+    background-color: #eeeeee;
+    color: #000;
+}
+
 .login-form-container {
     z-index: 9999;
+    width: 50%;
     position: absolute;
-    top: 50%;
+    top: 35%;
     left: 0;
     right: 0;
     margin: auto;

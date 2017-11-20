@@ -78,7 +78,7 @@ function startLogin() {
     var networkState = navigator.connection.type;
     if (networkState != Connection.NONE) {
         var form = $(this).parents("form")
-        var check = checkValidationAndRequired(elem);
+        var check = checkValidationAndRequired(form);
         if (check) {
             $(".login-spiner").removeClass("hidden");
             var siteUrl = "http://appconstructornew.newlinetechnologies.net/";
