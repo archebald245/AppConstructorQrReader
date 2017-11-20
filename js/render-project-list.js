@@ -12,7 +12,6 @@ function renderProjectList(projectList) {
             var projectListModel = this.state.data.map(function(item) {
                 var image;
                 if (item.ImagePath.length == 0) {
-                    //image = React.createElement('span', { className: 'restaurantMenuNoImages item-shop-img' });
                     image = React.createElement('img', { src: 'baseimages/cartItem.png', className: 'projectNoImage user-project-img' });
                 } else {
                     image = React.createElement('img', { src: item.ImagePath });
@@ -21,7 +20,7 @@ function renderProjectList(projectList) {
                     return React.createElement(
                         "div", { className: "project-list-version" },
                         React.createElement(
-                            "span", { className: "project-list-item-img" },
+                            "span", { className: "project-version" },
                             el
                         ),
                         React.createElement("input", { type: "hidden", name: "project-version", value: el })

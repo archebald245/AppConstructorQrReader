@@ -2240,5 +2240,27 @@ input[type="checkbox"].SwitcherFormElement:checked+div>div {
     margin: 20px auto;
 }
 
+.project-list-item-img {
+    display: inline-block;
+    height: 100px;
+    width: 100px;
+}
+
+.project-list-item-data {
+    display: inline-block;
+}
+
+.project-list-item-name {
+    width: 100%;
+}
+
+.project-list-item-version {
+    width: 100%;
+}
+
+.project-list-version {
+    margin: 10px;
+}
+
 
 /*~~~~~~Main Page Styles~~~~~*/
