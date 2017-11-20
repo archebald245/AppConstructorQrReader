@@ -24,7 +24,7 @@ function renderProjectList(projectList) {
                             "span", { className: "project-list-item-img" },
                             el
                         ),
-                        React.createElement("input", { type: "hidden", name: "project-version", value: el }),
+                        React.createElement("input", { type: "hidden", name: "project-version", value: el })
                     );
                 });
                 return React.createElement(
