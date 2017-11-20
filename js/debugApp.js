@@ -100,7 +100,7 @@ function startLogin() {
 
 function checkJsStorage() { //Call in onDeviceReady function
     if ($.jStorage.get('appData') == null) {
-        $(".login-wrapper").removeClass("hidden");
+        $(".project-list-wrapper").removeClass("hidden");
         $("#container, #custom-hide-container, .singleItem, #orderInfo, .cart, .container-statusBooking, .bookingServices-container, .container-selectFreeBookTime, .dateTimePicker-container, .order-booking").addClass("hidden");
     } else {
         checkConnection();
@@ -149,7 +149,7 @@ function GetApplicationData(project, content) {
         },
         cache: false,
         success: function(jsonObjectOfServer) {
-            $(".spinner-container").addClass("hidden");
+            $(".spinner-container, .project-list-wrapper").addClass("hidden");
             jsonObjectOfServer = JSON.parse(jsonObjectOfServer);
             scrollTop();
             applicationData = JSON.stringify(jsonObjectOfServer.Content);
