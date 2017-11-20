@@ -88,7 +88,6 @@ function startLogin() {
             if (data.IsLogin) {
                 renderProjectList(data.ProjectList)
                 $(".project-list-wrapper").removeClass('hidden');
-                $(".project-list-wrapper").html(data.IsLogin);
             } else {
                 alert(data.ErrorMessage);
                 $(".login-wrapper").removeClass('hidden');
