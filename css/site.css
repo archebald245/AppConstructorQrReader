@@ -2156,9 +2156,9 @@ input[type="checkbox"].SwitcherFormElement:checked+div>div {
     margin-top: 30px;
 }
 
-#login-form input,
-#login-form button {
+#login-form input {
     width: 100%;
+    margin-bottom: 20px;
 }
 
 #login-form button {
