@@ -2269,5 +2269,9 @@ input[type="checkbox"].SwitcherFormElement:checked+div>div {
     border: 1px dashed #fff;
 }
 
+.project-version.version-islive {
+    border: dotted 2px #d24a45;
+}
+
 
 /*~~~~~~Main Page Styles~~~~~*/
