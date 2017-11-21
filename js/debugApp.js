@@ -32,7 +32,6 @@ function startScan() { //Call in Init function
 
 function startLogin() {
     event.preventDefault();
-    $("#password-data").val("");
     var networkState = navigator.connection.type;
     if (networkState != Connection.NONE) {
         $(".login-wrapper").addClass('hidden');
@@ -43,6 +42,7 @@ function startLogin() {
         var siteUrl = "http://appconstructornew.newlinetechnologies.net/";
         $.post('' + siteUrl + '/Account/LoginViewTool', $(form).serialize(), function(data) {
             $(".login-spiner").addClass("hidden");
+            $("#password-data").val("");
             if (data.IsLogin) {
                 var login = $("#login-data").val();
                 $(".viewtool-login span.login-data").html(login);
