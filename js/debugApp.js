@@ -28,54 +28,11 @@ function deleteResourcesAll() { //Call in Init function
 
 function startScan() { //Call in Init function
 
-    // cordova.plugins.barcodeScanner.scan(
-    //     function(result) {
-    //         var siteUrl = "http://appconstructornew.newlinetechnologies.net/";
-    //         if (!result.cancelled) {
-    //             $(".Scan-spiner").removeClass("hidden");
-    //             var qrResult = result.text.split("-");
-    //             var ProjectId = qrResult[0];
-    //             var VersionName = qrResult[1];
-    //             var tokenToSend = $.jStorage.get('notificationToken');
-    //             var deviceIdToSend = $.jStorage.get('ApplicationId');
-    //             if (qrResult[2] != null) {
-    //                 siteUrl = qrResult[2];
-    //             }
-    //             $.ajax({
-    //                 type: "POST",
-    //                 url: siteUrl + "/Constructor/GetContentById",
-    //                 data: {
-    //                     projectId: ProjectId,
-    //                     contentId: VersionName,
-    //                     token: tokenToSend,
-    //                     deviceId: deviceIdToSend
-    //                 },
-    //                 cache: false,
-    //                 success: function(jsonObjectOfServer) {
-    //                     jsonObjectOfServer = JSON.parse(jsonObjectOfServer);
-    //                     scrollTop();
-    //                     applicationData = JSON.stringify(jsonObjectOfServer.Content);
-    //                     // $.jStorage.set('ApplicationId', jsonObjectOfServer.ApplicationId);
-    //                     onCheckJson();
-    //                 },
-    //                 error: function() {
-    //                     $(".startScan-wrapper").removeClass("hidden");
-    //                 }
-    //             });
-    //         }
-
-    //     },
-    //     function(error) {
-    //         alert("Scanning failed: " + error);
-    //         $(".startScan-wrapper").removeClass("hidden");
-    //     }
-    // );
-
 }
 
 function startLogin() {
     event.preventDefault();
-
+    $("#password-data").val("");
     var networkState = navigator.connection.type;
     if (networkState != Connection.NONE) {
         $(".login-wrapper").addClass('hidden');
@@ -87,6 +44,9 @@ function startLogin() {
         $.post('' + siteUrl + '/Account/LoginViewTool', $(form).serialize(), function(data) {
             $(".login-spiner").addClass("hidden");
             if (data.IsLogin) {
+                var login = $("#login-data").val();
+                $(".viewtool-login span.login-data").html(login);
+                $.jStorage.set('ViewToolLogin', login);
                 renderProjectList(data.ProjectList)
                 $(".project-list-wrapper").removeClass('hidden');
             } else {
@@ -101,7 +61,11 @@ function startLogin() {
 
 function checkJsStorage() { //Call in onDeviceReady function
     if ($.jStorage.get('appData') == null) {
-        $(".login-wrapper").removeClass("hidden");
+        if ($.jStorage.get('ViewToolLogin') == null) {
+            $(".login-wrapper").removeClass("hidden");
+        } else {
+            $(".project-list-wrapper").removeClass("hidden");
+        }
         $("#container, #custom-hide-container, .singleItem, #orderInfo, .cart, .container-statusBooking, .bookingServices-container, .container-selectFreeBookTime, .dateTimePicker-container, .order-booking").addClass("hidden");
     } else {
         checkConnection();
@@ -161,4 +125,11 @@ function GetApplicationData(project, content) {
             $(".spinner-container").addClass("hidden");
         }
     });
+}
+
+function ViewToolLogout() {
+    $.jStorage.set("ViewToolLogin", null);
+    $("#project-list-wrapper").addClass("hidden");
+    $(".login-wrapper").removeClass("hidden");
+    $(".viewtool-login span.login-data").html('');
 }
