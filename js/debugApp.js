@@ -35,7 +35,7 @@ function startLogin() {
     var networkState = navigator.connection.type;
     if (networkState != Connection.NONE) {
         $(".login-wrapper").addClass('hidden');
-        var form = $(".login-wrapper form$login-form").parents("form");
+        var form = $(".login-wrapper form#login-form");
         // var check = checkValidationAndRequired(form);
         // if (check) {
         $(".login-spiner").removeClass("hidden");
