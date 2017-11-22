@@ -2268,16 +2268,18 @@ input[type="checkbox"].SwitcherFormElement:checked+div>div {
     margin: 0 5%;
     border: none;
     box-shadow: 0 0 8px 0 rgba(74, 74, 74, 0.54);
-    overflow: hidden;
     padding: 10px;
+    display: table;
 }
 
 .project-list-item-img {
-    float: left;
     height: 150px;
     width: 150px;
     border: 2px solid #02b996;
-    margin-right: 10px;
+    margin-right: 5%;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
 }
 
 .project-list-item-img img {
@@ -2286,7 +2288,9 @@ input[type="checkbox"].SwitcherFormElement:checked+div>div {
 }
 
 .project-list-item-data {
-    display: inline-block;
+    width: 80%;
+    display: table-cell;
+    padding-left: 20px;
 }
 
 .project-list-item-name {
@@ -2318,10 +2322,11 @@ input[type="checkbox"].SwitcherFormElement:checked+div>div {
 .project-list-item-version select {
     height: 40px;
     box-shadow: 0 0 8px 0 rgba(74, 74, 74, 0.54);
+    width: 100%;
 }
 
 .take-application {
-    margin: 25px auto;
+    /* margin: 25px auto; */
     height: 40px;
     border-radius: 10px;
     border: none;
@@ -2331,6 +2336,7 @@ input[type="checkbox"].SwitcherFormElement:checked+div>div {
     font-size: 20px;
     font-weight: bold;
     color: #969698;
+    float: right;
 }
 
 .viewtool-login {
