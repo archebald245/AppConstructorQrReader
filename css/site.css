@@ -2261,15 +2261,20 @@ input[type="checkbox"].SwitcherFormElement:checked+div>div {
 }
 
 .project-list-item {
-    width: 80%;
-    border: 1px solid #000;
-    margin: 20px auto;
+    width: 90%;
+    margin: 0 5%;
+    border: none;
+    box-shadow: 0 0 8px 0 rgba(74, 74, 74, 0.54);
+    overflow: hidden;
+    padding: 10px;
 }
 
 .project-list-item-img {
-    display: inline-block;
-    height: 100px;
-    width: 100px;
+    float: left;
+    height: 150px;
+    width: 150px;
+    border: 2px solid #02b996;
+    margin-right: 10px;
 }
 
 .project-list-item-img img {
@@ -2282,7 +2287,9 @@ input[type="checkbox"].SwitcherFormElement:checked+div>div {
 }
 
 .project-list-item-name {
-    width: 100%;
+    font-size: 24px;
+    font-weight: bold;
+    color: #000000;
 }
 
 .project-list-item-version {
@@ -2304,19 +2311,21 @@ input[type="checkbox"].SwitcherFormElement:checked+div>div {
 }
 
 .viewtool-login {
-    width: 95%;
-    margin: 2.5% auto;
-    height: 150px;
+    width: 90%;
+    margin: 0 5%;
+    height: 100px;
 }
 
 .viewtool-update-container {
     width: 100%;
+    clear: both;
 }
 
 button.viewtool-update {
     margin: 25px auto;
     height: 40px;
     border-radius: 10px;
+    border: none;
     padding-left: 50px;
     background-color: #ffffff;
     background-image: url(../baseimages/update.png);
@@ -2332,34 +2341,35 @@ button.viewtool-update {
 
 .viewtool-login span {
     font-size: 20px;
-    line-height: 150px;
+    line-height: 100px;
     text-align: left;
     color: #fefefe;
 }
 
 .logout {
-    margin-left: 5%;
     background-image: url(../baseimages/logout.png);
-    background-size: cover;
+    background-size: 100%;
     background-position: center;
     background-repeat: no-repeat;
     width: 30px;
-    height: 30px;
-    content: " ";
+    height: 100px;
+    display: block;
+    float: right;
 }
 
-.login-header {
+юviewtool-login span.login-header {
     font-weight: bold;
-    font-size: 24px;
+    font-size: 28px;
 }
 
 .login-data {
     margin-right: 5%;
-    padding-right: 60px;
+    padding-left: 40px;
     background-image: url(../baseimages/user-icon.png);
-    background-size: cover;
-    background-position: right;
+    background-size: 30px;
+    background-position: left;
     background-repeat: no-repeat;
+    float: right;
 }
 
 

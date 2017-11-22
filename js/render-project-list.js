@@ -21,12 +21,9 @@ function renderProjectList(projectList) {
                 }
                 var projectListVersion = item.Versions.map(function(el) {
                     return React.createElement(
-                        "div", { className: "project-list-version" },
-                        React.createElement(
-                            "span", { className: "project-version" + (el.IsLive ? ' version-islive' : '') },
-                            el.Version
-                        ),
-                        React.createElement("input", { type: "hidden", name: "project-version-contentId", value: el.ContentId })
+                        "option", { className: "project-version" + (el.IsLive ? ' version-islive' : ''), value: el.ContentId },
+                        el.Version
+                        // React.createElement("input", { type: "hidden", name: "project-version-contentId", value: el.ContentId })
                     );
                 });
                 return React.createElement(
@@ -42,7 +39,15 @@ function renderProjectList(projectList) {
                             item.Name
                         ), React.createElement(
                             "div", { className: "project-list-item-version" },
-                            projectListVersion
+                            React.createElement(
+                                "select", { className: "take-application" },
+                                projectListVersion
+                            )
+
+                        ),
+                        React.createElement(
+                            "button", { className: "take-application" },
+                            "Загрузить"
                         )
                     ),
                     React.createElement("input", { type: "hidden", name: "projectId", value: item.ProjectId })
