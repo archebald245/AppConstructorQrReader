@@ -2294,5 +2294,54 @@ input[type="checkbox"].SwitcherFormElement:checked+div>div {
     border: dotted 2px #d24a45;
 }
 
+.viewtool-login {
+    width: 100%;
+    background-color: #02b996;
+    height: 176px;
+}
+
+.viewtool-update-container {
+    width: 100px;
+}
+
+button.viewtool-update {
+    margin: 25px auto;
+    width: 384px;
+    height: 88px;
+    border-radius: 10px;
+    padding-left: 140px;
+    background-color: #ffffff;
+    background-image: url(../baseimages/update.png);
+    background-size: cover;
+    background-position: left;
+    background-repeat: no-repeat;
+    box-shadow: 0 0 8px 0 rgba(74, 74, 74, 0.54);
+}
+
+.viewtool-login span {
+    font-size: 48px;
+    font-weight: bold;
+    line-height: 0.5;
+    text-align: left;
+    color: #fefefe;
+}
+
+.logout {
+    margin-left: 5%;
+    background-image: url(../baseimages/logout.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.login-data {
+    margin-right: 5%;
+    padding-right: 60px;
+    background-image: url(../baseimages/user-icon.png);
+    background-size: cover;
+    background-position: right;
+    background-repeat: no-repeat;
+}
+
 
 /*~~~~~~Main Page Styles~~~~~*/
