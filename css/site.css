@@ -2299,10 +2299,14 @@ input[type="checkbox"].SwitcherFormElement:checked+div>div {
     border: dotted 2px #d24a45;
 }
 
-.viewtool-login {
-    width: 100%;
+.viewtool-login-container {
     background-color: #02b996;
-    height: 176px;
+}
+
+.viewtool-login {
+    width: 95%;
+    margin: 2.5% auto;
+    height: 150px;
 }
 
 .viewtool-update-container {
@@ -2327,9 +2331,8 @@ button.viewtool-update {
 }
 
 .viewtool-login span {
-    font-size: 48px;
-    font-weight: bold;
-    line-height: 0.5;
+    font-size: 20px;
+    line-height: 150px;
     text-align: left;
     color: #fefefe;
 }
@@ -2340,6 +2343,14 @@ button.viewtool-update {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    width: 30px;
+    height: 30px;
+    content: " ";
+}
+
+.login-header {
+    font-weight: bold;
+    font-size: 24px;
 }
 
 .login-data {
