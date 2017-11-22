@@ -2152,6 +2152,10 @@ input[type="checkbox"].SwitcherFormElement:checked+div>div {
 
 /*~~~~~~Main Page Styles~~~~~*/
 
+.project-list-wrapper {
+    background-color: #fff;
+}
+
 #login-form {
     margin-top: 50px;
 }
@@ -2187,6 +2191,7 @@ input[type="checkbox"].SwitcherFormElement:checked+div>div {
     margin: auto;
     display: block;
     border-radius: 40px;
+    border: none;
     background-color: #ffffff;
     -webkit-box-shadow: 0 0 8px 0 rgba(74, 74, 74, 0.54);
     -moz-box-shadow: 0 0 8px 0 rgba(74, 74, 74, 0.54);
@@ -2301,21 +2306,24 @@ input[type="checkbox"].SwitcherFormElement:checked+div>div {
 }
 
 .viewtool-update-container {
-    width: 100px;
+    width: 100%;
 }
 
 button.viewtool-update {
     margin: 25px auto;
-    width: 384px;
-    height: 88px;
+    height: 40px;
     border-radius: 10px;
-    padding-left: 140px;
+    padding-left: 50px;
     background-color: #ffffff;
     background-image: url(../baseimages/update.png);
-    background-size: cover;
-    background-position: left;
+    background-size: 25px;
+    background-position: 15px center;
     background-repeat: no-repeat;
     box-shadow: 0 0 8px 0 rgba(74, 74, 74, 0.54);
+    display: block;
+    font-size: 20px;
+    font-weight: bold;
+    color: #969698;
 }
 
 .viewtool-login span {
