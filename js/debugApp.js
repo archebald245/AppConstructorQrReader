@@ -88,15 +88,15 @@ function deleteResourcesImg() {
 
 function ProjectListEventListener() {
 
-    $(".take-application").on("click", function() {
+    $(".take-application").unbind("click").on("click", function() {
         var projectId = $(this).parents(".project-list-item").find("[name='projectId']").val();
         var content = $(this).parents(".project-list-item").find("select option:selected").val();
         GetApplicationData(projectId, content);
     });
-    $(".logout").on("click", function() {
+    $(".logout").unbind("click").on("click", function() {
         ViewToolLogout()
     });
-    $(".viewtool-update").on("click", function() {
+    $(".viewtool-update").unbind("click").on("click", function() {
         startLogin();
     });
 }
@@ -132,6 +132,8 @@ function GetApplicationData(project, content) {
 
 function ViewToolLogout() {
     $.jStorage.set("ViewToolLogin", null);
+    $("#login-data").val("");
+    $("#password-data").val("");
     $("#project-list-wrapper").addClass("hidden");
     $(".login-wrapper").removeClass("hidden");
     $(".viewtool-login span.login-data").html('');
