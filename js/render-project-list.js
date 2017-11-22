@@ -40,7 +40,7 @@ function renderProjectList(projectList) {
                         ), React.createElement(
                             "div", { className: "project-list-item-version" },
                             React.createElement(
-                                "select", { className: "take-application" },
+                                "select", { className: "" },
                                 projectListVersion
                             )
 

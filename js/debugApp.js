@@ -42,7 +42,7 @@ function startLogin() {
         var siteUrl = "http://appconstructornew.newlinetechnologies.net/";
         $.post('' + siteUrl + '/Account/LoginViewTool', $(form).serialize(), function(data) {
             $(".login-spiner").addClass("hidden");
-            $("#password-data").val("");
+
             if (data.IsLogin) {
                 var login = $("#login-data").val();
                 $(".viewtool-login span.login-data").html(login);
@@ -51,6 +51,7 @@ function startLogin() {
                 $(".project-list-wrapper").removeClass('hidden');
             } else {
                 alert(data.ErrorMessage);
+                $("#password-data").val("");
                 $(".login-wrapper").removeClass('hidden');
                 return false;
             }
@@ -86,15 +87,17 @@ function deleteResourcesImg() {
 }
 
 function ProjectListEventListener() {
-    $(".project-list-item").on("click", function() {
-        var projectId = $(this).find("[name='projectId']").val();
-        var content = $(this).find("[name='project-version-contentId']").val();
+
+    $(".take-application").on("click", function() {
+        var projectId = $(this).parents(".project-list-item").find("[name='projectId']").val();
+        var content = $(this).parents(".project-list-item").find("select option:selected").val();
         GetApplicationData(projectId, content);
     });
-    $(".project-list-version").on("click", function() {
-        var projectId = $(this).parents(".project-list-item").find("[name='projectId']").val();
-        var content = $(this).find("[name='project-version-contentId']").val();
-        GetApplicationData(projectId, content);
+    $(".logout").on("click", function() {
+        ViewToolLogout()
+    });
+    $(".viewtool-update").on("click", function() {
+        startLogin();
     });
 }
 

@@ -2217,6 +2217,10 @@ input[type="checkbox"].SwitcherFormElement:checked+div>div {
     position: relative;
 }
 
+.login-wrapper {
+    background-color: #06C1A1;
+}
+
 .login-wrapper h1 {
     font-size: 24px;
     margin: 0;
@@ -2290,10 +2294,12 @@ input[type="checkbox"].SwitcherFormElement:checked+div>div {
     font-size: 24px;
     font-weight: bold;
     color: #000000;
+    padding-bottom: 10px;
 }
 
 .project-list-item-version {
     width: 100%;
+    padding-bottom: 10px;
 }
 
 .project-list-version {
@@ -2308,6 +2314,24 @@ input[type="checkbox"].SwitcherFormElement:checked+div>div {
 
 .viewtool-login-container {
     background-color: #02b996;
+}
+
+.project-list-item-version select {
+    height: 40px;
+    box-shadow: 0 0 8px 0 rgba(74, 74, 74, 0.54);
+}
+
+.take-application {
+    margin: 25px auto;
+    height: 40px;
+    border-radius: 10px;
+    border: none;
+    background-color: #ffffff;
+    box-shadow: 0 0 8px 0 rgba(74, 74, 74, 0.54);
+    display: block;
+    font-size: 20px;
+    font-weight: bold;
+    color: #969698;
 }
 
 .viewtool-login {
@@ -2357,7 +2381,7 @@ button.viewtool-update {
     float: right;
 }
 
-юviewtool-login span.login-header {
+.viewtool-login span.login-header {
     font-weight: bold;
     font-size: 28px;
 }
