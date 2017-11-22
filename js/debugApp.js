@@ -35,9 +35,9 @@ function startLogin() {
     var networkState = navigator.connection.type;
     if (networkState != Connection.NONE) {
         $(".login-wrapper").addClass('hidden');
-        var form = $(".login-wrapper form$login-form").parents("form")
-            // var check = checkValidationAndRequired(form);
-            // if (check) {
+        var form = $(".login-wrapper form$login-form").parents("form");
+        // var check = checkValidationAndRequired(form);
+        // if (check) {
         $(".login-spiner").removeClass("hidden");
         var siteUrl = "http://appconstructornew.newlinetechnologies.net/";
         $.post('' + siteUrl + '/Account/LoginViewTool', $(form).serialize(), function(data) {
