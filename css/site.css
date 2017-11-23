@@ -2200,9 +2200,9 @@ input[type="checkbox"].SwitcherFormElement:checked+div>div {
 
 .login-form-container {
     z-index: 9999;
-    width: 75%;
+    width: 70%;
     position: absolute;
-    top: 35%;
+    top: 15%;
     left: 0;
     right: 0;
     margin: auto;
@@ -2210,12 +2210,11 @@ input[type="checkbox"].SwitcherFormElement:checked+div>div {
 
 .login-form-container .app-logo {
     margin: 0 auto 20px;
-    width: 50%;
-    min-height: 150px;
-    min-width: 150px;
+    width: 200px;
+    height: 120px;
     background-image: url(../baseimages/app-logo.png);
-    background-size: cover;
-    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat
 }
 
 .project-list-wrapper,
@@ -2412,4 +2411,4 @@ button.viewtool-update {
 }
 
 
-/*~~~~~~Main Page Styles~~~~~*/
+/* ~~~~~~Main Page Styles~~~~~  */
