@@ -2208,9 +2208,14 @@ input[type="checkbox"].SwitcherFormElement:checked+div>div {
     margin: auto;
 }
 
-.login-form-container img {
+.login-form-container .app-logo {
     margin: 0 auto 20px;
     width: 50%;
+    min-height: 150px;
+    min-width: 150px;
+    background-image: url(../baseimages/app-logo.png);
+    background-size: cover;
+    background-position: center;
 }
 
 .project-list-wrapper,
@@ -2228,7 +2233,7 @@ input[type="checkbox"].SwitcherFormElement:checked+div>div {
 .login-wrapper h1 {
     font-size: 24px;
     margin: 0;
-    text-align: left;
+    text-align: center;
     color: #fff;
     font-weight: bold;
 }
