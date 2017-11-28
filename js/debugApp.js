@@ -159,13 +159,7 @@ function UpdateProjectList() {
         cache: false,
         success: function(data, statusText, xhr) {
             $(".login-spiner").addClass("hidden");
-            //Unauthorized
-            if (xhr.status === 401) {
-                if (authtoken != "") {
-                    RefreshToken(UpdateProjectList)
-                }
-                return false;
-            }
+
             if (data.IsLogin) {
                 $.jStorage.set('ProjectList', data.ProjectList);
                 renderProjectList(data.ProjectList);
@@ -175,6 +169,13 @@ function UpdateProjectList() {
             }
         },
         error: function(data, statusText, xhr) {
+            //Unauthorized
+            if (xhr.status === 401) {
+                if (authtoken != "") {
+                    RefreshToken(UpdateProjectList)
+                }
+                return false;
+            }
             $(".login-spiner").addClass("hidden");
         }
     });
@@ -192,15 +193,15 @@ function RefreshToken(callback) {
         cache: false,
         success: function(data, statusText, xhr) {
             $(".login-spiner").addClass("hidden");
+            $.jStorage.set('AuthToken', data);
+            callback();
+        },
+        error: function(data, statusText, xhr) {
             //badrequest
             if (xhr.status === 400) {
                 window.plugins.toast.showShortBottom(data);
                 return false;
             }
-            $.jStorage.set('AuthToken', data);
-            callback();
-        },
-        error: function(data, statusText, xhr) {
             $(".login-spiner").addClass("hidden");
         }
     });
