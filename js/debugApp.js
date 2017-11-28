@@ -48,6 +48,7 @@ function startLogin() {
                 $(".viewtool-login span.login-data").html(login);
                 $.jStorage.set('ViewToolLogin', login);
                 $.jStorage.set('AuthToken', data.Token);
+                $.jStorage.set('ProjectList', data.ProjectList);
                 renderProjectList(data.ProjectList)
                 $(".project-list-wrapper").removeClass('hidden');
             } else {
@@ -66,6 +67,8 @@ function checkJsStorage() { //Call in onDeviceReady function
         if ($.jStorage.get('ViewToolLogin') == null) {
             $(".login-wrapper").removeClass("hidden");
         } else {
+            $(".viewtool-login span.login-data").html($.jStorage.get('ViewToolLogin'));
+            renderProjectList($.jStorage.get('ProjectList'));
             $(".project-list-wrapper").removeClass("hidden");
         }
         $("#container, #custom-hide-container, .singleItem, #orderInfo, .cart, .container-statusBooking, .bookingServices-container, .container-selectFreeBookTime, .dateTimePicker-container, .order-booking").addClass("hidden");
@@ -133,6 +136,9 @@ function GetApplicationData(project, content) {
 
 function ViewToolLogout() {
     $.jStorage.set("ViewToolLogin", null);
+    $.jStorage.set("AuthToken", null);
+    $.jStorage.set("ProjectList", null);
+
     $("#login-data").val("");
     $("#password-data").val("");
     $("#project-list-wrapper").addClass("hidden");
@@ -157,7 +163,8 @@ function UpdateProjectList() {
 
             if (data.IsLogin) {
                 $.jStorage.set('AuthToken', data.Token);
-                renderProjectList(data.ProjectList)
+                $.jStorage.set('ProjectList', data.ProjectList);
+                renderProjectList(data.ProjectList);
             } else {
                 alert(data.ErrorMessage);
                 return false;
