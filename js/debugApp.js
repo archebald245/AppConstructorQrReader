@@ -152,7 +152,7 @@ function UpdateProjectList() {
             "Authorization": "Bearer " + authtoken
         },
         cache: false,
-        success: function() {
+        success: function(data) {
             $(".login-spiner").addClass("hidden");
 
             if (data.IsLogin) {
