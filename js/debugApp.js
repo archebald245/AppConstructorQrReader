@@ -40,13 +40,14 @@ function startLogin() {
         // if (check) {
         $(".login-spiner").removeClass("hidden");
         var siteUrl = "http://appconstructornew.newlinetechnologies.net/";
-        $.post('' + siteUrl + '/Account/LoginViewTool', $(form).serialize(), function(data) {
+        $.post('' + siteUrl + '/api/LoginViewTool', $(form).serialize(), function(data) {
             $(".login-spiner").addClass("hidden");
 
             if (data.IsLogin) {
                 var login = $("#login-data").val();
                 $(".viewtool-login span.login-data").html(login);
                 $.jStorage.set('ViewToolLogin', login);
+                $.jStorage.set('AuthToken', data.Token);
                 renderProjectList(data.ProjectList)
                 $(".project-list-wrapper").removeClass('hidden');
             } else {
@@ -97,7 +98,7 @@ function ProjectListEventListener() {
         ViewToolLogout()
     });
     $(".viewtool-update").unbind("click").on("click", function() {
-        startLogin();
+        UpdateProjectList();
     });
 }
 
@@ -137,4 +138,33 @@ function ViewToolLogout() {
     $("#project-list-wrapper").addClass("hidden");
     $(".login-wrapper").removeClass("hidden");
     $(".viewtool-login span.login-data").html('');
+}
+
+function UpdateProjectList() {
+    $(".login-spiner").removeClass("hidden");
+
+    var authtoken = $.jStorage.get('AuthToken')
+    var siteUrl = "http://appconstructornew.newlinetechnologies.net/";
+    $.ajax({
+        type: "POST",
+        url: siteUrl + "/api/UpdateProjectList",
+        headers: {
+            "Authorization": "Bearer " + authtoken
+        },
+        cache: false,
+        success: function() {
+            $(".login-spiner").addClass("hidden");
+
+            if (data.IsLogin) {
+                $.jStorage.set('AuthToken', data.Token);
+                renderProjectList(data.ProjectList)
+            } else {
+                alert(data.ErrorMessage);
+                return false;
+            }
+        },
+        error: function() {
+            $(".login-spiner").addClass("hidden");
+        }
+    });
 }
