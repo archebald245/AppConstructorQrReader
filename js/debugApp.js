@@ -162,7 +162,6 @@ function UpdateProjectList() {
             $(".login-spiner").addClass("hidden");
 
             if (data.IsLogin) {
-                $.jStorage.set('AuthToken', data.Token);
                 $.jStorage.set('ProjectList', data.ProjectList);
                 renderProjectList(data.ProjectList);
             } else {
@@ -170,7 +169,7 @@ function UpdateProjectList() {
                 return false;
             }
         },
-        error: function() {
+        error: function(data) {
             $(".login-spiner").addClass("hidden");
         }
     });
