@@ -170,7 +170,7 @@ function UpdateProjectList() {
         },
         error: function(data, statusText, xhr) {
             //Unauthorized
-            if (xhr.status === 401) {
+            if (data.status === 401) {
                 if (authtoken != "") {
                     RefreshToken(UpdateProjectList)
                 }
