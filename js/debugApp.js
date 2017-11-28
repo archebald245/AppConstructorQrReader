@@ -148,7 +148,7 @@ function ViewToolLogout() {
 
 function UpdateProjectList() {
     $(".login-spiner").removeClass("hidden");
-
+    var self = this;
     var authtoken = $.jStorage.get('AuthToken')
     var siteUrl = "http://appconstructornew.newlinetechnologies.net/";
     $.ajax({
@@ -160,7 +160,14 @@ function UpdateProjectList() {
         cache: false,
         success: function(data, statusText, xhr) {
             $(".login-spiner").addClass("hidden");
+            //Unauthorized
+            if (xhr.status === 401) {
+                if (authtoken != "") {
+                    RefreshToken(self);
+                }
 
+                return false;
+            }
             if (data.IsLogin) {
                 $.jStorage.set('ProjectList', data.ProjectList);
                 renderProjectList(data.ProjectList);
@@ -169,14 +176,14 @@ function UpdateProjectList() {
                 return false;
             }
         },
-        error: function(data) {
+        error: function(data, statusText, xhr) {
             $(".login-spiner").addClass("hidden");
         }
     });
 }
 
-function RefreshToken() {
-    var authtoken = $.jStorage.get('AuthToken')
+function RefreshToken(callback) {
+    var authtoken = $.jStorage.get('AuthToken');
     var siteUrl = "http://appconstructornew.newlinetechnologies.net/";
     $.ajax({
         type: "GET",
@@ -187,14 +194,13 @@ function RefreshToken() {
         cache: false,
         success: function(data, statusText, xhr) {
             $(".login-spiner").addClass("hidden");
-
-            if (data.IsLogin) {
-                $.jStorage.set('ProjectList', data.ProjectList);
-                renderProjectList(data.ProjectList);
-            } else {
-                alert(data.ErrorMessage);
+            //badrequest
+            if (xhr.status === 200) {
+                window.plugins.toast.showShortBottom(data);
                 return false;
             }
+            $.jStorage.set('AuthToken', data);
+            callback();
         },
         error: function(data, statusText, xhr) {
             $(".login-spiner").addClass("hidden");
