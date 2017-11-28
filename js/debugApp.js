@@ -40,7 +40,7 @@ function startLogin() {
         // if (check) {
         $(".login-spiner").removeClass("hidden");
         var siteUrl = "http://appconstructornew.newlinetechnologies.net/";
-        $.post('' + siteUrl + '/api/LoginViewTool', $(form).serialize(), function(data) {
+        $.post('' + siteUrl + '/api/LoginViewTool', $(form).serialize(), function(data, statusText, xhr) {
             $(".login-spiner").addClass("hidden");
 
             if (data.IsLogin) {
@@ -158,7 +158,7 @@ function UpdateProjectList() {
             "Authorization": "Bearer " + authtoken
         },
         cache: false,
-        success: function(data) {
+        success: function(data, statusText, xhr) {
             $(".login-spiner").addClass("hidden");
 
             if (data.IsLogin) {
@@ -170,6 +170,33 @@ function UpdateProjectList() {
             }
         },
         error: function(data) {
+            $(".login-spiner").addClass("hidden");
+        }
+    });
+}
+
+function RefreshToken() {
+    var authtoken = $.jStorage.get('AuthToken')
+    var siteUrl = "http://appconstructornew.newlinetechnologies.net/";
+    $.ajax({
+        type: "GET",
+        url: siteUrl + "/api/RefreshToken",
+        headers: {
+            "Authorization": "Bearer " + authtoken
+        },
+        cache: false,
+        success: function(data, statusText, xhr) {
+            $(".login-spiner").addClass("hidden");
+
+            if (data.IsLogin) {
+                $.jStorage.set('ProjectList', data.ProjectList);
+                renderProjectList(data.ProjectList);
+            } else {
+                alert(data.ErrorMessage);
+                return false;
+            }
+        },
+        error: function(data, statusText, xhr) {
             $(".login-spiner").addClass("hidden");
         }
     });
