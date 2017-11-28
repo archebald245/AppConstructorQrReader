@@ -148,7 +148,6 @@ function ViewToolLogout() {
 
 function UpdateProjectList() {
     $(".login-spiner").removeClass("hidden");
-    var self = this;
     var authtoken = $.jStorage.get('AuthToken')
     var siteUrl = "http://appconstructornew.newlinetechnologies.net/";
     $.ajax({
@@ -163,9 +162,8 @@ function UpdateProjectList() {
             //Unauthorized
             if (xhr.status === 401) {
                 if (authtoken != "") {
-                    RefreshToken(self);
+                    RefreshToken(UpdateProjectList)
                 }
-
                 return false;
             }
             if (data.IsLogin) {
@@ -195,7 +193,7 @@ function RefreshToken(callback) {
         success: function(data, statusText, xhr) {
             $(".login-spiner").addClass("hidden");
             //badrequest
-            if (xhr.status === 200) {
+            if (xhr.status === 400) {
                 window.plugins.toast.showShortBottom(data);
                 return false;
             }
