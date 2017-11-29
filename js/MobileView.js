@@ -781,10 +781,11 @@ function reactRender() {
                         //e.g. track document usage
                     }
                     cordova.plugins.SitewaertsDocumentViewer.viewDocument(
-                        url, 'application/pdf', options, onShow);
+                        url, 'application/pdf', options,
+                        onShow);
                 });
             }
-            if (data.ContentTypeId == 2 || data.ContentTypeId == 4) {
+            if (data.ContentTypeId == 2 || data.ContentTypeId == 4 || data.ContentTypeId == 9) {
                 $(ReactDOM.findDOMNode(this)).click(function(e) {
                     e.preventDefault();
                     window.open($(this).attr("href"), '_system')
@@ -927,7 +928,7 @@ function reactRender() {
             }
 
             //ContentTypeId - 10 start
-            if (data.ContentTypeId == 10 && this.checkDeniedTools(deniedTools, "hbox-container-item")) {
+            if (data.ContentTypeId == 10 && data.Json.elements !== undefined && this.checkDeniedTools(deniedTools, "hbox-container-item")) {
                 return React.createElement(
                     'div', { className: "cell-container col-xs-" + data.Colspan + " col-sm-" + data.Colspan + " col-md-" + data.Colspan + " col-lg-" + data.Colspan },
                     React.createElement(Hbox, { data: data.Json })
@@ -935,7 +936,7 @@ function reactRender() {
             } else if (data.ContentTypeId == 10) {
                 return null
             }
-            if (data.ContentTypeId == 11 && this.checkDeniedTools(deniedTools, "vbox-container-item")) {
+            if (data.ContentTypeId == 11 && data.Json.elements !== undefined && this.checkDeniedTools(deniedTools, "vbox-container-item")) {
                 return React.createElement(
                     'div', { className: "cell-container col-xs-" + data.Colspan + " col-sm-" + data.Colspan + " col-md-" + data.Colspan + " col-lg-" + data.Colspan },
                     React.createElement(Vbox, { data: data.Json })

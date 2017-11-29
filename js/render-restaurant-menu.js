@@ -72,12 +72,12 @@ function renderRestaurantMenu(menuCollection, position, responsiveModel, stateNa
                                 "div", { className: "btn-restaurant-menu-container" },
                                 React.createElement(
                                     "div", { className: "cartShop-price" },
-                                    item.Price + " " + currency != null ? currency : ""
+                                    item.Price + " " + currency
                                 ),
                                 React.createElement(
                                     "div", { className: "cartShop-buy btn-restaurant-menu" },
                                     React.createElement(
-                                        "span", { className: "cartShop-buy-label" }, "Заказать")
+                                        "span", { className: "cartShop-buy-label" }, cultureRes.toCart)
                                 )
                             ),
                             React.createElement(
@@ -115,7 +115,7 @@ function renderRestaurantMenu(menuCollection, position, responsiveModel, stateNa
                                 ),
                                 React.createElement(
                                     "div", { className: "cartShop-buy btn-restaurant-menu" },
-                                    "Заказать")
+                                    cultureRes.toCart)
                             ),
 
                             React.createElement(
@@ -152,7 +152,7 @@ function renderRestaurantMenu(menuCollection, position, responsiveModel, stateNa
                                 React.createElement(
                                     "div", { className: "cartShop-buy btn-restaurant-menu" },
                                     React.createElement(
-                                        "span", { className: "cartShop-buy-label" }, "Заказать")
+                                        "span", { className: "cartShop-buy-label" }, cultureRes.toCart)
 
                                 )
                             ),

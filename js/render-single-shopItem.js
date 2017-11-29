@@ -71,7 +71,7 @@ function renderSingleShopItem(singleItem) {
                             "span", { className: "img-dollar-singleItem" },
                             null
                         ),
-                        data.Price + " ГРН"
+                        data.Price
                     ),
                     React.createElement(
                         "div", { className: "singleShop-description" },

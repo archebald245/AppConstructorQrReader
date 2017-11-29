@@ -1,7 +1,8 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
+<html>
 
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta name="format-detection" content="telephone=no" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
@@ -25,15 +26,17 @@
     <script src="js/buttonMaterialUI/buttonMaterialUI.min.js"></script>
     <script src="js/lightGallery/lightgallery.min.js"></script>
 
+    <script src="js/payment/dropin.min.js"></script>
     <script src="js/localized/cultureResources.js"></script>
     <script src="js/render-form.js"></script>
     <script src="js/render-custom-form.js"></script>
     <script src="js/render-custom-hide-form.js"></script>
     <script src="js/render-restaurant-menu.js"></script>
     <script src="js/render-cart-item.js"></script>
-	<script src="js/render-booking-cart-item.js"></script>
+    <script src="js/render-booking-cart-item.js"></script>
     <script src="js/render-single-shopItem.js"></script>
     <script src="js/render-booking.js"></script>
+    <script src="js/render-project-list.js"></script>
     <script src="js/render-services.js"></script>
     <script src="js/jstorage.js"></script>
     <script src="js/jquery.blockUI.js"></script>
@@ -42,6 +45,7 @@
     <script src="js/resourceWork.js"></script>
     <script src="js/formsWork.js"></script>
     <script src="js/bookingWork.js"></script>
+    <script src="js/paymentWork.js"></script>
     <script src="js/restaurantMenuWork.js"></script>
     <script src="js/cartWork.js"></script>
     <script src="js/bootstrap.min.js"></script>
@@ -68,14 +72,61 @@
 </head>
 
 <body>
+    <div class="spinner-container hidden">
+        <div class="sk-fading-circle">
+            <div class="sk-circle1 sk-circle"></div>
+            <div class="sk-circle2 sk-circle"></div>
+            <div class="sk-circle3 sk-circle"></div>
+            <div class="sk-circle4 sk-circle"></div>
+            <div class="sk-circle5 sk-circle"></div>
+            <div class="sk-circle6 sk-circle"></div>
+            <div class="sk-circle7 sk-circle"></div>
+            <div class="sk-circle8 sk-circle"></div>
+            <div class="sk-circle9 sk-circle"></div>
+            <div class="sk-circle10 sk-circle"></div>
+            <div class="sk-circle11 sk-circle"></div>
+            <div class="sk-circle12 sk-circle"></div>
+        </div>
+    </div>
     <button id="clearJsStorage" class="hidden"></button>
+
     <div class="startScan-wrapper hidden">
         <h1>Please Scan QR for your Application</h1>
         <button id="startScan">Start Scan</button>
         <div class="Scan-spiner hidden"></div>
     </div>
+    <div class="login-wrapper hidden">
+        <div class="login-form-container">
+            <div class="app-logo"></div>
+            <h1>Discover your App before launching</h1>
+            <form id="login-form" method="post" action="/Account/LoginViewTool">
 
- <div data-role="header" data-position="fixed" class="classMenu">
+                <label for="login-data" class="login-label"><span>Login (AppConstructor account)</span></label>
+                <input type="text" id="login-data" name="Username" class="required" value="pugachov.eu@gmail.com" />
+
+                <label for="password-data" class="password-label"><span>Password</span></label>
+                <input type="password" id="password-data" name="Password" class="required" value="Zapomni21" />
+
+                <button type="submit" id="vt-login">Log In</button>
+            </form>
+            <div class="login-spiner hidden"></div>
+        </div>
+    </div>
+    <div class="project-list-wrapper hidden">
+        <div class="viewtool-login-container">
+            <div class="viewtool-login">
+                <span class="login-header"> Project List</span>
+                <span class="logout"></span>
+                <span class="login-data"></span>
+            </div>
+        </div>
+        <div class="viewtool-update-container">
+            <button class="viewtool-update">Update</button>
+        </div>
+        <div class="project-list-container" id="loginUserProjects"></div>
+    </div>
+
+    <div data-role="header" data-position="fixed" class="classMenu">
         <div class="menu-icon" onclick="onClickButtonMenu()">
             <div></div>
             <div></div>
@@ -120,31 +171,56 @@
             <input type="hidden" class="thisIdForTimeLine" />
             <input type="hidden" class="thisIsConfirm" />
         </div>
-
+        <!--BOOKING-->
         <div class="order-booking hidden">
             <div class="cart-top-line">
-                <div class="btn-back-toservices"></div><span>Your Order Info</span></div>
-            <label for="nameOrder"><span>Name</span></label>
-            <input type="text" id="booking-nameOrder" class="nameOrder required" />
-            <label for="phoneOrder"><span>Phone Number</span></label>
-            <input type="text" id="booking-phoneOrder" class="phoneOrder required" />
-            <label for="emailOrder"><span>Email</span></label>
-            <input type="text" id="booking-emailOrder" class="emailOrder required" />
+                <div class="btn-back-toservices"></div><span>Your Order Info</span>
+            </div>
+            <form id="payment-form-booking" method="post" action="/Booking/CreateOrder">
 
-            <span class="hidden">
-        <label for="confirmMethod"><span>Confirm Method</span></label>
-            <select id="confirmMethod" class="required">
-            <option value="SMS"><span>SMS</span></option>
-            <option value="InApplication"><span>In Application</span></option>
-            <option value="Email"><span>Email</span></option>
+                <label for="nameOrder"><span>Name</span></label>
+                <input type="text" id="booking-nameOrder" class="nameOrder" />
+                <label for="phoneOrder"><span>Phone Number</span></label>
+                <input type="text" id="booking-phoneOrder" class="phoneOrder required" />
+                <label for="emailOrder"><span>Email</span></label>
+                <input type="text" id="booking-emailOrder" class="emailOrder required" />
+                <span class="hidden">
+            <label for="confirmMethod"><span>Confirm Method</span></label>
+                <select id="confirmMethod" class="required">
+                <option value="SMS"><span>SMS</span></option>
+                <option value="InApplication"><span>In Application</span></option>
+                <option value="Email"><span>Email</span></option>
             </select>
-            </span>
+                </span>
+                <label for="commentOrder"><span>Your Order Comments</span></label>
+                <textarea id="booking-commentOrder" class="commentOrder"></textarea>
 
+                <section>
+                    <div class="amount-container">
+                        <div class="booking-amount-label">
+                            <span class="input-label">Amount</span>
+                        </div>
+                        <div class="booking-amount-count">
+                            <span></span>
+                        </div>
+                    </div>
+                    <div class="payment-method-container-booking">
+                        <label for="payMethod-booking"><span>Payment Method</span></label>
+                        <select id="payMethod-booking" class="required">
+                            <option value="cash"><span>Cash</span></option>
+                            <option value="card"><span>Card</span></option>
+                        </select>
+                    </div>
 
-            <label for="commentOrder"><span>Your Order Comments</span></label>
-            <textarea id="booking-commentOrder" class="commentOrder"></textarea>
+                    <div class="bt-drop-in-wrapper-booking hidden">
+                        <input id="bookingAmount" name="amount" type="hidden" />
+                        <div id="bt-dropin-booking"></div>
+                        <input id="nonce" name="Nonce" type="hidden" />
+                        <button class="button hidden" type="submit"><span>Pay</span></button>
+                    </div>
+                </section>
+            </form>
             <div class="btn-send-order-booking"><span>Book</span></div>
-
         </div>
 
         <div class="cart hidden">
@@ -163,17 +239,57 @@
                 <div class="btn-order"><span>Order</span></div>
             </div>
         </div>
+        <!--REST-->
         <div id="orderInfo" class="hidden">
             <div class="cart-top-line">
                 <div class="back-to-cart"></div><span>Your Order Info</span></div>
-            <label for="nameOrder"><span>Nam</span>e</label>
-            <input type="text" id="nameOrder" class="nameOrder required" />
-            <label for="phoneOrder"><span>Phone Number</span></label>
-            <input type="text" id="phoneOrder" class="phoneOrder required" />
-            <label for="emailOrder"><span>Email</span></label>
-            <input type="text" id="emailOrder" class="emailOrder required" />
-            <label for="commentOrder"><span>Your Order Comments</span></label>
-            <textarea id="commentOrder" class="commentOrder"></textarea>
+            <div class="braintree-container">
+                <div class="checkout container">
+                    <form id="payment-form" method="post" action="/RestaurantMenu/CreateOrder">
+                        <section>
+                            <label for="nameOrder"><span>Name</span></label>
+                            <input type="text" id="nameOrder" class="nameOrder" />
+
+                            <label for="phoneOrder"><span>Phone Number</span></label>
+                            <input type="text" id="phoneOrder" class="phoneOrder required" />
+
+                            <label for="emailOrder"><span>Email</span></label>
+                            <input type="text" id="emailOrder" class="emailOrder required" />
+
+                            <label for="commentOrder"><span>Your Order Comments</span></label>
+                            <textarea id="commentOrder" class="commentOrder"></textarea>
+
+                            <div class="amount-container">
+                                <div class="rest-amount-label">
+                                    <span class="input-label">Amount</span>
+                                </div>
+                                <div class="rest-amount-count">
+                                    <span></span>
+                                </div>
+
+                            </div>
+                            <div class="payment-method-container">
+                                <label for="payMethod"><span>Payment Method</span></label>
+                                <select id="payMethod" class="required">
+                                    <option value="cash"><span>Cash</span></option>
+                                    <option value="card"><span>Card</span></option>
+                                    </select>
+                            </div>
+
+
+                            <div class="bt-drop-in-wrapper hidden">
+                                <input id="restAmount" name="amount" type="hidden" />
+
+                                <div id="bt-dropin"></div>
+                            </div>
+                        </section>
+
+                        <input id="nonceRest" name="payment_method_nonce" type="hidden" />
+                        <button class="button hidden" type="submit"><span>Pay</span></button>
+                    </form>
+
+                </div>
+            </div>
 
             <div class="menuOrder-fixed-nav-bottom">
                 <div class="go-to-menu-btn">Сontinue shopping</div>
@@ -192,6 +308,7 @@
 
         <div id="custom-hide-container" class="hidden">
         </div>
+
         <script src="js/MobileView.js"></script>
         <script>
             init();

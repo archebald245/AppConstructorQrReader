@@ -23,12 +23,14 @@ function clickOrder() {
 }
 
 function clickPlaceAnOrder() {
-    clickOrder();
     if (checkValidationAndRequired($("#orderInfo"))) {
+        $(".spinner-container").removeClass("hidden");
+
         var name = $("#orderInfo").find(".nameOrder").val();
         var phone = $("#orderInfo").find(".phoneOrder").val();
         var email = $("#orderInfo").find(".emailOrder").val();
         var comment = $("#orderInfo").find(".commentOrder").val();
+
         $.ajax({
             type: "POST",
             url: applicationData.UrlForUpdateApp + "/RestaurantMenu/CreateOrder",
@@ -39,21 +41,24 @@ function clickPlaceAnOrder() {
                 Email: email,
                 Comment: comment,
                 ProjectId: applicationData.ProjectId,
-                ContentId: applicationData.Id
+                ContentId: applicationData.Id,
+                Nonce: ""
             },
             cache: false,
             success: function() {
+                $(".spinner-container").addClass("hidden");
                 alert(cultureRes.thankYou);
                 $("#cart").html("");
+                $(".totalPrice b").html("0");
                 $("#cart .cartItem").html("");
                 $("#orderInfo input, #orderInfo textarea").val("");
                 $("#container").removeClass("hidden");
-                $("#orderInfo").addClass("hidden");
+                $("#orderInfo, .cart").addClass("hidden");
+
                 scrollTop();
                 if ($('.classMenuTop').length > 0 || $('.classMenuBottom').length > 0) {
                     $(".classMenu").removeClass("hidden");
                 }
-
             },
             error: function() {
                 alert(cultureRes.sorryError);
@@ -90,17 +95,63 @@ function bindListenerToClickBtn() {
         scrollTop();
     });
     //to order
+    $(".btn-order").unbind("click");
     $(".btn-order").on("click", function() {
         if ($("#cart").children().length > 0) {
-            $("#orderInfo").removeClass("hidden");
-            $(".cart").addClass("hidden");
-            scrollTop();
+
+            var restAmount = TotalRestAmount();
+            var restMenuId = $("input[name='restaurantMenuId']").val();
+            var isRestUsePayment = false;
+
+            applicationData.Restaurants.forEach(function(el) {
+                var rest = el;
+                el.RestaurantMenus.forEach(function(e) {
+                    if (e.Id == restMenuId) {
+                        isRestUsePayment = rest.UseCustomerPayment;
+                    }
+                });
+            });
+
+            if (isRestUsePayment && restAmount >= 1) {
+                $("#restAmount").val(restAmount);
+                var curr = $(".totalPrice b").html().split(" ")[1];
+                $(".rest-amount-count").html(restAmount + " " + curr);
+
+                InitRestarauntPayment();
+            } else {
+                //RestOrderHandlers();
+                $("#orderInfo").removeClass("hidden");
+                $(".cart,.payment-method-container").addClass("hidden");
+                scrollTop();
+
+
+                $("#restAmount").val(restAmount);
+                var curr = $(".totalPrice b").html().split(" ")[1];
+                $(".rest-amount-count").html(restAmount + " " + curr);
+
+                $(".placeAnOrder").unbind().on("click", function() {
+                    clickPlaceAnOrder();
+                });
+            }
         } else {
             alert(cultureRes.nothingOrdered);
         }
     });
 
-    $(".placeAnOrder").on("click", function() {
-        clickPlaceAnOrder();
+    // $(".placeAnOrder").on("click", function() {
+    //     $("#payment-form").submit();
+
+    //     clickPlaceAnOrder();
+    // });
+}
+
+function TotalRestAmount() {
+    clickOrder();
+    var total = 0;
+    collectionOrderItems.forEach(function(element) {
+        if (element.Price !== "") {
+            total = total + (parseInt(element.Price) * parseInt(element.Count));
+        }
     });
+    return total;
 }

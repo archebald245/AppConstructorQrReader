@@ -11,11 +11,11 @@ var jsonStringify;
 initYoutube();
 
 function init() {
-    blockUi();
+    // blockUi();
     document.addEventListener("deviceready", onDeviceReady, false);
     $(".classDropdownList").addClass("classHide");
 
-    document.querySelector("#startScan").addEventListener("touchend", startScan, false);
+    document.querySelector("#vt-login").addEventListener("touchend", startLogin, false);
 
     deleteResourcesAll();
 }
@@ -140,25 +140,34 @@ function onCheckJson() {
         createMenu(applicationData);
         $(".my-youtube").attr("height", "auto");
         var pageStyles;
+        // var pageWithGeneralBg = applicationData.Pages.filter(function(page) { return page.BackgroundForApplication });
+        // if (pageWithGeneralBg.length > 0) {
+        //     pageStyles = pageWithGeneralBg[0].Style;
+        // }
+        // if (applicationData.IsTrackingLastPage) {
+        //     var idLastPage = getLastOpenPage();
+        //     var lastPage = applicationData.Pages.filter(function(p) { return p.Id == idLastPage })[0]
+        //     if (lastPage.BackgroundImagePath != null) {
+        //         pageStyles = lastPage.Style;
+        //     }
+        // } else {
+        //     var StartPage = applicationData.Pages.filter(function(p) { return p.IsStartPage })[0];
+        //     if (StartPage.BackgroundImagePath != null) {
+        //         pageStyles = StartPage.Style;
+        //     }
+        // }
+        applicationData.Pages.forEach(function(element) {
+            if (element.Id == indexPage) {
+                pageStyles = element.Style;
+            }
+        }, this);
+
         var pageWithGeneralBg = applicationData.Pages.filter(function(page) { return page.BackgroundForApplication });
         if (pageWithGeneralBg.length > 0) {
             pageStyles = pageWithGeneralBg[0].Style;
         }
-        if (applicationData.IsTrackingLastPage) {
-            var idLastPage = getLastOpenPage();
-            var lastPage = applicationData.Pages.filter(function(p) { return p.Id == idLastPage })[0]
-            if (lastPage.BackgroundImagePath != null) {
-                pageStyles = lastPage.Style;
-            }
-        } else {
-            var StartPage = applicationData.Pages.filter(function(p) { return p.IsStartPage })[0];
-            if (StartPage.BackgroundImagePath != null) {
-                pageStyles = StartPage.Style;
-            }
-        }
-
         $("#container").attr("style", pageStyles).removeClass("hidden");
-        $(".startScan-wrapper").addClass("hidden");
+        $(".login-wrapper").addClass("hidden");
     } else {
 
         applicationData = replaceData(applicationData);
@@ -246,7 +255,7 @@ function callback() {
     initGallaryClick();
     submitFormListener();
     unBlockUi();
-    $(".startScan-wrapper").addClass("hidden");
+    $(".login-wrapper").addClass("hidden");
     $("#container").removeClass("hidden");
 }
 
@@ -270,7 +279,7 @@ function initGallaryClick() {
 }
 
 function checkApplicationId() {
-    var siteUrl = "http://appconstructornew.newlinetechnologies.net/";
+    var siteUrl = "http://appconstructor.tech/";
 
     if (applicationData != null) {
         if (applicationData.UrlForUpdateApp != "" && applicationData.UrlForUpdateApp != null && typeof applicationData.UrlForUpdateApp != 'undefined') {

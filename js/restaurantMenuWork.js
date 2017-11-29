@@ -154,9 +154,9 @@ function workToClickBuy(itemId) {
 
     }
     $("#shopItem").attr("id", "");
-
+    var curr = restaurantMenu[0].Currency;
     $(".totalPrice b").html("");
-    $(".totalPrice b").append(totalPrice() + " ГРН");
+    $(".totalPrice b").append(totalPrice() + " " + curr);
     addListenerToClickDelete();
     addListenerToChangeCount();
 }
@@ -165,9 +165,9 @@ function addListenerToClickDelete() {
     $(".delete-cartItem").unbind("click");
     $(".delete-cartItem").on("click", function() {
         $(this).closest(".cartItem").parent().remove();
-
+        var curr = $(".totalPrice b").html().split(" ")[1];
         $(".totalPrice b").html("");
-        $(".totalPrice b").append(totalPrice() + " ГРН"); //add currency
+        $(".totalPrice b").append(totalPrice() + " " + curr); //add currency
     });
 }
 
@@ -195,15 +195,16 @@ function addListenerToChangeCount() {
 }
 
 function updateCount(e, count) {
+    var curr = $(".totalPrice b").html().split(" ")[1];
     var newPrice = Number($(e).closest(".cartItem").find("input[name=shopItemPrice]").val()) * count;
     $(e).closest(".cartItem").find(".cartItem-count-total-price").html("");
-    $(e).closest(".cartItem").find(".cartItem-count-total-price").append(newPrice + " ГРН");
+    $(e).closest(".cartItem").find(".cartItem-count-total-price").append(newPrice + " " + curr);
 
     $(e).siblings(".shopItem-count").html("");
     $(e).siblings(".shopItem-count").append(count);
 
     $(".totalPrice b").html("");
-    $(".totalPrice b").append(totalPrice() + " ГРН");
+    $(".totalPrice b").append(totalPrice() + " " + curr);
 }
 
 function totalPrice() {
@@ -483,7 +484,7 @@ function changeMenu() {
             var networkState = navigator.connection.type;
             if (networkState == Connection.NONE) {
                 $(".custom-restaurant-menu-container").addClass("hidden");
-                alert("Sorry, not time!");
+                // alert("Sorry, not time!");
             } else {
                 if (menu.UseDateTime == false) {
                     renderRestaurantMenu(menu, ThisRestaurantMenuBlock.find("[name=restaurantMenuPosition]").attr("value"), ThisRestaurantMenuBlock.find("[name=responsiveModel]").attr("value"),
