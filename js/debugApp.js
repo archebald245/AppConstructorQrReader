@@ -25,10 +25,9 @@ function deleteResourcesAll() { //Call in Init function
         $("#container, #custom-hide-container, .singleItem, #orderInfo, .cart, .container-statusBooking, .bookingServices-container, .container-selectFreeBookTime, .dateTimePicker-container, .order-booking").addClass("hidden");
     });
 }
-
-function startScan() { //Call in Init function
-
-}
+//Call in Init function
+// function startScan() { 
+// }
 
 function startLogin() {
     event.preventDefault();
@@ -38,10 +37,10 @@ function startLogin() {
         var form = $(".login-wrapper form#login-form");
         // var check = checkValidationAndRequired(form);
         // if (check) {
-        $(".login-spiner").removeClass("hidden");
+        $(".spinner-container").removeClass("hidden");
         var siteUrl = "http://appconstructornew.newlinetechnologies.net/";
         $.post('' + siteUrl + '/api/LoginViewTool', $(form).serialize(), function(data, statusText, xhr) {
-            $(".login-spiner").addClass("hidden");
+            $(".spinner-container").addClass("hidden");
 
             if (data.IsLogin) {
                 var login = $("#login-data").val();
@@ -149,7 +148,6 @@ function ViewToolLogout() {
 }
 
 function UpdateProjectList() {
-    $(".login-spiner").removeClass("hidden");
     var authtoken = $.jStorage.get('AuthToken')
     var siteUrl = "http://appconstructornew.newlinetechnologies.net/";
     $.ajax({
@@ -160,8 +158,6 @@ function UpdateProjectList() {
         },
         cache: false,
         success: function(data, statusText, xhr) {
-            $(".login-spiner").addClass("hidden");
-
             if (data.IsLogin) {
                 $.jStorage.set('ProjectList', data.ProjectList);
                 renderProjectList(data.ProjectList);
@@ -178,7 +174,6 @@ function UpdateProjectList() {
                 }
                 return false;
             }
-            $(".login-spiner").addClass("hidden");
         }
     });
 }
