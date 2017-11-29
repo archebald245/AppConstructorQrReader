@@ -107,6 +107,7 @@ function ProjectListEventListener() {
 
 function GetApplicationData(project, content) {
     $(".spinner-container").removeClass("hidden");
+    blockUi();
     var siteUrl = "http://appconstructornew.newlinetechnologies.net/";
     var tokenToSend = $.jStorage.get('notificationToken');
     var deviceIdToSend = $.jStorage.get('ApplicationId');
@@ -130,6 +131,7 @@ function GetApplicationData(project, content) {
         },
         error: function() {
             $(".spinner-container").addClass("hidden");
+            unBlockUi();
         }
     });
 }

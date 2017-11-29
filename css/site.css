@@ -2274,7 +2274,7 @@ input[type="checkbox"].SwitcherFormElement:checked+div>div {
 
 .project-list-item {
     width: 90%;
-    margin: 0 5%;
+    margin: 10px 5%;
     border: none;
     box-shadow: 0 0 8px 0 rgba(74, 74, 74, 0.54);
     padding: 10px;
@@ -2408,6 +2408,18 @@ button.viewtool-update {
     background-position: left;
     background-repeat: no-repeat;
     float: right;
+}
+
+@media (max-width: 480px) {
+    .login-header {
+        display: none;
+    }
+    .login-form-container {
+        width: 90%;
+    }
+    #login-form input {
+        padding: 0 10px;
+    }
 }
 
 
