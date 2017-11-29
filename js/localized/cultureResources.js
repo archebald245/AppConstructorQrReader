@@ -25,6 +25,12 @@ function initCulture() {
     $(".startScan-wrapper h1").html(cultureRes.pleaseScan);
     $("#startScan").html(cultureRes.startScan);
 
+    $(".login-form-container h1").html(cultureRes.discoverViewTool);
+    $(".login-form-container .login-label span").html(cultureRes.username);
+    $(".login-form-container .password-label span").html(cultureRes.password);
+    $("#vt-login").html(cultureRes.login);
+    $(".project-list-wrapper login-header").html(cultureRes.projectList);
+    $(".project-list-wrapper viewtool-update").html(cultureRes.update);
 
     $(".container-statusBooking .cart-top-line span").html(cultureRes.bookStatus);
     $(".bookingServices-container .cart-top-line span").html(cultureRes.services);
@@ -60,6 +66,14 @@ function initCulture() {
 function initEnCulture() {
     window.cultureRes = new Object();
     //index.html
+
+    cultureRes.discoverViewTool = "Discover your App before launching";
+    cultureRes.username = "Login (AppConstructor account)";
+    cultureRes.password = "Password";
+    cultureRes.login = "Log In";
+    cultureRes.projectList = "Project List";
+    cultureRes.update = "Update";
+    cultureRes.download = "Download";
     cultureRes.startScan = "Start Scan";
     cultureRes.pleaseScan = "Please Scan QR for your Application";
     cultureRes.bookStatus = "Your book status list";
@@ -207,6 +221,13 @@ function initEnCulture() {
 function initRuCulture() {
     window.cultureRes = new Object();
     //index.html
+    cultureRes.discoverViewTool = "Посмотрите, как выглядит Ваше приложение";
+    cultureRes.username = "Логин (AppConstructor аккаунт)";
+    cultureRes.password = "Пароль";
+    cultureRes.login = "Войти";
+    cultureRes.projectList = "Список проектов";
+    cultureRes.update = "Обновить";
+    cultureRes.download = "Загрузить";
     cultureRes.startScan = "Начать сканировать";
     cultureRes.pleaseScan = "Пожалуйста, отсканируйте QR-код Вашего приложения";
     cultureRes.bookStatus = "Список статусов Ваших бронирований";
@@ -356,6 +377,13 @@ function initRuCulture() {
 function initUaCulture() {
     window.cultureRes = new Object();
     //index.html
+    cultureRes.discoverViewTool = "Подивіться, як виглядає Ваш додаток.";
+    cultureRes.username = "Логін (AppConstructor аккаунт)";
+    cultureRes.password = "Пароль";
+    cultureRes.login = "Увійти";
+    cultureRes.projectList = "Проекти";
+    cultureRes.update = "Оновити";
+    cultureRes.download = "Завантажити";
     cultureRes.startScan = "Почати сканування";
     cultureRes.pleaseScan = "Будь ласка, відскануйте QR-код Вашого додатку";
     cultureRes.bookStatus = "Список статусів Ваших замовлень";

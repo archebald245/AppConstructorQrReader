@@ -47,7 +47,7 @@ function renderProjectList(projectList) {
                         ),
                         React.createElement(
                             "button", { className: "take-application" },
-                            "Загрузить"
+                            cultureRes.download
                         )
                     ),
                     React.createElement("input", { type: "hidden", name: "projectId", value: item.ProjectId })
