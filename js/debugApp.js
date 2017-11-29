@@ -33,7 +33,7 @@ function startLogin() {
     event.preventDefault();
     var networkState = navigator.connection.type;
     if (networkState != Connection.NONE) {
-        $(".login-wrapper").addClass('hidden');
+
         var form = $(".login-wrapper form#login-form");
         // var check = checkValidationAndRequired(form);
         // if (check) {
@@ -49,6 +49,7 @@ function startLogin() {
                 $.jStorage.set('AuthToken', data.Token);
                 $.jStorage.set('ProjectList', data.ProjectList);
                 renderProjectList(data.ProjectList)
+                $(".login-wrapper").addClass('hidden');
                 $(".project-list-wrapper").removeClass('hidden');
             } else {
                 alert(data.ErrorMessage);
@@ -142,7 +143,7 @@ function ViewToolLogout() {
 
     $("#login-data").val("");
     $("#password-data").val("");
-    $("#project-list-wrapper").addClass("hidden");
+    $(".project-list-wrapper").addClass("hidden");
     $(".login-wrapper").removeClass("hidden");
     $(".viewtool-login span.login-data").html('');
 }
