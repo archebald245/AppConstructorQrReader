@@ -72,7 +72,7 @@ function initEnCulture() {
     cultureRes.password = "Password";
     cultureRes.login = "Log In";
     cultureRes.projectList = "Project List";
-    cultureRes.update = "Update";
+    cultureRes.update = "Refresh";
     cultureRes.download = "Download";
     cultureRes.startScan = "Start Scan";
     cultureRes.pleaseScan = "Please Scan QR for your Application";
