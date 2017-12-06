@@ -28,8 +28,6 @@ function createMenu() {
             indexPage = applicationData.Pages[0].Id;
         }
     }
-
-
     if (applicationData.Menu != null) {
         var menu = getPositionMenu(applicationData.Menu.Position);
         var menuItems = applicationData.Menu.MenuItems;
@@ -37,10 +35,12 @@ function createMenu() {
         $(menu).html("");
         var label;
         for (var i = 0; i < menuItems.length; i++) {
+            //var img = applicationData.Menu.MenuItems[i].IconPath != "" ? $('<img>').attr({ src: applicationData.Menu.MenuItems[i].IconPath, class: "menu-item-icon" }) : "";
+            var img = applicationData.Menu.MenuItems[i].IconPath != null ? "<img src='" + applicationData.Menu.MenuItems[i].IconPath + "' class='menu-item-icon';/>" : "<img src='' class='menu-item-icon menu-item-icon-hidden';/>";
             if (applicationData.Menu.MenuItems[i].IsExternal == true) {
-                div = $('<a href=' + menuItems[i].Link + ' class="menu-item-href"><div class="classPageLink"><label>' + menuItems[i].Title + '</label></div></a>');
+                div = $('<a href=' + menuItems[i].Link + ' class="menu-item-href"><div class="classPageLink">' + img + '<label>' + menuItems[i].Title + '</label></div></a>');
             } else {
-                div = $('<div class="classPageLink" id =' + menuItems[i].Link + ' onClick="clickPageOnDropdownMenu(' + menuItems[i].Link + ')"><label>' + menuItems[i].Title + '</label></div>');
+                div = $('<div class="classPageLink" id =' + menuItems[i].Link + ' onClick="clickPageOnDropdownMenu(' + menuItems[i].Link + ')">' + img + '<label>' + menuItems[i].Title + '</label></div>');
             }
             div.appendTo(menu);
         }
@@ -87,7 +87,7 @@ function createMenu() {
                 });
                 $(".classDropdownList").css({
                     'border-top': '2px solid ' + sandwichColor,
-					'max-height': $(document).height() / 1.5
+                    'max-height': $(document).height() / 1.5
                 });
                 $(".menu-icon").css({
                     'border': '2px solid ' + sandwichColor
