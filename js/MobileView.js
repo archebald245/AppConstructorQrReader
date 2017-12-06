@@ -926,6 +926,14 @@ function reactRender() {
             var tool = allTool.filter(function(e) { return e == thisTool }).length < 1;
             return tool
         },
+		checkInternetConnection: function() {
+            var networkState = navigator.connection.type;
+            if (networkState != Connection.NONE) {
+                return true;
+            } else if (networkState == Connection.NONE) {
+                return false;
+            }
+        },
         render: function render() {
             var data = this.props.data;
             var deniedTools = applicationData.DeniedTools.replace(/"/g, "'").replace(/]/).split("[")[1].replace(/'/g, '').split(",");
