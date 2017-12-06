@@ -48,6 +48,41 @@ function setUseRestaurantMenu(id, use, restaurants) {
 
 function reactRender() {
     initCulture();
+    function initMapPreview(locationArr, zoom, mapContainer) {
+        var location = { lat: locationArr[0].lat, lng: locationArr[0].lng };
+        var map = new google.maps.Map(document.getElementById(mapContainer), {
+            zoom: zoom,
+            center: location
+        });
+
+        var infowindow = new google.maps.InfoWindow();
+        for (var i = 0; i < locationArr.length; i++) {
+            if (locationArr[i].lat != 0 || locationArr[0].lng != 0) {
+                location = { lat: locationArr[i].lat, lng: locationArr[i].lng }
+
+                var marker = new google.maps.Marker({
+                    position: location,
+                    map: map
+                });
+
+                if (locationArr[i].title != "" || locationArr[i].description != "") {
+                    google.maps.event.addListener(marker, 'click', (function(marker, i) {
+                        return function() {
+                            infowindow.setContent('<div>' +
+                                '<h3>' + locationArr[i].title + '</h3>' +
+                                '<p>' + locationArr[i].description + '</p>' +
+                                '</div>');
+                            infowindow.open(map, marker);
+                            map.panTo(this.getPosition());
+                            map.setZoom(16);
+                        }
+                    })(marker, i));
+                }
+            }
+        }
+    }
+
+
 
     function onYouTubeIframeAPIReady(element, id) {
         var player = new YT.Player(element, {
@@ -440,6 +475,23 @@ function reactRender() {
         }
     });
 
+	    var GoogleMapContainer = React.createClass({
+        displayName: "GoogleMapContainer",
+        componentDidMount: function() {
+            var json = JSON.parse(Base64.decode(this.props.data.Json));
+            var idMap = "map-container-" + this.props.data.Id;
+            setTimeout(function() {
+                    initMapPreview(json.mapData, +json.zoom, idMap);
+                },
+                1000);
+        },
+        render: function() {
+            return React.createElement('div', { className: "map-container", id: "map-container-" + this.props.data.Id });
+        }
+    });
+
+
+	
     var Hbox = React.createClass({
         displayName: 'Hbox',
 
@@ -974,6 +1026,16 @@ function reactRender() {
             } else if (data.ContentTypeId == 17) {
                 return null
             }
+			            if (data.ContentTypeId == 18 && this.checkDeniedTools(deniedTools, "googlemap-item") && this.checkInternetConnection()) {
+                return React.createElement(
+                    'div', { className: "googlemap-item cell-container col-xs-" + data.Colspan + " col-sm-" + data.Colspan + " col-md-" + data.Colspan + " col-lg-" + data.Colspan, onClick: this.onClickCell },
+                    React.createElement(GoogleMapContainer, { data: data })
+                );
+            } else if (data.ContentTypeId == 18) {
+                return null
+            }
+
+
         }
     });
     //ContentTypeId - 10 end

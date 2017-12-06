@@ -1942,6 +1942,12 @@ input[type="checkbox"].SwitcherFormElement:checked+div>div {
     height: 100%;
 }
 
+.map-container {
+    height: 300px;
+    width: 100%;
+    overflow: hidden;
+}
+
 
 /*~~~~~~Spinner Styles~~~~~*/
 
