@@ -49,9 +49,6 @@ form {
     margin-left: 10px;
     cursor: pointer;
     display: block;
-    border: 2px solid black;
-    border-radius: 5px;
-    padding-left: 3px;
 }
 
 .menu-icon-right {
@@ -88,8 +85,8 @@ form {
 }
 
 .classDropdownList>div {
-	padding: 7px 10px 7px 2.5%;
-	text-align: left;
+    padding: 7px 10px 7px 2.5%;
+    text-align: left;
 }
 
 .classDropdownList>div.activePage {
@@ -1725,9 +1722,6 @@ input[type="checkbox"].SwitcherFormElement:checked+div>div {
         margin-left: 10px;
         cursor: pointer;
         display: block;
-        border: 2px solid black;
-        border-radius: 5px;
-        padding-left: 3px;
     }
     .classMenu .menu-icon>div {
         width: 35px;
