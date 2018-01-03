@@ -202,12 +202,13 @@ form {
 }
 
 .menu-item-href {
-    color: #000;
+    color: inherit;
     text-align: center;
 }
 
 .classPageLink {
-    text-align: leftl
+    text-align: left;
+    padding: 7px 10px 7px 2.5%;
 }
 
 .menu-item-icon {

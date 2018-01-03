@@ -82,7 +82,7 @@ function createMenu() {
                 $(".classDropdownList").attr("style", style);
                 $(".classDropdownList").css("color", sandwichColor);
 
-                $(".classDropdownList>div").css({
+                $(".classDropdownList>divб .classDropdownList a>div").css({
                     'border-bottom': '1px solid ' + sandwichColor
                 });
                 $(".classDropdownList").css({
