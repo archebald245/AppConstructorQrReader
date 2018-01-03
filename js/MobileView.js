@@ -48,6 +48,7 @@ function setUseRestaurantMenu(id, use, restaurants) {
 
 function reactRender() {
     initCulture();
+
     function initMapPreview(locationArr, zoom, mapContainer) {
         var location = { lat: locationArr[0].lat, lng: locationArr[0].lng };
         var map = new google.maps.Map(document.getElementById(mapContainer), {
@@ -475,7 +476,7 @@ function reactRender() {
         }
     });
 
-	    var GoogleMapContainer = React.createClass({
+    var GoogleMapContainer = React.createClass({
         displayName: "GoogleMapContainer",
         componentDidMount: function() {
             var json = JSON.parse(Base64.decode(this.props.data.Json));
@@ -491,7 +492,7 @@ function reactRender() {
     });
 
 
-	
+
     var Hbox = React.createClass({
         displayName: 'Hbox',
 
@@ -926,7 +927,7 @@ function reactRender() {
             var tool = allTool.filter(function(e) { return e == thisTool }).length < 1;
             return tool
         },
-		checkInternetConnection: function() {
+        checkInternetConnection: function() {
             var networkState = navigator.connection.type;
             if (networkState != Connection.NONE) {
                 return true;
@@ -1034,7 +1035,7 @@ function reactRender() {
             } else if (data.ContentTypeId == 17) {
                 return null
             }
-			            if (data.ContentTypeId == 18 && this.checkDeniedTools(deniedTools, "googlemap-item") && this.checkInternetConnection()) {
+            if (data.ContentTypeId == 18 && this.checkDeniedTools(deniedTools, "googlemap-item") && this.checkInternetConnection()) {
                 return React.createElement(
                     'div', { className: "googlemap-item cell-container col-xs-" + data.Colspan + " col-sm-" + data.Colspan + " col-md-" + data.Colspan + " col-lg-" + data.Colspan, onClick: this.onClickCell },
                     React.createElement(GoogleMapContainer, { data: data })
