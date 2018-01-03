@@ -73,6 +73,7 @@ function initEnCulture() {
     cultureRes.login = "Log In";
     cultureRes.projectList = "Project List";
     cultureRes.update = "Refresh";
+    cultureRes.updateProject = "List of projects has been updated";
     cultureRes.download = "Download";
     cultureRes.startScan = "Start Scan";
     cultureRes.pleaseScan = "Please Scan QR for your Application";
@@ -227,6 +228,7 @@ function initRuCulture() {
     cultureRes.login = "Войти";
     cultureRes.projectList = "Список проектов";
     cultureRes.update = "Обновить";
+    cultureRes.updateProject = "Список проектів був оновлений";
     cultureRes.download = "Загрузить";
     cultureRes.startScan = "Начать сканировать";
     cultureRes.pleaseScan = "Пожалуйста, отсканируйте QR-код Вашего приложения";
@@ -383,6 +385,7 @@ function initUaCulture() {
     cultureRes.login = "Увійти";
     cultureRes.projectList = "Проекти";
     cultureRes.update = "Оновити";
+    cultureRes.updateProject = "Список проектів був оновлений";
     cultureRes.download = "Завантажити";
     cultureRes.startScan = "Почати сканування";
     cultureRes.pleaseScan = "Будь ласка, відскануйте QR-код Вашого додатку";
