@@ -162,7 +162,8 @@ function UpdateProjectList() {
             if (data.IsLogin) {
                 $.jStorage.set('ProjectList', data.ProjectList);
                 renderProjectList(data.ProjectList);
-                window.plugins.toast.showShortBottom(cultureRes.loginPlease);
+                window.plugins.toast.hide();
+                window.plugins.toast.showShortBottom("List of projects has been updated");
             } else {
                 window.plugins.toast.showShortBottom(data.ErrorMessage);
                 return false;
