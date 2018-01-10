@@ -16,8 +16,9 @@ function deleteResourcesAll() { //Call in Init function
             success: function() {},
             error: function() {}
         });
-
+        $("#cart .delete-cartItem").click();
         $.jStorage.deleteKey("appData");
+        $.jStorage.deleteKey("isLogin");
         checkJsStorage();
         $(".project-list-wrapper").removeClass("hidden");
         $(".Scan-spiner").addClass("hidden");

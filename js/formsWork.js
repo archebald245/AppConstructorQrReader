@@ -66,6 +66,7 @@ function submitFormListener() {
 
     $(".formLogout").on("click", function() {
         $.jStorage.set('isLogin', false);
+        $("#cart .delete-cartItem").click();
         goToPage(indexPage);
     });
 }
