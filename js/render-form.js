@@ -336,6 +336,7 @@ function renderForm(form, id) {
                     React.createElement("input", { className: "registrationForm form-control", name: "RegistrationForm", type: "hidden", value: this.state.data.RegistrationForm }),
                     React.createElement("input", { className: "form-control", name: "NotificationToken", type: "hidden", value: token }),
                     React.createElement("input", { className: "form-control", name: "DeviceId", type: "hidden", value: deviceId }),
+                    React.createElement("input", { className: "form-control", name: "UserId", type: "hidden", value: isLogin }),
                     fieldModels,
                     React.createElement(
                         "button", { type: "button", className: "formSubmit btn btn-defoult" },
