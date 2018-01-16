@@ -120,7 +120,7 @@ function bindListenerToClickBtn() {
                 //InitRestarauntPayment();
 
                 $(".placeAnOrder").unbind().on("click", function() {
-                    $("#payment-form button.button").click();
+                    clickPlaceAnOrder();
                 });
             } else {
                 //RestOrderHandlers();
