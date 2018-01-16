@@ -112,30 +112,24 @@ function bindListenerToClickBtn() {
                 });
             });
 
-            if (isRestUsePayment && restAmount >= 1) {
-                $("#restAmount").val(restAmount);
-                var curr = $(".totalPrice b").html().split(" ")[1];
-                $(".rest-amount-count").html(restAmount + " " + curr);
+            if (!isRestUsePayment && restAmount < 1) {
 
-                //InitRestarauntPayment();
+                $(".cart,.payment-method-container").addClass("hidden");
+                paymentMethodHandler()
+                    //InitRestarauntPayment();
 
-                $(".placeAnOrder").unbind().on("click", function() {
-                    clickPlaceAnOrder();
-                });
             } else {
                 //RestOrderHandlers();
-                $("#orderInfo").removeClass("hidden");
-                $(".cart,.payment-method-container").addClass("hidden");
-                scrollTop();
-
-                $("#restAmount").val(restAmount);
-                var curr = $(".totalPrice b").html().split(" ")[1];
-                $(".rest-amount-count").html(restAmount + " " + curr);
-
-                $(".placeAnOrder").unbind().on("click", function() {
-                    clickPlaceAnOrder();
-                });
             }
+
+            $(".placeAnOrder").unbind().on("click", function() {
+                clickPlaceAnOrder();
+            });
+            $("#restAmount").val(restAmount);
+            var curr = $(".totalPrice b").html().split(" ")[1];
+            $(".rest-amount-count").html(restAmount + " " + curr);
+            $("#orderInfo").removeClass("hidden");
+            scrollTop();
         } else {
             alert(cultureRes.nothingOrdered);
         }
