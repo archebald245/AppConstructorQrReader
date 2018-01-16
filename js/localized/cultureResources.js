@@ -41,9 +41,9 @@ function initCulture() {
     $(".dateTimePicker-container .cart-top-line span").html(cultureRes.selectDate);
     $("label[for='dateTimePicker-time']").html(cultureRes.selectTime);
     $("label[for='dateTimePicker-date']").html(cultureRes.selectDate);
-    $("label[for='nameOrder']").html(cultureRes.name);
-    $("label[for='confirmMethod']").html(cultureRes.phone);
-    $("label[for='commentOrder']").html(cultureRes.orderComments);
+    $("label[for='nameOrder'] span").html(cultureRes.name);
+    $("label[for='confirmMethod'] span").html(cultureRes.phone);
+    $("label[for='commentOrder'] span").html(cultureRes.orderComments);
     $(".dateTimePicker-container .btn-confirmDateForBook span").html(cultureRes.confirmMeth);
     $(".order-booking .cart-top-line span").html(cultureRes.orderInfo);
     $(".order-booking .btn-send-order-booking span ").html(cultureRes.book);
@@ -53,10 +53,10 @@ function initCulture() {
     $(".cart .go-to-menu").html(cultureRes.contShop);
     $("#orderInfo .go-to-menu-btn").html(cultureRes.contShop);
     $("#orderInfo .cart-top-line span ").html(cultureRes.orderInfo);
-    $("#orderInfo label[for='nameOrder']").html(cultureRes.name);
-    $("#orderInfo label[for='phoneOrder']").html(cultureRes.phone);
-    $("#orderInfo label[for='emailOrder']").html(cultureRes.email);
-    $("#orderInfo label[for='commentOrder']").html(cultureRes.orderComments);
+    $("#orderInfo label[for='nameOrder'] span").html(cultureRes.name);
+    $("#orderInfo label[for='phoneOrder'] span").html(cultureRes.phone);
+    $("#orderInfo label[for='emailOrder'] span").html(cultureRes.email);
+    $("#orderInfo label[for='commentOrder'] span").html(cultureRes.orderComments);
     $("#orderInfo .placeAnOrder span").html(cultureRes.buy);
     // $("#orderInfo .rest-amount-label .input-label").html(cultureRes.amount);
     // $(".order-booking .booking-amount-labe .input-label").html(cultureRes.amount);
