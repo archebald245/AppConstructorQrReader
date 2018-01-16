@@ -118,6 +118,10 @@ function bindListenerToClickBtn() {
                 $(".rest-amount-count").html(restAmount + " " + curr);
 
                 InitRestarauntPayment();
+
+                $(".placeAnOrder").unbind().on("click", function() {
+                    clickPlaceAnOrder();
+                });
             } else {
                 //RestOrderHandlers();
                 $("#orderInfo").removeClass("hidden");
