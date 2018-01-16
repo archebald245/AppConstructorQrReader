@@ -243,7 +243,7 @@ function initRuCulture() {
     cultureRes.email = "Email";
     cultureRes.orderComments = "Коментарии к заказу";
     cultureRes.confirmMeth = "Продолжить";
-    cultureRes.orderInfo = "Информация и заказе";
+    cultureRes.orderInfo = "Информация о заказе";
     cultureRes.yourOrder = "Ваш заказ";
     cultureRes.total = "Всего: ";
     cultureRes.order = "Заказ";
