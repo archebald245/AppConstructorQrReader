@@ -117,13 +117,12 @@ function bindListenerToClickBtn() {
                 var curr = $(".totalPrice b").html().split(" ")[1];
                 $(".rest-amount-count").html(restAmount + " " + curr);
 
-                InitRestarauntPayment();
+                //InitRestarauntPayment();
             } else {
                 //RestOrderHandlers();
                 $("#orderInfo").removeClass("hidden");
                 $(".cart,.payment-method-container").addClass("hidden");
                 scrollTop();
-
 
                 $("#restAmount").val(restAmount);
                 var curr = $(".totalPrice b").html().split(" ")[1];
