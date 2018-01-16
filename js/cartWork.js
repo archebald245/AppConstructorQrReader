@@ -115,8 +115,8 @@ function bindListenerToClickBtn() {
             if (!isRestUsePayment && restAmount < 1) {
 
                 $(".cart,.payment-method-container").addClass("hidden");
-                paymentMethodHandler()
-                    //InitRestarauntPayment();
+                paymentMethodHandler();
+                //InitRestarauntPayment();
 
             } else {
                 //RestOrderHandlers();
