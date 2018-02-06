@@ -1,101 +1,128 @@
-function goToPage(index) {
-    indexPage = index;
-    var thisPage = applicationData.Pages.filter(function(item) { return item.Id == indexPage })[0];
-    var thisPageIsLocked = thisPage.IsLocked;
-    if (thisPageIsLocked) {
-        window.plugins.toast.showShortBottom(cultureRes.lockedPage);
-        return false
-    }
+var scrollData = 0;
 
-    if (thisPage.IsPrivate) {
-        if (!$.jStorage.get('isLogin')) {
-            var findLoginForm = false;
-            var pageWithForm = [];
-            applicationData.Pages.forEach(function(page) {
-                page.Rows.forEach(function(row) {
-                    row.CellContents.forEach(function(cell) {
-                        if (cell.ContentTypeId == 12) {
-                            pageWithForm.push({
-                                pageId: page.Id,
-                                formId: cell.FormId
-                            })
-                        }
-                    })
-                });
+function addListenerToClickEvent() {
+    $(".event-image-container, .event-data").unbind("click").on("click", function() {
+        var id = $(this).siblings(".eventId").val();
+        // var events = $.jStorage.get('EventsData');
+        var events = applicationData.MainEvents;
+        events.forEach(function(item, index) {
+            item.Events.forEach(function(item, index) {
+                if (item.Id == id) {
+                    scrollData = $("body").scrollTop();
+                    $("#container").addClass("hidden");
+                    $(".event-favorite-wrapper").addClass("hidden");
+                    $("#custom-hide-container").removeClass("hidden");
+                    RenderEventProfile(item);
+                    return true;
+                }
             });
-            pageWithForm.forEach(function(item) {
-                applicationData.Forms.forEach(function(form) {
-                    if (form.Id == item.formId && form.LoginForm) {
-                        indexPage = item.pageId
-                        findLoginForm = true;
-                    }
-                });
-            });
-            if (findLoginForm) {
-                window.plugins.toast.showShortBottom(cultureRes.loginPlease);
-            } else {
-                window.plugins.toast.showShortBottom(cultureRes.lockedPage);
-                return false;
-            }
-        }
-    }
-    if (applicationData.IsTrackingLastPage == true) {
-        setLastOpenPage(indexPage);
-    }
-    showActivePageInMenu(indexPage);
-    $("#container").empty();
-    slideUp();
-    $("html, body").animate({ scrollTop: -$(document).height() }, "fast");
-
-    reactRender();
-
-    $("a:not(.galleryHref)").each(function(i, e) {
-        var hrefVal = $(e).attr("href");
-        $(e).click(function() {
-            window.open(hrefVal, '_system');
         });
     });
-    $(".my-youtube").attr("height", "auto");
 
-    var pageStyles = "";
-    applicationData.Pages.forEach(function(element) {
-        if (element.Id == indexPage) {
-            pageStyles = element.Style;
-        }
-    }, this);
-
-    var pageWithGeneralBg = applicationData.Pages.filter(function(page) { return page.BackgroundForApplication });
-    if (pageWithGeneralBg.length > 0) {
-        pageStyles = pageWithGeneralBg[0].Style;
-    }
-
-    $("#container").attr("style", pageStyles);
-    submitFormListener();
-    initGallaryClick();
-    bindChangeValForms();
-    addListenerToClickBuy();
-    addListenerToClickOpenSingleItem();
-    addListenerToClickTimeLine();
-    $(".cart-btn").on("click", function() {
-        $("#container").addClass("hidden");
-        $(".classMenu").addClass("hidden");
-        $(".cart").removeClass("hidden");
-        scrollTop();
+    $(".event-favorite").unbind("click").on("click", function() {
+        var id = $(this).siblings(".eventId").val();
+        UpdateFavorite(this, id);
     });
-
-    changeRestaurant();
-    changeMenu();
-    $('[data-toggle="tooltip"]').tooltip();
+}
+//check event for favorite, save in local storage, add class
+function UpdateFavorite(e, id) {
+    var favorites = $.jStorage.get('FavoriteEvents');
+    var userId = $.jStorage.get('isLogin');
+    console.log("id- " + id + " :userId- " + userId);
+    if (userId) {
+        if (favorites != null) {
+            var index = favorites.indexOf(+id);
+            if (index > -1) {
+                var networkState = navigator.connection.type;
+                if (networkState != Connection.NONE) {
+                    //With internet
+                    //remove
+                    $.ajax({
+                        type: "delete",
+                        url: applicationData.UrlForUpdateApp + "/api/FavoriteEvent",
+                        data: JSON.stringify({
+                            EventId: id,
+                            UserId: userId
+                        }),
+                        cache: false,
+                        contentType: "application/json",
+                        datatype: 'json',
+                        success: function(object) {
+                            if (object) {
+                                favorites.splice(index, 1);
+                                $(e).removeClass("event-favorite-active");
+                                $.jStorage.set('FavoriteEvents', favorites);
+                                window.plugins.toast.showShortBottom(cultureRes.RemoveFavorite);
+                            } else {
+                                window.plugins.toast.showShortBottom(cultureRes.sorryError);
+                            }
+                        }
+                    });
+                } else { window.plugins.toast.showShortBottom(cultureRes.noInternet); }
+            } else {
+                //add to favorites
+                var networkState = navigator.connection.type;
+                if (networkState != Connection.NONE) {
+                    //With internet
+                    //AddEventToFavoritForUser
+                    $.ajax({
+                        type: "POST",
+                        url: applicationData.UrlForUpdateApp + "/api/FavoriteEvent",
+                        data: JSON.stringify({
+                            EventId: id,
+                            UserId: userId
+                        }),
+                        cache: false,
+                        contentType: "application/json",
+                        datatype: 'json',
+                        success: function(object) {
+                            console.log(object);
+                            if (object) {
+                                favorites.push(+id);
+                                $(e).addClass("event-favorite-active");
+                                $.jStorage.set('FavoriteEvents', favorites);
+                                window.plugins.toast.showShortBottom(cultureRes.AddFavorite);
+                            } else {
+                                window.plugins.toast.showShortBottom(cultureRes.sorryError);
+                            }
+                        }
+                    });
+                } else { window.plugins.toast.showShortBottom(cultureRes.noInternet); }
+            }
+        } else {
+            //add to favorites
+            var arr = [];
+            var networkState = navigator.connection.type;
+            if (networkState != Connection.NONE) {
+                //With internet
+                //AddEventToFavoritForUser
+                $.ajax({
+                    type: "POST",
+                    url: applicationData.UrlForUpdateApp + "/api/FavoriteEvent",
+                    data: JSON.stringify({
+                        EventId: id,
+                        UserId: userId
+                    }),
+                    cache: false,
+                    contentType: "application/json",
+                    datatype: 'json',
+                    success: function(object) {
+                        console.log(object);
+                        if (object) {
+                            arr.push(+id);
+                            $.jStorage.set('FavoriteEvents', arr);
+                            $(e).addClass("event-favorite-active");
+                            window.plugins.toast.showShortBottom(cultureRes.AddFavorite);
+                        } else {
+                            window.plugins.toast.showShortBottom(cultureRes.sorryError);
+                        }
+                    }
+                });
+            } else { window.plugins.toast.showShortBottom(cultureRes.noInternet); }
+        }
+    }
 }
 
-function scrollTop() {
-    $("html, body").animate({ scrollTop: -$(document).height() }, "fast");
-}
-
-function setLastOpenPage(pageId) {
-    $.jStorage.set('lastPageId', pageId);
-}
-
-function getLastOpenPage() {
-    return $.jStorage.get('lastPageId');
+function GetEventsIds(evetns) {
+    return evetns.map(function(event) { return event.Id; });
 }

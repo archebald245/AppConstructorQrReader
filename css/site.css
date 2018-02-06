@@ -46,7 +46,6 @@ form {
     width: 37px;
     height: 46px;
     text-indent: -9999px;
-    margin-left: 10px;
     cursor: pointer;
     display: block;
 }
@@ -396,7 +395,7 @@ p.item-shop-description {
     height: 32px;
     padding-left: 17px;
     color: #000;
-    background-color: rgba(0, 0, 0, 0.20);
+    background-color: rgba(255, 255, 255, 0.85);
     font-weight: normal;
     line-height: 32px;
 }
@@ -680,6 +679,7 @@ p.item-shop-description {
     float: left;
 }
 
+.event-btn,
 .cart-btn {
     border-radius: 50%;
     background: none;
@@ -694,6 +694,27 @@ p.item-shop-description {
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+}
+
+.event-btn {
+    background-image: url(../baseimages/favorites.png);
+    -webkit-box-shadow: 0px 0px 1px 0px rgba(74, 74, 74, 1);
+    -moz-box-shadow: 0px 0px 1px 0px rgba(74, 74, 74, 1);
+    box-shadow: 0px 0px 1px 0px rgba(74, 74, 74, 1);
+}
+
+.cart-btn-counter {
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    color: #fff;
+    text-align: center;
+    line-height: 22px;
+    background-color: #545252;
+    border-radius: 50%;
+    border: 2px solid #fff;
 }
 
 .cart-btn img {
@@ -812,7 +833,7 @@ p.item-shop-description {
 
 .order-booking {
     width: 95%;
-    margin: 50px 2.5% 80px;
+    margin: 50px 2.5% 90px;
 }
 
 #orderInfo input,
@@ -1320,7 +1341,7 @@ select#payMethod {
 }
 
 .bookingCartItem-data {
-    width: 70%;
+    width: 80%;
     min-width: 150px;
     float: left;
 }
@@ -1339,17 +1360,17 @@ select#payMethod {
 
 .cartItem-delete {
     float: right;
-    width: 30%;
-    height: 100%;
+    width: 20%;
+    height: 50px;
     min-width: 25px;
     background: url(../baseimages/booking-icons/tresh.png);
     background-size: 24px 33px;
     background-repeat: no-repeat;
     background-position: right;
-}
-
-#booking-order .bookingCartItem {
-    height: 165px;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    margin-top: -25px;
 }
 
 #booking-order div:last-child {
@@ -1431,6 +1452,7 @@ select#payMethod {
 }
 
 .fab.bottom-menu,
+.event-btn.bottom-menu,
 .cart-btn.bottom-menu {
     bottom: 80px;
 }
@@ -1968,7 +1990,7 @@ input[type="checkbox"].SwitcherFormElement:checked+div>div {
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 999999999;
+    z-index: 9999;
     background-color: rgba(0, 0, 0, 0.7);
 }
 
@@ -2164,6 +2186,224 @@ input[type="checkbox"].SwitcherFormElement:checked+div>div {
     to {
         transform: rotate(360deg);
     }
+}
+
+
+/*EVENT SECTION*/
+
+.event-day-container {
+    width: 100%;
+    height: 50px;
+    text-align: left;
+    line-height: 50px;
+    padding-left: 2.5%;
+    margin-bottom: 10px;
+    background: #E9E9E9;
+    font-size: 14pt;
+    font-weight: bold;
+    display: block;
+    overflow: hidden;
+    margin: 5% 0 2.5%;
+}
+
+.custom-container-event {
+    width: 100%;
+    overflow: hidden;
+    /* padding: 20px 0 0 0; */
+    font-size: 0px;
+    font-family: arial;
+}
+
+#event-favorite-container .custom-container-event {
+    padding: 80px 0 0 0;
+}
+
+.event-data-container {
+    display: inline-block;
+    width: 45%;
+    margin: 0px 2.5% 5% 2.5%;
+    box-shadow: 0px 0px 3px 1px #CCCCCC;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.event-image-container {
+    display: flex;
+    justify-content: center;
+}
+
+.event-image-container div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.event-data-container img {
+    max-width: 90%;
+    margin: 0 auto;
+    max-height: 90%;
+}
+
+.event-data-container .event-image-container {
+    width: 100%;
+    height: 340px;
+    background-size: cover;
+    background-position: 50% 0%;
+    background-repeat: no-repeat;
+}
+
+.event-data-container .event-data {
+    min-height: 110px;
+    background: #E9E9E9;
+}
+
+.event-data .event-name {
+    font-size: 16px;
+    width: 70%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding: 5% 5% 5% 5%;
+}
+
+.event-data .event-start-time {
+    font-size: 16px;
+    padding: 0 5% 0 5%;
+    width: 70%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.event-image-profile .event-favorite,
+.event-data-container .event-favorite {
+    position: absolute;
+    bottom: 5%;
+    right: 5%;
+    width: 32px;
+    height: 32px;
+    background: url(../baseimages/favorite.png) no-repeat;
+}
+
+.event-favorite-active {
+    background: url(../baseimages/favorite-active.png) no-repeat !important;
+}
+
+
+/*~~~~~~~~~~~~~~PROFILE OF EVENT~~~~~~~~~~~~~~~~~*/
+
+.event-profile {
+    font-family: arial;
+    padding: 60px 5% 5% 5%;
+}
+
+.event-list-header,
+.event-profile .event-profile-header {
+    text-align: center;
+    background-color: #e8e8e8;
+    font-size: 30px;
+    margin-bottom: 10px;
+    padding: 0 10px 0 60px;
+}
+
+.event-profile-header {
+    position: relative;
+    height: 40px;
+}
+
+.back-to-event-list {
+    position: absolute;
+    top: 3px;
+    left: 10px;
+    width: 35px;
+    height: 35px;
+    background: url(../baseimages/back-black.png) no-repeat;
+    background-size: 35px;
+}
+
+.event-list-header {
+    margin-bottom: 30px;
+}
+
+.event-profile .image-container img {
+    width: 100%;
+}
+
+.event-profile .event-description {
+    padding: 20px 0 10px 0;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.event-time-container {
+    padding: 20px 0 0 0;
+}
+
+.event-time-container .event-start-time {
+    background: url(../baseimages/booking-icons/clock-large.png) no-repeat 10px 50%;
+    padding: 0 0 0 40px;
+    background-size: 25px;
+    height: 25px;
+    line-height: 25px;
+}
+
+.event-time-container .event-start-date {
+    background: url(../baseimages/booking-icons/calendar-large.png) no-repeat 10px 50%;
+    padding: 0 0 0 40px;
+    background-size: 25px;
+    height: 25px;
+    line-height: 25px;
+    margin: 10px 0 10px 0;
+}
+
+.main-event-location,
+.event-time-container .event-location {
+    background: url(../baseimages/map-pin.png) no-repeat 10px 50%;
+    padding: 0 0 0 40px;
+    height: 25px;
+    line-height: 25px;
+    display: inline-block;
+}
+
+.event-image-profile {
+    position: relative;
+}
+
+.event-image-profile img {
+    width: 100%;
+}
+
+.main-event-data {
+    margin: 10px 2.5% 0;
+    padding: 25px 2.5% 20px;
+    width: 95%;
+    background-color: #E9E9E9;
+    box-shadow: 0 0 3px 0px rgba(50, 50, 50, 0.72);
+    border: solid 1px #e9e9e9;
+}
+
+.main-event-name {
+    font-size: 22pt;
+    font-weight: bold;
+    line-height: 0.75;
+    text-align: left;
+    color: #000000;
+    margin-bottom: 30px;
+}
+
+.main-event-location {
+    font-size: 14pt;
+    line-height: 1;
+    text-align: left;
+    color: #494949;
+    margin-bottom: 20px;
+}
+
+.main-event-description {
+    font-size: 10pt;
+    line-height: 1.29;
+    text-align: left;
+    color: #484848;
 }
 
 

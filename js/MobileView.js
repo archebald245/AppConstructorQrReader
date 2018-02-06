@@ -84,10 +84,9 @@ function reactRender() {
     }
 
 
-
     function onYouTubeIframeAPIReady(element, id) {
         var player = new YT.Player(element, {
-            heidth: 'auto',
+            height: 'auto',
             width: '100%',
             videoId: id,
             playerVars: { rel: 0 },
@@ -103,6 +102,7 @@ function reactRender() {
     }
 
     function onPlayerStateChange(event) {}
+    var isEvent = false;
     var isBooking = false;
     var isRestaurant = false;
     var Rows = React.createClass({
@@ -185,7 +185,10 @@ function reactRender() {
 
                             $(".status-list").html("");
                             for (var i = 0; i < orderedArray.length; i++) {
-                                $(".status-list").append("<p>" + (collectionOrders[i].IsConfirmated ? cultureRes.confirmated : cultureRes.pending) + "</p> <p>" + orderedArray[i].nemesService + "</p>");
+                                $(".status-list").append("<div id='bookStatusList'></div>");
+                                renderBookingStatusList(orderedArray[i]);
+                                //$(".status-list").append("<p>" + (collectionOrders[i].IsConfirmated ? cultureRes.confirmated : cultureRes.pending) + "</p> <p>" + orderedArray[i].nemesService + "</p>");
+                                $("#bookStatusList").attr("id", "");
                             }
                         }
                     });
@@ -202,6 +205,9 @@ function reactRender() {
                             }
                             if (element.ContentTypeId == 16) {
                                 isBooking = true;
+                            }
+                            if (element.ContentTypeId == 19) {
+                                isEvent = true;
                             }
                         });
                     });
@@ -276,6 +282,15 @@ function reactRender() {
                             'div', { className: 'container-fluid' }, !pageIsLocked ? rowModels : React.createElement('span', null, cultureRes.lockedPage)
                         )
                     );
+                } else if (isEvent == true) {
+                    return React.createElement(
+                        'div',
+                        null,
+                        React.createElement('div', { className: 'event-btn bottom-menu' }),
+                        React.createElement(
+                            'div', { className: 'container-fluid' }, !pageIsLocked ? rowModels : React.createElement('span', null, cultureRes.lockedPage)
+                        )
+                    );
                 } else {
                     return React.createElement(
                         'div',
@@ -291,6 +306,14 @@ function reactRender() {
                         'div',
                         null,
                         React.createElement('div', { className: 'backdrop' }),
+                        // React.createElement(
+                        //     'div', { className: 'fab child', 'data-subitem': '1' },
+                        //     React.createElement(
+                        //         'span',
+                        //         null,
+                        //         'C'
+                        //     )
+                        // ),
                         React.createElement(
                             'div', { className: 'fab child cart-btn', 'data-subitem': '2' },
                             React.createElement(
@@ -321,6 +344,14 @@ function reactRender() {
                         'div',
                         null,
                         React.createElement('div', { className: 'backdrop' }),
+                        // React.createElement(
+                        //     'div', { className: 'fab child cart-btn', 'data-subitem': '2' },
+                        //     React.createElement(
+                        //         'span',
+                        //         null,
+                        //         'R'
+                        //     )
+                        // ),
                         React.createElement(
                             'div', { className: 'fab child first', 'data-subitem': '1' },
                             React.createElement(
@@ -344,10 +375,19 @@ function reactRender() {
                     return React.createElement(
                         'div',
                         null,
-                        React.createElement('div', { className: 'cart-btn' }),
+                        React.createElement('div', { className: 'cart-btn' }, React.createElement(
+                            'div', { className: 'cart-btn-counter hidden' })),
                         React.createElement(
                             'div', { className: 'container-fluid' }, !pageIsLocked ? rowModels : React.createElement('span', null, cultureRes.lockedPage)
-
+                        )
+                    );
+                } else if (isEvent == true) {
+                    return React.createElement(
+                        'div',
+                        null,
+                        React.createElement('div', { className: 'event-btn' }),
+                        React.createElement(
+                            'div', { className: 'container-fluid' }, !pageIsLocked ? rowModels : React.createElement('span', null, cultureRes.lockedPage)
                         )
                     );
                 } else {
@@ -490,8 +530,6 @@ function reactRender() {
             return React.createElement('div', { className: "map-container", id: "map-container-" + this.props.data.Id });
         }
     });
-
-
 
     var Hbox = React.createClass({
         displayName: 'Hbox',
@@ -678,9 +716,11 @@ function reactRender() {
                     }
                 });
             }
-            if (data.ContentTypeId == 15) {
+            if (data.ContentTypeId == 15 && this.checkDeniedTools(deniedTools, "restaurant-menu-item")) {
+                // $(ReactDOM.findDOMNode(this)).append("<div><select class='select-restaurant'></select><select class='select-menu'></select><div id='custom-restaurant-menu-container'></div></div>");
                 var arrIdMenu = data.Value.split(',');
                 var restaurantCollection = applicationData.Restaurants;
+                // setUseRestaurantMenus(arrIdMenu, true,restaurantCollection);
                 var restaurantsArr = filterMenu(restaurantCollection, arrIdMenu);
                 var restaurants = [];
                 var selectRest = $("<select class='select-restaurant'></select>");
@@ -689,6 +729,9 @@ function reactRender() {
                     $(selectRest).append("<option value='" + this.Id + "'>" + this.Name + "</option>");
                 });
                 restaurants = _.uniq(restaurants);
+                // $(restaurants).each(function(){
+                //     $(selectRest).append("<option value='"+ this.Id +"'>"+this.Name+"</option>")
+                // });
                 var div = $("<div><hidden name='arrIdMenu' value=" + data.Value + "/></div>");
                 var divContainer = "<div id='custom-restaurant-menu-container' class='custom-restaurant-menu-container'></div>";
 
@@ -727,7 +770,7 @@ function reactRender() {
                                         });
                                         $(".select-restaurant").val(thisRestaurantaraunt.Id);
                                         $(".select-menu").val(thisRestaurantarauntMenu.Id);
-                                    } else if (dataItem.IsChecked && dataItem.Day == "Date" && ThisRestaurantaurantMenuBlock.checkRestarauntTimeForDate(dataItem.FromHour, dataItem.ToHour)) {
+                                    } else if (dataItem.IsChecked && dataItem.Day == cultureRes.date && ThisRestaurantaurantMenuBlock.checkRestarauntTimeForDate(dataItem.FromHour, dataItem.ToHour)) {
                                         renderRestaurantMenu(thisRestaurantaurantMenu, data.LablePosition, data.StateShopItemResponsiveModel, data.StateShopItemName, data.StateShopItemPrice, data.StateShopItemDescription, data.StateShopItemButton, data.StateShopItemImage);
                                         $(selectMenu).html("");
                                         $(thisRestaurantaraunt.RestaurantMenus).each(function(count, option) {
@@ -761,7 +804,7 @@ function reactRender() {
                                             });
                                             $(".select-restaurant").val(thisRestaurantaraunt.Id);
                                             $(".select-menu").val(thisRestaurantarauntMenu.Id);
-                                        } else if (dataItem.IsChecked && dataItem.Day == "Date" && ThisRestaurantaurantMenuBlock.checkRestarauntTimeForDate(dataItem.FromHour, dataItem.ToHour)) {
+                                        } else if (dataItem.IsChecked && dataItem.Day == cultureRes.date && ThisRestaurantaurantMenuBlock.checkRestarauntTimeForDate(dataItem.FromHour, dataItem.ToHour)) {
                                             renderRestaurantMenu(thisRestaurantaurantMenu, data.LablePosition, data.StateShopItemResponsiveModel, data.StateShopItemName, data.StateShopItemPrice, data.StateShopItemDescription, data.StateShopItemButton, data.StateShopItemImage);
                                             $(selectMenu).html("");
                                             $(thisRestaurantaraunt.RestaurantMenus).each(function(count, option) {
@@ -800,7 +843,7 @@ function reactRender() {
                                     $(".SubmitBtnIdForm.form-submit-item[name=" + element.Id + "]").find("button").prop("disabled", true);
                                 }
                                 if ($.jStorage.get('isLogin') && element.LoginForm) {
-                                    $(".SubmitBtnIdForm.form-submit-item[name=" + element.Id + "]").find("button").removeClass("formSubmit").addClass("formLogout").text(cultureRes.logout)
+                                    $(".SubmitBtnIdForm.form-submit-item[name=" + element.Id + "]").find("button").removeClass("formSubmit").addClass("formLogout").text("Logout");
                                     submitFormListener();
                                 }
                                 $("#custom-form-container").find("label").attr("style", styleLabel);
@@ -820,7 +863,6 @@ function reactRender() {
                 $("#custom-container-booking").attr("id", "");
             }
             if (data.ContentTypeId == 17 && this.checkDeniedTools(deniedTools, "pdf-item")) {
-
                 $(ReactDOM.findDOMNode(this)).find("span").click(function(e) {
                     var url = $(this).attr("data-locationpdf");
                     var options = {
@@ -834,10 +876,20 @@ function reactRender() {
                         //e.g. track document usage
                     }
                     cordova.plugins.SitewaertsDocumentViewer.viewDocument(
-                        url, 'application/pdf', options,
-                        onShow);
+                        url, 'application/pdf', options, onShow);
                 });
             }
+            if (data.ContentTypeId == 19 && this.checkDeniedTools(deniedTools, "event-item")) {
+                $(ReactDOM.findDOMNode(this)).append("<div id='event-container'></div>");
+
+                $(applicationData.MainEvents).each(function() {
+                    if (this.Id == data.Json.Id) {
+                        renderEvent(this);
+                    }
+                });
+                $("#event-container").attr("id", "");
+            }
+
             if (data.ContentTypeId == 2 || data.ContentTypeId == 4 || data.ContentTypeId == 9) {
                 $(ReactDOM.findDOMNode(this)).click(function(e) {
                     e.preventDefault();
@@ -894,7 +946,60 @@ function reactRender() {
                 return false;
             }
         },
-
+        // checkRestarauntTimeForDate: function(FromHourModel, ToHourModel, NowHoursModel) {
+        //                     var FromDataArray = FromHourModel.split("T")[1].split(":");
+        //     var ToDataArray = ToHourModel.split("T")[1].split(":");
+        //     var NowDataArray = NowHoursModel.split("T")[1].split(":");
+        //
+        //     var FromMonth =  Number((FromHourModel.split("T")[0]).split("-")[1]);
+        //     var FromDay =  Number((FromHourModel.split("T")[0]).split("-")[2]);
+        //     var FromHour = Number(FromDataArray[0]);
+        //     var FromMinuts = Number(FromDataArray[1]);
+        //     var FromSeconds = Number(FromDataArray[2]);
+        //
+        //     var ToMonth =  Number((ToHourModel.split("T")[0]).split("-")[1]);
+        //     var ToDay =  Number((ToHourModel.split("T")[0]).split("-")[2]);
+        //     var ToHour = Number(ToDataArray[0]);
+        //     var ToMinuts = Number(ToDataArray[1]);
+        //     var ToSeconds = Number(ToDataArray[2]);
+        //
+        //     var NowMonth = Number(NowHoursModel.split("-")[0]);
+        //     var NowDay = Number(NowHoursModel.split("-")[1]);
+        //     var NowHour = Number(NowDataArray[0]);
+        //     var NowMinuts = Number(NowDataArray[1]);
+        //     var NowSeconds = Number(NowDataArray[2]);
+        //
+        //
+        //     if ((FromMonth < NowMonth) && (NowMonth < ToMonth)) {
+        //                     return true;
+        //     }else
+        //     if((FromMonth == NowMonth) || (NowMonth == ToMonth))
+        //     {
+        //                     if((FromDay < NowDay) && (NowDay < ToDay)){
+        //                     return true;
+        //       }else   if((FromDay == NowDay) || (NowDay == ToDay)){
+        //                     if ((FromHour < NowHour) && (NowHour < ToHour)) {
+        //                     return true;
+        //         }else if ((FromHour == NowHour) && (NowHour == ToHour)) {
+        //                     if ((FromMinuts < NowMinuts) && (NowMinuts < ToMinuts)) {
+        //                     return true;
+        //           }else if ((FromMinuts == NowMinuts) && (NowMinuts == ToMinuts)) {
+        //                     if ((FromMinuts < NowMinuts) && (NowMinuts < ToMinuts)) {
+        //                     return true;
+        //             }else   if ((FromMinuts == NowMinuts) && (NowMinuts == ToMinuts)) {
+        //                     if ((FromSeconds < NowSeconds) && (NowSeconds < ToSeconds)) {
+        //                     return true;
+        //              }else  if ((FromSeconds == NowSeconds) && (NowSeconds == ToSeconds)) {
+        //                     return true;
+        //              }
+        //             }
+        //           }
+        //         }
+        //       }
+        //     }
+        //
+        //     return false;
+        // },
         checkRestarauntTimeForDate: function checkRestarauntTimeForDate(FromHourModel, ToHourModel) {
             if (moment().isAfter(FromHourModel) && moment().isBefore(ToHourModel)) {
                 return true;
@@ -923,6 +1028,22 @@ function reactRender() {
             var timeString = ap + hour + ':' + minute + ':' + second;
             return timeString;
         },
+        // getDateTime: function(){
+        //                     var now = new Date();
+        //   var month = now.getMonth() + 1;
+        //   var day = now.getDate();
+        //   var hour = now.getHours();
+        //   var minute = now.getMinutes();
+        //   var second = now.getSeconds();
+        //   var ap = "12T";
+        //   if (hour > 11) { ap = "24T"; }
+        //   if (hour < 10) { hour = "0" + hour; }
+        //   if (minute < 10) { minute = "0" + minute; }
+        //   if (second < 10) { second = "0" + second; }
+        //   if(day < 10) {day = "0" + day;}
+        //   var timeString = month + "-" + day + "-" + ap + hour + ':' + minute + ':' + second;
+        //   return timeString;
+        // },
         checkDeniedTools: function(allTool, thisTool) {
             var tool = allTool.filter(function(e) { return e == thisTool }).length < 1;
             return tool
@@ -979,7 +1100,7 @@ function reactRender() {
             } else if (data.ContentTypeId == 9) {
                 return null
             }
-            if (data.ContentTypeId == 7 && this.checkDeniedTools(deniedTools, "youtube-item")) {
+            if (data.ContentTypeId == 7 && this.checkDeniedTools(deniedTools, "youtube-item") && this.checkInternetConnection()) {
                 return React.createElement(
                     'div', { className: "videoWrapper cell-container col-xs-" + data.Colspan + " col-sm-" + data.Colspan + " col-md-" + data.Colspan + " col-lg-" + data.Colspan, onClick: this.onClickCell },
                     React.createElement(YoutubeContainer, { data: data.Value })
@@ -989,7 +1110,7 @@ function reactRender() {
             }
 
             //ContentTypeId - 10 start
-            if (data.ContentTypeId == 10 && data.Json.elements !== undefined && this.checkDeniedTools(deniedTools, "hbox-container-item")) {
+            if (data.ContentTypeId == 10 && this.checkDeniedTools(deniedTools, "hbox-container-item")) {
                 return React.createElement(
                     'div', { className: "cell-container col-xs-" + data.Colspan + " col-sm-" + data.Colspan + " col-md-" + data.Colspan + " col-lg-" + data.Colspan },
                     React.createElement(Hbox, { data: data.Json })
@@ -997,7 +1118,7 @@ function reactRender() {
             } else if (data.ContentTypeId == 10) {
                 return null
             }
-            if (data.ContentTypeId == 11 && data.Json.elements !== undefined && this.checkDeniedTools(deniedTools, "vbox-container-item")) {
+            if (data.ContentTypeId == 11 && this.checkDeniedTools(deniedTools, "vbox-container-item")) {
                 return React.createElement(
                     'div', { className: "cell-container col-xs-" + data.Colspan + " col-sm-" + data.Colspan + " col-md-" + data.Colspan + " col-lg-" + data.Colspan },
                     React.createElement(Vbox, { data: data.Json })
@@ -1043,8 +1164,11 @@ function reactRender() {
             } else if (data.ContentTypeId == 18) {
                 return null
             }
-
-
+            if (data.ContentTypeId == 19 && this.checkDeniedTools(deniedTools, "event-item")) {
+                return React.createElement('div', { className: "cell-container col-xs-" + data.Colspan + " col-sm-" + data.Colspan + " col-md-" + data.Colspan + " col-lg-" + data.Colspan, onClick: this.onClickCell });
+            } else if (data.ContentTypeId == 19) {
+                return null
+            }
         }
     });
     //ContentTypeId - 10 end

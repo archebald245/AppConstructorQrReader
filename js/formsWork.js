@@ -24,6 +24,7 @@ function submitFormListener() {
                     $(".spinner-container").addClass("hidden");
                     if (data.Success == true) {
                         $.jStorage.set('isLogin', data.UserId);
+                        $.jStorage.set('FavoriteEvents', GetEventsIds(data.FavoriteEvents));
                         alert(data.Message);
                         goToPage(indexPage);
                     } else {
@@ -99,6 +100,7 @@ function bindChangeValForms() {
                                     $(".spinner-container").addClass("hidden");
                                     if (data.Success == true) {
                                         $.jStorage.set('isLogin', data.UserId);
+                                        $.jStorage.set('FavoriteEvents', GetEventsIds(data.FavoriteEvents));
                                         alert(data.Message);
                                         goToPage(indexPage);
                                     } else {
