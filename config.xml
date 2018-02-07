@@ -59,9 +59,9 @@
     <preference name="DisallowOverscroll" value="true" /> 
     <preference name="EnableViewportScale" value="true" />
   
-    <preference name="android-manifest/application/@android:theme" value="@android:style/theme.notitlebar.fullscreen" />
-	<preference name="android-manifest/application/activity/@android:windowsoftinputmode" value="statehidden|adjustpan" />
-    <preference name="android-manifest/application/activity/@android:configchanges" value="keyboardhidden|orientation" />
+    <!-- <preference name="android-manifest/application/@android:theme" value="@android:style/theme.notitlebar.fullscreen" /> -->
+	<!-- <preference name="android-manifest/application/activity/@android:windowsoftinputmode" value="statehidden|adjustpan" /> -->
+    <!-- <preference name="android-manifest/application/activity/@android:configchanges" value="keyboardhidden|orientation" /> -->
   
     <resource-file src="google-services.json" target="google-services.json" />
 	
