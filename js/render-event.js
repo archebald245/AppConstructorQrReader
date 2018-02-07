@@ -334,7 +334,7 @@ var renderFavorite = function renderFavorite() {
                     'div', { className: 'event-list-header' },
                     React.createElement(
                         'span', { className: 'event-favorite-label' },
-                        "TEST "
+                        cultureRes.favoriteEvents
                     ), React.createElement(
                         'div', { className: 'back-to-event-list' }, null
                     )
