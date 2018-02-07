@@ -233,7 +233,7 @@ var renderFavorite = function renderFavorite() {
     var eventIds = $.jStorage.get('FavoriteEvents');
     var events = [];
     applicationData.MainEvents.forEach(function(mainEvent) {
-        mainEvent.forEach(function(event) {
+        mainEvent.Events.forEach(function(event) {
             if (eventIds.indexOf(event.Id) > -1) {
                 events.push(event);
             }
