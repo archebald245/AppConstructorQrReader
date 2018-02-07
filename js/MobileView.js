@@ -866,18 +866,19 @@ function reactRender() {
                 $(ReactDOM.findDOMNode(this)).find("span").click(function(e) {
                     var url = $(this).attr("data-locationpdf");
 
+                    var options = {
+                        openWith: {
+                            enabled: true
+                        }
+                    }
+
+                    function onShow() {
+                        window.console.log('document shown');
+                        //e.g. track document usage
+                    }
+
                     if (device.platform === 'iOS') {
                         //ios
-                        var options = {
-                            openWith: {
-                                enabled: true
-                            }
-                        }
-
-                        function onShow() {
-                            window.console.log('document shown');
-                            //e.g. track document usage
-                        }
                         cordova.plugins.SitewaertsDocumentViewer.viewDocument(
                             url, 'application/pdf', options, onShow);
 
