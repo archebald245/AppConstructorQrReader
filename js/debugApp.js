@@ -23,7 +23,8 @@ function deleteResourcesAll() { //Call in Init function
         $(".project-list-wrapper").removeClass("hidden");
         $(".Scan-spiner").addClass("hidden");
         $("#container").attr("style", "");
-        $("#container, #custom-hide-container, .singleItem, #orderInfo, .cart, .container-statusBooking, .bookingServices-container, .container-selectFreeBookTime, .dateTimePicker-container, .order-booking").addClass("hidden");
+        $("#container, #custom-hide-container, #custom-hide-container, #event-favorite-wrapper, .singleItem, #orderInfo, .cart, .container-statusBooking, .bookingServices-container, .container-selectFreeBookTime, .dateTimePicker-container, .order-booking").addClass("hidden");
+        $.jStorage.deleteKey('FavoriteEvents');
     });
 }
 //Call in Init function

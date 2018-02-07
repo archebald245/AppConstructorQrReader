@@ -82,7 +82,13 @@ function goToPage(index) {
         $(".cart").removeClass("hidden");
         scrollTop();
     });
-
+    $(".event-btn").on("click", function() {
+        renderFavorite();
+        $(".event-profile").addClass("hidden");
+        $("#container").addClass("hidden");
+        $(".event-favorite-wrapper").removeClass("hidden");
+        window.scrollTo(0, scrollData);
+    });
     changeRestaurant();
     changeMenu();
     $('[data-toggle="tooltip"]').tooltip();
