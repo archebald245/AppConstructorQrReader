@@ -9,14 +9,20 @@ function searchResourcesAndReplacePatch(jsonObject) {
         if (jsonObject.Pages[i].BackgroundImagePath != null) {
             jsonObject.Pages[i] = resourcesOfBackground(jsonObject.Pages[i], storePath);
         }
-
-
     }
     if (jsonObject.Restaurants != null) {
         jsonObject.Restaurants = resourcesOfRestaurantMenus(jsonObject.Restaurants, storePath);
     }
     if (jsonObject.Institutions != null) {
         jsonObject.Institutions = resourcesOfBooking(jsonObject.Institutions, storePath);
+    }
+    if (jsonObject.Menu != null) {
+        jsonObject.Menu.MenuItems.forEach(function(item) {
+            item = resourcesOfMenu(item, storePath);
+        });
+    }
+    if (jsonObject.MainEvents != null) {
+        jsonObject.MainEvents = resourcesOfEvents(jsonObject.MainEvents, storePath);
     }
     if ($.jStorage.get('resources') != null) {
         resourcesToDownload = compareResouces($.jStorage.get('resources'), resources, storePath);
@@ -26,6 +32,14 @@ function searchResourcesAndReplacePatch(jsonObject) {
     $.jStorage.set('replaceImagePachJson', JSON.stringify(jsonObject));
     $.jStorage.set('resources', resources);
     return resourcesToDownload;
+}
+
+function resourcesOfMenu(item, storePath) {
+    if (item.IconPath != null) {
+        resources.push(item.IconPath);
+        item.IconPath = replacementPath(item.IconPath, storePath);
+    }
+    return item;
 }
 
 function resourcesOfCellContainer(cellContainer, storePath) {
@@ -45,6 +59,10 @@ function resourcesOfCellContainer(cellContainer, storePath) {
         }
         if (cellContainer[i].ContentTypeId == 8) {
             cellContainer[i] = resourcesOfGallary(cellContainer[i], storePath);
+        }
+        if (cellContainer[i].ContentTypeId == 19) {
+            cellContainer[i].Json = JSON.parse(Base64.decode(cellContainer[i].Json));
+            //eventsData = resourcesOfEvent(eventsData, storePath);
         }
     }
     return cellContainer;
@@ -95,6 +113,17 @@ function resourcesOfRestaurantMenus(restaurants, storePath) {
     });
 
     return restaurants;
+}
+
+function resourcesOfEvents(mainEvents, storePath) {
+    // restaurants = replacePathToImageRestaurantMenu(restaurants);
+    $(mainEvents).each(function() {
+        $(this.Events).each(function() {
+            resources.push(this.ImagePath);
+            this.ImagePath = replacementPath(this.ImagePath, storePath);
+        });
+    });
+    return mainEvents;
 }
 
 function resourcesOfBooking(institutions, storePath) {
@@ -184,6 +213,21 @@ function replacementPathImagesRestaurantMenu(oldPath, storePath) {
     var nameImage = oldPath.split("/");
     nameImage = nameImage[nameImage.length - 1];
     return storePath + nameImage;
+}
+
+function replacementMenuItemIconPath(oldPath, storePath) {
+    var nameImage = oldPath.split("/");
+    nameImage = nameImage[nameImage.length - 1];
+    return storePath + nameImage;
+}
+
+function replacementPath(oldPath, storePath) {
+    if (oldPath) {
+        var nameImage = oldPath.split("/");
+        nameImage = nameImage[nameImage.length - 1];
+        return storePath + nameImage;
+    }
+    return oldPath;
 }
 
 function replacementBackgroundImagePath(jsonObjectValue, arrayResources, storePath) {

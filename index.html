@@ -29,6 +29,7 @@
     <script src="js/payment/dropin.min.js"></script>
     <script src="js/localized/cultureResources.js"></script>
     <script src="js/render-form.js"></script>
+    <script src="js/render-event.js"></script>
     <script src="js/render-custom-form.js"></script>
     <script src="js/render-custom-hide-form.js"></script>
     <script src="js/render-restaurant-menu.js"></script>
@@ -41,6 +42,7 @@
     <script src="js/jstorage.js"></script>
     <script src="js/jquery.blockUI.js"></script>
     <script src="js/jquery-ui.js"></script>
+    <script src="js/events.js"></script>
     <script src="js/eventsWork.js"></script>
     <script src="js/resourceWork.js"></script>
     <script src="js/formsWork.js"></script>
@@ -66,6 +68,10 @@
     <script src="js/initWork.js"></script>
     <script src="js/notification/firebase.js"></script>
 
+    <!--Google map API-->
+    <script src="js/googleMap/googleMapsApi.js"></script>
+    <!--REMOTE  Google map API-->
+    <!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDWYOhj7kYVNE75ZKMQJp88WedpxazfZxU" async defer></script>-->
     <style>
         /* .blockUI{display:none !important;}*/
     </style>
@@ -89,12 +95,6 @@
         </div>
     </div>
     <button id="clearJsStorage" class="hidden"></button>
-
-    <div class="startScan-wrapper hidden">
-        <h1>Please Scan QR for your Application</h1>
-        <button id="startScan">Start Scan</button>
-        <div class="Scan-spiner hidden"></div>
-    </div>
     <div class="login-wrapper hidden">
         <div class="login-form-container">
             <div class="app-logo"></div>
@@ -180,12 +180,12 @@
 
                 <label for="nameOrder"><span>Name</span></label>
                 <input type="text" id="booking-nameOrder" class="nameOrder" />
-                <label for="phoneOrder"><span>Phone Number</span></label>
+                <label for="phoneOrder"><span>Phone Number</span>*</label>
                 <input type="text" id="booking-phoneOrder" class="phoneOrder required" />
-                <label for="emailOrder"><span>Email</span></label>
+                <label for="emailOrder"><span>Email</span>*</label>
                 <input type="text" id="booking-emailOrder" class="emailOrder required" />
                 <span class="hidden">
-            <label for="confirmMethod"><span>Confirm Method</span></label>
+            <label for="confirmMethod"><span>Confirm Method</span>*</label>
                 <select id="confirmMethod" class="required">
                 <option value="SMS"><span>SMS</span></option>
                 <option value="InApplication"><span>In Application</span></option>
@@ -205,7 +205,7 @@
                         </div>
                     </div>
                     <div class="payment-method-container-booking">
-                        <label for="payMethod-booking"><span>Payment Method</span></label>
+                        <label for="payMethod-booking"><span>Payment Method</span>*</label>
                         <select id="payMethod-booking" class="required">
                             <option value="cash"><span>Cash</span></option>
                             <option value="card"><span>Card</span></option>
@@ -250,10 +250,10 @@
                             <label for="nameOrder"><span>Name</span></label>
                             <input type="text" id="nameOrder" class="nameOrder" />
 
-                            <label for="phoneOrder"><span>Phone Number</span></label>
+                            <label for="phoneOrder"><span>Phone Number</span>*</label>
                             <input type="text" id="phoneOrder" class="phoneOrder required" />
 
-                            <label for="emailOrder"><span>Email</span></label>
+                            <label for="emailOrder"><span>Email</span>*</label>
                             <input type="text" id="emailOrder" class="emailOrder required" />
 
                             <label for="commentOrder"><span>Your Order Comments</span></label>
@@ -269,7 +269,7 @@
 
                             </div>
                             <div class="payment-method-container">
-                                <label for="payMethod"><span>Payment Method</span></label>
+                                <label for="payMethod"><span>Payment Method</span>*</label>
                                 <select id="payMethod" class="required">
                                     <option value="cash"><span>Cash</span></option>
                                     <option value="card"><span>Card</span></option>
@@ -306,7 +306,9 @@
             <div id="singleItem"> </div>
         </div>
 
-        <div id="custom-hide-container" class="hidden">
+        <div id="event-favorite-wrapper" class="event-favorite-wrapper hidden">
+        </div>
+        <div id="custom-hide-container" class="event-profile hidden">
         </div>
 
         <script src="js/MobileView.js"></script>

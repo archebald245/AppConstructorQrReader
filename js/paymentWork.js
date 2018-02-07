@@ -113,9 +113,9 @@ function InitRestarauntBraintree(token) {
             }
         });
 
-        $(".placeAnOrder").unbind().on("click", function() {
-            $("#payment-form button.button").click();
-        });
+        // $(".placeAnOrder").unbind().on("click", function() {
+        //     $("#payment-form button.button").click();
+        // });
     });
 }
 

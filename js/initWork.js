@@ -100,8 +100,9 @@ function onDeviceReady() {
         // alert("Error " + e.message);
     });
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Notification Area End
-    StatusBar.hide();
-
+    if (device.platform === 'iOS') {
+        StatusBar.hide();
+    }
     checkApplicationId();
 
     // navigator.splashscreen.show();

@@ -41,9 +41,9 @@ function initCulture() {
     $(".dateTimePicker-container .cart-top-line span").html(cultureRes.selectDate);
     $("label[for='dateTimePicker-time']").html(cultureRes.selectTime);
     $("label[for='dateTimePicker-date']").html(cultureRes.selectDate);
-    $("label[for='nameOrder']").html(cultureRes.name);
-    $("label[for='confirmMethod']").html(cultureRes.phone);
-    $("label[for='commentOrder']").html(cultureRes.orderComments);
+    $("label[for='nameOrder'] span").html(cultureRes.name);
+    $("label[for='confirmMethod'] span").html(cultureRes.phone);
+    $("label[for='commentOrder'] span").html(cultureRes.orderComments);
     $(".dateTimePicker-container .btn-confirmDateForBook span").html(cultureRes.confirmMeth);
     $(".order-booking .cart-top-line span").html(cultureRes.orderInfo);
     $(".order-booking .btn-send-order-booking span ").html(cultureRes.book);
@@ -53,10 +53,10 @@ function initCulture() {
     $(".cart .go-to-menu").html(cultureRes.contShop);
     $("#orderInfo .go-to-menu-btn").html(cultureRes.contShop);
     $("#orderInfo .cart-top-line span ").html(cultureRes.orderInfo);
-    $("#orderInfo label[for='nameOrder']").html(cultureRes.name);
-    $("#orderInfo label[for='phoneOrder']").html(cultureRes.phone);
-    $("#orderInfo label[for='emailOrder']").html(cultureRes.email);
-    $("#orderInfo label[for='commentOrder']").html(cultureRes.orderComments);
+    $("#orderInfo label[for='nameOrder'] span").html(cultureRes.name);
+    $("#orderInfo label[for='phoneOrder'] span").html(cultureRes.phone);
+    $("#orderInfo label[for='emailOrder'] span").html(cultureRes.email);
+    $("#orderInfo label[for='commentOrder'] span").html(cultureRes.orderComments);
     $("#orderInfo .placeAnOrder span").html(cultureRes.buy);
     // $("#orderInfo .rest-amount-label .input-label").html(cultureRes.amount);
     // $(".order-booking .booking-amount-labe .input-label").html(cultureRes.amount);
@@ -73,6 +73,7 @@ function initEnCulture() {
     cultureRes.login = "Log In";
     cultureRes.projectList = "Project List";
     cultureRes.update = "Refresh";
+    cultureRes.updateProject = "List of projects has been updated";
     cultureRes.download = "Download";
     cultureRes.startScan = "Start Scan";
     cultureRes.pleaseScan = "Please Scan QR for your Application";
@@ -215,6 +216,10 @@ function initEnCulture() {
     cultureRes.Card = 'Card';
     cultureRes.PayPal = 'PayPal';
 
+    //EventsWork
+    cultureRes.favoriteEvents = 'Favorites';
+    cultureRes.AddFavorite = 'Event was added to favorites';
+    cultureRes.RemoveFavorite = 'Event was removed to favorites';
 
 }
 
@@ -227,6 +232,7 @@ function initRuCulture() {
     cultureRes.login = "Войти";
     cultureRes.projectList = "Список проектов";
     cultureRes.update = "Обновить";
+    cultureRes.updateProject = "Список проектів був оновлений";
     cultureRes.download = "Загрузить";
     cultureRes.startScan = "Начать сканировать";
     cultureRes.pleaseScan = "Пожалуйста, отсканируйте QR-код Вашего приложения";
@@ -241,7 +247,7 @@ function initRuCulture() {
     cultureRes.email = "Email";
     cultureRes.orderComments = "Коментарии к заказу";
     cultureRes.confirmMeth = "Продолжить";
-    cultureRes.orderInfo = "Информация и заказе";
+    cultureRes.orderInfo = "Информация о заказе";
     cultureRes.yourOrder = "Ваш заказ";
     cultureRes.total = "Всего: ";
     cultureRes.order = "Заказ";
@@ -372,6 +378,11 @@ function initRuCulture() {
     cultureRes.endingIn = 'Последние две цифры номера карты: XX{{lastTwoCardDigits}}';
     cultureRes.Card = 'Карта';
     cultureRes.PayPal = 'PayPal';
+
+    //EventsWork
+    cultureRes.favoriteEvents = 'Избранное';
+    cultureRes.AddFavorite = 'Событие добавленно в избранное';
+    cultureRes.RemoveFavorite = 'Событие было удаленно из избранного';
 }
 
 function initUaCulture() {
@@ -383,6 +394,7 @@ function initUaCulture() {
     cultureRes.login = "Увійти";
     cultureRes.projectList = "Проекти";
     cultureRes.update = "Оновити";
+    cultureRes.updateProject = "Список проектів був оновлений";
     cultureRes.download = "Завантажити";
     cultureRes.startScan = "Почати сканування";
     cultureRes.pleaseScan = "Будь ласка, відскануйте QR-код Вашого додатку";
@@ -527,5 +539,10 @@ function initUaCulture() {
     cultureRes.endingIn = 'Останні дві цифри номера карти: XX {{lastTwoCardDigits}}';
     cultureRes.Card = 'Картка';
     cultureRes.PayPal = 'PayPal';
+
+    //EventsWork
+    cultureRes.favoriteEvents = 'Обрані події';
+    cultureRes.AddFavorite = 'Подія була додана до обраного';
+    cultureRes.RemoveFavorite = 'Подія була видалена с обраного';
 
 }

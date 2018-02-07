@@ -23,7 +23,8 @@ function submitFormListener() {
                 $.post('' + siteUrl + '/MobileUserAuth/Login/', $(form).serialize(), function(data) {
                     $(".spinner-container").addClass("hidden");
                     if (data.Success == true) {
-                        $.jStorage.set('isLogin', true);
+                        $.jStorage.set('isLogin', data.UserId);
+                        $.jStorage.set('FavoriteEvents', GetEventsIds(data.FavoriteEvents));
                         alert(data.Message);
                         goToPage(indexPage);
                     } else {
@@ -54,7 +55,6 @@ function submitFormListener() {
                     $(form).find("input[type='checkbox']").removeAttr("checked");
                 });
             }
-
         } else {
             alert(cultureRes.noInternet);
         }
@@ -65,7 +65,8 @@ function submitFormListener() {
     }
 
     $(".formLogout").on("click", function() {
-        $.jStorage.set('isLogin', false);
+        $.jStorage.deleteKey('isLogin');
+        $("#cart .delete-cartItem").click();
         goToPage(indexPage);
     });
 }
@@ -98,7 +99,8 @@ function bindChangeValForms() {
                                 $.post('' + siteUrl + '/MobileUserAuth/Login/', $(elem).serialize(), function(data) {
                                     $(".spinner-container").addClass("hidden");
                                     if (data.Success == true) {
-                                        $.jStorage.set('isLogin', true);
+                                        $.jStorage.set('isLogin', data.UserId);
+                                        $.jStorage.set('FavoriteEvents', GetEventsIds(data.FavoriteEvents));
                                         alert(data.Message);
                                         goToPage(indexPage);
                                     } else {

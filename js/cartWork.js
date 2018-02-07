@@ -118,12 +118,15 @@ function bindListenerToClickBtn() {
                 $(".rest-amount-count").html(restAmount + " " + curr);
 
                 InitRestarauntPayment();
+
+                $(".placeAnOrder").unbind().on("click", function() {
+                    clickPlaceAnOrder();
+                });
             } else {
                 //RestOrderHandlers();
                 $("#orderInfo").removeClass("hidden");
                 $(".cart,.payment-method-container").addClass("hidden");
                 scrollTop();
-
 
                 $("#restAmount").val(restAmount);
                 var curr = $(".totalPrice b").html().split(" ")[1];

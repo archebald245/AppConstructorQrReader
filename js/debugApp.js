@@ -16,13 +16,15 @@ function deleteResourcesAll() { //Call in Init function
             success: function() {},
             error: function() {}
         });
-
+        $("#cart .delete-cartItem").click();
         $.jStorage.deleteKey("appData");
+        $.jStorage.deleteKey("isLogin");
         checkJsStorage();
         $(".project-list-wrapper").removeClass("hidden");
         $(".Scan-spiner").addClass("hidden");
         $("#container").attr("style", "");
-        $("#container, #custom-hide-container, .singleItem, #orderInfo, .cart, .container-statusBooking, .bookingServices-container, .container-selectFreeBookTime, .dateTimePicker-container, .order-booking").addClass("hidden");
+        $("#container, #custom-hide-container, #custom-hide-container, #event-favorite-wrapper, .singleItem, #orderInfo, .cart, .container-statusBooking, .bookingServices-container, .container-selectFreeBookTime, .dateTimePicker-container, .order-booking").addClass("hidden");
+        $.jStorage.deleteKey('FavoriteEvents');
     });
 }
 
@@ -158,8 +160,10 @@ function UpdateProjectList() {
             if (data.IsLogin) {
                 $.jStorage.set('ProjectList', data.ProjectList);
                 renderProjectList(data.ProjectList);
+                window.plugins.toast.hide();
+                window.plugins.toast.showShortBottom("List of projects has been updated");
             } else {
-                alert(data.ErrorMessage);
+                window.plugins.toast.showShortBottom(data.ErrorMessage);
                 return false;
             }
         },
