@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<widget xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:gap="http://phonegap.com/ns/1.0" xmlns="http://www.w3.org/ns/widgets" id="tech.appconstructor.viewtool" version="0.0.11" android-versionCode="11" ios-CFBundleVersion="0.0.11">
+<widget xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:gap="http://phonegap.com/ns/1.0" xmlns="http://www.w3.org/ns/widgets" id="tech.appconstructor.viewtool" version="0.0.12" android-versionCode="12" ios-CFBundleVersion="0.0.12">
 
   <name>AppConstructor View Tool</name>
   <description>This is application for testing your application created on AppConstructor.</description>
@@ -87,8 +87,8 @@
   </platform>
   <platform name="ios">
     <resource-file src="GoogleService-Info.plist" />
-
-    <!--Ios-->
+  </platform>
+  <!--Ios-->
     <icon src="icons/ios/App-29.png" width="29" height="29"  platform="ios"/>
     <icon src="icons/ios/App-40.png" width="40" height="40"  platform="ios"/>
     <icon src="icons/ios/50x50.png" width="50" height="50"  platform="ios"/>
@@ -118,5 +118,4 @@
     <splash src="screen/ios/Default-Portrait@2x~ipad.png"          platform="ios"           width="1536" height="2048" />
     <splash src="screen/ios/Default-Landscape@2x~ipad.png"            platform="ios"        width="2048" height="1536" />
     <splash src="screen/ios/Default-Landscape-736h.png"              platform="ios"       width="2208" height="1242" />
-  </platform>
 </widget>
