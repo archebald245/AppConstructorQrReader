@@ -56,9 +56,9 @@
   <platform name="android" />
   <platform name="android">
   
-    <preference name="android-manifest/application/@android:theme" value="@android:style/theme.notitlebar.fullscreen" />
-	<preference name="android-manifest/application/activity/@android:windowsoftinputmode" value="statehidden|adjustpan" />
-    <preference name="android-manifest/application/activity/@android:configchanges" value="keyboardhidden|orientation" />
+    <preference name="android-manifest/application/@android:theme" value="@android:style/Theme.NoTitleBar.Fullscreen" />
+	<preference name="android-manifest/application/activity/@android:windowSoftInputMode" value="stateHidden|adjustPan" />
+    <preference name="android-manifest/application/activity/@android:configChanges" value="keyboardHidden|orientation" />
   
     <preference name="fullscreen" value="false" /> 
     <preference name="DisallowOverscroll" value="true" /> 
