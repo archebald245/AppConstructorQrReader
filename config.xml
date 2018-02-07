@@ -11,17 +11,14 @@
   <plugin name="cordova-plugin-x-toast" spec="2.5.2" source="npm" />
   <!-- <plugin name="cordova-plugin-splashscreen" spec="4.0.2" source="npm" /> -->
   <plugin name="phonegap-plugin-push" spec="2.0.0" />
-  
-<plugin name="cordova-plugin-device" spec="2.0.1" source="npm"/>
-  
-     <!-- For OIS -->
+  <plugin name="cordova-plugin-device" spec="2.0.1" source="npm"/>
+  <!-- For OIS -->
   <plugin name="cordova-plugin-statusbar" spec="2.3.0" source="npm" /> 
   <plugin name="cordova-plugin-document-viewer" spec= "0.9.5" source="npm" />
-<!-- For Android -->
+  <!-- For Android -->
   <plugin name="cordova-plugin-file-opener2" spec="2.0.19" source="npm" />
   <plugin name="cordova-plugin-file" spec="6.0.1" source="npm" />
   
-
   <allow-navigation href="http://*/*" />
   <allow-navigation href="https://*youtube.com/*"/>
   <allow-intent href="*" />
@@ -59,8 +56,8 @@
   <platform name="android">
   
     <preference name="fullscreen" value="false" /> 
-  <preference name="DisallowOverscroll" value="true" /> 
-  <preference name="EnableViewportScale" value="true" />
+    <preference name="DisallowOverscroll" value="true" /> 
+    <preference name="EnableViewportScale" value="true" />
   
     <preference name="android-manifest/application/@android:theme" value="@android:style/theme.notitlebar.fullscreen" />
 	<preference name="android-manifest/application/activity/@android:windowsoftinputmode" value="statehidden|adjustpan" />
@@ -85,7 +82,6 @@
 	<splash src="screen/android/screen-ldpi-portrait.png"  density="port-ldpi"/>
 	<splash src="screen/android/screen-mdpi-portrait.png"  density="port-mdpi"/>
 	<splash src="screen/android/screen-xhdpi-portrait.png"  density="port-xhdpi"/>
-
 
   </platform>
   <platform name="ios">
