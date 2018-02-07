@@ -61,9 +61,8 @@ function resourcesOfCellContainer(cellContainer, storePath) {
             cellContainer[i] = resourcesOfGallary(cellContainer[i], storePath);
         }
         if (cellContainer[i].ContentTypeId == 19) {
-            var eventsData = JSON.parse(Base64.decode(cellContainer[i].Json));
+            cellContainer[i].Json = JSON.parse(Base64.decode(cellContainer[i].Json));
             //eventsData = resourcesOfEvent(eventsData, storePath);
-            // cellContainer[i].Json = eventsData;
         }
     }
     return cellContainer;
