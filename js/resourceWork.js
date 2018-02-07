@@ -21,6 +21,9 @@ function searchResourcesAndReplacePatch(jsonObject) {
             item = resourcesOfMenu(item, storePath);
         });
     }
+    if (jsonObject.MainEvents != null) {
+        jsonObject.MainEvents = resourcesOfEvents(jsonObject.MainEvents, storePath);
+    }
     if ($.jStorage.get('resources') != null) {
         resourcesToDownload = compareResouces($.jStorage.get('resources'), resources, storePath);
     } else {
@@ -34,7 +37,7 @@ function searchResourcesAndReplacePatch(jsonObject) {
 function resourcesOfMenu(item, storePath) {
     if (item.IconPath != null) {
         resources.push(item.IconPath);
-        item.IconPath = replacementMenuItemIconPath(item.IconPath, storePath);
+        item.IconPath = replacementPath(item.IconPath, storePath);
     }
     return item;
 }
@@ -56,6 +59,11 @@ function resourcesOfCellContainer(cellContainer, storePath) {
         }
         if (cellContainer[i].ContentTypeId == 8) {
             cellContainer[i] = resourcesOfGallary(cellContainer[i], storePath);
+        }
+        if (cellContainer[i].ContentTypeId == 19) {
+            var eventsData = JSON.parse(Base64.decode(cellContainer[i].Json));
+            //eventsData = resourcesOfEvent(eventsData, storePath);
+            // cellContainer[i].Json = eventsData;
         }
     }
     return cellContainer;
@@ -106,6 +114,17 @@ function resourcesOfRestaurantMenus(restaurants, storePath) {
     });
 
     return restaurants;
+}
+
+function resourcesOfEvents(mainEvents, storePath) {
+    // restaurants = replacePathToImageRestaurantMenu(restaurants);
+    $(mainEvents).each(function() {
+        $(this.Events).each(function() {
+            resources.push(this.ImagePath);
+            this.ImagePath = replacementPath(this.ImagePath, storePath);
+        });
+    });
+    return mainEvents;
 }
 
 function resourcesOfBooking(institutions, storePath) {
@@ -201,6 +220,15 @@ function replacementMenuItemIconPath(oldPath, storePath) {
     var nameImage = oldPath.split("/");
     nameImage = nameImage[nameImage.length - 1];
     return storePath + nameImage;
+}
+
+function replacementPath(oldPath, storePath) {
+    if (oldPath) {
+        var nameImage = oldPath.split("/");
+        nameImage = nameImage[nameImage.length - 1];
+        return storePath + nameImage;
+    }
+    return oldPath;
 }
 
 function replacementBackgroundImagePath(jsonObjectValue, arrayResources, storePath) {
