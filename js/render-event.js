@@ -230,7 +230,15 @@ var RenderEventProfile = function RenderEventProfile(event) {
 
 //RENDER FAVORITE EVENT
 var renderFavorite = function renderFavorite() {
-    var events = $.jStorage.get('FavoriteEvents');
+    var eventIds = $.jStorage.get('FavoriteEvents');
+    var events = [];
+    applicationData.MainEvents.forEach(function(mainEvent) {
+        mainEvent.forEach(function(event) {
+            if (eventIds.indexOf(event.Id) > -1) {
+                events.push(event);
+            }
+        });
+    });
 
     var isRenderFavorite = false;
     var networkState = navigator.connection.type;
@@ -290,9 +298,6 @@ var renderFavorite = function renderFavorite() {
     });
 
     var Events = React.createClass({
-        getInitialState: function() {
-            return { events: [] };
-        },
         render: function render() {
 
             var data = this.props.data;
