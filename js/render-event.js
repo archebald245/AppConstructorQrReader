@@ -298,6 +298,14 @@ var renderFavorite = function renderFavorite() {
     });
 
     var Events = React.createClass({
+        componentDidMount: function componentDidMount() {
+            $(".back-to-event-list").on("click", function() {
+                $("#container").removeClass("hidden");
+                $(".event-profile, .event-favorite-wrapper").addClass("hidden");
+                window.scrollTo(0, scrollData);
+            });
+        },
+
         render: function render() {
 
             var data = this.props.data;
@@ -324,7 +332,12 @@ var renderFavorite = function renderFavorite() {
                 'div', { className: "custom-container-event" },
                 React.createElement(
                     'div', { className: 'event-list-header' },
-                    "Schedule"
+                    React.createElement(
+                        'span', { className: 'event-favorite-label' },
+                        "TEST "
+                    ), React.createElement(
+                        'div', { className: 'back-to-event-list' }, null
+                    )
                 ),
                 eventCollectionForRender
             );

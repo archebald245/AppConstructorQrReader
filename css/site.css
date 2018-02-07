@@ -2322,7 +2322,9 @@ input[type="checkbox"].SwitcherFormElement:checked+div>div {
 }
 
 .event-list-header {
+    position: relative;
     margin-bottom: 30px;
+    margin-top: 80px
 }
 
 .event-profile .image-container img {
