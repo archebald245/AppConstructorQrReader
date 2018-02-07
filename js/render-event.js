@@ -255,7 +255,7 @@ var renderFavorite = function renderFavorite() {
             var image;
             var favorite = null;
             var isFavorite = -1;
-            if (this.props.isRenderFavorite) {
+            if (isRenderFavorite) {
                 if ($.jStorage.get('FavoriteEvents') != null) {
                     isFavorite = $.jStorage.get('FavoriteEvents').indexOf(data.Id);
                 }
