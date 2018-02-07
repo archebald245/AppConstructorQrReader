@@ -199,7 +199,7 @@ function onCheckJson() {
 function checkConnection() {
     var networkState = navigator.connection.type;
     if (networkState != Connection.NONE) {
-        var siteUrl = "http://appconstructornew.newlinetechnologies.net/";
+        var siteUrl = "http://appconstructornew.newline.tech/";
 
         applicationData = JSON.parse($.jStorage.get('appData'));
         var projectId = applicationData.ProjectId;
@@ -280,7 +280,7 @@ function initGallaryClick() {
 }
 
 function checkApplicationId() {
-    var siteUrl = "http://appconstructornew.newlinetechnologies.net/";
+    var siteUrl = "http://appconstructornew.newline.tech/";
 
     if (applicationData != null) {
         if (applicationData.UrlForUpdateApp != "" && applicationData.UrlForUpdateApp != null && typeof applicationData.UrlForUpdateApp != 'undefined') {

@@ -12,7 +12,7 @@ function renderProjectList(projectList) {
         },
         render: function render() {
             var data = this.state.data;
-            var projectListModel = this.state.data.map(function(item) {
+            var projectListModel = this.state.data.map(function(item, index) {
                 var image;
                 if (item.ImagePath.length == 0) {
                     image = React.createElement('img', { src: 'baseimages/cartItem.png', className: 'projectNoImage user-project-img' });
@@ -27,7 +27,7 @@ function renderProjectList(projectList) {
                     );
                 });
                 return React.createElement(
-                    "div", { className: "project-list-item" },
+                    "div", { key: index, className: "project-list-item" },
                     React.createElement(
                         "div", { className: "project-list-item-img" },
                         image

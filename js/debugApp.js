@@ -39,7 +39,8 @@ function startLogin() {
         // var check = checkValidationAndRequired(form);
         // if (check) {
         $(".spinner-container").removeClass("hidden");
-        var siteUrl = "http://appconstructornew.newlinetechnologies.net/";
+        var siteUrl = "http://appconstructornew.newline.tech/";
+        //
         $.post('' + siteUrl + '/api/LoginViewTool', $(form).serialize(), function(data, statusText, xhr) {
             $(".spinner-container").addClass("hidden");
 
@@ -109,7 +110,7 @@ function ProjectListEventListener() {
 function GetApplicationData(project, content) {
     $(".spinner-container").removeClass("hidden");
     blockUi();
-    var siteUrl = "http://appconstructornew.newlinetechnologies.net/";
+    var siteUrl = "http://appconstructornew.newline.tech/";
     var tokenToSend = $.jStorage.get('notificationToken');
     var deviceIdToSend = $.jStorage.get('ApplicationId');
     $.ajax({
@@ -151,7 +152,7 @@ function ViewToolLogout() {
 
 function UpdateProjectList() {
     var authtoken = $.jStorage.get('AuthToken')
-    var siteUrl = "http://appconstructornew.newlinetechnologies.net/";
+    var siteUrl = "http://appconstructornew.newline.tech/";
     $.ajax({
         type: "POST",
         url: siteUrl + "/api/UpdateProjectList",
@@ -184,7 +185,7 @@ function UpdateProjectList() {
 
 function RefreshToken(callback) {
     var authtoken = $.jStorage.get('AuthToken');
-    var siteUrl = "http://appconstructornew.newlinetechnologies.net/";
+    var siteUrl = "http://appconstructornew.newline.tech/";
     $.ajax({
         type: "GET",
         url: siteUrl + "/api/RefreshToken",
