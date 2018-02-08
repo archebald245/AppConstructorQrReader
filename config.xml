@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<widget xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:gap="http://phonegap.com/ns/1.0" xmlns="http://www.w3.org/ns/widgets" id="tech.appconstructor.viewtool" version="0.0.12" android-versionCode="12" ios-CFBundleVersion="0.0.12">
+<widget xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:gap="http://phonegap.com/ns/1.0" xmlns="http://www.w3.org/ns/widgets" id="tech.appconstructor.viewtool" version="0.0.13" android-versionCode="13" ios-CFBundleVersion="0.0.13">
 
   <name>AppConstructor View Tool</name>
   <description>This is application for testing your application created on AppConstructor.</description>
@@ -104,8 +104,10 @@
     <icon src="icons/ios/App-120.png" width="120" height="120"  platform="ios"/>
     <icon src="icons/ios/App-144.png" width="144" height="144"  platform="ios"/>
     <icon src="icons/ios/App-152.png" width="152" height="152"  platform="ios"/>
-     <icon src="icons/ios/167x167.png" width="167" height="167"  platform="ios"/>
+    <icon src="icons/ios/167x167.png" width="167" height="167"  platform="ios"/>
     <icon src="icons/ios/App-180.png" width="180" height="180"  platform="ios"/>
+	<icon src="icons/ios/icon-1024.png" width="1024"  height="1024" platform="ios"/>
+
     <!--Icons-->
 
     <splash src="screen/ios/Default~iphone.png"        platform="ios"  width="320" height="480" />
