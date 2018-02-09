@@ -684,7 +684,7 @@ function reactRender() {
                         if ($.jStorage.get('isLogin') && element.RegistrationForm) {
                             $(".form-container").find('input, button, textarea').prop("disabled", true);
                             $(".form-container").on("click", function() {
-                                window.plugins.toast.showShortBottom("LogOut before");
+                                window.plugins.toast.showShortBottom(cultureRes.beforeLogout);
                             });
                         }
                         if (data.CountFormColumn == 2) {

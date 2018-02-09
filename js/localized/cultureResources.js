@@ -138,6 +138,7 @@ function initEnCulture() {
     cultureRes.confirmated = "Confirmated";
     cultureRes.pending = "Pending";
     cultureRes.sorryOnline = "Sorry, is only available online!";
+    cultureRes.beforeLogout = "For registration you need to sign out of your account";
     //render-booking
     cultureRes.displayInst = "Institution";
     cultureRes.displayInstTwo = "Institution - ";
@@ -297,6 +298,7 @@ function initRuCulture() {
     cultureRes.confirmated = "Подтвержденно";
     cultureRes.pending = "В ожидании";
     cultureRes.sorryOnline = "Извинити, но требуется подключение к сети Интернет!";
+    cultureRes.beforeLogout = "Для реєстрації вам необхідно вийти з облікового запису";
     //render-booking
     cultureRes.displayInst = "Организация";
     cultureRes.displayInstTwo = "Организация - ";
@@ -459,6 +461,7 @@ function initUaCulture() {
     cultureRes.confirmated = "Підтвердженно";
     cultureRes.pending = "В очікуванні";
     cultureRes.sorryOnline = "Вибачте, але для цього потрібне Інтернет з`єднання!";
+    cultureRes.beforeLogout = "Для реєстрації вам необхідно вийти з облікового запису";
     //render-booking
     cultureRes.displayInst = "Організація";
     cultureRes.displayInstTwo = "Організація - ";
