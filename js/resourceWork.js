@@ -272,6 +272,7 @@ function downloadResources() {
     for (var i = 0; i < resources.length; i++) {
         var fileNameImage = resources[i];
         promiseArray.push(download(fileNameImage));
+        console.log("downloadResources - " + fileNameImage);
     }
     Promise.all(promiseArray).then(callback).catch(function(err) {
         callback();
