@@ -293,6 +293,7 @@ function download(fileName) {
     return new Promise(function(resolve, reject) {
         window.myFileSystem.root.getFile(localFileName, { create: true, exclusive: false }, function(fileEntry) {
             localPath = fileEntry.toURL();
+            console.log("localPath - " + localPath);
             var ft = new FileTransfer();
             // readFile(entry);
             // countFileDownload = countFileDownload + 1;
