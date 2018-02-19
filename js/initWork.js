@@ -138,7 +138,7 @@ function onCheckJson() {
         applicationData = JSON.parse($.jStorage.get('appData'));
         var projectId = applicationData.ProjectId;
         var versionId = applicationData.Version;
-        createMenu(applicationData);
+        createMenu();
         $(".my-youtube").attr("height", "auto");
         var pageStyles;
         // var pageWithGeneralBg = applicationData.Pages.filter(function(page) { return page.BackgroundForApplication });
@@ -182,7 +182,7 @@ function onCheckJson() {
         if (resources.length == 0) {
             var jsonString = JSON.stringify(applicationData);
             $.jStorage.set('appData', jsonString);
-            createMenu(applicationData);
+            createMenu();
             $(".my-youtube").attr("height", "auto");
         }
     }

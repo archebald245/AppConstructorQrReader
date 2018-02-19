@@ -267,6 +267,7 @@ function deleteImage(imagePath) {
 }
 
 function downloadResources() {
+    console.log("downloadResources - START");
     var promiseArray = [];
     for (var i = 0; i < resources.length; i++) {
         var fileNameImage = resources[i];
@@ -275,6 +276,7 @@ function downloadResources() {
     Promise.all(promiseArray).then(callback).catch(function(err) {
         callback();
     })
+    console.log("downloadResources - FINISH");
 }
 
 function download(fileName) {
