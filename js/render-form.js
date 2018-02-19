@@ -15,11 +15,11 @@ function renderForm(form, id) {
             return { data: form };
         },
         render: function render() {
-            var fieldModels = this.state.data.FormFields.map(function(field) {
+            var fieldModels = this.state.data.FormFields.map(function(field, index) {
                 if (field.FieldTypeId == 1) {
                     if (field.Required) {
                         return React.createElement(
-                            "div", { className: "checkBoxFormBlock formBlock form-group required-check" },
+                            "div", { key: index, className: "checkBoxFormBlock formBlock form-group required-check" },
                             " ",
                             React.createElement(
                                 "div", { className: "label-container" },
@@ -33,7 +33,7 @@ function renderForm(form, id) {
                         );
                     } else {
                         return React.createElement(
-                            "div", { className: "checkBoxFormBlock formBlock form-group" },
+                            "div", { key: index, className: "checkBoxFormBlock formBlock form-group" },
                             " ",
                             React.createElement(
                                 "div", { className: "label-container" },
@@ -50,7 +50,7 @@ function renderForm(form, id) {
                 if (field.FieldTypeId == 2) {
                     idRadioBtn = field.Name;
                     return React.createElement(
-                        "div", { className: "radioButtonFormBlock formBlock form-group" },
+                        "div", { key: index, className: "radioButtonFormBlock formBlock form-group" },
                         " ",
                         React.createElement(
                             "div", { className: "label-container" },
@@ -66,7 +66,7 @@ function renderForm(form, id) {
                 if (field.FieldTypeId == 3) {
                     isDropdownName = field.Name;
                     return React.createElement(
-                        "div", { className: "dropDownBlock formBlock form-group" },
+                        "div", { key: index, className: "dropDownBlock formBlock form-group" },
                         " ",
                         React.createElement(
                             "div", { className: "label-container" },
@@ -84,7 +84,7 @@ function renderForm(form, id) {
                         var _React$createElement;
 
                         return React.createElement(
-                            "div", { className: "textElement formBlock form-group" },
+                            "div", { key: index, className: "textElement formBlock form-group" },
                             React.createElement(
                                 "div", { className: "label-container" },
                                 React.createElement(
@@ -97,7 +97,7 @@ function renderForm(form, id) {
                         );
                     } else {
                         return React.createElement(
-                            "div", { className: "textElement formBlock form-group" },
+                            "div", { key: index, className: "textElement formBlock form-group" },
                             React.createElement(
                                 "div", { className: "label-container" },
                                 React.createElement(
@@ -113,7 +113,7 @@ function renderForm(form, id) {
                 if (field.FieldTypeId == 5) {
                     if (field.Required) {
                         return React.createElement(
-                            "div", { className: "textAreaElement formBlock form-group" },
+                            "div", { key: index, className: "textAreaElement formBlock form-group" },
                             " ",
                             React.createElement(
                                 "div", { className: "label-container" },
@@ -127,7 +127,7 @@ function renderForm(form, id) {
                         );
                     } else {
                         return React.createElement(
-                            "div", { className: "textAreaElement formBlock form-group" },
+                            "div", { key: index, className: "textAreaElement formBlock form-group" },
                             " ",
                             React.createElement(
                                 "div", { className: "label-container" },
@@ -145,7 +145,7 @@ function renderForm(form, id) {
                 if (field.FieldTypeId == 6) {
                     if (field.Required) {
                         return React.createElement(
-                            "div", { className: "emailElement formBlock form-group" },
+                            "div", { key: index, className: "emailElement formBlock form-group" },
                             " ",
                             React.createElement(
                                 "div", { className: "label-container" },
@@ -159,7 +159,7 @@ function renderForm(form, id) {
                         );
                     } else {
                         return React.createElement(
-                            "div", { className: "emailElement formBlock form-group" },
+                            "div", { key: index, className: "emailElement formBlock form-group" },
                             " ",
                             React.createElement(
                                 "div", { className: "label-container" },
@@ -176,7 +176,7 @@ function renderForm(form, id) {
                 if (field.FieldTypeId == 7) {
                     if (field.Required) {
                         return React.createElement(
-                            "div", { className: "phoneNumberElement formBlock form-group" },
+                            "div", { key: index, className: "phoneNumberElement formBlock form-group" },
                             " ",
                             React.createElement(
                                 "div", { className: "label-container" },
@@ -190,7 +190,7 @@ function renderForm(form, id) {
                         );
                     } else {
                         return React.createElement(
-                            "div", { className: "phoneNumberElement formBlock form-group" },
+                            "div", { key: index, className: "phoneNumberElement formBlock form-group" },
                             " ",
                             React.createElement(
                                 "div", { className: "label-container" },
@@ -207,7 +207,7 @@ function renderForm(form, id) {
                 if (field.FieldTypeId == 8) {
                     if (field.Required) {
                         return React.createElement(
-                            "div", { className: "numberElement formBlock form-group" },
+                            "div", { key: index, className: "numberElement formBlock form-group" },
                             " ",
                             React.createElement(
                                 "div", { className: "label-container" },
@@ -221,7 +221,7 @@ function renderForm(form, id) {
                         );
                     } else {
                         return React.createElement(
-                            "div", { className: "numberElement formBlock form-group" },
+                            "div", { key: index, className: "numberElement formBlock form-group" },
                             " ",
                             React.createElement(
                                 "div", { className: "label-container" },
@@ -237,7 +237,7 @@ function renderForm(form, id) {
                 }
                 if (field.FieldTypeId == 9) {
                     return React.createElement(
-                        "div", { className: "switcherFormBlock formBlock form-group" },
+                        "div", { key: index, className: "switcherFormBlock formBlock form-group" },
                         React.createElement(
                             "label", { className: "switcher-inline" },
                             React.createElement("input", { id: field.Id, className: "SwitcherFormElement switcher-inline", name: field.Name, type: "checkbox", value: true }),
@@ -257,7 +257,7 @@ function renderForm(form, id) {
                 if (field.FieldTypeId == 10) {
                     if (field.Required) {
                         return React.createElement(
-                            "div", { className: "checkBoxFormBlock formBlock form-group required-check" },
+                            "div", { key: index, className: "checkBoxFormBlock formBlock form-group required-check" },
                             " ",
                             React.createElement(
                                 "label", { className: "CheckBoxFormElement checkbox-inline" },
@@ -268,7 +268,7 @@ function renderForm(form, id) {
                         );
                     } else {
                         return React.createElement(
-                            "div", { className: "checkBoxFormBlock formBlock form-group" },
+                            "div", { key: index, className: "checkBoxFormBlock formBlock form-group" },
                             " ",
                             React.createElement(
                                 "label", { className: "CheckBoxFormElement checkbox-inline" },
@@ -282,7 +282,7 @@ function renderForm(form, id) {
                 if (field.FieldTypeId == 11) {
                     if (field.Required) {
                         return React.createElement(
-                            "div", { className: "passwordElement formBlock form-group" },
+                            "div", { key: index, className: "passwordElement formBlock form-group" },
                             " ",
                             React.createElement(
                                 "div", { className: "label-container" },
@@ -296,7 +296,7 @@ function renderForm(form, id) {
                         );
                     } else {
                         return React.createElement(
-                            "div", { className: "passwordElement formBlock form-group" },
+                            "div", { key: index, className: "passwordElement formBlock form-group" },
                             " ",
                             React.createElement(
                                 "div", { className: "label-container" },
@@ -350,9 +350,9 @@ function renderForm(form, id) {
         displayName: cultureRes.dropDown,
 
         render: function render() {
-            var DropDownOptionModels = this.props.data.FieldOptions.map(function(option) {
+            var DropDownOptionModels = this.props.data.FieldOptions.map(function(option, index) {
                 return React.createElement(
-                    "option", { value: option.Value },
+                    "option", { key: index, value: option.Value },
                     option.Name
                 );
             });
@@ -366,9 +366,9 @@ function renderForm(form, id) {
         displayName: cultureRes.checkBox,
 
         render: function render() {
-            var CheckBoxOptionModels = this.props.data.FieldOptions.map(function(option) {
+            var CheckBoxOptionModels = this.props.data.FieldOptions.map(function(option, index) {
                 return React.createElement(
-                    "label", { className: "CheckBoxFormElement checkbox-inline" },
+                    "label", { key: index, className: "CheckBoxFormElement checkbox-inline" },
                     React.createElement("input", { name: option.Name, type: "checkbox", value: option.Value }),
                     " ",
                     option.Name
@@ -390,18 +390,18 @@ function renderForm(form, id) {
         },
         render: function render() {
             var iterator = 0;
-            var RadioButtonOptionModels = this.props.data.FieldOptions.map(function(option) {
+            var RadioButtonOptionModels = this.props.data.FieldOptions.map(function(option, index) {
                 iterator = iterator + 1;
                 if (iterator == 1) {
                     return React.createElement(
-                        "label", { className: "radioButtonFormElement radio-inline" },
+                        "label", { key: index, className: "radioButtonFormElement radio-inline" },
                         React.createElement("input", { type: "radio", value: option.Value, name: idRadioBtn }),
                         " ",
                         option.Name
                     );
                 } else {
                     return React.createElement(
-                        "label", { className: "radioButtonFormElement radio-inline" },
+                        "label", { key: index, className: "radioButtonFormElement radio-inline" },
                         React.createElement("input", { type: "radio", value: option.Value, name: idRadioBtn }),
                         " ",
                         option.Name

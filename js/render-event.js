@@ -1,6 +1,8 @@
 'use strict';
 //RENDER EVENT LIST
 var renderEvent = function renderEvent(event) {
+    console.log("RENDER EVENT LIST");
+
     var isRenderFavorite = false;
     var networkState = navigator.connection.type;
     if (networkState != Connection.NONE && $.jStorage.get('isLogin') != null) {
@@ -96,7 +98,7 @@ var renderEvent = function renderEvent(event) {
                 }
                 eventCollectionForRender.push(event);
             }
-
+            console.log("RENDER");
             return React.createElement('div', { className: 'main-event-container' },
                 React.createElement(
                     'div', { className: "main-event-data" },

@@ -19,14 +19,14 @@ var renderBooking = function renderBooking(thisInstitution, sortByService) {
             var CollectionOfElementsInstitution;
             var ArrayOfObjectServices = [];
             if (sortByService != true) {
-                CollectionOfElementsInstitution = data.BookResources.map(function(item) {
+                CollectionOfElementsInstitution = data.BookResources.map(function(item, index) {
                     if (item.BookServiceProvides.length > 0) {
-                        return React.createElement(TimeLine, { data: item });
+                        return React.createElement(TimeLine, { key: index, data: item });
                     }
                 });
             } else {
-                CollectionOfElementsInstitution = data.BookResources.map(function(resources) {
-                    return React.createElement(CollectionService, { data: resources.BookServiceProvides, isconfirm: resources.NeedConfirmation });
+                CollectionOfElementsInstitution = data.BookResources.map(function(resources, index) {
+                    return React.createElement(CollectionService, { key: index, data: resources.BookServiceProvides, isconfirm: resources.NeedConfirmation });
                 });
             }
             return React.createElement(
@@ -73,9 +73,9 @@ var renderBooking = function renderBooking(thisInstitution, sortByService) {
                     'p', { className: 'name-elementInstitution' },
                     data.Name
                 ),
-                data.UseDayTime ? data.DayForBookResource.map(function(day) {
+                data.UseDayTime ? data.DayForBookResource.map(function(day, index) {
                     return React.createElement(
-                        'div', { className: 'time-elementTimeLine' },
+                        'div', { key: index, className: 'time-elementTimeLine' },
                         React.createElement(
                             'time',
                             null, cultureRes.openTime,
@@ -169,8 +169,8 @@ var renderBooking = function renderBooking(thisInstitution, sortByService) {
         render: function render() {
             var data = this.props.data;
             var isconfirm = this.props.isconfirm;
-            var collectionServiceForRender = data.map(function(service) {
-                return React.createElement(Service, { data: service, isconfirm: isconfirm });
+            var collectionServiceForRender = data.map(function(service, index) {
+                return React.createElement(Service, { key: index, data: service, isconfirm: isconfirm });
             });
             return React.createElement(
                 'div',
