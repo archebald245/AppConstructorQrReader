@@ -47,7 +47,6 @@ function setUseRestaurantMenu(id, use, restaurants) {
 //restaurant menu element
 
 function reactRender() {
-    console.log("reactRender");
     initCulture();
 
     function initMapPreview(locationArr, zoom, mapContainer) {

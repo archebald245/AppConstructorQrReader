@@ -239,7 +239,6 @@ function checkConnection() {
 }
 
 function initMenuYoutunbe() {
-    //createMenu();
     if (resources.length == 0) {
         createMenu();
         reactRender();

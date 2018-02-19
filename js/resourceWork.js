@@ -267,17 +267,14 @@ function deleteImage(imagePath) {
 }
 
 function downloadResources() {
-    console.log("downloadResources - START");
     var promiseArray = [];
     for (var i = 0; i < resources.length; i++) {
         var fileNameImage = resources[i];
         promiseArray.push(download(fileNameImage));
-        console.log("downloadResources - " + fileNameImage);
     }
     Promise.all(promiseArray).then(callback).catch(function(err) {
         callback();
     })
-    console.log("downloadResources - FINISH");
 }
 
 function download(fileName) {
@@ -293,7 +290,6 @@ function download(fileName) {
     return new Promise(function(resolve, reject) {
         window.myFileSystem.root.getFile(localFileName, { create: true, exclusive: false }, function(fileEntry) {
             localPath = fileEntry.toURL();
-            console.log("localPath - " + localPath);
             var ft = new FileTransfer();
             // readFile(entry);
             // countFileDownload = countFileDownload + 1;

@@ -1,6 +1,4 @@
 function createMenu() {
-    console.log("createMenu - START");
-
     if (applicationData.IsTrackingLastPage == true) {
         if (getLastOpenPage() != null) {
             var isContains = false;
@@ -98,7 +96,6 @@ function createMenu() {
         slideUp();
         showActivePageInMenu(indexPage);
     }
-    console.log("createMenu - START");
 }
 
 function clickPageOnDropdownMenu(link) {
