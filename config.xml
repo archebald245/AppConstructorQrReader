@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
-<widget xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:gap="http://phonegap.com/ns/1.0" xmlns="http://www.w3.org/ns/widgets" id="tech.appconstructor.viewtool" version="0.0.14" android-versionCode="14" ios-CFBundleVersion="0.0.14">
+<widget xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:gap="http://phonegap.com/ns/1.0" xmlns="http://www.w3.org/ns/widgets" id="tech.appconstructor.appideaset" version="0.0.14" android-versionCode="14" ios-CFBundleVersion="0.0.14">
 
-  <name>AppConstructor View Tool</name>
-  <description>This is application for testing your application created on AppConstructor.</description>
+  <name>App Idea Set</name>
+  <description>App Idea Set - mobile depository of ideas and projects</description>
   <author email="a.mazepa@newline.tech" href="http://appconstructor.newline.tech/">AppConstructor</author>
   <plugin name="cordova-plugin-inappbrowser" spec="1.5.0" source="npm" />
   <plugin name="cordova-plugin-file-transfer" spec="1.6.0" source="npm" />
