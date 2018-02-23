@@ -39,7 +39,7 @@ function renderRestaurantMenu(menuCollection, position, responsiveModel, stateNa
         },
         render: function render() {
             var currency = this.state.data.Currency;
-            var RestaurantMenuItemModels = this.state.data.RestaurantMenuItems.map(function(item) {
+            var RestaurantMenuItemModels = this.state.data.RestaurantMenuItems.map(function(item, index) {
                 var image;
                 if (item.RestaurantMenuImages.length == 0) {
                     //image = React.createElement('span', { className: 'restaurantMenuNoImages item-shop-img' });
@@ -51,7 +51,7 @@ function renderRestaurantMenu(menuCollection, position, responsiveModel, stateNa
                 if (position == 1) {
 
                     return React.createElement(
-                        "div", { className: "shopItem-row shopItem-row-left shopItem" },
+                        "div", { key: index, className: "shopItem-row shopItem-row-left shopItem" },
                         React.createElement(
                             "div", { className: "img-column-shopItem" },
                             image
@@ -90,7 +90,7 @@ function renderRestaurantMenu(menuCollection, position, responsiveModel, stateNa
                 } else if (position == 2) {
 
                     return React.createElement(
-                        "div", { className: "shopItem-column shopItem" },
+                        "div", { key: index, className: "shopItem-column shopItem" },
                         React.createElement(
                             "div", { className: "img-column-shopItem" },
                             image
@@ -126,7 +126,7 @@ function renderRestaurantMenu(menuCollection, position, responsiveModel, stateNa
                     );
                 } else if (position == 3) {
                     return React.createElement(
-                        "div", { className: "shopItem-row shopItem-row-right shopItem" },
+                        "div", { key: index, className: "shopItem-row shopItem-row-right shopItem" },
                         React.createElement(
                             "div", { className: "img-column-shopItem" },
                             image

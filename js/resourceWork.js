@@ -17,6 +17,7 @@ function searchResourcesAndReplacePatch(jsonObject) {
         jsonObject.Institutions = resourcesOfBooking(jsonObject.Institutions, storePath);
     }
     if (jsonObject.Menu != null) {
+        jsonObject.Menu = replaceImagePathOfMenu(jsonObject.Menu);
         jsonObject.Menu.MenuItems.forEach(function(item) {
             item = resourcesOfMenu(item, storePath);
         });
@@ -322,6 +323,15 @@ function replacePathToImageRestaurantMenu(restaurants) {
         });
     });
     return restaurants;
+}
+
+function replaceImagePathOfMenu(menu) {
+    $(menu.MenuItems).each(function() {
+        if (this.IconPath) {
+            this.IconPath = applicationData.UrlForUpdateApp + this.IconPath;
+        }
+    });
+    return menu;
 }
 
 function replacePathToImageInstitution(institutions) {

@@ -35,6 +35,7 @@ function createMenu() {
         $(menu).html("");
         var label;
         for (var i = 0; i < menuItems.length; i++) {
+            console.log("create menu - " + applicationData.Menu.MenuItems[i].IconPath);
             //var img = applicationData.Menu.MenuItems[i].IconPath != "" ? $('<img>').attr({ src: applicationData.Menu.MenuItems[i].IconPath, class: "menu-item-icon" }) : "";
             var img = applicationData.Menu.MenuItems[i].IconPath != null ? "<img src='" + applicationData.Menu.MenuItems[i].IconPath + "' class='menu-item-icon';/>" : "<img src='' class='menu-item-icon menu-item-icon-hidden';/>";
             if (applicationData.Menu.MenuItems[i].IsExternal == true) {

@@ -138,7 +138,7 @@ function onCheckJson() {
         applicationData = JSON.parse($.jStorage.get('appData'));
         var projectId = applicationData.ProjectId;
         var versionId = applicationData.Version;
-        createMenu(applicationData);
+        // createMenu();
         $(".my-youtube").attr("height", "auto");
         var pageStyles;
         // var pageWithGeneralBg = applicationData.Pages.filter(function(page) { return page.BackgroundForApplication });
@@ -182,12 +182,13 @@ function onCheckJson() {
         if (resources.length == 0) {
             var jsonString = JSON.stringify(applicationData);
             $.jStorage.set('appData', jsonString);
-            createMenu(applicationData);
+            // createMenu();
             $(".my-youtube").attr("height", "auto");
         }
     }
     var networkState = navigator.connection.type;
     if (networkState == Connection.NONE) {
+        createMenu();
         reactRender();
         initGallaryClick();
         submitFormListener();
@@ -238,8 +239,8 @@ function checkConnection() {
 }
 
 function initMenuYoutunbe() {
-    createMenu();
     if (resources.length == 0) {
+        createMenu();
         reactRender();
         submitFormListener();
         unBlockUi()
@@ -252,6 +253,7 @@ function callback() {
     var jsonString = JSON.stringify(applicationData);
     $.jStorage.set('appData', jsonString);
     deleteResources();
+    createMenu();
     reactRender();
     initGallaryClick();
     submitFormListener();
