@@ -7,9 +7,9 @@
 	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
 	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>653492446700-49etdiaag0skpvneksni1gfhjopnpr73.apps.googleusercontent.com</string>
+	<string>653492446700-0rs6u6cq6kb8ol9k6o6q55eerefl3gfs.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.653492446700-49etdiaag0skpvneksni1gfhjopnpr73</string>
+	<string>com.googleusercontent.apps.653492446700-0rs6u6cq6kb8ol9k6o6q55eerefl3gfs</string>
 	<key>API_KEY</key>
 	<string>AIzaSyAjFKPQ2Mqgpg9yxcWPyMsvBvXzSGyaNXw</string>
 	<key>GCM_SENDER_ID</key>
@@ -17,7 +17,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>tech.appconstructor.viewtool</string>
+	<string>tech.appconstructor.appideaset</string>
 	<key>PROJECT_ID</key>
 	<string>appconstructor-fe257</string>
 	<key>STORAGE_BUCKET</key>
@@ -33,7 +33,7 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:653492446700:ios:8a629658e1a7d047</string>
+	<string>1:653492446700:ios:6aafbac625b24e3d</string>
 	<key>DATABASE_URL</key>
 	<string>https://appconstructor-fe257.firebaseio.com</string>
 </dict>
