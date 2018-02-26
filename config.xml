@@ -64,7 +64,7 @@
     <preference name="DisallowOverscroll" value="true" /> 
     <preference name="EnableViewportScale" value="true" />
   
-    <!-- <resource-file src="google-services.json" target="google-services.json" /> -->
+    <resource-file src="google-services.json" target="google-services.json" />
 	
 	<!--Android Icons-->
 	<icon src="icons/icon.png" gap:role="default" />
@@ -86,7 +86,7 @@
 
   </platform>
   <platform name="ios">
-    <!-- <resource-file src="GoogleService-Info.plist" /> -->
+    <resource-file src="GoogleService-Info.plist" />
   </platform>
   <!--Ios-->
     <icon src="icons/ios/App-29.png" width="29" height="29"  platform="ios"/>
