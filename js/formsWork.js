@@ -210,6 +210,16 @@ function checkValidationAndRequired(form) {
             return check;
         }
     }
+    //numberElement
+    if ($(form).find(".numberElement").length > 0) {
+        var numberInput = $(form).find(".numberElement").find("input").val();
+        var numberValid = /^[0-9]*$/;
+        if ((!numberInput.match(numberValid)) && (!numberInput != "")) {
+            alert(cultureRes.validNumder);
+            check = false;
+            return check;
+        }
+    }
     if ($(form).find(".phoneNumberElement").length > 0) {
         var phoneInput = $(form).find(".phoneNumberElement").find(".phoneNumber").val();
         var phoneValid = /^\+\d{4}\d{3}\d{4}$/;
