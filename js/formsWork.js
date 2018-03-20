@@ -173,7 +173,6 @@ function bindChangeValForms() {
             } else {
                 $(field).unbind("change");
                 $(field).on("change", function() {
-
                     if ($(elem).find("[name='" + fieldName + "']:radio").length > 0) {
                         $(elem).find("[name='" + fieldName + "']").val($(this).val());
                     } else if ($(elem).find("[name='" + fieldName + "']:checkbox").length > 0) {
@@ -189,17 +188,18 @@ function bindChangeValForms() {
 
 function checkValidationAndRequired(form) {
     var check = true;
-        //numberElement
+    //numberElement
     $(form).find(".numberElement").each(function(index, e){
         var numberInput = $(e).find("input").val();
-        //if (isNaN(numberInput) || (numberInput === "")) {
         if (isNaN(numberInput)) {
-            alert(cultureRes.validNumder);
             check = false;
-            return check;
         }
-    });
-   
+    }, this);
+    if (check == false) {
+        alert(cultureRes.validNumder);
+        return check;
+    }
+
     $(form).find(".required").each(function(i, element) {
         if ($(element).val() == "") {
             check = false;
@@ -209,6 +209,7 @@ function checkValidationAndRequired(form) {
         alert(cultureRes.requiredFields);
         return check;
     }
+
     if ($(form).find(".required-check").length > 0) {
         check = false;
         $(form).find(".required-check").each(function(i, element) {
@@ -231,6 +232,7 @@ function checkValidationAndRequired(form) {
             return check;
         }
     }
+
     if ($(form).find(".emailElement").length > 0) {
         var emailInput = $(form).find(".emailElement").find(".email").val().toLowerCase();
         var emailValid = /^[_A-Za-z0-9-]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9-]+)*(\.[A-Za-z]{2,8})$/;
@@ -240,6 +242,7 @@ function checkValidationAndRequired(form) {
             return check;
         }
     }
+
     if ($(form).find(".passwordElement").length > 0) {
         if ($(form).find(".passwordElement").first().find(".passElement").val().length < 4) {
             alert(cultureRes.passLength);
@@ -261,8 +264,6 @@ function checkValidationAndRequired(form) {
             }
         }
     }
-
-
     return check;
 }
 
