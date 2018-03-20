@@ -217,7 +217,7 @@ function renderForm(form, id) {
                                     field.Label
                                 )
                             ),
-                            React.createElement("input", { type: "number", name: field.Name, className: "required form-control", id: field.Id })
+                            React.createElement("input", { type: "text", name: field.Name, className: "required form-control", id: field.Id })
                         );
                     } else {
                         return React.createElement(
@@ -231,7 +231,7 @@ function renderForm(form, id) {
                                     field.Label
                                 )
                             ),
-                            React.createElement("input", { className: "form-control", name: field.Name, type: "number", id: field.Id })
+                            React.createElement("input", { className: "form-control", name: field.Name, type: "text", id: field.Id })
                         );
                     }
                 }
