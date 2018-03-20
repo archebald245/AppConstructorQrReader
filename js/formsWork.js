@@ -189,6 +189,17 @@ function bindChangeValForms() {
 
 function checkValidationAndRequired(form) {
     var check = true;
+        //numberElement
+    $(form).find(".numberElement").each(function(index, e){
+        var numberInput = $(e).find("input").val();
+        //if (isNaN(numberInput) || (numberInput === "")) {
+        if (isNaN(numberInput)) {
+            alert(cultureRes.validNumder);
+            check = false;
+            return check;
+        }
+    });
+   
     $(form).find(".required").each(function(i, element) {
         if ($(element).val() == "") {
             check = false;
@@ -210,16 +221,6 @@ function checkValidationAndRequired(form) {
             return check;
         }
     }
-    //numberElement
-    $(form).find(".numberElement").each(function(index, e){
-        var numberInput = $(e).val();
-        //if (isNaN(numberInput) || (numberInput === "")) {
-        if (isNaN(numberInput)) {
-            alert(cultureRes.validNumder);
-            check = false;
-            return check;
-        }
-    });
 
     if ($(form).find(".phoneNumberElement").length > 0) {
         var phoneInput = $(form).find(".phoneNumberElement").find(".phoneNumber").val();
