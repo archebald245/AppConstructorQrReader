@@ -212,14 +212,14 @@ function checkValidationAndRequired(form) {
     }
     //numberElement
     $(form).find(".numberElement").each(function(index, e){
-    //var numberValid = /^[0-9]*$/;
-    //if ((!numberInput.match(numberValid)) && !(numberInput != "")) {
         var numberInput = $(e).val();
-        if (isNaN(numberInput) || (numberInput === "")) {
-        alert(cultureRes.validNumder);
-        check = false;
-        return check;
-    }});
+        //if (isNaN(numberInput) || (numberInput === "")) {
+        if (isNaN(numberInput)) {
+            alert(cultureRes.validNumder);
+            check = false;
+            return check;
+        }
+    });
 
     if ($(form).find(".phoneNumberElement").length > 0) {
         var phoneInput = $(form).find(".phoneNumberElement").find(".phoneNumber").val();
