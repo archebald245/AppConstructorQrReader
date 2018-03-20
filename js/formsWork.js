@@ -215,7 +215,7 @@ function checkValidationAndRequired(form) {
         var numberInput = $(form).find(".numberElement").find("input").val();
         //var numberValid = /^[0-9]*$/;
         //if ((!numberInput.match(numberValid)) && !(numberInput != "")) {
-            if (isNaN(numberInput) && !(numberInput != "")) {
+            if (isNaN(numberInput) || (numberInput === "")) {
             alert(cultureRes.validNumder);
             check = false;
             return check;
