@@ -211,16 +211,16 @@ function checkValidationAndRequired(form) {
         }
     }
     //numberElement
-    if ($(form).find(".numberElement").length > 0) {
-        var numberInput = $(form).find(".numberElement").find("input").val();
-        //var numberValid = /^[0-9]*$/;
-        //if ((!numberInput.match(numberValid)) && !(numberInput != "")) {
-            if (isNaN(numberInput) || (numberInput === "")) {
-            alert(cultureRes.validNumder);
-            check = false;
-            return check;
-        }
-    }
+    $(form).find(".numberElement").each(function(index, e){
+    //var numberValid = /^[0-9]*$/;
+    //if ((!numberInput.match(numberValid)) && !(numberInput != "")) {
+        var numderInput = e.val();
+        if (isNaN(numberInput) || (numberInput === "")) {
+        alert(cultureRes.validNumder);
+        check = false;
+        return check;
+    }});
+
     if ($(form).find(".phoneNumberElement").length > 0) {
         var phoneInput = $(form).find(".phoneNumberElement").find(".phoneNumber").val();
         var phoneValid = /^\+\d{4}\d{3}\d{4}$/;
